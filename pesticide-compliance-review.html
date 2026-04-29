@@ -39,7 +39,7 @@
 <div id="header">
   <a href="index.html" class="back">← FS audit</a>
   <h1>Pesticide Compliance Review</h1>
-  <div id="version">04-29 12:32</div>
+  <div id="version">04-29 12:50</div>
 </div>
 
 <div id="content">
@@ -337,28 +337,74 @@ document.querySelectorAll('.section table tbody tr').forEach(tr => {
   });
 });
 
-// After wiring, fetch sprays once and hide rows with zero applications in window.
+// After wiring, fetch sprays once and hide rows that don't represent actual issues.
+// Hide if: (a) no applications in audit window, OR (b) row is in the rate section
+// AND max actual qty ≤ label per-acre × farm acres (so the application is within
+// the per-greenhouse total budget).
+const FARM_ACRES = { cuke: 1, lettuce: 2.5 };
+const masterIdx = {};
+if (window.CHEM_MASTER && window.CHEM_MASTER.rows) {
+  window.CHEM_MASTER.rows.forEach(r => {
+    const k = `${norm(r.ItemName)}|${norm(r.Farm)}`;
+    if (k !== '|') masterIdx[k] = r;
+  });
+}
+function masterPerAcre(product, farm) {
+  // Try direct lookup, then alias-aware
+  const direct = masterIdx[`${norm(product)}|${norm(farm)}`];
+  if (direct && direct.QuantityPerAcre != null) return Number(direct.QuantityPerAcre);
+  // Try aliases
+  for (const k in masterIdx) {
+    const [n, f] = k.split('|');
+    if (f !== norm(farm)) continue;
+    if (matchesProduct(n, product)) {
+      return masterIdx[k].QuantityPerAcre != null ? Number(masterIdx[k].QuantityPerAcre) : null;
+    }
+  }
+  return null;
+}
+
 (async () => {
   try {
     const sprays = await getSprays();
     const win = FSAudit.getWindow();
-    let kept = 0, hidden = 0;
+    let kept = 0, hidden = 0, withinBudget = 0;
     findingRows.forEach(({ tr, product, farms }) => {
       const apps = applicationsFor(sprays, tr.dataset.product, farms)
         .filter(a => a.date >= win.from && a.date <= win.to);
       if (apps.length === 0) {
         tr.style.display = 'none';
         hidden++;
-      } else {
-        // Annotate the row with the count for quick scanning
-        const productCell = tr.querySelector('td.product');
-        if (productCell && !productCell.dataset.annotated) {
-          productCell.dataset.annotated = '1';
-          productCell.insertAdjacentHTML('beforeend',
-            ` <span style="color:#8a8aa0; font-weight:400; font-size:0.78rem">(${apps.length})</span>`);
-        }
-        kept++;
+        return;
       }
+      // Rate-section additional check
+      const isRateSection = tr.closest('.section')?.classList.contains('warn');
+      if (isRateSection) {
+        // Get max qty applied in window
+        const maxQty = Math.max(...apps.map(a => Number(a.qty) || 0));
+        // Use master per-acre × farm acres as the per-greenhouse budget
+        let withinAll = true;
+        for (const farm of farms) {
+          const perAcre = masterPerAcre(product, farm);
+          const acres = FARM_ACRES[farm] || 1;
+          if (perAcre == null) { withinAll = false; break; }
+          if (maxQty > perAcre * acres) { withinAll = false; break; }
+        }
+        if (withinAll) {
+          tr.style.display = 'none';
+          hidden++;
+          withinBudget++;
+          return;
+        }
+      }
+      // Annotate the row with the count for quick scanning
+      const productCell = tr.querySelector('td.product');
+      if (productCell && !productCell.dataset.annotated) {
+        productCell.dataset.annotated = '1';
+        productCell.insertAdjacentHTML('beforeend',
+          ` <span style="color:#8a8aa0; font-weight:400; font-size:0.78rem">(${apps.length})</span>`);
+      }
+      kept++;
     });
     // Hide sections that have no remaining visible rows
     document.querySelectorAll('.section').forEach(sec => {
@@ -371,8 +417,8 @@ document.querySelectorAll('.section table tbody tr').forEach(tr => {
     const intro = document.querySelector('.intro');
     if (intro) {
       intro.insertAdjacentHTML('beforeend',
-        `<div style="margin-top:8px; color:#d4a44a"><b>${kept}</b> findings have applications in the audit window
-        (${hidden} review rows hidden because the product wasn't applied to that crop in the window).</div>`);
+        `<div style="margin-top:8px; color:#d4a44a"><b>${kept}</b> findings have applications that exceed limits in the audit window
+        (${hidden} review rows hidden${withinBudget ? `, ${withinBudget} of those because qty ≤ label/A × GH acres` : ''}).</div>`);
     }
   } catch (e) {
     console.warn('Could not filter empty rows:', e);
