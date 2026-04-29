@@ -363,46 +363,6 @@
 
     // -------------------------------------------------------------------------
     {
-      id: 'spray-stop-data-errors',
-      title: 'Spray PHI/REI stop columns disagree with formula',
-      module: 'data-quality',
-      severity: 'must-be-zero',
-      detailPage: 'spray-stop-data-errors.html',
-      status: 'ready',
-      pesticide: true,
-      async run(w) {
-        const sprays = await fetchSheet('grow', 'grow_spray_sched');
-        const TOL = 60 * 1000;
-        let count = 0;
-        sprays.forEach(s => {
-          const sd = dateOnly(s.SprayingDate);
-          if (!sd || sd < w.from || sd > w.to) return;
-          const stop = String(s.SprayingStopTime || '');
-          // parse stop time minutes
-          let mins = null, m;
-          if ((m = stop.match(/^(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)$/i))) {
-            let h = parseInt(m[1],10) % 12; if (m[3].toUpperCase()==='PM') h += 12;
-            mins = h*60 + parseInt(m[2],10);
-          } else if ((m = stop.match(/T(\d{2}):(\d{2})/))) mins = parseInt(m[1],10)*60+parseInt(m[2],10);
-          if (mins == null) return;
-          const sprayStop = new Date(sd + 'T00:00:00');
-          sprayStop.setMinutes(sprayStop.getMinutes() + mins);
-          const phiD = Number(s.PHIDays);
-          const reiH = Number(s.REIlHours);
-          const phiExp = !isNaN(phiD) ? new Date(sprayStop.getTime() + phiD*86400000) : null;
-          const reiExp = !isNaN(reiH) ? new Date(sprayStop.getTime() + reiH*3600000) : null;
-          const phiStored = s.PHIStopDateTime ? new Date(s.PHIStopDateTime) : null;
-          const reiStored = s.REIStopDateTime ? new Date(s.REIStopDateTime) : null;
-          const phiBad = phiStored && phiExp && Math.abs(phiStored - phiExp) > TOL;
-          const reiBad = reiStored && reiExp && Math.abs(reiStored - reiExp) > TOL;
-          if (phiBad || reiBad) count++;
-        });
-        return { count, target: '0' };
-      },
-    },
-
-    // -------------------------------------------------------------------------
-    {
       id: 'spray-warnings',
       title: 'Spray events flagged with a Warning',
       module: 'M3',
