@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Spray Warnings — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<script src="audit-list.js"></script>
+<link rel="stylesheet" href="audit-list.css">
+</head>
+<body>
+<div id="root"></div>
+<script>
+function dateOnly(v){ if(!v) return null; const s=String(v);
+  let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
+}
+FSAudit.renderIssueList({
+  title: 'Spray events with a Warning flag',
+  version: '04-29 07:50',
+  defaultSort: { key: 'spray_date', dir: -1 },
+  columns: [
+    { key: 'spray_date',  label: 'Spray date' },
+    { key: 'farm',        label: 'Farm' },
+    { key: 'site',        label: 'Site' },
+    { key: 'products',    label: 'Products' },
+    { key: 'warning',     label: 'Warning' },
+    { key: 'action',      label: 'Action required' },
+    { key: 'applicator',  label: 'Applicator' },
+    { key: 'pre_check',   label: 'PreCheck' },
+  ],
+  fetchRows: async (win) => {
+    const rows = await FSAudit.fetchSheet('grow', 'grow_spray_sched');
+    const out = [];
+    rows.forEach(r => {
+      const d = dateOnly(r.SprayingDate);
+      if (!d || d < win.from || d > win.to) return;
+      const warn = String(r.Warning || '').trim();
+      if (!warn) return;
+      const products = ['Product01','Product02','Product03']
+        .map(k => r[k]).filter(Boolean).join(' + ');
+      out.push({
+        spray_date: d,
+        farm: r.Farm,
+        site: String(r.Farm||'').toLowerCase() === 'lettuce' ? 'Let' : (r.SiteName || ''),
+        products,
+        warning: warn,
+        action: r.ActionRequired,
+        applicator: r.Applicator,
+        pre_check: r.PreCheckCompleted,
+      });
+    });
+    return out;
+  },
+});
+</script>
+</body>
+</html>

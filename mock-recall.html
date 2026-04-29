@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Mock Recall — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<link rel="stylesheet" href="audit-list.css">
+<style>
+  #controls { padding: 12px 24px; background: #0f1a2e; display: flex; gap: 16px; align-items: center; border-bottom: 1px solid #0f3460; flex-wrap: wrap; }
+  #controls input[type="text"] { background: #0f3460; color: #e0e0e0; border: 1px solid #4ecca3; border-radius: 4px; padding: 6px 10px; font-size: 0.9rem; min-width: 240px; }
+  tr.po-row { cursor: pointer; }
+  tr.po-row:hover { background: rgba(78, 204, 163, 0.08); }
+  tr.po-row.expanded { background: rgba(78, 204, 163, 0.10); }
+  tr.po-detail td { background: #0f1a2e; padding: 14px 24px; }
+  .trace-block { margin-bottom: 16px; }
+  .trace-block h4 { color: #4ecca3; font-size: 0.95rem; margin-bottom: 6px; }
+  .trace-grid { display: grid; gap: 4px 24px; font-size: 0.85rem; }
+  .trace-grid .row { display: grid; grid-template-columns: 110px 1fr; gap: 8px; }
+  .trace-grid .label { color: #8a8aa0; }
+  .pack-list table { font-size: 0.8rem; margin-top: 4px; }
+  .pack-list th { padding: 4px 8px; }
+  .pack-list td { padding: 4px 8px; }
+  .empty { color: #8a8aa0; font-style: italic; }
+</style>
+</head>
+<body>
+<div id="header">
+  <a href="index.html" class="back">← FS audit</a>
+  <h1>Mock Recall — Trace Customer Order</h1>
+  <div class="controls" id="window-bar"></div>
+  <div id="version">04-29 09:38</div>
+</div>
+<div id="controls">
+  <label>Search: <input type="text" id="filter" placeholder="customer / PO # / product"></label>
+  <span id="count" style="color:#aaa; font-size:0.85rem"></span>
+</div>
+<div id="loading">Loading…</div>
+<div id="error" style="display:none"></div>
+<div id="table-wrap" style="display:none">
+  <table>
+    <thead><tr>
+      <th data-key="invoice_date">Invoice date</th>
+      <th data-key="customer">Customer</th>
+      <th data-key="po_number">PO #</th>
+      <th data-key="farm">Farm</th>
+      <th data-key="product_code">Product</th>
+      <th data-key="invoice_quantity" class="num">Qty</th>
+    </tr></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<script>
+FSAudit.renderHeaderBar(document.getElementById('window-bar'));
+const win = FSAudit.getWindow();
+const esc = FSAudit.escapeHtml;
+
+function dateOnly(v){ if(!v) return null; const s=String(v);
+  let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
+}
+
+let pos = [];
+let cukeHarvByDateGh = {};   // date|GH -> [harvest rows]
+let cukeSeedByCycle = {};    // SeedingCycle -> seeding row
+let lettSeedByLot   = {};    // normalized PackLot (no trailing $) -> [seeding rows]
+let sortKey = 'invoice_date';
+let sortDir = -1;
+
+async function loadPOs() {
+  const salesRows = await FSAudit.fetchSheet('sales', 'sales_po');
+  pos = salesRows
+    .map(r => ({
+      invoice_date: dateOnly(r.InvoiceDate),
+      customer: r.CustomerName || '',
+      po_number: r.PurchaseOrderNumber || '',
+      product_code: r.ProductCode || '',
+      invoice_quantity: Number(r.InvoiceQuantity) || 0,
+      farm: r.Farm || '',
+      raw: r,
+    }))
+    .filter(p => p.invoice_date && p.invoice_date >= win.from && p.invoice_date <= win.to);
+}
+
+let traceLoaded = { cuke: false, lettuce: false };
+async function loadCukeTrace() {
+  if (traceLoaded.cuke) return;
+  const cukeHarv = await FSAudit.fetchSheet('grow', 'grow_C_harvest');
+  cukeHarv.forEach(r => {
+    const d = dateOnly(r.HarvestDate); if (!d) return;
+    if (d < win.from || d > win.to) return;
+    const k = `${d}|${r.Greenhouse||''}`;
+    (cukeHarvByDateGh[k] = cukeHarvByDateGh[k] || []).push(r);
+  });
+  traceLoaded.cuke = true;
+}
+async function loadLettuceTrace() {
+  if (traceLoaded.lettuce) return;
+  const lettSeed = await FSAudit.fetchSheet('grow', 'grow_L_seeding');
+  // The PackLot link lives in grow_L_seeding.packlot. A single seeding row can
+  // belong to multiple pack lots (comma-separated, each ending with "$").
+  // Each pack lot can also span multiple seeding rows (different ponds packed
+  // together). Build a Map<normalizedLot, Array<seedingRow>>.
+  lettSeed.forEach(r => {
+    const lots = String(r.packlot || '').split(',')
+      .map(s => s.trim().replace(/\$$/, ''))
+      .filter(Boolean);
+    lots.forEach(lot => {
+      (lettSeedByLot[lot] = lettSeedByLot[lot] || []).push(r);
+    });
+  });
+  traceLoaded.lettuce = true;
+}
+
+function tracePO(p) {
+  const r = p.raw;
+  const farm = String(r.Farm||'').toLowerCase();
+  const blocks = [];
+
+  // Pack splits — only include entries that actually packed something
+  // (i.e. have a quantity or a lot). Pure-date entries are forecasted slots.
+  const splits = [];
+  for (let i = 1; i <= 6; i++) {
+    const n = String(i).padStart(2, '0');
+    const pd = r['PackDate' + n], qty = r['Quantity' + n], lot = r['PackLot' + n];
+    const hasQty = qty != null && String(qty).trim() !== '' && Number(qty) !== 0;
+    const hasLot = lot != null && String(lot).trim() !== '';
+    if (!hasQty && !hasLot) continue;
+    splits.push({
+      idx: i,
+      pack_date: dateOnly(pd) || pd,
+      quantity: qty,
+      pack_lot: String(lot || '').trim(),
+    });
+  }
+  if (splits.length === 0) {
+    return `<div class="empty">No packed entries on this PO. Cannot trace.</div>`;
+  }
+
+  // Pack splits table
+  let html = '<div class="trace-block"><h4>Pack splits</h4><div class="pack-list"><table>'
+    + '<thead><tr><th>#</th><th>Pack date</th><th>Qty</th><th>Lot</th></tr></thead><tbody>';
+  splits.forEach(s => {
+    html += `<tr><td>${s.idx}</td><td>${esc(s.pack_date||'')}</td><td>${esc(s.quantity||'')}</td><td>${esc(s.pack_lot||'')}</td></tr>`;
+  });
+  html += '</tbody></table></div></div>';
+
+  if (farm === 'cuke') {
+    html += '<div class="trace-block"><h4>Linked Cuke harvests</h4>';
+    splits.forEach(s => {
+      if (!s.pack_date) return;
+      // Cuke pack date typically equals harvest date. List the distinct GHs
+      // harvested on that date — auditor wants the contributing-GH set, not
+      // every individual weigh-in row.
+      const ghs = new Set();
+      Object.entries(cukeHarvByDateGh).forEach(([k, hs]) => {
+        const [d] = k.split('|');
+        if (d !== s.pack_date) return;
+        hs.forEach(h => { if (h.Greenhouse) ghs.add(h.Greenhouse); });
+      });
+      if (ghs.size === 0) {
+        html += `<div style="margin-top:6px"><b>PackDate ${esc(s.pack_date)}:</b> <span class="empty">no Cuke harvests recorded on this date.</span></div>`;
+        return;
+      }
+      html += `<div style="margin-top:6px"><b>PackDate ${esc(s.pack_date)}</b> — harvested from GH: ${[...ghs].sort().map(esc).join(', ')}</div>`;
+    });
+    html += '</div>';
+  } else if (farm === 'lettuce') {
+    html += '<div class="trace-block"><h4>Linked Lettuce harvests</h4>';
+    splits.forEach(s => {
+      if (!s.pack_lot) {
+        html += `<div class="empty">Split ${s.idx}: no PackLot recorded.</div>`;
+        return;
+      }
+      // Strip trailing "$" if present, normalize for lookup.
+      const lot = String(s.pack_lot).replace(/\$$/, '').trim();
+      const seedRows = lettSeedByLot[lot] || [];
+      html += `<div style="margin-top:6px"><b>PackLot ${esc(s.pack_lot)}</b> — ${seedRows.length} seeding row(s):</div>`;
+      if (seedRows.length === 0) {
+        html += `<div class="empty">No matching seeding row in grow_L_seeding for PackLot "${esc(lot)}". Lot code may be missing or mismatched.</div>`;
+        return;
+      }
+      html += '<div class="pack-list"><table><thead><tr>'
+        + '<th>Pond</th><th>Side</th><th>Variety</th><th>Seed name</th><th>Seed lot</th><th>Sow date</th><th>Harvest date</th><th>Net wt</th>'
+        + '</tr></thead><tbody>';
+      seedRows.forEach(seed => {
+        html += `<tr>
+          <td>${esc(seed.pond||'')}</td>
+          <td>${esc(seed.side||'')}</td>
+          <td>${esc(seed.variety||'')}</td>
+          <td>${esc(seed.seedname||'')}</td>
+          <td>${esc(seed.seedlot||'')}</td>
+          <td>${esc(dateOnly(seed.seedingdate)||'')}</td>
+          <td>${esc(dateOnly(seed.harvestdate)||'')}</td>
+          <td>${esc(seed.greenhousenetweight||'')}</td>
+        </tr>`;
+      });
+      html += '</tbody></table></div>';
+    });
+    html += '</div>';
+  } else {
+    html += `<div class="empty">Unknown farm "${esc(r.Farm||'')}" — cannot trace.</div>`;
+  }
+  return html;
+}
+
+function paint() {
+  const filterText = (document.getElementById('filter').value || '').toLowerCase().trim();
+  let rows = pos.filter(p => {
+    if (!filterText) return true;
+    return [p.customer, p.po_number, p.product_code].some(s => String(s).toLowerCase().includes(filterText));
+  });
+  rows.sort((a, b) => {
+    const x = a[sortKey], y = b[sortKey];
+    if (x === y) return 0;
+    if (x == null) return 1;
+    if (y == null) return -1;
+    return (x < y ? -1 : 1) * sortDir;
+  });
+  document.getElementById('count').textContent = `${rows.length} matching POs (of ${pos.length} in window)`;
+  // Stash filtered rows for click handler.
+  visibleRows = rows;
+  document.getElementById('tbody').innerHTML = rows.map((p, i) => `
+    <tr class="po-row" data-i="${i}">
+      <td>${esc(p.invoice_date)}</td>
+      <td>${esc(p.customer)}</td>
+      <td>${esc(p.po_number)}</td>
+      <td>${esc(p.farm)}</td>
+      <td>${esc(p.product_code)}</td>
+      <td class="num">${esc(p.invoice_quantity)}</td>
+    </tr>
+    <tr class="po-detail" data-i="${i}" style="display:none"><td colspan="6"></td></tr>
+  `).join('');
+  document.querySelectorAll('tr.po-row').forEach(tr => {
+    tr.addEventListener('click', async () => {
+      const i = tr.dataset.i;
+      const det = document.querySelector(`tr.po-detail[data-i="${i}"]`);
+      const cell = det.querySelector('td');
+      const open = det.style.display !== 'none';
+      if (open) {
+        det.style.display = 'none';
+        tr.classList.remove('expanded');
+        return;
+      }
+      det.style.display = 'table-row';
+      tr.classList.add('expanded');
+      const p = visibleRows[i];
+      const farm = String(p.farm||'').toLowerCase();
+      cell.innerHTML = '<div style="color:#4ecca3">Loading trace data…</div>';
+      try {
+        if (farm === 'cuke')    await loadCukeTrace();
+        if (farm === 'lettuce') await loadLettuceTrace();
+        cell.innerHTML = tracePO(p);
+      } catch (e) {
+        cell.innerHTML = `<div style="color:#ff8c5a">Error loading trace data: ${esc(e.message||e)}</div>`;
+      }
+    });
+  });
+}
+let visibleRows = [];
+
+document.getElementById('filter').addEventListener('input', paint);
+document.querySelectorAll('th[data-key]').forEach(th => {
+  th.addEventListener('click', () => {
+    const k = th.dataset.key;
+    if (sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = 1; }
+    paint();
+  });
+});
+
+(async () => {
+  try {
+    await loadPOs();
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('table-wrap').style.display = 'block';
+    paint();
+  } catch (e) {
+    document.getElementById('loading').style.display = 'none';
+    const err = document.getElementById('error');
+    err.style.display = 'block';
+    err.textContent = 'Error: ' + (e.message || e);
+    console.error(e);
+  }
+})();
+</script>
+</body>
+</html>

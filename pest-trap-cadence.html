@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Pest Trap Cadence Gaps — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<script src="audit-list.js"></script>
+<link rel="stylesheet" href="audit-list.css">
+</head>
+<body>
+<div id="root"></div>
+<script>
+function dateOnly(v){ if(!v) return null; const s=String(v);
+  let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
+}
+FSAudit.renderIssueList({
+  title: 'Pest stations with >31-day gap between checks',
+  version: '04-29 07:05',
+  defaultSort: { key: 'max_gap', dir: -1 },
+  columns: [
+    { key: 'farm',      label: 'Farm' },
+    { key: 'site',      label: 'Site' },
+    { key: 'station',   label: 'Station' },
+    { key: 'max_gap',   label: 'Max gap (days)', num: true },
+    { key: 'checks_in_window', label: 'Checks in window', num: true },
+    { key: 'last_check',label: 'Last check' },
+  ],
+  fetchRows: async (win) => {
+    const rows = await FSAudit.fetchSheet('fsafe', 'fsafe_log_pest');
+    // Station(s) is "+"-delimited; split and track each station independently.
+    const byStation = {};
+    rows.forEach(r => {
+      const d = dateOnly(r['Checked Date']); if (!d) return;
+      const stations = String(r['Station(s)']||'').split('+').map(s => s.trim()).filter(Boolean);
+      stations.forEach(st => {
+        const k = `${r.Farm||''}|${r['Site Name']||''}|${st}`;
+        (byStation[k] = byStation[k] || []).push(d);
+      });
+    });
+    const out = [];
+    Object.entries(byStation).forEach(([k, dates]) => {
+      const inWin = [...new Set(dates)].filter(d => d >= win.from && d <= win.to).sort();
+      if (inWin.length < 2) return;
+      let maxGap = 0;
+      for (let i = 1; i < inWin.length; i++) {
+        const gap = (new Date(inWin[i]) - new Date(inWin[i-1])) / 86400000;
+        if (gap > maxGap) maxGap = gap;
+      }
+      if (maxGap > 31) {
+        const [farm, site, station] = k.split('|');
+        out.push({
+          farm, site, station,
+          max_gap: Math.round(maxGap),
+          checks_in_window: inWin.length,
+          last_check: inWin[inWin.length-1],
+        });
+      }
+    });
+    return out;
+  },
+});
+</script>
+</body>
+</html>

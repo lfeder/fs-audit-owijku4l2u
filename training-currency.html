@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Training Currency — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<script src="audit-list.js"></script>
+<link rel="stylesheet" href="audit-list.css">
+</head>
+<body>
+<div id="root"></div>
+<script>
+function dateOnly(v){ if(!v) return null; const s=String(v);
+  let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
+}
+FSAudit.renderIssueList({
+  title: 'Employees with no training signed in last 12 months',
+  version: '04-29 07:05',
+  defaultSort: { key: 'days_since', dir: -1 },
+  columns: [
+    { key: 'name',         label: 'Employee' },
+    { key: 'last_signed',  label: 'Last signed' },
+    { key: 'days_since',   label: 'Days since', num: true },
+    { key: 'last_training',label: 'Last training' },
+  ],
+  fetchRows: async (win) => {
+    const rows = await FSAudit.fetchSheet('fsafe', 'fsafe_log_training_employees');
+    const byEmp = {};
+    rows.forEach(r => {
+      const sig = dateOnly(r.DigitalSignatureDateTime || r.TrainingDateTime);
+      if (!sig) return;
+      const name = (r.FullName || '').trim();
+      if (!name) return;
+      if (!byEmp[name] || byEmp[name].sig < sig) {
+        byEmp[name] = { sig, training: r.TrainingType };
+      }
+    });
+    const cutoff = (() => { const d = new Date(); d.setMonth(d.getMonth()-12); return d.toISOString().slice(0,10); })();
+    const today = new Date().toISOString().slice(0, 10);
+    const out = [];
+    Object.entries(byEmp).forEach(([name, info]) => {
+      if (info.sig >= cutoff) return;
+      const days = Math.floor((new Date(today) - new Date(info.sig)) / 86400000);
+      out.push({
+        name,
+        last_signed: info.sig,
+        days_since: days,
+        last_training: info.training,
+      });
+    });
+    return out;
+  },
+});
+</script>
+</body>
+</html>

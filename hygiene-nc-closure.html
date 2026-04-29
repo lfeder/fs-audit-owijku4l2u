@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Hygiene NCs Open — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<script src="audit-list.js"></script>
+<link rel="stylesheet" href="audit-list.css">
+</head>
+<body>
+<div id="root"></div>
+<script>
+function dateOnly(v){ if(!v) return null; const s=String(v);
+  let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
+}
+const HYGIENE_RX = /(hygien|ppe|jewelr|hand|wash|hairnet|glove|footwear|clothing|sanitiz|wound|sore|illness)/i;
+FSAudit.renderIssueList({
+  title: 'Hygiene-related corrective actions still open (unverified)',
+  version: '04-29 07:05',
+  defaultSort: { key: 'reported_date', dir: -1 },
+  columns: [
+    { key: 'reported_date', label: 'Reported' },
+    { key: 'log',           label: 'Source log' },
+    { key: 'farm',          label: 'Farm' },
+    { key: 'site',          label: 'Site' },
+    { key: 'warning',       label: 'Warning' },
+    { key: 'corrective',    label: 'Corrective action' },
+    { key: 'reported_by',   label: 'Reported by' },
+  ],
+  fetchRows: async (win) => {
+    const rows = await FSAudit.fetchSheet('fsafe', 'fsafe_log_corrective_action');
+    const out = [];
+    rows.forEach(r => {
+      const reported = dateOnly(r.ReportedDate);
+      if (!reported || reported < win.from || reported > win.to) return;
+      const text = `${r.Warning || ''} ${r.CorrectiveAction || ''} ${r.Log || ''}`;
+      if (!HYGIENE_RX.test(text)) return;
+      if (r.VerifiedDateTime && String(r.VerifiedDateTime).trim() !== '') return;
+      out.push({
+        reported_date: reported,
+        log: r.Log,
+        farm: r.Farm,
+        site: r.SiteName,
+        warning: r.Warning,
+        corrective: r.CorrectiveAction || r.OtherCorrectiveAction,
+        reported_by: r.ReportedBy,
+      });
+    });
+    return out;
+  },
+});
+</script>
+</body>
+</html>

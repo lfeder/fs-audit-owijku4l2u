@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spray Data Quality — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<script src="chem-master.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0; min-height: 100vh; }
+  #header { background: #16213e; padding: 12px 24px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid #0f3460; flex-wrap: wrap; }
+  #header h1 { font-size: 1.2rem; color: #4ecca3; }
+  #header a.back { color: #aaa; font-size: 0.85rem; text-decoration: none; }
+  #header a.back:hover { color: #4ecca3; }
+  #version { margin-left: auto; font-size: 0.85rem; color: #e0e0e0; }
+  .controls label { font-size: 0.85rem; color: #aaa; display: inline-flex; align-items: center; gap: 6px; }
+  .controls select, .controls input[type="date"] { background: #0f3460; color: #e0e0e0; border: 1px solid #4ecca3; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem; }
+  .controls input[type="checkbox"] { accent-color: #4ecca3; }
+  .fs-window-info { color: #aaa; font-size: 0.8rem; margin-left: 4px; }
+  #summary { padding: 12px 24px; background: #0f1a2e; display: flex; gap: 24px; flex-wrap: wrap; border-bottom: 1px solid #0f3460; }
+  .stat { display: flex; flex-direction: column; gap: 2px; cursor: pointer; padding: 4px 8px; border-radius: 4px; }
+  .stat:hover { background: rgba(255,255,255,0.04); }
+  .stat.active { background: rgba(78,204,163,0.1); outline: 1px solid #4ecca3; }
+  .stat .label { font-size: 0.72rem; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat .value { font-size: 1.4rem; font-weight: 700; }
+  .stat.fail .value { color: #ff8c5a; }
+  .stat.warn .value { color: #d4a44a; }
+  .stat.ok   .value { color: #4ecca3; }
+  #table-wrap { padding: 12px 24px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  thead { background: #16213e; position: sticky; top: 0; }
+  th { padding: 8px 10px; text-align: left; color: #4ecca3; font-weight: 600; border-bottom: 1px solid #0f3460; cursor: pointer; user-select: none; white-space: nowrap; }
+  th:hover { color: #6ee0bb; }
+  td { padding: 6px 10px; border-bottom: 1px solid #0f3460; vertical-align: top; }
+  tr.has-issue { background: rgba(255, 140, 90, 0.08); }
+  tr.row-main { cursor: pointer; }
+  tr.row-main:hover { background: rgba(78, 204, 163, 0.08); }
+  tr.row-detail td { background: #0f1a2e; padding: 12px 24px; }
+  tr.row-detail .detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 24px; font-size: 0.85rem; }
+  tr.row-detail .detail-grid > div:last-child { grid-column: 1 / -1; }
+  tr.row-detail li.error { color: #ff8c5a; }
+  tr.row-detail li.warn  { color: #d4a44a; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  .chip { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; margin-right: 4px; margin-bottom: 2px; }
+  .chip.ok        { background: rgba(78, 204, 163, 0.2); color: #4ecca3; }
+  .chip.warn      { background: rgba(212, 164, 74, 0.25); color: #d4a44a; }
+  .chip.error     { background: rgba(255, 140, 90, 0.25); color: #ff8c5a; }
+  .chip.muted     { background: rgba(138, 138, 160, 0.2); color: #8a8aa0; }
+  #loading, #error { padding: 24px; color: #4ecca3; }
+  #error { color: #ff8c5a; }
+</style>
+</head>
+<body>
+<div id="header">
+  <a href="index.html" class="back">← FS audit</a>
+  <h1>Spray Data Quality</h1>
+  <div class="controls" id="window-bar"></div>
+  <div class="controls" style="margin-left:auto">
+    <label>Farm: <select id="farmSelect"><option value="">All</option></select></label>
+    <label><input type="checkbox" id="issuesOnly" checked> Issues only</label>
+  </div>
+  <div id="version">04-29 06:48</div>
+</div>
+
+<div id="summary">
+  <div class="stat fail" data-flag="missing-data"><div class="label">Missing data</div><div class="value" id="cnt-miss">—</div></div>
+  <div class="stat fail" data-flag="time-error"><div class="label">Time errors</div><div class="value" id="cnt-time">—</div></div>
+  <div class="stat fail" data-flag="over-rate"><div class="label">Over-rate</div><div class="value" id="cnt-over">—</div></div>
+  <div class="stat fail" data-flag="under-rei-phi"><div class="label">Under-stated REI/PHI</div><div class="value" id="cnt-rp">—</div></div>
+  <div class="stat warn" data-flag="unit-mismatch"><div class="label">Unit mismatch</div><div class="value" id="cnt-unit">—</div></div>
+  <div class="stat warn" data-flag="unknown-chemical"><div class="label">Unknown chemical</div><div class="value" id="cnt-unk">—</div></div>
+  <div class="stat ok" data-flag=""><div class="label">All sprays</div><div class="value" id="cnt-total">—</div></div>
+</div>
+
+<div id="loading">Loading…</div>
+<div id="error" style="display:none"></div>
+<div id="table-wrap" style="display:none">
+  <table>
+    <thead><tr>
+      <th data-sort="spray_date">Spray date</th>
+      <th data-sort="site_id">Site</th>
+      <th data-sort="p1_name">Product 1</th>
+      <th data-sort="p1_qty" class="num">Qty 1</th>
+      <th data-sort="p2_name">Product 2</th>
+      <th data-sort="p2_qty" class="num">Qty 2</th>
+      <th data-sort="p3_name">Product 3</th>
+      <th data-sort="p3_qty" class="num">Qty 3</th>
+      <th data-sort="phi_days" class="num">PHI (d)</th>
+      <th data-sort="rei_hours" class="num">REI (h)</th>
+      <th data-sort="duration_min" class="num">Duration</th>
+      <th data-sort="flag_count" class="num">Flags</th>
+    </tr></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<script>
+FSAudit.renderHeaderBar(document.getElementById('window-bar'));
+const win = FSAudit.getWindow();
+const esc = FSAudit.escapeHtml;
+
+// Per-farm acreage assumed for over-rate check (can be refined per-GH later).
+const FARM_ACRES = { cuke: 1, lettuce: 2.5 };
+
+let allRows = [];
+let activeFlag = '';
+let sortKey = 'spray_date';
+let sortDir = -1;
+
+function norm(s) { return String(s || '').trim().toLowerCase(); }
+function numOrNull(v) {
+  if (v == null || v === '') return null;
+  const n = Number(v);
+  return isNaN(n) ? null : n;
+}
+function parseTimeOfDay(v) {
+  if (v == null || v === '') return null;
+  if (typeof v === 'string') {
+    let m;
+    if ((m = v.match(/^(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)$/i))) {
+      let h = parseInt(m[1], 10) % 12;
+      if (m[3].toUpperCase() === 'PM') h += 12;
+      return h * 60 + parseInt(m[2], 10);
+    }
+    if ((m = v.match(/T(\d{2}):(\d{2})/))) return parseInt(m[1],10)*60 + parseInt(m[2],10);
+    if ((m = v.match(/^(\d{1,2}):(\d{2})/)))   return parseInt(m[1],10)*60 + parseInt(m[2],10);
+  }
+  return null;
+}
+
+function buildMasterIndex(rows) {
+  // Strict: only key by (ItemName, Farm). The same product can appear in both
+  // farms with different units / application methods / quantities, so we never
+  // fall back to a name-only match.
+  const byNameFarm = {};
+  rows.forEach(r => {
+    const item = norm(r.ItemName);
+    const farm = norm(r.Farm);
+    if (!item || !farm) return;
+    byNameFarm[`${item}|${farm}`] = r;
+  });
+  return { byNameFarm };
+}
+
+function lookup(master, item, farm) {
+  return master.byNameFarm[`${norm(item)}|${norm(farm)}`] || null;
+}
+
+async function fetchMaster() {
+  // Prefer live sheet; fall back to bundled chem-master.js (loaded as <script>)
+  // if the sheet isn't readable (e.g. not link-shared, or running file://).
+  try {
+    return await FSAudit.fetchSheet('invnt', 'invnt_item_details');
+  } catch (e) {
+    console.warn('inventory sheet unreadable, falling back to bundled chem-master.js', e);
+    if (window.CHEM_MASTER && Array.isArray(window.CHEM_MASTER.rows)) return window.CHEM_MASTER.rows;
+    throw new Error('No chem master available — neither sheet nor bundled file loaded');
+  }
+}
+
+async function fetchData() {
+  const [sprays, masterRows] = await Promise.all([
+    FSAudit.fetchSheet('grow', 'grow_spray_sched'),
+    fetchMaster(),
+  ]);
+  const master = buildMasterIndex(masterRows);
+
+  const toIsoDate = d => {
+    if (!d) return null;
+    const s = String(d);
+    // gviz parsed → ISO-like "2025-01-06T..."
+    let m = s.match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (m) return `${m[1]}-${m[2]}-${m[3]}`;
+    // Raw text "1/6/2025" or "01/06/2025"
+    m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+    if (m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+    return null;
+  };
+  const inWindow = d => {
+    const iso = toIsoDate(d);
+    return iso && iso >= win.from && iso <= win.to;
+  };
+
+  console.log('[spray-data-quality] fetched sprays:', sprays.length);
+  const inwin = sprays.filter(s => s.SprayingDate && inWindow(s.SprayingDate));
+  console.log('[spray-data-quality] in window:', inwin.length, 'window:', win);
+  if (sprays.length) {
+    const samples = sprays.slice(0, 3).map(s => ({ SprayingDate: s.SprayingDate, type: typeof s.SprayingDate }));
+    console.log('[spray-data-quality] first 3 SprayingDate values:', samples);
+  }
+  return sprays
+    .filter(s => s.SprayingDate && inWindow(s.SprayingDate))
+    .map(s => {
+      const farm = s.Farm || '';
+      const acres = FARM_ACRES[norm(farm)] || 1;
+      const startMin = parseTimeOfDay(s.SprayingStartTime);
+      const stopMin  = parseTimeOfDay(s.SprayingStopTime);
+      const duration = (startMin != null && stopMin != null) ? (stopMin - startMin) : null;
+
+      // Per-product flags
+      const products = [];
+      const flags = [];
+      let maxMasterPhi = 0, maxMasterRei = 0, anyMaster = false;
+
+      for (let i = 1; i <= 3; i++) {
+        const name = s[`Product0${i}`];
+        if (!name) continue;
+        const qty  = numOrNull(s[`Product0${i}Quantity`]);
+        const unit = s[`Product0${i}Units`] || '';
+        const m = lookup(master, name, farm);
+        const prod = { name, qty, unit, master: m, issues: [] };
+        if (!m) {
+          prod.issues.push({ severity: 'warn', label: `unknown chemical (${name})`, flag: 'unknown-chemical' });
+        } else {
+          anyMaster = true;
+          if (m.PHIDays != null && Number(m.PHIDays) > maxMasterPhi) maxMasterPhi = Number(m.PHIDays);
+          if (m.REIHours != null && Number(m.REIHours) > maxMasterRei) maxMasterRei = Number(m.REIHours);
+          if (m.QuantityPerAcre != null && qty != null && qty > Number(m.QuantityPerAcre) * acres) {
+            prod.issues.push({
+              severity: 'error',
+              label: `${name}: ${qty} ${unit} > ${m.QuantityPerAcre} ${m.PerAcreUnits}/ac × ${acres} ac (max ${(m.QuantityPerAcre * acres).toFixed(1)})`,
+              flag: 'over-rate',
+            });
+          }
+          if (m.PerAcreUnits && unit && norm(m.PerAcreUnits) !== norm(unit) && norm(m.PerAcreUnits).replace(/s$/,'') !== norm(unit).replace(/s$/,'')) {
+            prod.issues.push({
+              severity: 'warn',
+              label: `${name}: unit "${unit}" ≠ master "${m.PerAcreUnits}"`,
+              flag: 'unit-mismatch',
+            });
+          }
+        }
+        products.push(prod);
+      }
+
+      const phiOnRow = numOrNull(s.PHIDays);
+      const reiOnRow = numOrNull(s.REIlHours);
+      if (anyMaster) {
+        if (phiOnRow != null && phiOnRow < maxMasterPhi) {
+          flags.push({ severity: 'error', label: `under-stated PHI: row ${phiOnRow}d, max product ${maxMasterPhi}d`, flag: 'under-rei-phi' });
+        }
+        if (reiOnRow != null && reiOnRow < maxMasterRei) {
+          flags.push({ severity: 'error', label: `under-stated REI: row ${reiOnRow}h, max product ${maxMasterRei}h`, flag: 'under-rei-phi' });
+        }
+      }
+
+      // Time checks
+      if (startMin != null && stopMin != null) {
+        if (stopMin < startMin) {
+          flags.push({ severity: 'error', label: `stop ${s.SprayingStopTime} before start ${s.SprayingStartTime}`, flag: 'time-error' });
+        } else if (duration <= 0) {
+          flags.push({ severity: 'error', label: `zero-duration spray`, flag: 'time-error' });
+        } else if (duration > 8 * 60) {
+          flags.push({ severity: 'warn', label: `long spray (${(duration/60).toFixed(1)}h)`, flag: 'time-error' });
+        }
+      }
+
+      // Missing critical data
+      const missing = [];
+      if (!s.SprayingDate)       missing.push('SprayingDate');
+      if (!farm)                 missing.push('Farm');
+      if (!s.SiteName)           missing.push('SiteName');
+      if (!s.SprayingStartTime)  missing.push('SprayingStartTime');
+      if (!s.SprayingStopTime)   missing.push('SprayingStopTime');
+      if (s.PHIDays === undefined || s.PHIDays === null || s.PHIDays === '')   missing.push('PHIDays');
+      if (s.REIlHours === undefined || s.REIlHours === null || s.REIlHours === '') missing.push('REIlHours');
+      if (products.length === 0) missing.push('Product01');
+      else {
+        products.forEach((p, i) => {
+          const n = i + 1;
+          if (p.qty == null) missing.push(`Product0${n}Quantity`);
+          if (!p.unit)       missing.push(`Product0${n}Units`);
+        });
+      }
+      if (missing.length) {
+        flags.push({ severity: 'error', label: `missing: ${missing.join(', ')}`, flag: 'missing-data' });
+      }
+
+      // Roll up product issues into row flags
+      products.forEach(p => p.issues.forEach(i => flags.push(i)));
+
+      const sprayDate = toIsoDate(s.SprayingDate) || '';
+      const p1 = products[0] || {}, p2 = products[1] || {}, p3 = products[2] || {};
+      return {
+        spray_date: sprayDate,
+        farm,
+        site_id: norm(farm) === 'lettuce' ? 'Let' : (s.SiteName || ''),
+        p1_name: p1.name || '', p1_qty: p1.qty ?? null, p1_unit: p1.unit || '',
+        p2_name: p2.name || '', p2_qty: p2.qty ?? null, p2_unit: p2.unit || '',
+        p3_name: p3.name || '', p3_qty: p3.qty ?? null, p3_unit: p3.unit || '',
+        phi_days: phiOnRow,
+        rei_hours: reiOnRow,
+        duration_min: duration,
+        start_time: s.SprayingStartTime || '',
+        stop_time: s.SprayingStopTime || '',
+        applicator: s.Applicator || '',
+        entry_id: s.EntryID || '',
+        flags,
+        flag_count: flags.length,
+        flag_kinds: [...new Set(flags.map(f => f.flag))],
+      };
+    });
+}
+
+function render() {
+  const farm = document.getElementById('farmSelect').value;
+  const issuesOnly = document.getElementById('issuesOnly').checked;
+  let rows = allRows.filter(r => !farm || r.farm === farm);
+  if (issuesOnly) rows = rows.filter(r => r.flags.length > 0);
+  if (activeFlag) rows = rows.filter(r => r.flag_kinds.includes(activeFlag));
+
+  rows.sort((a, b) => {
+    const x = a[sortKey], y = b[sortKey];
+    if (x == null && y == null) return 0;
+    if (x == null) return 1;
+    if (y == null) return -1;
+    return (x < y ? -1 : x > y ? 1 : 0) * sortDir;
+  });
+
+  // Counts (across full set respecting farm filter)
+  const farmFiltered = allRows.filter(r => !farm || r.farm === farm);
+  const cnt = { 'missing-data':0, 'time-error':0, 'over-rate':0, 'under-rei-phi':0, 'unit-mismatch':0, 'unknown-chemical':0 };
+  farmFiltered.forEach(r => r.flag_kinds.forEach(k => { if (cnt[k] != null) cnt[k]++; }));
+  document.getElementById('cnt-miss').textContent  = cnt['missing-data'];
+  document.getElementById('cnt-time').textContent  = cnt['time-error'];
+  document.getElementById('cnt-over').textContent  = cnt['over-rate'];
+  document.getElementById('cnt-rp').textContent    = cnt['under-rei-phi'];
+  document.getElementById('cnt-unit').textContent  = cnt['unit-mismatch'];
+  document.getElementById('cnt-unk').textContent   = cnt['unknown-chemical'];
+  document.getElementById('cnt-total').textContent = farmFiltered.length;
+
+  document.querySelectorAll('.stat').forEach(el =>
+    el.classList.toggle('active', (el.dataset.flag || '') === activeFlag));
+
+  const qtyCell = (q, u) => q == null ? '' : `${q}${u ? ' ' + u : ''}`;
+  document.getElementById('tbody').innerHTML = rows.map((r, i) => {
+    const dur = r.duration_min == null ? '' : `${(r.duration_min/60).toFixed(1)}h`;
+    const flagsHtml = r.flags.length === 0
+      ? '<span class="chip ok">ok</span>'
+      : r.flags.map(f => `<span class="chip ${esc(f.severity)}" title="${esc(f.label)}">${esc(f.label)}</span>`).join(' ');
+    const detailHtml = `
+      <div class="detail-grid">
+        <div><b>Spray date:</b> ${esc(r.spray_date)}</div>
+        <div><b>Farm:</b> ${esc(r.farm)} &nbsp; <b>Site:</b> ${esc(r.site_id)}</div>
+        <div><b>Start–stop:</b> ${esc(r.start_time)} – ${esc(r.stop_time)} (${esc(dur)})</div>
+        <div><b>Applicator:</b> ${esc(r.applicator)} &nbsp; <b>Entry ID:</b> ${esc(r.entry_id)}</div>
+        <div><b>PHI:</b> ${r.phi_days ?? '?'}d &nbsp; <b>REI:</b> ${r.rei_hours ?? '?'}h</div>
+        <div><b>Products:</b> ${[1,2,3].map(n => r['p'+n+'_name'] ? `${esc(r['p'+n+'_name'])} (${esc(qtyCell(r['p'+n+'_qty'], r['p'+n+'_unit']))})` : '').filter(Boolean).join(' &nbsp;+&nbsp; ') || '—'}</div>
+        ${r.flags.length ? `<div><b>Flags:</b><ul style="margin:4px 0 0 18px">${r.flags.map(f => `<li class="${esc(f.severity)}">${esc(f.label)}</li>`).join('')}</ul></div>` : ''}
+      </div>`;
+    return `<tr class="row-main ${r.flags.length ? 'has-issue' : ''}" data-i="${i}">
+      <td>${esc(r.spray_date)}</td>
+      <td>${esc(r.site_id)}</td>
+      <td>${esc(r.p1_name)}</td><td class="num">${esc(qtyCell(r.p1_qty, r.p1_unit))}</td>
+      <td>${esc(r.p2_name)}</td><td class="num">${esc(qtyCell(r.p2_qty, r.p2_unit))}</td>
+      <td>${esc(r.p3_name)}</td><td class="num">${esc(qtyCell(r.p3_qty, r.p3_unit))}</td>
+      <td class="num">${r.phi_days ?? ''}</td>
+      <td class="num">${r.rei_hours ?? ''}</td>
+      <td class="num">${dur}</td>
+      <td>${flagsHtml}</td>
+    </tr>
+    <tr class="row-detail" data-i="${i}" style="display:none"><td colspan="12">${detailHtml}</td></tr>`;
+  }).join('');
+
+  // Wire row click → toggle detail row
+  document.querySelectorAll('tr.row-main').forEach(tr => {
+    tr.addEventListener('click', () => {
+      const i = tr.dataset.i;
+      const det = document.querySelector(`tr.row-detail[data-i="${i}"]`);
+      if (det) det.style.display = det.style.display === 'none' ? 'table-row' : 'none';
+    });
+  });
+}
+
+document.querySelectorAll('th[data-sort]').forEach(th => {
+  th.addEventListener('click', () => {
+    const k = th.dataset.sort;
+    if (sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = 1; }
+    render();
+  });
+});
+document.querySelectorAll('.stat').forEach(el => {
+  el.addEventListener('click', () => {
+    const f = el.dataset.flag || '';
+    activeFlag = (activeFlag === f) ? '' : f;
+    render();
+  });
+});
+['farmSelect','issuesOnly'].forEach(id => {
+  document.getElementById(id).addEventListener('change', render);
+});
+
+(async () => {
+  if (FSAudit.getSource() !== 'sheets') {
+    document.getElementById('loading').textContent =
+      'This page reads from Google Sheets. Switch the source to "Google Sheets" in the header.';
+    return;
+  }
+  try {
+    allRows = await fetchData();
+    const farms = [...new Set(allRows.map(r => r.farm))].filter(Boolean).sort();
+    document.getElementById('farmSelect').innerHTML = '<option value="">All</option>' +
+      farms.map(f => `<option value="${esc(f)}">${esc(f)}</option>`).join('');
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('table-wrap').style.display = 'block';
+    render();
+  } catch (e) {
+    document.getElementById('loading').style.display = 'none';
+    const err = document.getElementById('error');
+    err.style.display = 'block';
+    err.textContent = 'Error: ' + (e.message || e);
+    console.error(e);
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,3254 @@
+       PrimusGFS Audit
+         Harvest Crew
+
+   (Module 4) Guidelines
+
+Used in conjunction with the PrimusGFS v3.2 audit
+
+                        PrimusGFS (owned by Azzule Systems, LLC)
+                                      3030 Industrial Parkway
+                                       Santa Maria, CA 93455
+©2021 Primus Group, Inc. All rights reserved                       Rev. 3
+
+                                                            Index    3
+                                                                     3
+Audit Execution                                                      4
+Scoring System                                                       5
+Automatic Failure                                                    8
+Documentation Requirements                                           8
+Module 4: Harvest Crew                                               9
+General                                                              10
+Inspection                                                           13
+Training                                                             26
+Harvest Worker Hygiene                                               48
+Harvest Practices                                                    49
+Transportation and Tracking
+On-site Storage
+
+PGFS-R-064  Page 2 of 56                                           April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                Rev. 3
+
+This document is for guidance purposes only and in no way replaces any regulatory legislation or
+other legal guidance documentation or viewed as giving legal advice. PrimusGFS (the Scheme),
+owned by Azzule Systems LLC, accepts no liability for the contents of this document, nor how an
+individual chooses to apply this document. This document is owned by Azzule Systems, LLC and,
+as such, must not be copied in whole or in part for any other use. Under no circumstances can this
+document be copied by or to any person without Azzule Systems' expressed permission.
+
+These guidelines help interpret/support the principles, requirements and expectations of the PrimusGFS
+v3.2 Modules 1, 2, 3, 4, 5, 6 and 7 as noted in the Scheme normative documents. These guidelines are
+neither exhaustive nor exclusive and detail minimum requirements only by means of statements related to
+audit questions and expectations. There will be variations in applicability to an operation based on the
+process(es) and commodities involved. Auditors and auditees should interpret the questions and criteria in
+different situations, with the food safety and risk minimization being the key concerns.
+
+The operation's practices, policies and procedures should be pertinent to the situation at hand and be able
+to stand up to any challenge by an auditor or other relevant interested party (including law enforcement).
+Where laws, customer requirements and specifications, commodity specific guidelines and/or best practice
+recommendations exist and are derived from a reputable source, these practices and parameters should
+be followed if they present a higher level of compliance than those included in the audit scheme.
+
+Website links shown in this document are there to aid understanding and provide assistance by way of
+example (link listings are not exhaustive). These links are not a sign of endorsement by Azzule.
+Furthermore, Azzule Systems accepts no liability for the content of these links.
+
+Please be aware that there is additional information on the PrimusGFS website including the audit checklist
+templates. The PrimusGFS website also has access to the official PrimusGFS General Regulations, which
+explain the overall scheme scoring systems and other details of the scheme.
+
+The following text is a modified excerpt from the PrimusGFS General Regulations v3.2. It is provided here
+as an introduction to the audit notes. For full and current text please refer to the most recent version of the
+PrimusGFS General Regulations at http://www.primusgfs.com/documents.aspx.
+
+Audit Execution
+
+The audit should be performed using the most recent version of the PrimusGFS normative documents.
+The PrimusGFS Standard is divided into seven Modules:
+
+· Module 1 ­ Food Safety Management System
+· Module 2 ­ Farm
+· Module 3 ­ Indoor Agriculture
+· Module 4 ­ Harvest Crew
+· Module 5 ­ GMP
+· Module 6 ­ HACCP
+· Module 7 ­ Preventive Controls
+
+Each Module is divided into sections, related to the specific Module and each section includes questions
+that detail the requirements for the specific section.
+
+Scoring System
+
+For all Modules, the amount of deficiencies and the associated risks have to be considered to assign the
+severity of the finding, which can be Minor Deficiency, Major Deficiency and Non-Compliance. When no
+deficiencies are found, a Total Compliance is given. The possible points for the questions in each Module
+are listed in the following table:
+
+PGFS-R-064                                    Page 3 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                                          Rev. 3
+
+                              Scoring System for Questions
+
+            Possible answer                   Possible Points for the Question
+
+            Total compliance                  15 points 10 points 5 points 3 points
+
+            Minor deficiency                  10 points 7 points  3 points  2 points
+            Major deficiency                  5 points 3 points   1 point   1 point
+
+            Non-compliance                    0 points 0 points 0 points 0 points
+
+            Not applicable                    0 points 0 points 0 points 0 points
+
+Detailed compliance requirements are noted for each question throughout this document, but some general
+statements are described below. These statements are superseded by the specific question compliance
+criteria and users should be aware that some questions do not follow the general statements below (e.g.,
+automatic failure questions).
+
+        Answer                       Compliance for Questions
+Total compliance
+Minor deficiency                                                  Criteria Used
+                  To meet the question and/or compliance criteria in full.
+Major deficiency
+                  To have minor deficiencies against the question and/or compliance criteria.
+Non-compliance    To have single or isolated non-severe deficiencies (usually up to three) against the
+Not applicable    question and/or compliance criteria.
+                  To have covered most of the question compliance criteria, but not all.
+
+                  To have major deficiencies against the question and/or compliance criteria.
+                  To have numerous non-severe deficiencies (usually more than three) against the
+                  question and/or compliance criteria.
+                  To have single or isolated severe deficiencies against the question and/or compliance
+                  criteria.
+                  To have covered some of the question compliance criteria, but not most of it.
+
+                  To have not met the question and/or compliance criteria requirements at all.
+                  Having fundamental deficiencies against the question and/or compliance criteria
+                  (severe or non-severe issues).
+
+                  The requirement described in the question is not applicable for the operation being
+                  audited. Justification should be provided in the auditor's comments. Be aware that
+                  there are some questions that do not allow a non-applicable response.
+
+Automatic Failure
+
+There are some questions that if down scored will lead to an automatic failure and an overall score of 0%
+for the corresponding Module. On being immediately informed of the automatic failure by the auditor during
+the audit, the auditee has the option to have the auditor continue the audit or to have the audit halt at that
+point (all charges will apply). The auditor should explain the advantages of finishing the audit, including the
+ability for the auditee to learn of other potential non-conformances and to show their buyers the status of
+their food safety system despite the automatic failure issue.
+
+PGFS-R-064                                    Page 4 of 56                            April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                Rev. 3
+
+Special Circumstances for Not Certifying
+
+Please also note, that under special circumstances and upon finding serious food safety risks, a "not
+certified" decision can be given. The auditee should be immediately informed of the automatic failure by the
+auditor during the audit. The auditee has the option to have the auditor continue the audit or to have the
+audit halt at that point (all charges will apply).
+There are other Special Circumstances that are not technical in nature. Examples of these include detection
+of deliberate illegal activities, such as deliberate mislabeling, discovery of falsified records, attempting to
+bribe an auditor/CB personnel, threatening behavior towards an auditor/CB personnel, etc. Please refer to
+the General Regulations for further details.
+
+Audit Termination
+
+Once an audit has been started, should the auditee wish to stop the audit for any reason, the auditor will
+complete the report for as many questions as they were able to verify. PrimusGFS audits cannot be
+converted into a pre-assessment audit once the audit has been started. If an audit is terminated early,
+questions that the auditor was unable to verify will be marked as a non-compliance and will receive a score
+of zero. For questions unable to be verified, the auditor will indicate that the audit was terminated at the
+request of the auditee before the auditor could verify whether or not the audit conformed to the compliance
+criteria of the question. A report will be created on the database and issued, and all charges will apply.
+
+Documentation Requirements
+
+Organization's Food Safety Systems:
+
+When an Organization and its associated Operations are being audited, the auditor is checking the systems
+(SOP's, policies, etc.) and the implementation of these systems throughout the visual inspection.
+
+While auditees often create and implement their own systems, they can also use systems that have been
+created by other entities, for example, their customers' technical manager, their consultants, etc., or a
+combination of resources. The Organization can create their own SOPs, or in other instances, can utilize
+SOP templates provided by other entities. As long as the systems meet the requirements of the PrimusGFS
+questions and expectations and these systems are being implemented properly, the auditee should receive
+full points for their efforts. The auditee is responsible for ensuring that the systems they use are reviewed,
+maintained and up-to-date. If the auditor detects any inconsistency, it will result in a down score.
+
+New PrimusGFS Auditees/First-Time PrimusGFS Auditees
+
+· In operations that operate for more than three consecutive months throughout the year ­ auditee
+     should have at least three months of documentation (i.e. records of monitoring, training, meetings, etc.)
+     available for review. If the auditee has less than three months of most of their documentation available
+     for review, a pre-assessment audit is strongly advised. If the auditee has less than three months of
+     most of their documentation available for review and decides to have a regular scheduled audit, they
+     should be aware that they cannot receive full conformance for paperwork questions relating to
+     monitoring and that the down score will be based on the amount of paperwork available.
+
+· In short season operations that operate for less than three consecutive months throughout the
+     year - auditee should have at least three months of documentation (i.e. records of monitoring, training,
+     meetings, etc.) available for review (this may include last season's documentation). Where an operation
+     does not have three months of records available (e.g., they are in operation for one month out of the
+     year), the auditee should have at least the previous season's records available for review. If the auditee
+     has less than three months of most of their documentation available for review and decides to have a
+     regular scheduled audit, they should be aware that they may not receive full compliance for
+     paperwork questions relating to monitoring and that the down score will be based on the
+     amount of paperwork available.
+
+PGFS-R-064                                    Page 5 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Existing PrimusGFS Auditees
+
+· In operations that operate for more than three consecutive months throughout the year ­ auditee
+     should have documentation available from the date of the prior audit.
+
+· In short season operations that operate for less than three consecutive months throughout the
+     year ­ auditee should have at least three months of documentation and documentation at least since
+     the last audit (which includes the last season). Where an operation does not have three months of
+     records available (e.g. they are in operation for one month out of the year), the auditee should have at
+     least the previous season's records available for review.
+
+New PrimusGFS Auditee        Operates <three                 Operates >three months/year
+Existing PrimusGFS Auditee   months/year                     Three months of records (may include
+                                                             last season's records).
+                             Three months of records
+                             (may include last season's      Records since the last audit.
+                             records). Where an
+                             operation does not have
+                             three months of records
+                             available (e.g., they are in
+                             operation for one month out
+                             of the year), the auditee
+                             should have at least the
+                             previous season's records
+                             available for review.
+
+                             Records at least since the
+                             last audit (or longer) to meet
+                             the minimum requirement of
+                             three consecutive months of
+                             records.
+
+Visual versus Verbal Confirmation
+
+Visual confirmation is the default method of auditing, whether on the visual inspection portion or the
+paperwork section. Scores and comments are assumed to have been visually confirmed, unless stated
+otherwise. Verbal confirmation should be the exception to the rule and, if auditing properly, these should
+be rarely used. If a verbal confirmation is accepted, the auditor should write this in the comments section
+of the report for that specific question.
+
+How to Use Point Assignment Guidelines
+
+The following sections of this guidance manual are designed to help auditors choose the right score for
+each question, thereby helping to ensure consistency. This document does not cover all situations and is
+intended to be a guideline, as opposed to a rule. Auditors are expected to follow the guidelines as much as
+possible, but it is understood that there will be situations where an auditor should use their discretion. If an
+auditor does have to make a judgment call and/or tackle a situation not covered by this manual, then the
+auditor should note the circumstances in the audit report with full justifications. (The auditor should also
+forward these details to their Certification Body and Azzule Systems, LLC in a separate note, so that this
+can be reviewed for future versions of the manual.)
+
+In order to be consistent with the voluntary nature of requesting a third-party audit, and in order not to seem
+to be a legal document, the requirements within the questions are written as "should" and can be scored
+against. In other questions that use the term "ideally", these statements cannot be scored against, but give
+the auditee an opportunity for improvement.
+
+PGFS-R-064                                    Page 6 of 56   April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                Rev. 3
+
+Notes in "red" are where the questions and/or compliance criteria have changed significantly since the
+previous version. Many of the changes are to improve clarification, but some are changes to the actual
+requirements. Please read carefully to see if these changes impact your particular situation.
+
+PGFS-R-064                                    Page 7 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                Rev. 3
+
+Module 4: Harvest Crew
+
+General
+
+4.01.01: Is there a designated person responsible for the operation's food safety program?
+Total compliance (10 points): There should be a designated person/persons in charge of the operation's
+food safety program, including food safety document control and verification of food safety activities and
+ideally be independent of production. They should have documented formal training or trained by
+someone that has the documented formal credentials. This training should meet all state and federal
+requirements. Cross reference with 1.01.04.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of errors and omissions in the records showing person/persons in charge
+
+     of the operation's food safety program's training and/or their relevant experience in food safety.
+
+Major deficiency (3 points) if:
+· Numerous instance(s) of errors and omissions in the records showing person/persons in charge of
+
+     the operation's food safety program's training and/or their relevant experience in food safety.
+
+Non-compliance (0 points) if:
+· Fundamental failure to document person/persons in charge of the operation's food safety program's
+
+     training and/or their relevant experience in food safety.
+· No one is in charge of food safety programs including food safety document control and verification of
+
+     sanitation activities.
+
+4.01.02: Does the operation have a written food safety hygiene and health policy covering at least
+worker and visitor hygiene and health, infants and toddlers, animal presence in growing and
+storage areas, fecal matter, dropped product, blood and bodily fluids?
+Total compliance (15 points): There should be a written food safety policy regarding worker and visitor
+personal hygiene, GAPs and health requirements. The policy should cover the rules related to hygiene
+and health (e.g., hand washing, eating/drinking, smoking, specific clothing rules, foreign material issues,
+cuts/wounds, illness rules, etc.), what to do in the case of evidence of animals and/or fecal matter in the
+growing and/or storage areas, and what to do in the case of dropped product and if the product comes
+into contact with blood or other bodily fluids. All workers should be issued a list of rules in the relevant
+languages and confirm by signing that they understand and agree to abide.
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of errors and omissions in the food safety hygiene and health policy.
+· The policy is not in the relevant language(s).
+· Single/isolated instance(s) of workers and visitors not signing a document stating that they will comply
+
+     with the operations' personal hygiene and health policies.
+
+Major deficiency (5 points) if:
+· Numerous instances of errors and omissions in the records or food safety hygiene and health policy.
+· Numerous cases of workers and visitors not signing a document stating that they will comply with the
+
+     operations' personal hygiene and healthy policy.
+
+Non-compliance (0 points) if:
+· No records are available.
+· Failure to maintain records.
+· The company does not have a document for workers and visitors to sign stating that they will comply
+
+     with the operations' personal hygiene and health policies.
+· Fundamental failure of workers and visitors to sign a document stating that they will comply with the
+
+     operations' personal hygiene and health policies.
+
+PGFS-R-064                                    Page 8 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                Rev. 3
+
+Inspection
+
+4.02.01: Is there documented evidence of the internal audits performed, detailing findings and
+corrective actions?
+Total compliance (15 points): There should be records of the internal audits performed at each operation,
+with the frequency defined in the internal audit program. Frequency depends on the type and size of the
+operation. The records should include the date of the audit, name of the internal auditor, justification for
+the answers (not just checked  or all Y/N), detail any deficiencies found and the corrective action(s)
+taken. An audit checklist (ideally PrimusGFS) should be used that covers all areas of the PrimusGFS
+audit, including growing area, storage area, worker amenities, external areas, worker practices, etc. No
+down score if another audit checklist is used, as long as all areas are covered. See also 1.04.01 for
+specific details.
+Frequency Details for Farm, Indoor Agriculture and Harvest Crew: at least a pre-season growing area
+assessment and a full GAP self-assessment during harvest season covering growing and harvesting
+operations should be on file. If growing and harvest activities are under the same organizational authority
+the self-assessment should be on file covering both growing and harvesting and conducted during the
+harvest season. A harvesting company not under the authority of a grower should have self-assessments
+on file during harvest season covering each type of harvest process utilized for the crew(s), i.e. crew can
+harvest product in-field semi-processing and bulk/final packing in the growing area. A more frequent self-
+assessment frequency should be used depending on the crop type, farm or indoor agriculture location,
+any associated risk pressures, and/or if required by any national, local or importing country legal
+requirements, or customer requirements. These factors will also affect the need for pre-harvest
+inspections. Farm(s), indoor agriculture growing area(s), storage, harvesting, worker and visitor hygiene,
+agricultural water sources, training program, etc., and all associated paperwork should be included.
+
+Minor Deficiency (10 points) if:
+· Single/isolated instance(s) of follow up/corrective actions not noted.
+· Single/isolated instance(s) of incomplete answers or missing records.
+· Single/isolated instance(s) of areas/issues missing on the inspection.
+
+Major Deficiency (5 points) if:
+     · Numerous instances of follow up/corrective actions not noted.
+     · Numerous instances of incomplete answers or missing records.
+     · Inspection frequency is not adequate relative to the type of business and the number of issues
+          that require monitoring.
+     · Numerous instances of areas/issues missing on the inspection.
+
+Non-compliance (0 points) if:
+· Fundamental failure to maintain records.
+· Fundamental failure to complete inspection records with detailed responses.
+· No documented internal audits have been performed.
+
+4.02.02: Are there records of pre-harvest inspections and do they show that the current block (or
+coded area) is cleared for harvest? If there are no pre-harvest inspections go to 4.02.03.
+Total compliance (5 points): A pre-harvest block inspection should have been performed no more than 7
+days prior to harvest and if harvesting is occurring, it should show if there are any harvesting restrictions,
+etc. (e.g. evidence of animal intrusion, changes in weather conditions or weather events, pesticide
+application events). The harvest crew might not have a copy of the actual inspection, but they should
+have a document indicating which blocks have been inspected and cleared for harvest. If there are no
+pre-harvest inspections, go to 4.02.03.
+
+Minor Deficiency (3 points) if:
+· Single/isolated instance(s) of incomplete or missing records.
+
+Major Deficiency (1 point) if:
+
+PGFS-R-064                                    Page 9 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+     · Numerous instances of incomplete or missing records.
+
+Non-compliance (0 points) if:
+· No documented pre-harvest inspections have been performed.
+· No evidence that the current block being harvested had been cleared for harvest.
+
+4.02.02a: Where pre-harvest inspections have discovered issues, have buffer zones been clearly
+identified and at the time of the audit, are those buffer zones being respected?
+Total compliance (15 points): Where pre-harvest inspections have discovered issues (e.g., flooding,
+animal intrusion issues) buffer zones should be implemented (e.g., 30ft (9.1m) from flooded areas, 5ft
+(1.5m) from evidence of pest activity). Use larger buffer zones if national and local laws are more
+stringent. Not applicable if no issues have been found.
+
+Minor Deficiency (10 points) if:
+     · Single/isolated instance(s) of an issue being detected, and no corrective actions being performed
+          prior to harvest.
+
+· Single/isolated instance(s) of incomplete or missing records.
+
+Major Deficiency (5 points) if:
+     · Numerous instances of issues being detected, and no corrective actions being performed prior to
+          harvest.
+     · Numerous instances of incomplete or missing records.
+
+Non-compliance (0 points) if:
+· Fundamental failure to perform corrective actions.
+· A single instance of a serious issue detected during the pre-harvest inspection and no corrective
+
+     actions were performed prior to harvest.
+
+4.02.03: Is there a pre-operation inspection log?
+Total compliance (10 points): Pre-operation inspections should identify potential problems with the
+harvesting operation, including equipment hygiene, tool hygiene, and worker hygiene. These inspections
+and corrective actions should be recorded. Use of ATP is an ideal practice and if used, should be
+recorded properly along with any required corrective actions.
+
+Minor Deficiency (7 points) if:
+· Single/isolated instance(s) of incomplete or missing records.
+· Single/isolated instance(s) of a hygiene section missing from the pre-operation inspections.
+
+Major Deficiency (3 points) if:
+     · Numerous instances of incomplete or missing records.
+     · Numerous instances of hygiene sections missing from the pre-operation inspections.
+
+Non-compliance (0 points) if:
+· Fundamental failure to perform pre-operation inspections prior to starting the shift.
+· No documented pre-operation inspections have been performed.
+
+Training
+
+4.03.01: Is there a food safety hygiene training program covering new and existing workers and
+are there records of these training events?
+Total compliance (15 points): There should be a formal training program to inform all workers of the
+current policies and procedures and requirements of the company regarding hygiene. Trainings should be
+in the language understood by the workers, and training type and intensity should reflect the risks
+associated with the products/processes. Frequency should be at the start of the season before starting
+work then some topics covered at least quarterly, but ideally monthly. Full annual food safety refresher
+
+PGFS-R-064                                    Page 10 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+training sessions are encouraged but do not replace the ongoing more frequent training. Training material
+covering the content of the company policies and requirements regarding food safety and hygiene
+(4.01.02) and training should cover food safety and hygiene topics (e.g. toilet use, hand washing,
+protective clothing (where applicable), recognizing and reporting injury and illness, blood and other bodily
+fluids, jewelry, dropped product, animal intrusion, food consumption/taking breaks, foreign material
+requirements, food defense, etc.), the importance of recognizing and detecting food safety and/or hygiene
+issues with co-workers and visitors, and all food safety or hygiene issues for which they are responsible
+(e.g. recognizing contaminated produce that should not be harvested, inspecting harvest containers and
+equipment for contamination issues), correcting problems and reporting problems to a supervisor.
+Workers should also be trained on any new practices and/or procedures and when any new information
+on best practices becomes available. There should be records of training with date of training, clearly
+defined topic(s) covered, trainer(s), material(s) used/given and the names and signatures of workers
+trained. Training provided and associated records should meet all local and national regulations.
+
+Minor Deficiency (10 points) if:
+· Single/isolated instance(s) of logs having errors or incomplete information e.g. missing one of the
+
+     following: training topic, trainer or material information.
+· Training does not include the importance of recognizing food safety and/or hygiene issues with co-
+
+     workers and visitors and/or correcting problems and reporting problems to a supervisor.
+· Training has occurred but, on a few occasions, full attendance logs have not been kept and/or not all
+
+     workers were covered.
+· Training materials and/or company food safety policy are not in the relevant language(s).
+· Training occurring, not before starting to work but within the first week.
+· Single/isolated instance(s) of workers not being trained or not signing a document stating that they
+
+     will comply with the operations' food safety hygiene program.
+
+Major Deficiency (5 points) if:
+· Numerous instances of logs having errors or incomplete information e.g. missing one of the following:
+
+     training topic, trainer or material information.
+· Training has occurred but, on many occasions, full attendance logs have not been maintained.
+· Up to three key topics e.g. hand washing, reporting injury/illness, blood and other bodily fluids,
+
+     jewelry, dropped produce, animal intrusion, etc., have been omitted from the training.
+· Only annual refresher training has occurred, and the operation runs for more than 3 months of the
+
+     year.
+· Training occurring, not before starting to work but within the first month.
+· Numerous instances of workers not being trained.
+
+Non-compliance (0 points) if:
+· Failure to maintain records.
+· No records of training or workers not being trained.
+· More than three key topics e.g. hand washing, reporting injury/illness, blood and other bodily fluids,
+
+     jewelry, dropped produce, animal intrusion, etc., have been omitted from the training program.
+· No specific orientation given or given after the worker has been working for more than one month.
+
+4.03.02: Is there a documented training program with training logs for the sanitation workers,
+including best practices and chemical use details?
+Total compliance (5 points): Sanitation training should ensure that the workers understand the importance
+of proper sanitation, cleaning efficacy, how to use the cleaning chemicals and how to understand
+Sanitation Standard Operating Procedures. Unless sanitation workers attend regular food safety trainings,
+sanitation training should also include elements of food safety training pertinent to sanitation operations
+(e.g., hand washing, restroom use, foreign material etc.). Training logs should have a clearly defined
+topic(s) covered, trainer(s) and material(s) used/given and who attended the training (name and
+signature). Training would also ideally include worker safety issues (e.g., use of personal protective
+equipment, accident prevention, what to do in case of an accident, procedures for avoiding electrical
+hazards when cleaning, etc.). Recorded training should occur at least on a 12-month basis.
+
+PGFS-R-064                                    Page 11 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Minor Deficiency (3 points) if:
+· Single/isolated instance(s) of logs having errors or incomplete information e.g. missing one of the
+
+     following: training topic, trainer or material information.
+· Training has occurred, but on a few occasions full attendance logs have not been kept and/or not all
+
+     workers were covered.
+
+Major Deficiency (1 point) if:
+· Numerous instances of logs having errors or incomplete information e.g. missing one of the following:
+
+     training topic, trainer or material information.
+· Training has occurred but, on many occasions, full attendance logs have not been maintained.
+
+Non-compliance (0 points) if:
+· No records or no training has occurred.
+· Failure to maintain records.
+
+4.03.03: Are there written and communicated procedures in place that require food handlers to
+report any cuts or grazes and/or if they are suffering any illnesses that might be a contamination
+risk to the products being produced, and return to work requirements? (In countries with health
+privacy/confidentiality laws, e.g. USA, auditors can check procedure/policy but not the actual
+records).
+Total compliance (10 points): There should be documented procedures that are communicated (e.g.,
+worker signature on a training log) to food handlers, requiring them to report any cuts, grazes and/or any
+illnesses that might be a food safety cross contamination risk. The procedures should indicate return to
+work requirements for affected workers: to whom the food handlers should report, how the issue is
+recorded and appropriate actions to be taken for a particular issue. Auditors should not request to review
+records where countries have laws covering privacy/confidentiality of health records, and therefore, a
+verbal confirmation should be gained.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of errors or omissions in procedure.
+· Single/isolated instance(s) of evidence that workers are unaware of the procedure requirements.
+
+Major deficiency (3 points) if:
+· Numerous instances of errors or omissions in the procedure.
+· Numerous instances of evidence that workers are unaware of procedure requirements.
+
+Non-compliance (0 points) if:
+· There is not a documented procedure in place.
+· A procedure is in place, but it has not been communicated to food handlers.
+
+4.03.04: Are there worker food safety non-conformance records and associated corrective actions
+(including retraining records)?
+Total compliance (3 points): There should be a disciplinary system in place. A worker non-conformance
+should be recorded when workers are found not following food safety requirements. The auditee should
+have a record for worker non-compliance, corrective actions and evidence that retraining has occurred
+(where relevant). Auditee records might be viewed as confidential, and therefore, a verbal confirmation
+should be gained. There might be a tier system, which includes re-training, verbal and written disciplinary
+actions and allowance for immediate termination for gross misconduct.
+
+Minor Deficiency (2 points) if:
+ · Single/isolated instance(s) of follow up/corrective action not noted.
+
+Major Deficiency (1 point) if:
+· Numerous instance(s) of follow up/corrective actions not noted.
+
+PGFS-R-064                                    Page 12 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Non-compliance (0 points) if:
+· No records or no disciplinary system.
+· Widespread failure to record follow up/corrective actions.
+
+Harvest Worker Hygiene
+
+4.04.01: Are toilet facilities adequate in number and location? A ZERO POINT (NON-COMPLIANCE)
+DOWNSCORE IN THIS QUESTION RESULTS IN AUTOMATIC FAILURE OF THIS AUDIT.
+Total compliance (15 points): Toilet facilities should be available to all workers and visitors, while work is
+actively occurring. At least one toilet per 20 workers should be provided, or if more stringent, as per
+prevailing national/ local guidelines. Toilet facility placement should be within ¼ mile or 5 minutes walking
+distance of where workers are located, or if more stringent, as per prevailing national/ local guidelines. A
+5-minute drive is not acceptable, while harvesting is actively occurring with groups of three or more
+workers. Where there are two or less workers present and workers have transportation that is
+immediately available to toilets within a 5-minute drive, it is acceptable to score
+as total compliance.
+Reference:
+United States Department of Labor 1928 Title Field Sanitation
+https://www.osha.gov/laws-regs/regulations/standardnumber/1928/1928.110
+
+Minor deficiency (10 points) if:
+· The toilet facilities are not within ¼ mile or 5 minutes walking distance for crews of three or more.
+· The toilet facilities are not within a 5-minute driving distance for crews of two or less.
+
+Major deficiency (5 points) if:
+· The operation is not meeting the 1 toilet per 20 workers criteria.
+
+Automatic failure (0 points) if:
+· There are insufficient or inadequate toilet facilities.
+
+4.04.01a: Are toilet facilities in a suitable location to prevent contamination to product, packaging,
+equipment, and growing areas?
+Total compliance (15 points): Placement of toilet facilities should be in a suitable location to prevent
+contamination to product, packaging, equipment, water sources, and growing areas. Consideration
+should be given when portable units are used that they are not situated too close to the edge of the crop
+and have a minimum 15 ft (4.5 m) buffer distance in the event of a spill or leak. If pit toilets are used,
+consider proximity to crop and water sources.
+
+Minor deficiency (10 points) if:
+· Option for minor down score exists but at present, no known good examples exist.
+
+Major deficiency (5 points) if:
+· Toilet facilities pose a potential risk to product, packaging and equipment areas.
+
+Non-compliance (0 points) if:
+· Toilet facilities are located too close to the growing area or water source.
+
+4.04.01b: Are toilet facilities designed and maintained to prevent contamination (e.g., free from
+leaks and cracks)?
+Total compliance (5 points): Toilet facilities should be free from cracks and leaks and any waste holding
+tanks from toilets must be designed and maintained properly to prevent contamination. Waste holding
+tanks should be free of leaks, cracks and constructed of durable materials (e.g. plastic) that will not
+degrade or decompose (no wood). Each toilet should be ventilated to the outside. Note: pit toilets cannot
+be considered to be properly designed to prevent contamination.
+
+PGFS-R-064                                    Page 13 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Minor deficiency (3 points) if:
+ · Single observation of one of the waste holding tank(s) not designed or maintained improperly.
+ · Single observation of a toilet facility not being well maintained (e.g. cracks, holes, leaks) or not
+
+      vented to outside.
+
+Major deficiency (1 point) if:
+ · More than one observation of the waste holding tank(s) designed or maintained improperly.
+ · More than one observation of a toilet facility not being well maintained (e.g. cracks, holes, leaks) or
+
+      not vented to outside.
+
+Non-compliance (0 points) if:
+ · Waste holding tank(s) poses a risk of contamination to the growing area, product, packaging, and
+
+      equipment, such as observing leaks or being improperly constructed.
+ · Failure to provide adequately maintained toilet facilities.
+
+4.04.01c: Are toilet facilities constructed of materials that are easy to clean?
+Total compliance (3 points): Toilet facilities should be constructed of non-porous materials that are easy
+to clean and sanitize. The floors, walls, ceiling, partitions and doors should be made of a finish that can
+be easily cleaned.
+
+Minor Deficiency (2 points) if:
+ · Single/isolated instance of toilet facilities not being constructed of non-porous materials.
+
+Major Deficiency (1 point) if:
+ · Numerous instances of toilet facilities not being constructed of non-porous materials.
+
+Non- compliance (0 points) if:
+ · Toilet facilities are not constructed of non-porous materials.
+
+4.04.01d: Are the toilet facility materials constructed of a light color allowing easy evaluation of
+cleaning performance?
+Total compliance (3 points): Toilet facilities should be constructed of materials light in color, allowing easy
+evaluation of cleaning performance.
+
+Minor Deficiency (2 points) if:
+     · Single/isolated instance of toilets not being constructed of light materials.
+
+Major Deficiency (1 point) if:
+     · Numerous instances of toilets not being constructed of light materials.
+
+Non-compliance (0 points) if:
+· Toilets are not constructed of light materials.
+
+4.04.01e: Are toilet facilities supplied with toilet paper and is the toilet paper maintained properly
+(e.g., toilet paper rolls are not stored on the floor or in the urinals)?
+Total compliance (5 points): Toilet paper should be provided in a suitable holder in each toilet facility.
+Toilet paper should be maintained properly (e.g., toilet paper rolls are not stored on the floor, sink or in
+the urinals).
+
+Minor Deficiency (3 points) if:
+     · Single/isolated instance of toilet paper rolls not being maintained properly (e.g., stored on the
+          floor, sink or in the urinals).
+
+Major Deficiency (1 point) if:
+
+PGFS-R-064                                    Page 14 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+     · Numerous instances of toilet paper rolls not being maintained properly (e.g., stored on the floor,
+          sink or in the urinals).
+
+     · One of the toilet facilities is out of toilet paper and has not been restocked.
+
+Non-compliance (0 points) if:
+· There was no toilet paper available at the time of the audit.
+
+4.04.01f: Where used, is there a documented procedure for emptying the waste holding tanks in a
+hygienic manner and also in a way that prevents product, packaging, equipment, water systems
+and growing area contamination?
+Total compliance (5 points): If toilets have waste holding tanks, they should be emptied, pumped, and
+cleaned in a manner to avoid contamination to product, packaging, equipment, water systems and
+growing area(s). Equipment used in emptying/pumping must be in good working order. A documented
+procedure should exist and should include a response plan for major leaks or spills, as well as indicating
+where pumped waste is disposed of and requiring communication to the designated person(s)
+responsible for the food safety program regarding the actions taken when a major leak or spill occurred.
+Minor Deficiency (3 points) if:
+· Single/isolated instance(s) of incomplete or missing details in the procedure.
+
+Major Deficiency (1 point) if:
+     · Numerous instances of incomplete or missing details in the procedure.
+
+Non-compliance (0 points) if:
+· There is no documented procedure.
+
+4.04.01g: Are the toilet facilities and hand washing stations clean and are there records showing
+cleaning, servicing and stocking is occurring regularly?
+Total compliance (10 points): Toilet facilities should be cleaned and sanitized on a regular basis.
+Servicing records (either contracted or in-house) should be available for review showing toilet cleaning,
+servicing and stocking is occurring regularly. Soiled tissue should be flushed down the toilet/placed in the
+holding tank (not be placed in trash cans and/or on the floor).
+· Toilet facility (including hand washing stations) fixtures are in good operating condition and clean.
+· Cleaning and sanitizing is occurring on a regular basis.
+· No soiled toilet tissue either on the floor or in trash cans.
+· Trash cans are available for hand wash paper towels.
+· Hand washing stations are clean and not blocked.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of non-compliance to above requirements.
+· Single/isolated instance(s) of soiled toilet tissues being placed in trash can.
+· Single/isolated instance(s) of incomplete or missing records.
+
+Major deficiency (3 points) if:
+· Numerous instances of non-compliance to the above requirements.
+· Widespread observation of soiled toilet tissues being placed in trash cans.
+· Numerous instances of incomplete or missing records.
+
+Non-compliance (0 points) if:
+· Failure to properly maintain areas.
+· Single instance of soiled toilet tissues being left on the floor of the toilet facility.
+· No cleaning and service records available.
+
+4.04.02: Is hand washing signage posted appropriately?
+Total compliance (5 points): Toilet facilities should have hand washing signs as a reminder to wash hands
+before and after eating, returning to work and after using the toilet. Signs need to be posted visibly and in
+
+PGFS-R-064                                    Page 15 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+the language of the workers (picture signs are allowed). The signs should be permanent and placed in
+key areas where workers can easily see them.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance of signage not being permanent.
+· Single/isolated instance of signage not being in the language of the workers.
+· Single/isolated instance of signage not posted visibly.
+
+Major deficiency (1 point) if:
+· Numerous instances of signage not being permanent.
+· Numerous instances of signage not being in the language of the workers.
+· Numerous instances of signage not posted visibly.
+
+Non-compliance (0 points) if:
+· There is no signage.
+
+4.04.03: Are hand washing stations adequate in number and appropriately located for worker
+access and monitoring usage? A ZERO POINT (NON-COMPLIANCE) DOWNSCORE IN THIS
+QUESTION RESULTS IN AUTOMATIC FAILURE OF THIS AUDIT.
+Total compliance (15 points): An adequate number of hand washing stations, in working order, should be
+provided to ensure efficient worker flow (1 per 20 people on site), and be available to all workers and
+visitors. Hands free is an optimum system. Hand washing stations should be visible and located within
+close proximity of toilet facilities, and within 1/4 mile or 5 minutes walking distance of where workers are
+located.
+Reference:
+United States Department of Labor 1928 Title Field Sanitation
+https://www.osha.gov/laws-regs/regulations/standardnumber/1928/1928.110
+
+Minor deficiency (10 points) if:
+· Only about 75% of needed hand washing stations are present.
+
+Major deficiency (5 points) if:
+· Only about 50% of needed hand washing stations are present.
+
+Automatic failure (0 points) if:
+· Hand washing stations are inadequate in both number and location (less than 25% of the
+
+     needed hand washing stations are provided).
+· There are no functioning hand wash stations.
+
+4.04.03a: Are the hand wash stations designed and maintained properly (e.g., ability to capture or
+control rinse water to prevent contamination onto product, packaging, and growing area, free of
+clogged drains, etc.)?
+Total compliance (5 points): Hand wash stations should be free of clogged drains, designed and
+maintained properly to capture or control rinse water that could cause contamination onto product,
+packaging, equipment and growing area(s).
+
+Minor Deficiency (3 points) if:
+     · Single/isolated instance of hand wash stations not draining properly.
+
+Major Deficiency (1 point) if:
+     · Numerous instances of hand wash stations not draining properly.
+
+Non-compliance (0 points) if:
+· Widespread failure for hand wash stations to drain properly.
+· Widespread failure for hand wash stations not containing a system to catch the rinse water.
+
+PGFS-R-064                                    Page 16 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+4.04.03b: Are hand wash stations clearly visible (e.g., situated outside the toilet facility) and easily
+accessible to workers?
+Total compliance (5 points): Hand wash stations should be clearly visible (i.e. situated outside the toilet
+facility) in order to verify hand washing activities, and easily accessible to workers.
+
+Minor Deficiency (3 points) if:
+     · Single/isolated instance of a hand wash station located inside a toilet facility.
+
+Major Deficiency (1 point) if:
+     · Numerous instances of hand wash stations located inside the toilet facilities.
+
+Non-compliance (0 points) if:
+· All hand wash stations are located inside the toilet facilities.
+
+4.04.03c: Are hand wash stations adequately stocked with unscented soap and paper towels?
+Total compliance (5 points): All hand washing facilities should be properly stocked with liquid
+unscented/non-perfumed, neutral or antiseptic soap. Single use paper towels should be used, and units
+should be properly located. There should be an adequate stock of soap and paper towels.
+
+Minor Deficiency (3 points) if:
+     · Single/isolated instance of a hand wash station out of soap and/or paper towels.
+
+Major Deficiency (1 point) if:
+     · Numerous instances of hand wash stations out of soap and/or paper towels.
+
+Non-compliance (0 points) if:
+· There is no soap and/or paper towels available to workers.
+
+4.04.03d: In the event of running out of toilet materials (e.g., water, soap, toilet tissue, hand paper
+towels), are there extra supplies readily available so that toilets can be restocked quickly?
+Total compliance (5 points): Extra stocks of fresh water, soap, toilet paper and paper towels, etc., should
+be readily available in the event that replenishment is needed while harvesting is occurring.
+
+Minor Deficiency (3 points) if:
+     · Single/isolated instance of extra supplies missing.
+
+Major Deficiency (1 point) if:
+     · Numerous instances of extra supplies missing.
+
+Non-compliance (0 points) if:
+· No extra supplies were available.
+
+4.04.04: Are total coliforms (TC) and generic E. coli tests conducted on the water used for hand
+washing at the required and/or expected frequency?
+Total compliance (15 points): Total coliforms (TC) and generic E. coli testing should occur on a routine
+basis. All water sources used for hand washing throughout the harvesting season should be tested. One
+sample per water source should be collected and tested prior to use and then at least quarterly, ideally
+monthly. Water samples should be taken from as close to the point of use as is practical e.g. hand wash
+spigot/faucet. At least one sample per source is required. If there are multiple hand wash units, then
+samples should be taken from a different location each test (randomize or rotate locations). If there are
+multiple sources for hand wash water, testing should also account for each source used.
+
+Reference:
+https://extension.psu.edu/coliform-bacteria
+
+PGFS-R-064                                    Page 17 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+https://safewater.zendesk.com/hc/en-us/sections/202366208-Total-Coliforms
+https://www.govinfo.gov/content/pkg/CFR-2011-title40-vol23/pdf/CFR-2011-title40-vol23-part141.pdf
+https://www.epa.gov/dwstandardsregulations
+
+Minor deficiency (10 points) if:
+· Single instance of water testing not occurring at the right frequency.
+· Sample(s) was not taken from the closest practical point of use.
+· A single water source (where there is more than one) has not been tested.
+
+Major deficiency (5 points) if:
+· Numerous instances of water testing not occurring at the right frequency.
+· More than one water source (where there are more than two) has not been tested.
+
+Non-compliance (0 points):
+· No microbiological test results are available.
+· Last test was done over 12 months ago.
+
+4.04.04a: Do written procedures (SOPs) exist covering proper sampling protocols, which include
+where samples should be taken and how samples should be identified?
+Total compliance (10 points): There should be a documented procedure in place detailing how water
+samples are to be taken, including stating how samples should be identified i.e. clearly naming the
+location that the sample was taken, identifying the hand wash station, the water source and the date.
+
+Minor Deficiency (7 points) if:
+· Single/isolated instance(s) of incomplete or missing details in the procedure.
+
+Major Deficiency (3 points) if:
+     · Numerous instances of incomplete or missing details in the procedure.
+
+Non-compliance (0 points) if:
+· There is no documented procedure.
+
+4.04.04b: Do written procedures (SOPs) exist covering corrective measures for unsuitable or
+abnormal water testing results?
+Total compliance (10 points): Written procedures (SOPs) should exist covering corrective measures, not
+only for the discovery of unsuitable or abnormal water testing results, but also as a preparation on how to
+handle such findings.
+
+Minor Deficiency (7 points) if:
+· Single/isolated instance(s) of incomplete or missing details in the procedure.
+
+Major Deficiency (3 points) if:
+     · Numerous instances of incomplete or missing details in the procedure.
+
+Non-compliance (0 points) if:
+· There is no documented procedure.
+
+4.04.04c: If unsuitable or abnormal results have been detected, have documented corrective
+measures been performed?
+Total compliance (15 points): For total coliforms (TC) and generic E. coli, there should be negative or <
+detection limit (MPN or CFU/100mL). Where thresholds have been exceeded, there should be recorded
+corrective actions, including investigations and water retests.
+
+Minor Deficiency (10 points) if:
+
+PGFS-R-064                                    Page 18 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+· Single/isolated instance(s) of records showing unsuitable or abnormal test results for total coliforms
+     without adequate documented corrective actions.
+
+Major Deficiency (5 points) if:
+     · Numerous instances of records showing unsuitable or abnormal test results for total coliforms
+          without adequate documented corrective actions.
+
+Non-compliance (0 points) if:
+· No corrective actions have been performed.
+· A single out of specification result for generic E. coli without proper corrective actions.
+
+4.04.05: Are workers washing and sanitizing their hands before starting work each day, after using
+the restroom, after breaks, before putting on gloves and whenever hands may be contaminated?
+Total compliance (15 points): Worker conformance to hand washing and sanitizing procedures should be
+assessed, as washing hands is the first step in avoiding food contamination. Workers should be observed
+washing their hands prior to beginning work, after breaks, after using the toilet, before putting on gloves,
+and whenever hands may have become a source of contamination (e.g., after eating, after using a
+handkerchief or tissue, smoking, drinking, etc.).
+Auditors are expected to view hand washing disciplines. Hand washing is a critical part of the food
+suppliers' food safety program ­ this should be stressed to the auditee.
+Potentially useful website:
+A "Safe Hands" Hand Wash Program, https://sproutnet.com/hand-washing-program/
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of a worker who is not complying with the hand washing policy.
+
+Major deficiency (5 points) if:
+· Numerous instances of workers that are not complying with the hand washing policy.
+
+Non-compliance (0 points) if:
+· Majority of or widespread failure of workers to comply with hand washing policies.
+
+4.04.06: Are secondary hand sanitation stations (e.g., hand dips, gels or spray stations) adequate
+in number and location, and are the stations maintained properly?
+Total compliance (5 points): Secondary hand sanitation is required for items that may be "ready-to-eat"
+(e.g., herbs, stone fruit, tomatoes, citrus, edible flowers, etc.). Secondary hand sanitizers are optional for
+root vegetable crops or a commodity that requires cooking prior to eating. Secondary hand sanitation
+(hand dips, gels or sprays) does not replace hand washing requirements (lack surfactant qualities).
+Secondary hand sanitation stations should be non-perfumed/unscented, have 60% to 95% ethanol or
+isopropanol (benzalkonium chloride is also acceptable) and should be located near hand washing and
+other easily accessible areas. Hand dips (if used) should contain a food grade sanitizer at a determined
+concentration. Refer to hand sanitizer manufacturer label for dilutions. Hand dips should be regularly
+monitored (recorded anti-microbial strength checks) to ensure their effectiveness with corrective actions
+recorded (e.g. dip solution replenishment and anti-microbial additions). Hand gel / spray stations should
+be well stocked and tested regularly to ensure they are at the required strength - checks should be
+recorded. The auditor should check that gel pack type stations are stocked and have the auditee check
+the strength of anti-microbial chemicals in hand dips. Strength checks do not need to be performed for
+commercially purchased sanitizers that have been purchased already mixed.
+
+http://www.qualityassurancemag.com/qa0612-proper-hand-sanitation-practices.aspx
+https://www.cdc.gov/handwashing/index.html
+https://nelsonjameson.com/learn/sanitation-maintenance/hand-hygiene/
+https://sproutnet.com/hand-washing-program/
+https://www.fda.gov/food/guidanceregulation/retailfoodprotection/industryandregulatoryassistanceandtrain
+ingresources/ucm113827.htm
+
+PGFS-R-064                                    Page 19 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of secondary hand sanitation stations not in place or being empty.
+· Single/isolated instance(s) of hand dips containing under-strength solutions.
+· Single/isolated instance of dispensers not properly located.
+
+Major deficiency (1 point) if:
+· Numerous instances of hand secondary hand sanitation stations not in place or being empty.
+· Numerous instances of hand dips containing under-strength solutions.
+· Numerous instances of dispensers not properly located.
+· Use of hand gel or spray sanitizer that is not approved for direct hand to food contact (e.g., USDA
+
+     approved or national equivalent).
+
+Non-compliance (0 points) if:
+· There are no secondary hand sanitation stations where needed or all are empty.
+· All hand dips checked found containing under-strength solutions.
+
+4.04.07: Is it evident that corrective actions are taken when workers fail to comply with hand
+washing guidelines?
+Total compliance (5 points): It should be evident that corrective actions are taken by a supervisor in
+charge when workers fail to comply with hand washing requirements.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of corrective actions not being taken.
+
+Major deficiency (1 point) if:
+· Numerous instances of corrective actions not being taken.
+
+Non-compliance (0 points) if:
+· Corrective actions are not taken.
+
+4.04.08: Are workers who are working directly or indirectly with food, free from evidence of boils,
+sores, open wounds and are not exhibiting signs of foodborne illness?
+Total compliance (10 points): Workers who have exposed boils, sores, exposed infected wounds,
+foodborne illness or any other source of abnormal microbial contamination should not be allowed to work
+in contact with the product, packaging or food contact surfaces. Workers should be requested to notify
+their supervisors if they have any concerning symptoms. All bandages should be covered with a non-
+porous covering such as non-latex or vinyl gloves.
+
+Minor deficiency (7 points) if:
+     · A single instance of a worker with exposed boils, sores, exposed infected wounds, foodborne
+          illness or any other source of abnormal microbial contamination. There is not a threat of product
+          or packaging contamination.
+
+Major deficiency (3 points) if:
+· More than one instance of workers with exposed boils, sores, exposed infected wounds, foodborne
+
+     illness or any other source of abnormal microbial contamination. There is not a threat of product or
+     packaging contamination.
+
+Non-compliance (0 points) if:
+· One or more workers are observed working in contact with food, food contact surfaces or packaging
+
+     that has or have exposed boils, sores, infected wounds, showing signs of food borne illness or any
+     other source of abnormal microbial contamination that is a hazard.
+· The auditor should consider whether this is adulteration and whether to apply Q 4.05.09 and
+     score an automatic failure.
+
+PGFS-R-064                                    Page 20 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+4.04.09: Is jewelry confined to a plain wedding band and watches, studs, false eyelashes, etc., are
+not worn?
+Total compliance (5 points): Workers are not observed wearing jewelry (including earrings, ear gauges,
+necklaces, bracelets, rings with stones, rings or studs in nose, lip and eyebrow, watches) in the growing
+area. Plain wedding bands are the only exception. Other examples of foreign items that may be a source
+of foreign material contamination include studs, false finger nails and finger nail polish, false eye lashes,
+eye lash extensions, etc.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of a worker observed wearing jewelry or watches or any other personal
+
+     item that may be a foreign contaminant.
+
+Major deficiency (1 point) if:
+· Numerous instances of workers observed wearing jewelry or watches or any other personal item that
+
+     may be a foreign contaminant.
+
+Non-compliance (0 points) if:
+· Majority of workers wearing jewelry or watches or any other personal item that may be a foreign
+
+     contaminant i.e. jewelry policy does not exist and/or jewelry policy exists but is not being
+     implemented.
+
+4.04.10: Are worker personal items being stored appropriately (i.e. not in the growing area(s) or
+material storage area(s))?
+Total compliance (5 points): Workers should have a designated area for storing personal items such as
+coats, shoes, purses, medication, phones, etc. Areas set aside for workers' personal items should be far
+enough away from growing area(s) and material storage area(s) to prevent contamination and avoid food
+defense risks.
+
+Minor deficiency (3 points) if:
+· Single or isolated instance(s) of personal belongings, personal food, etc. being found in the growing
+
+     or material storage area(s).
+
+Major deficiency (1 point) if:
+· Numerous instances of personal belongings, personal food, etc. being found in the growing or
+
+     material storage area(s).
+
+Non-compliance (0 points) if:
+· Fundamental failure to prevent personal belongings, personal food, etc. being taken into the growing
+
+     or material storage area(s).
+
+4.04.11: Is smoking, eating, chewing and drinking confined to designated areas, and spitting is
+prohibited in all areas?
+Total compliance (5 points): Smoking, chewing tobacco, chewing gum, drinking and eating is permitted in
+designated areas that are away from growing and storage areas. Spitting should be prohibited in all
+areas. Smoking should not be permitted in eating and drinking areas.
+21 CFR Part 110.10 http://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfcfr/CFRSearch.cfm?fr=110.10
+29 CFR Part 1910.41
+http://www.osha.gov/pls/oshaweb/owadisp.show_document?p_table=STANDARDS&p_id=9790
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) are observed of non-compliance to the above (includes evidence of
+
+     smoking, eating, spitting, chewing gum, improper storage of break time food or drinking containers in
+     refuse containers located in the growing area).
+· Single/isolated instance(s) of designated area not meeting appropriate GAP standards.
+
+PGFS-R-064                                    Page 21 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Major deficiency (1 point) if:
+· Numerous instances are observed of non-compliance to the above (includes evidence of smoking,
+
+     eating, spitting, chewing gum, improper storage of break time food or drinking containers in refuse
+     containers located in the growing area).
+· No designated smoking area (unless the site has a non-smoking policy).
+· Numerous instances of designated area not meeting appropriate GAP standards.
+
+Non-compliance (0 points) if:
+· Widespread consumption of food and beverages outside of designated areas.
+· Widespread evidence of smoking outside the designated area.
+· Widespread evidence of using chewing tobacco in growing and storage areas.
+· Designated area lacks access to a hand wash station.
+· Widespread non-compliance to the above criteria.
+
+4.04.12: Are workers wearing effective hair nets that contain all hair?
+Total compliance (5 points): If the operation requires the use of hair nets, the harvest workers should be
+wearing appropriate hair nets that restrain all hair. Baseball caps and head coverings are allowed in the
+harvesting area only if they are clean and worn with a clearly visible hair net that restrains all hair (where
+operation requires use of hair nets).
+21 CFR Part 110.10 http://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfcfr/CFRSearch.cfm?fr=110.10
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of workers observed not wearing an appropriate hair restraint or not
+
+     wearing them properly.
+
+Major deficiency (1 point) if:
+· Numerous instances of workers observed not wearing an appropriate hair restraint or not wearing
+
+     them properly.
+
+Non-compliance (0 points) if:
+· Hairnets and/or beard-nets are not available for workers.
+
+4.04.13: Are all items removed from garment (shirt, blouse, etc.) top pockets, and unsecured items
+are not worn (e.g., pens, glasses on top of head, Bluetooth devices, etc.)?
+Total compliance (3 points): There should be no items stored in workers' shirt, blouse and smock top
+pockets. Items in pockets and otherwise unsecured have the potential to fall into the product. Ideally, top
+pockets are sewn up or non-existent.
+
+Minor deficiency (2 points) if:
+· Single/isolated instance(s) of items observed in shirt, blouse or smock top pocket.
+
+Major deficiency (1 point) if:
+· Numerous instances of items observed in shirt, blouse or smock top pockets.
+
+Non-compliance (0 points) if:
+· Widespread use of shirts, blouse or smock top pockets.
+
+4.04.14: Are all workers wearing protective outer garments suitable for the operation (e.g.
+appropriate clean clothes, smocks, aprons, sleeves and non-latex gloves)?
+Total compliance (5 points): If the operation has taken a decision to establish an outer garment policy
+based on risks this should consider the following: customer requirements, national and local legal
+requirements, potential cross contamination and foreign material risks, etc. Outer garments include where
+applicable: smocks, aprons, sleeves, non-latex gloves, etc. Suitable clothing is required for workers
+handling products that are potentially ready-to-eat (e.g., tomatoes, leafy greens, etc.). Items should be
+
+PGFS-R-064                                    Page 22 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+laundered in-house or by contract laundering agency. Individual workers should not take protective outer
+garments home for cleaning. Where items are laundered in-house the auditee should have documented
+SOP and GAP rules about how these garments are cleaned. Glove policy should be clear to workers ­
+auditors will establish policy before making scoring decisions and note this policy for the audit report.
+Gloves are not allowed to replace hand-washing requirements. Gloves should be changed after break
+periods, using toilet facilities, any activity other than handling of food items or when gloves are soiled, torn
+or otherwise contaminated. If re-useable gloves are used, then they should be made of material that can
+be readily cleaned and sanitized, clean gloves should be issued at least daily and as needed throughout
+the day and stored properly in-between uses. Gloves should not be taken home for cleaning. Where
+gloves are used they should be non-latex (e.g. vinyl, nitrile, etc.). This includes gloves in first-aid kits.
+Where dedicated protective clothing is not required/worn, it must be clear that outer street clothes are
+clean and not a potential source of contamination. Workers should not wear personal clothes with
+sequins, pom-poms, fur, etc. No sleeveless tops without an over garment. Foot protection should also be
+considered where it could lead to contamination of the product (e.g., during watermelon harvest where
+workers stand inside harvest bins/trailers/buses); auditor discretion applies.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of outer garments or gloves being taken home.
+· Single/isolated instance(s) of gloves not being replaced when contaminated.
+· Single/isolated instance(s) of protective garments not being worn where required.
+· Single/isolated instance(s) of outer clothing not clean or being a potential source of contamination.
+
+Major deficiency (1 point) if:
+· Numerous instances of outer garments or gloves being taken home.
+· Numerous instances of gloves not being replaced when contaminated.
+· Numerous instances of protective garments not being worn where required.
+· Numerous instance(s) of outer clothing not clean or being a potential source of contamination.
+
+Non-compliance (0 points) if:
+· Widespread failure to replace gloves when contaminated.
+· Widespread failure to wear protective garments where required.
+· Widespread non-compliance to the above and/or company policy.
+· Widespread failure to wear clean outer clothing or of clothing being a potential source of
+
+     contamination.
+
+4.04.15: Do workers remove protective outer garments (e.g., smocks, aprons, sleeves and gloves)
+when on break, before using the toilets and when going home at the end of their shift?
+Total compliance (5 points): When worn, protective clothing (e.g., aprons, smocks, sleeves, and gloves)
+should be removed when workers leave the work area (e.g., when they go to the toilet facility, break
+areas, etc.). Workers cannot smoke, eat, or use the restroom while wearing these garments. Hairnet
+removal when leaving the work area is not mandated by this audit.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) are observed of non-compliance to the above.
+
+Major deficiency (1 point) if:
+· Numerous instances are observed of non-compliance to the above.
+
+Non-compliance (0 points) if:
+· Widespread non-compliance to the above.
+
+4.04.15a: Is there a designated area for workers to leave protective outer garments (e.g., smocks,
+aprons, sleeves, and gloves) when on break and before using the toilet?
+Total compliance (5 points): There should be a designated area for workers to leave protective clothing
+when they are worn (e.g., aprons, smocks, sleeves, and gloves). Workers are observed using the
+
+PGFS-R-064                                    Page 23 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+designated area when they leave the work area (e.g., when they go to the toilet facility, break areas, etc.).
+Workers should not leave protective outer garments on equipment or packaging materials. Designated
+area should not be within the toilet facilities, break area, or any other area that might be a risk to the outer
+garments. Garments should not be left touching product, packaging or food contact surfaces.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) are observed of non-compliance to the above.
+
+Major deficiency (1 point) if:
+· Numerous instances are observed of non-compliance to the above.
+
+Non-compliance (0 points) if:
+· There is not a designated area for workers to leave aprons, sleeves and gloves when on a break.
+· There is a designated area; however, no workers use this area.
+· Widespread non-compliance to the above.
+
+4.04.16: Is fresh potable drinking water readily accessible to workers?
+Total compliance (10 points): Fresh potable water meeting the quality standards for drinking water should
+be provided and placed in locations readily accessible to all workers on-site to prevent dehydration. Water
+should be suitably cool and in sufficient amounts, taking into account the air temperature, humidity and
+the nature of the work performed, to meet the needs of all workers. The term "potable" meaning that the
+water is of drinking water quality (e.g., the EPA Drinking Water Standard or equivalent). Auditors should
+verbally verify the source of the water at the time of the audit. If water containers are used, they should be
+maintained in a clean condition, free from residues and contamination to ensure workers are not
+adversely affected by contaminated water from unclean containers. If there is evidence (i.e. visual
+observation or documentation) the water is coming from a questionable source, the auditor should review
+water quality test results.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of an unclean water container being used.
+
+Major deficiency (3 points) if:
+· Numerous instances of an unclean water containers being used.
+
+Non-compliance (0 points) if:
+· There is no water provided.
+· The water provided is not potable.
+
+4.04.16a: Are single use cups provided (unless a drinking fountain is used) and made available
+near the drinking water?
+Total compliance (5 points): Single use cups should be provided so that cross contamination issues are
+avoided from person to person. Examples include single-use cups, drinking fountains, etc. Common
+drinking cups and other common utensils are prohibited.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of single-use cups missing from one of the water containers.
+
+Major deficiency (1 point) if:
+· Numerous instances of single-use cups missing from the water containers.
+· A drinking fountain is being used but is not in a sanitary condition.
+
+Non-compliance (0 points) if:
+· Single-use cups are not provided for the water containers.
+
+4.04.17: Are first aid kits adequately stocked and readily available?
+
+PGFS-R-064                                    Page 24 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Total compliance (5 points): First aid kit(s) should be adequately supplied to reflect the kinds of injuries
+that occur (including any chemicals stored on-site) and should be stored in an area where they are readily
+available for emergency access. Date-coded materials should be within dates of expiration. Gloves
+should be worn over all band aids on hands. Auditors should verify by checking the first-aid kit(s).
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of first aid kit(s) not having adequate supplies, supplies out-of-date or kit
+
+     not readily accessible.
+
+Major deficiency (1 point) if:
+· Numerous instances of first aid kit(s) not having adequate supplies, supplies out-of-date or kit not
+
+     readily accessible.
+
+Non-compliance (0 points) if:
+· Widespread failure to provide first aid kit(s) with adequate supplies, supplies out-of-date or kit not
+
+     readily accessible.
+
+4.04.18: Are all commodities that come in contact with blood and/or other bodily fluids destroyed?
+ANY DOWN SCORE IN THIS QUESTION RESULTS IN AN AUTOMATIC FAILURE OF THE AUDIT.
+Total compliance (15 points): Any commodity that comes into contact with blood and/or other bodily fluids
+must be destroyed. If this occurs during the time of inspection, auditor must witness that product is
+destroyed.
+
+Automatic Failure (0 points) if:
+· A single incidence of a commodity coming into contact with blood and/or other bodily fluids
+
+     without being destroyed.
+
+4.04.19: Are there adequate trash cans placed in suitable locations?
+Total compliance (5 points): There should be adequate measures for trash disposal so that the growing,
+harvesting and storage areas are not contaminated. Containers (e.g., dumpsters, cans) should be
+available and placed in suitable locations for the disposal of waste and trash, e.g., near handwash
+stations. All dumpsters and garbage receptacles should have a cover and be kept covered to prevent the
+attraction of insects, rodents and other pests. N/A option available if there is no work taking place at the
+time of the audit.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance of containers not available and/or being maintained to protect against
+
+     potential contamination of the crop.
+
+Major deficiency (1 point) if:
+· Numerous instances of containers not available and/or being maintained to protect against potential
+
+     contamination of the crop.
+
+Non-compliance (0 points) if:
+· Fundamental failure to provide adequate trash disposal.
+· Fundamental failure to maintain containers to protect against potential contamination of the crop.
+
+4.04.20: Are any potential foreign material issues (e.g., metal, glass, plastic) controlled?
+Total compliance (5 points): There should be no foreign material issues that are or could be potential risks
+to the product. Examples include, but are not limited to, glass bottles, unprotected lights on equipment,
+staples on wooden crates, hair pins, using "snappable" blades instead of one-piece blades, broken and
+brittle plastic issues on re-useable totes.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of a foreign material issue.
+
+PGFS-R-064                                    Page 25 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Major deficiency (1 point) if:
+· Numerous instances of foreign material issues.
+
+Non-compliance (0 points) if:
+· Widespread failure to prevent against foreign material issues.
+
+Harvest Practices
+
+4.05.01: Is the harvest area free from animal presence and/or animal activity (wild or domestic)? If
+Total compliance, go to 4.05.02.
+Total compliance (15 points): Animals can represent potential contamination to the harvesting area, to the
+crop, to the equipment, etc., and therefore, should not be present in the operations. Evidence of animal
+presence can include tracks, fecal matter, feathers, etc.
+
+Minor deficiency (10 points) if:
+· Single/isolated instance of evidence of animal presence and/or animal activity.
+
+Major deficiency (5 points) if:
+· Numerous instances of evidence of animal presence and/or animal activity.
+
+Non-compliance (0 points) if:
+· Widespread failure to prevent animal presence and/or animal activity in the harvesting area.
+
+4.05.01a: Is the harvest area free from any evidence of animal fecal matter? A ZERO POINT (NON-
+COMPLIANCE) DOWNSCORE IN THIS QUESTION RESULTS IN AUTOMATIC FAILURE OF THIS
+AUDIT.
+Total compliance (15 points): Fecal matter is a potential contaminant to the product being grown. Produce
+that has come into direct contact with fecal material is not to be harvested. A "no harvest zone"
+approximately 5ft (1.5 m) radius should be implemented unless or until adequate mitigation measures
+have been considered. If evidence of fecal material is found, a food safety assessment should be
+conducted by a qualified worker. Consideration of the maturity stage and type of crop involved is required.
+Any evidence of human fecal matter in the growing area is an automatic failure (scored in 4.05.02).
+
+Minor deficiency (10 points) if:
+· Single/isolated instance of fecal matter found in the harvesting area and a food safety risk
+
+     assessment was implemented correctly.
+· A "no harvest zone" is implemented but the radius is less than 5 ft.
+
+Major deficiency (5 points) if:
+· More than one instance of fecal matter found in the audited area and a food safety risk assessment
+
+     was implemented correctly.
+· Any instance of fecal matter is found in the audited area and a "no harvest zone" was not
+
+     implemented.
+· Any instance of fecal matter is found, and a food safety assessment is not conducted.
+
+Automatic Failure (0 points) if:
+· Any observation of widespread animal fecal contamination in the audited area is an automatic
+
+     failure.
+· Any observation of any human fecal matter in the audited area is an automatic failure. Score
+
+     under 4.05.02.
+
+4.05.02: Is the harvesting area free from any evidence of human fecal contamination? ANY DOWN
+SCORE IN THIS QUESTION RESULTS IN AN AUTOMATIC FAILURE OF THE AUDIT.
+
+PGFS-R-064                                    Page 26 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Total compliance (15 points): There should be no evidence of human fecal contamination in the
+harvesting area, area being harvested, packaging area, equipment area, or in any other area that would
+cause a contamination issue. Any evidence of human fecal matter in the harvesting or associated area is
+an automatic failure.
+Automatic Failure (0 points) if:
+· There is a single incidence of human fecal matter found in the harvesting or associated area.
+
+4.05.03: Is the harvest area free from evidence of infants or toddlers?
+Total compliance (10 points): Infants and toddlers can represent potential contamination to the growing
+area, to the crop, to packaging and should not be present in the operations, including chemical or
+equipment storage areas.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance or evidence of infants or toddlers in the harvesting area.
+
+Major deficiency (3 points) if:
+· Numerous instances or evidence of infants or toddlers in the harvesting area.
+
+Non-compliance (0 points) if:
+· Widespread failure to keep infants or toddlers out of the harvesting area.
+
+4.05.04: Are all chemicals (pesticides, sanitizers, detergents, lubricants, etc.) stored securely,
+safely and are they labeled correctly?
+Total compliance (15 points): Chemicals located on-site and used by the harvest operation(s) are
+required to be stored in a designated area. Access to chemicals needs to be controlled, so that only
+workers who understand the risks involved and have been trained properly are allowed to access these
+chemicals. The chemical storage area should be located away from any raw materials, packaging &
+finished food products. Spill controls should be in place for opened in use containers. All chemical
+containers should have legible labels of contents; this includes chemicals that have been decanted from
+master containers into smaller containers. Empty containers should be stored and disposed of safely.
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of chemicals not properly stored.
+· Single/isolated instance(s) of improperly labeled or unlabeled chemical containers.
+· Single/isolated instance(s) of empty containers either not being stored properly or disposed of
+
+     properly.
+· The chemical storage area is not marked to indicate its use.
+· Single isolated instance(s) of chemicals being used without proper attention to chemical spillage.
+
+Major deficiency (5 points) if:
+· Numerous instances of improperly stored chemicals.
+· Numerous instances of improperly labeled or unlabeled chemical containers.
+· Chemical storage is segregated in an enclosed, designated area, but not locked.
+· Chemical storage area(s) has inadequate liquid containment systems.
+· Numerous instances of empty containers either not being properly stored or disposed of properly.
+· Numerous instances of chemicals being used without proper attention to chemical spillage.
+
+Non-compliance (0 points) if:
+· Failure to properly store chemicals.
+· There is no designated area for chemicals.
+· There is a designated area for chemicals, but it is not an enclosed or locked area.
+· Spilled chemicals found in the chemical storage areas (not cleaned up properly)
+
+4.05.05: Are "food grade" and "non-food grade" chemicals used appropriately, according to label
+and not commingled?
+
+PGFS-R-064                                    Page 27 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Total compliance (10 points): All chemicals applied by the harvesting operation(s) should be approved by
+the prevailing authority (e.g., US: EPA/FDA, Canada: CFIA/Health Canada, Chile: SAG, Mexico:
+COFEPRIS) for their designated use and used according to label instructions. Only food grade lubricants
+should be used anywhere near product and packaging materials. "Food grade" and "non-food grade"
+materials should be stored in separate designated areas and adequately labeled. Grease guns and
+containers should be labeled adequately. Access to non-food grade materials should be limited to those
+entrusted with correct use of chemicals.
+
+NSF International: Nonfood Compounds
+http://info.nsf.org/USDA/PSNCListings.asp
+https://extension.tennessee.edu/publications/Documents/SP798-A.pdf
+https://www.sclubricants.com/food-grade-lubrication/
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of commingling of non-food grade with food grade chemicals.
+· Single/isolated instance(s) of grease guns not being coded for food grade/non-food grade materials.
+· Single/isolated instance(s) of a chemical being used contrary to label.
+
+Major deficiency (3 points) if:
+· Numerous instances of commingling of non-food grade with food grade chemicals.
+· Numerous instances of grease guns not coded for food grade/non-food grade materials.
+· Numerous instances of a chemical(s) being used contrary to label.
+
+Non-compliance (0 points) if:
+· No attempt to split non-food grade from food grade materials.
+· Widespread use of a chemical(s) used contrary to label.
+
+4.05.06: Are there records of microbial testing for water used for postharvest product contact
+(e.g., washing, re-hydrating) and product contact surfaces (e.g., cleaning grading packing tables
+and harvest tools) showing that there is no detectable total coliforms and generic E. coli in the
+water?
+Total compliance (15 points): All water sources that are used for postharvest contact with the edible
+portion of a crop (e.g., washing, re-hydrating) and product contact surfaces (e.g., cleaning grading or
+packing tables and harvest tools) should be tested on a routine basis. One sample per water source
+should be collected and tested prior to use and then at least quarterly thereafter, or at a frequency relative
+to the associated risks. For commodities under the Leafy Greens Marketing Agreement, one sample per
+water source should be collected and tested prior to use if >60 days since the last test of the water
+source. Additional samples shall be collected at intervals of no less than 18 hrs. apart and at least
+monthly during use. Results of water testing for total coliforms and E. coli should meet the US EPA
+drinking water microbiological specification. For total coliforms and generic E. coli, there should be
+negative or < detection limit (MPN or CFU/100mL). If out of specification results are detected, then full
+details of corrective actions should be noted, including investigations and water retests.
+
+.
+
+Reference:
+https://extension.psu.edu/coliform-bacteria
+https://safewater.zendesk.com/hc/en-us/sections/202366208-Total-Coliforms
+https://www.govinfo.gov/content/pkg/CFR-2011-title40-vol23/pdf/CFR-2011-title40-vol23-part141.pdf
+https://www.epa.gov/dwstandardsregulations
+
+Minor deficiency (10 points) if:
+· Single instance of water testing not occurring at the required frequency.
+
+Major deficiency (5 points) if:
+· More than one instance of water testing not occurring at the required frequency
+
+PGFS-R-064                                    Page 28 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Non-compliance (0 points):
+· No microbiological test results are available.
+· Last test was done over 12 months ago.
+
+4.05.06a: Do written procedures (SOPs) exist covering corrective measures for unsuitable or
+abnormal water testing results?
+Total compliance (10 points): Written procedures (SOPs) should exist covering corrective measures not
+only for the discovery of unsuitable or abnormal water results, but also as a preparation on how to handle
+such findings.
+
+Minor Deficiency (7 points) if:
+· Single/isolated instance(s) of incomplete or missing details in the procedure.
+
+Major Deficiency (3 points) if:
+     · Numerous instances of incomplete or missing details in the procedure.
+
+Non-compliance (0 points) if:
+· There is no documented procedure.
+
+4.05.06b: If unsuitable or abnormal results have been detected, have documented corrective
+measures been performed?
+Total compliance (15 points): For total coliforms and generic E. coli, there should be negative or <
+detection limit (MPN or CFU/100mL). Where thresholds have been exceeded, there should be recorded
+corrective actions, including investigations, water retests, and if required, crop testing (E. coli O157:H7
+and Salmonella < detection limits or Negative-zero tolerance).
+
+Minor Deficiency (10 points) if:
+· Single instance of records showing unsuitable or abnormal test results for total coliforms without
+
+     adequate documented corrective actions.
+
+Major Deficiency (5 points) if:
+· More than one instance of records showing unsuitable or abnormal test results for total coliforms
+
+     without adequate documented corrective actions.
+
+Non-compliance (0 points) if:
+· No corrective actions have been performed.
+· A single out of specification result for generic E. coli without proper corrective actions.
+
+4.05.07: Is the product harvested and transported to a facility for additional handling and/or final
+packing?
+Total points 0: Information gathering question. This question refers to product that is harvested and then
+taken to a facility for additional handling and/or packing.
+
+4.05.08: Is the product packed in the final packing unit in the growing area? If no, go to 4.05.09.
+Total points 0: Information gathering question. This question refers to product packed in the growing area
+that is in the final unit for shipping (i.e. clamshell, wrapped products, carton boxes, etc.), that usually
+bypasses any selection packing lines in a facility i.e. goes to a cooling process as opposed to a packing
+line.
+
+4.05.08a: Is packing material (e.g. cartons, bags, clamshells, sacks, RPCs) intended for carrying
+product used for that purpose only?
+Total compliance (5 points): All containers intended for product are used for their intended purpose only
+(food contact use, not to hold nuts, bolts, trash or other miscellaneous items) and should not be re-used.
+If a product container is used for any other reason than the storage of product, it should be clearly
+differentiated as such (e.g., painted another color and labeled).
+
+PGFS-R-064                                    Page 29 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of single service containers used for other than intended purpose.
+
+Major deficiency (1 point) if:
+· Numerous instance(s) of single service containers used for other than intended purpose.
+
+Non-compliance (0 points) if:
+· Widespread misuse of single services containers used for other than intended purpose.
+
+4.05.08b: Is packing material inspected prior to use and is product and packing material free from
+handling contamination and exposure to ground?
+Total compliance (10 points): Avoid stacking soiled bins on top of each other if the bottom of the bin has
+had direct contact with soil/substrate. Product and packing materials used in the harvesting process
+should be placed with protection underneath and handled in a manner to eliminate contamination from
+the ground or from inappropriate human handling, which includes commodities where it is industry
+practice to place the products on the ground after harvest. Crops down scored for exposure to the ground
+do not include root crops that are grown underground (e.g., carrots, potatoes, onions, garlic, etc.) or crops
+that are grown with harvested portion in contact with the ground or plastic (e.g., melons). Examples of
+handling contamination include using cloths or towels to remove dirt and/or debris from packing and/or
+product, standing on the sides of beds/trays during mushroom harvest, standing in bins of product on
+trucks, etc. Automatic failure question 4.05.09 should be used when observing evidence of product or
+packaging foreign material, hazardous materials or adulteration issues.
+
+Minor Deficiency (7 points) if:
+     · Single/isolated instance(s) of packing material or product coming in direct contact with the
+          ground.
+
+· Single/isolated instance(s) of packing material not being inspected prior to use.
+· Single/isolated instance(s) of inappropriate handling practices.
+
+Major Deficiency (3 points) if:
+     · Numerous instances of packing material or product coming in direct contact with the ground.
+     · Numerous instances of packing material not being inspected prior to use.
+     · Numerous instances of inappropriate handling practices.
+
+Non-compliance (0 points) if:
+· No inspections of packing material are being performed prior to use.
+· Widespread failure to keep packing material or product from directly contacting the ground.
+· Widespread failure to prevent handling contamination.
+
+4.05.08c: If packing material is left in the growing area unattended, is it stored secured and
+protected?
+Total compliance (5 points): All containers, cartons, packing material should be stored in a protected area
+to reduce the risk of contamination and tampering that can occur if packing material is left in the growing
+area unattended.
+
+Minor Deficiency (3 points) if:
+     · Single/isolated instance(s) of packing material not being stored secure and protected.
+
+Major Deficiency (1 point) if:
+     · Numerous instances of packing material not being stored secure and protected.
+
+Non-compliance (0 points) if:
+· Widespread failure to store packing material in a secured and protected manner.
+
+PGFS-R-064                                    Page 30 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+4.05.09: Is the crop, harvested product, ingredients (including water), food contact packaging and
+food contact surfaces within accepted tolerances for spoilage and free from adulteration? ANY
+DOWN SCORE IN THIS QUESTION RESULTS IN AN AUTOMATIC FAILURE OF THE AUDIT.
+Total compliance (15 points): The crop, harvested product, ingredients (including water), food contact
+packaging and food contact surfaces should be free from spoilage, adulteration and/or gross
+contamination (21 CFR 110.3g). If legislation exists, then the contamination should be viewed against this
+legislation (e.g., USDA Grading Standards often include decay tolerances). Spoilage and adulteration
+would include any physical, chemical or biological contamination including blood and bodily fluids.
+Measures should be taken to prevent any known or reasonably foreseeable hazard (e.g., Clostridium
+botulinum in mushrooms). This question is designed to allow an auditor to halt an audit when finding
+gross contamination issues. Examples might include glass, trash/litter, motor oil in products, etc. Is the
+issue widespread or a one-off issue?
+Where an issue is observed by an operator in the normal process, auditor should observe the actions of
+the operator before scoring. Auditors should use their discretion and decide whether the frequency of the
+contamination warrants an automatic failure.
+
+Food Defect Levels Handbook
+https://www.fda.gov/food/ingredients-additives-gras-packaging-guidance-documents-regulatory-
+information/food-defect-levels-handbook
+CPG Sec. 555.425 Foods, Adulteration Involving hard or Sharp Foreign Objects
+https://www.fda.gov/ucm/groups/fdagov-public/@fdagov-afda-ice/documents/webcontent/ucm074554.pdf
+US FDA/CFSAN Defect Levels Handbook, The Food Defect Action Levels
+http://www.fda.gov/food/guidanceregulation/guidancedocumentsregulatoryinformation/sanitationtransport
+ation/ucm056174.htm
+US EPA Water Quality Standards for Coastal and Great Lakes Recreation Waters
+https://www.epa.gov/beach-tech/final-water-quality-standards-bacteria-rule-coastal-and-great-lakes-
+recreation-waters
+
+Minor deficiency (10 points) if:
+     · There is no minor deficiency category for this question
+
+Major deficiency (5 points) if:
+· There is no major deficiency category for this question.
+
+Automatic Failure (0 points) if:
+· Numerous incidences of spoilage or adulteration of product.
+· There is a single gross incidence of evidence of unacceptable limits of spoilage or
+
+     adulteration in the crop, harvested product, ingredients (including water), food contact
+     packaging or food contact surfaces.
+
+4.05.10: Are grading and packing surfaces, carts, ladders and other harvest aids used? If No, go to
+4.05.11.
+Total points 0: Information gathering question. This refers to food contact surfaces used to grade, inspect,
+re-pack, or pack product (e.g., picking carts, grading tables, mushroom grading platforms, ladders, etc.).
+
+4.05.10a: Does the design and condition of the grading and packing surfaces (e.g., smooth
+surfaces, smooth weld seams, nontoxic materials, no wood) facilitate effective cleaning and
+maintenance?
+Total compliance (10 points): Grading and packing surfaces should be made of materials suitable for food
+contact that can be easily cleaned, sanitized and maintained. Equipment should be designed to allow
+access and easy cleaning (including hollow structures on supports, rollers, racks, etc.), with no hard to
+get to (debris catching) areas. Surfaces that are porous, trap debris, or are badly damaged should be
+replaced. Wood, for example, is porous and can trap moisture. Welds should be smooth and not "bobbly".
+
+Minor deficiency (7 points) if:
+
+PGFS-R-064                                    Page 31 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+· Single/isolated instance(s) of "bobbly" welds, rough surfaces, poorly designed equipment that traps
+     debris.
+
+· Single/isolated instance(s) of hard to reach areas where cleaning is made difficult.
+· Single/isolated instance(s) of inferior materials e.g. (porous material construction, wood, non-food
+
+     grade materials).
+
+Major deficiency (3 points) if:
+· Numerous instances of "bobbly" welds, rough surfaces, poorly designed equipment that traps debris.
+· Numerous instances of hard to reach areas where cleaning is made difficult.
+· Numerous instances of inferior materials e.g. (porous material construction, wood, non-food grade
+
+     materials).
+
+Non-compliance (0 points) if:
+· Condition and/or design of equipment will not allow for effective cleaning under normal conditions.
+· Widespread poor welding, rough surfaces, poorly designed equipment that traps debris.
+
+4.05.10b: Are there written cleaning and sanitation procedures (Sanitation Standard Operating
+Procedures) for the grading and packing surfaces that include the frequency of cleaning and
+sanitizing, and the procedures used, including chemical use details?
+Total compliance (5 points): Food contact surfaces used to grade, inspect, re-pack, or pack product (e.g.,
+picking carts, grading tables, ladders, etc.) should be cleaned and sanitized on a regularly scheduled
+basis, based on written Sanitation Standard Operating Procedures (SSOPs). The program should state
+the frequency of cleaning and sanitizing, detail what, who, how and when, including chemical details
+(name, dilution/strength), and cleaning verification procedures.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of information missing from the SSOPs.
+
+Major deficiency (1 point) if:
+· Numerous instances of information missing from the SSOPs.
+
+Non-compliance (0 points) if:
+· There are no documented SSOPs.
+
+4.05.10c: Are cleaning and sanitation logs on file for grading and packing surfaces that show
+what was done, when, by who and detail strength testing of anti-microbial solution used to
+sanitize surfaces?
+Total compliance (10 points): Sanitation logs should include: date, list of areas/equipment that were
+cleaned and sanitized, sanitizer strength tests, and the individual accountable who signed-off for each
+task completed.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of incomplete records, discrepancies against the SSOPs or other
+
+     omissions.
+
+Major deficiency (3 points) if:
+· Numerous instances of incomplete records, discrepancies against the SSOPs or other omissions.
+
+Non-compliance (0 points) if:
+· No sanitation logs.
+· Sanitation logs exist but they are not reflecting what actually occurs.
+
+4.05.11: Are re-useable containers (e.g. buckets, totes, lugs, RPCs, bins) used in the harvesting
+operation? If No, go to 4.05.12.
+
+PGFS-R-064                                    Page 32 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Total points 0: Information gathering question. This refers to any re-useable containers used in the
+harvesting operation (e.g., buckets, totes, lugs, RPCs, bins, gondolas, etc.) used in the harvesting
+operation.
+
+4.05.11a: Does the design and condition of re-useable containers (e.g., smooth surfaces, smooth
+weld seams, nontoxic materials, no wood, no fabric) facilitate effective cleaning and
+maintenance?
+Total compliance (10 points): All re-useable containers (totes, bins, buckets, etc.) should be made of easy
+to clean, smooth seamed materials that do not flake or oxidize. Efforts should be made to eliminate
+wooden surfaces because of its porous nature. Where wood containers are used, they should be in a
+state of good repair and covered by a documented repair program.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of "bobbly" welds, rough surfaces, poorly designed equipment that traps
+
+     debris.
+· Single/isolated instance(s) of hard to reach areas where cleaning is made difficult.
+· Single/isolated instance(s) of inferior materials e.g. (porous material construction, wood, non-food
+
+     grade materials).
+
+Major deficiency (3 points) if:
+· Numerous instances of "bobbly" welds, rough surfaces, poorly designed equipment that traps debris.
+· Numerous instances of hard to reach areas where cleaning is made difficult.
+· Numerous instances of inferior materials e.g. (porous material construction, wood, non-food grade
+
+     materials).
+
+Non-compliance (0 points) if:
+· Condition and/or design of equipment will not allow for effective cleaning under normal conditions.
+· Widespread poor welding, rough surfaces, poorly designed equipment that traps debris.
+
+4.05.11b: Are re-useable containers free from any handling contamination?
+Total compliance (10 points): Re-useable containers used in the harvesting process should be managed
+to eliminate contamination from inappropriate handling practices. Handling contamination could also be
+caused using cloths or towels to remove dirt and/or debris from containers. Avoid stacking soiled bins on
+top of each other if the bottom of the bin has had direct contact with soil.
+
+Minor Deficiency (7 points) if:
+     · Single/isolated instance(s) of inappropriate handling practices.
+
+Major Deficiency (3 points) if:
+     · Numerous instances of inappropriate handling practices.
+
+Non-compliance (0 points) if:
+· Widespread failure to prevent handling contamination.
+
+4.05.11c: Are there written cleaning and sanitation procedures (Sanitation Standard Operating
+Procedures) for the reusable containers that includes the frequency of cleaning and sanitizing,
+and the procedures used, including chemical use details?
+Total compliance (5 points): Re-usable containers should be cleaned and sanitized on a regularly
+scheduled basis, based on written Sanitation Standard Operating Procedures (SSOPs). The program
+should state the frequency of cleaning and sanitizing, detail what, who, how and when, including chemical
+details (name, dilution/strength), and cleaning verification procedures.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of information missing from the SSOPs.
+
+PGFS-R-064                                    Page 33 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Major deficiency (1 point) if:
+· Numerous instances of information missing from the SSOPs.
+
+Non-compliance (0 points) if:
+· There are no documented SSOPs.
+
+4.05.11d Are cleaning and sanitation logs on file for reusable containers that show what was done,
+when, by who and detail strength testing of anti-microbial solution used to sanitize surfaces?
+Total compliance (10 points): Sanitation logs should include: date, list of areas/equipment that were
+cleaned and sanitized, sanitizer strength tests, and the individual accountable who signed-off for each
+task completed. Where cleaning & sanitizing is handled by a 3rd party (packinghouse, contract RPC
+company) auditee is expected to provide evidence of cleaning & sanitizing activities.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of incomplete records, discrepancies against the SSOPs or other
+
+     omissions.
+
+Major deficiency (3 points) if:
+· Numerous instances of incomplete records, discrepancies against the SSOPs or other omissions.
+
+Non-compliance (0 points) if:
+· No sanitation logs.
+· Sanitation logs exist but they are not reflecting what actually occurs.
+
+4.05.12: Are tools (e.g. knives, clippers, scissors, etc.) used in harvesting? If No, go to 4.05.13.
+Total points 0: Information gathering question. This refers to harvest tools (e.g. knives, clippers, scissors,
+etc.) used in harvesting.
+
+4.05.12a: Does the design and condition of harvest tools (e.g., smooth surfaces, smooth weld
+seams, nontoxic materials, no wood, no fabric) facilitate effective cleaning and maintenance?
+Total compliance (10 points): To prevent foreign contamination issues, harvest tools (e.g., knives, coring
+rings, etc.) should be constructed of easy to clean materials. Tools should be shard free, and smooth
+seamed so that they do not have the ability to flake or oxidize.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of "bobbly" welds, rough surfaces, poorly designed tools that trap debris.
+· Single/isolated instance(s) of tools where cleaning is made difficult.
+· Single/isolated instance(s) of inferior materials e.g. (porous material construction, wood, non-food
+
+     grade materials).
+
+Major deficiency (3 point) if:
+· Numerous instances of "bobbly" welds, rough surfaces, poorly designed tools that trap debris.
+· Numerous instances of tools where cleaning is made difficult.
+· Numerous instances of inferior materials e.g. (porous material construction, wood, non-food grade
+
+     materials).
+
+Non-compliance (0 points) if:
+· Condition and/or design of tools will not allow for effective cleaning under normal conditions.
+· Widespread poor welding, rough surfaces, poorly designed tools that trap debris.
+
+4.05.12b: Are harvest tools free from exposure to the ground and/or any handling contamination?
+Total compliance (5 points): Harvest tools (e.g., knives, clippers, scissors, coring rings, holsters, etc.)
+should be free from exposure to the ground and/or any handling contamination.
+
+Minor Deficiency (3 points) if:
+
+PGFS-R-064                                    Page 34 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+     · Single/isolated instance(s) of handling contamination (e.g., exposure to the ground).
+
+Major Deficiency (1 point) if:
+     · Numerous instances of handling contamination (e.g., exposure to the ground).
+
+Non-compliance (0 points) if:
+· Widespread failure to prevent handling contamination.
+
+4.05.12c: Is there a tool accountability, storage and control program for knives and similar cutting
+hand tools used in the harvest area when not in use?
+Total compliance (5 points): There should be an accountability, storage and control program in place for
+knives and similar cutting hand tools to identify potential product contamination. Tool accountability
+should include the inspection of the cutting surfaces for wear and tear, as well as a tool inventory check at
+the start and end of each shift. Workers should not take tools, such as knives, from the work area and
+should be required to use knife scabbards that can easily be cleaned i.e. non-porous. Leather scabbards
+should not be used.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of errors or omissions in the tool inventory check.
+
+Major deficiency (1 point) if:
+· Numerous instances of errors or omissions in the tool inventory check.
+
+Non-compliance (0 points) if:
+· There are no records for tool accountability.
+· Production hand tools do not remain under the control of the company (e.g., taken home by workers).
+
+4.05.12d: Are there written cleaning and sanitation procedures (Sanitation Standard Operating
+Procedures) for harvest tools that includes the frequency of cleaning and sanitizing, and the
+procedures used, including chemical use details?
+Total compliance (5 points): Harvest tools should be cleaned and sanitized on a regularly scheduled
+basis, based on written Sanitation Standard Operating Procedures (SSOPs). The program should state
+the frequency of cleaning and sanitizing, detail what, who, how and when, including chemical details
+(name, dilution/strength), and cleaning verification procedures.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of information missing from the SSOPs.
+
+Major deficiency (1 point) if:
+· Numerous instances of information missing from the SSOPs.
+
+Non-compliance (0 points) if:
+· There are no documented SSOPs.
+
+4.05.12e Are cleaning and sanitation logs on file for harvest tools that show what was done, when,
+by who and detail strength testing of anti-microbial solution used to sanitize surfaces?
+Total compliance (10 points): Sanitation logs should include: date, list of areas/equipment that were
+cleaned and sanitized, sanitizer strength tests, and the individual accountable who signed-off for each
+task completed.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of incomplete records, discrepancies against the SSOPs or other
+
+     omissions.
+
+Major deficiency (3 points) if:
+
+PGFS-R-064                                    Page 35 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+· Numerous instances of incomplete records, discrepancies against the SSOPs or other omissions.
+
+Non-compliance (0 points) if:
+· No sanitation logs.
+· Sanitation logs exist but they are not reflecting what actually occurs.
+
+4.05.12f: Are harvesting tool dips being maintained properly in terms of anti-microbial solution
+strength and are records of the solution checks being maintained? AUDITORS SHOULD REQUIRE
+A TEST AT THE TIME OF THE AUDIT.
+Total compliance (5 points): There should be records to show that the tool dip solutions (e.g., knife dips)
+are being maintained on a regular basis. The strength of the sanitizers should be checked on a regular
+basis (e.g. hourly) and recorded, with a minimum strength for a chlorinated system of 10 ppm free
+chlorine. All test solutions/strips should be within date code, appropriate for the concentrations used and
+stored correctly (especially light and temperature sensitive materials). Total chlorine does not measure
+the "available chlorine" after the tool dip has started to be used. Auditors are instructed to require the
+auditee to check the strength of anti-microbial chemicals during the audit.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of strength tests not being performed at the required frequency.
+· Single/isolated instance(s) of missing or incomplete records.
+· Single/isolated instance(s) of corrective actions not being performed.
+· Single/isolated instance(s) of testing not being done correctly.
+
+Major deficiency (1 point) if:
+· Numerous instances of strength tests not being performed at the required frequency.
+· Numerous instances of missing or incomplete records.
+· Numerous instances of corrective actions not being performed.
+· Numerous instances of testing not being done correctly.
+
+Non-compliance (0 points) if:
+· There is no strength testing being performed or fundamental failure to perform tests correctly.
+· Fundamental failure to maintain records.
+· Corrective actions are not being performed.
+
+4.05.13: Is machinery used in the harvesting process? If No, go to 4.05.14.
+Total points 0: Information gathering question. This includes equipment with the potential to affect product
+(e.g., conveyor belts, mechanical harvesting units, field packing rigs, field packing buses, live bottom
+trailers, coring rigs and any "in-field" processing rigs including tractors/trucks pulling in-field equipment).
+Please note that there are some more specific questions for coring rigs and any "in-field" processing rigs
+in a later section.
+
+4.05.13a: Are food contact machinery surfaces free of flaking paint, corrosion, rust and other
+unhygienic materials (e.g., tape, string, cardboard, etc.)?
+Total compliance (15 points): Food contact surfaces on machinery should be free of flaking paint
+corrosion, rust, and/or unhygienic materials, as they can pose foreign material and/or microbiological
+hazards. Food contact surfaces should be made of non-toxic, non-porous materials. Surfaces should be
+maintained in good condition.
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of flaking paint, rust or other unhygienic materials which do not pose a
+
+     threat to product or packing contamination.
+
+Major deficiency (5 points) if:
+· Single/isolated instance(s) of flaking paint, rust or other unhygienic materials which may pose a threat
+
+     to product or packing contamination.
+
+PGFS-R-064                                    Page 36 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+· Numerous instances of flaking paint, rust or other unhygienic materials which do not pose a threat to
+     product or packing contamination.
+
+Non-compliance (0 points) if:
+· Inspection shows numerous areas of flaking paint, rust or other unhygienic materials, which may pose
+
+     a threat to product or packing contamination.
+· Any observation of direct gross widespread contamination of product, ingredient or
+
+     packaging materials (revert back to Q 4.05.09, automatic failure).
+
+4.05.13b: Are food contact machinery surfaces clean?
+Total compliance (15 points): Unsanitary food contact surfaces can directly lead to contamination of the
+product. All equipment surfaces that make contact with product should be kept in a clean condition to
+avoid cross contamination. Food debris, bio films, excessive dust, etc., should be cleaned off equipment.
+
+21 CFR 110.3 g Definition. Food-contact surfaces are those surfaces that contact human food and those
+surfaces from which drainage onto the food or onto surfaces that contact the food ordinarily occurs during
+the normal course of operations. "Food-contact surfaces" includes utensils and food-contact surfaces of
+equipment, tables, etc.
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of food contact surface that is unclean.
+
+Major deficiency (5 points) if:
+· Numerous instances of food contact surfaces that are unclean.
+· Some equipment is not cleaned after the harvesting operation has ceased for that run time e.g. after
+
+     final shift.
+
+Non-compliance (0 points) if:
+· Widespread observations of food contact surfaces that are unclean.
+· Equipment is not cleaned after the harvesting operation has ceased for that run time e.g. after final
+
+     shift.
+
+4.05.13c: Are non-food contact machinery surfaces free of flaking paint, corrosion, rust and other
+unhygienic materials (e.g., tape, string, cardboard, etc.)?
+Total compliance (10 points): Non-food contact surfaces should be free from any potential source of
+contamination such as flaking paint, corrosion, rust and/or other unhygienic materials (e.g., tape, string,
+cardboard, etc.). The surface should be made of smooth material that can be cleaned and sanitized
+easily. Where possible, equipment framework is not penetrated by bolts or studs.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of flaking paint, rust or other unhygienic materials e.g. tape.
+
+Major deficiency (3 points) if:
+· Numerous instances of flaking paint, rust or other unhygienic materials e.g. tape.
+
+Non-compliance (0 points) if:
+· Widespread evidence of rusting, flaking paint, use of unhygienic materials e.g. tape.
+· Any observation of direct gross widespread contamination of product, ingredient or
+
+     packaging materials (revert back to Q 4.05.09, automatic failure).
+
+4.05.13d: Are non-food contact machinery surfaces clean?
+Total compliance (10 points): Unsanitary non-food contact surfaces can indirectly lead to contamination of
+the product. All equipment surfaces that do not make contact with product should be kept in a clean
+condition to avoid cross contamination. Food debris, bio films, excessive dust, etc., should be cleaned off
+non-food contact equipment.
+
+PGFS-R-064                                    Page 37 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+21 CFR 110.3 g Definition. Food-contact surfaces are those surfaces that contact human food and those
+surfaces from which drainage onto the food or onto surfaces that contact the food ordinarily occurs during
+the normal course of operations. "Food-contact surfaces" includes utensils and food-contact surfaces of
+equipment, tables, etc.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of a non-food contact surface that is unclean.
+
+Major deficiency (3 points) if:
+· Numerous instances of non-food contact surfaces that are unclean.
+· Some equipment is not cleaned after the production has ceased for that run time e.g. after final shift.
+
+Non-compliance (0 points) if:
+· Widespread observations of non-food contact surfaces that are unclean.
+· Equipment is not cleaned after the harvesting operation has ceased for that run time e.g. after final
+
+     shift.
+
+4.05.13e: Does the design and condition of the machinery (e.g., smooth surfaces, smooth weld
+seams, nontoxic materials, no wood) facilitate effective cleaning, sanitation and maintenance?
+Total compliance (10 points): Machinery should be made of appropriate materials that can be easily
+cleaned and maintained, that are not porous or toxic and can withstand the cleaning process. Equipment
+should be designed to allow access and easy cleaning (including hollow structures on supports, rollers,
+racks, etc.), with no hard to get to (debris catching) areas. Surfaces that are porous, trap debris, badly
+damaged should be replaced. Wood, for example, is porous and can trap moisture. Welds should be
+smooth and not "bobbly".
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of "bobbly" welds, rough surfaces, poorly designed equipment that traps
+
+     debris.
+· Single/isolated instance(s) of hard to reach areas where cleaning is made difficult.
+· Single/isolated instance(s) of inferior materials e.g. porous material construction, wood, non-food
+
+     grade materials).
+
+Major deficiency (3 point) if:
+· Numerous instances of "bobbly" welds, rough surfaces, poorly designed equipment that traps debris.
+· Numerous instances of hard to reach areas where cleaning is made difficult.
+· Numerous instances of inferior materials e.g. porous material construction, wood, non-food grade
+
+     materials).
+
+Non-compliance (0 points) if:
+· Condition and/or design of equipment will not allow for effective cleaning under normal conditions.
+· Widespread poor welding, rough surfaces, poorly designed equipment that traps debris.
+
+4.05.13f: Is machinery designed and used properly to minimize product contamination (e.g. drip
+pans utilized, dedicated tractor pathways)?
+Total compliance (5 points): Overhead contamination from materials such as hydraulic fluid can result in
+product and packaging contamination, and therefore, equipment should be fitted with catch pans.
+Dedicated tractor pathways should also be used to minimize product contamination.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of possible overhead contamination.
+
+Major deficiency (1 point) if:
+· Numerous instances of possible overhead contamination.
+
+PGFS-R-064                                    Page 38 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Non-compliance (0 points) if:
+· No protective devices have been installed to eliminate potential contamination.
+
+4.05.13g: Are all glass issues on harvesting machines, in-field trucks, and tractors protected in
+some manner?
+Total compliance (3 points): Glass located on the harvesting machinery (e.g., lights, night lights) that may
+pose a threat of contamination onto product, packaging, and re-useable containers should be protected.
+Machinery includes tractors and other equipment that may come into contact with product. There should
+be no evidence of cracked lenses.
+
+Minor deficiency (2 points) if:
+· Single/isolated instance(s) of unprotected glass.
+
+Major deficiency (1 point) if:
+· Numerous instances of unprotected glass.
+
+Non-compliance (0 points) if:
+· Widespread failure to control glass on harvesting machines, in-field trucks and/or tractors.
+· More than one instance of a broken glass item found during the audit.
+
+4.05.13h: Are all platforms above product, packaging, or food contact surfaces (e.g., belts) on the
+harvest machinery and in-field trucks fitted with protection to prevent product contamination?
+Total compliance (3 points): Overhead contamination of exposed product areas can result in
+microbiological, chemical and/or physical contamination. Measures should be taken to eliminate or
+reduce potential contamination by fitting protection on platforms and food contact surfaces above
+exposed product, food contact surfaces, and belts.
+
+Minor deficiency (2 points) if:
+· Single/isolated instance(s) of possible overhead contamination from unprotected food contact
+
+     platforms or surfaces.
+
+Major deficiency (1 point) if:
+· Numerous instances of possible overhead contamination from unprotected product platforms or
+
+     surfaces.
+
+Non-compliance (0 points) if:
+· No protective devices have been installed to eliminate potential contamination.
+
+4.05.13i: Are there written cleaning and sanitation procedures (Sanitation Standard Operating
+Procedures) for the harvest machinery that includes the frequency of cleaning and sanitizing, the
+procedures used including chemical use details?
+Total compliance (5 points): Harvest machinery should be cleaned and sanitized on a regularly scheduled
+basis, based on written Sanitation Standard Operating Procedures (SSOPs). The program should state
+the frequency of cleaning and sanitizing, detail what, who, how and when, including chemical details
+(name, dilution/strength), and cleaning verification procedures. Frequency should reflect the type of
+machinery, type of harvesting practice and the risk associated with the crop involved. This includes water
+tanks used for post-harvest water use. For "in-field" processing, clean and core, etc., at least daily
+cleaning should be performed.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of information missing from the SSOPs.
+
+Major deficiency (1 point) if:
+· Numerous instances of information missing from the SSOPs.
+
+PGFS-R-064                                    Page 39 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Non-compliance (0 points) if:
+· There are no documented SSOPs.
+
+4.05.13j Are cleaning and sanitation logs on file for harvest machinery that show what was done,
+when, by who and detail strength testing of anti-microbial solution used to sanitize surfaces?
+Total compliance (10 points): Sanitation logs should include: date, list of areas/equipment that were
+cleaned and sanitized, sanitizer strength tests, and the individual accountable who signed-off for each
+task completed.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of incomplete records, discrepancies against the SSOPs or other
+
+     omissions.
+
+Major deficiency (3 points) if:
+· Numerous instances of incomplete records, discrepancies against the SSOPs or other omissions.
+
+Non-compliance (0 points) if:
+· No sanitation logs.
+· Sanitation logs exist but they are not reflecting what actually occurs.
+
+4.05.13k: Is there written documentation showing that only food grade lubricants are used on the
+critical parts of the harvesting machinery that have the potential to contaminate product?
+Total compliance (3 points): In order to prevent or reduce contamination to product/packaging, food grade
+lubricants (i.e. incidental food contact compounds or H1 materials) should be used on critical areas of the
+equipment where product exposure exists. Proof must be available that food grade lubricants are being
+used.
+
+Minor deficiency (2 points) if:
+· Single/isolated instance(s) of missing or incomplete evidence.
+
+Major deficiency (1 point) if:
+· Numerous instances of missing or incomplete evidence.
+
+Non-compliance (0 points) if:
+· There is no documented evidence that food grade lubricants are being used on the critical parts of the
+
+     harvest machinery.
+
+4.05.14: Is water used directly on product contact (e.g. re-hydration, core in field)? If No, go to
+4.05.15.
+Total points 0: Information gathering question. This refers to water that is used directly on product
+contact. Examples may include but are not limited to re-hydration, core in field.
+
+4.05.14a: Are there specific Standard Operating Procedures (SOPs) for the monitoring of anti-
+microbial parameters in single-pass and/or recirculated/batch water systems and changing of
+recirculated and batch water systems (e.g., dump tanks) and for monitoring pH and water
+temperature (if applicable)?
+Total compliance (10 points): There should be specific SOPs describing the process of performing and
+recording anti-microbial strength testing in water systems (including parameters, testing frequency,
+methodology and corrective action requirements), methods and monitoring procedures for measuring
+build-up of organic material (turbidity) in recirculated and batch water systems and monitoring pH and
+water temperature (if applicable). Water should be changed when it is dirty or when switching products.
+There should be documentation that validates the water changing frequency. Minimum frequency for
+water changing is at least daily; records of changes are kept. Water may be used for longer if a validated
+regeneration system (e.g., a water pasteurization/filtration system) is being used. The water temperature
+
+PGFS-R-064                                    Page 40 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+should be appropriate for the products and processes being performed. Measuring total chlorine is not
+viewed as acceptable for recycled water systems. Single pass systems must have a stated anti-microbial
+level. For chlorine, the criteria should be 10ppm free chlorine. Lower concentrations should be properly
+justified with supporting documents, rationale and evidence. Note, US (NOP) regulations allow for
+chlorine use in wash water at levels sufficient to control microbial contaminants and higher than 4 ppm
+free chlorine, where there is a final through rinse with potable water to meet their 4 ppm free chlorine
+product contact requirement. Other anti-microbials include peracetic acid, chlorine dioxide, etc.
+Reference:
+https://www.canr.msu.edu/news/turbidity_in_post_harvest_wash_water_monitor_and_change_when_nee
+ded
+Gomez-Lopez, V.M., Lannoo A.S., Gil, M.I. Allende, A., 2014. Minimum free chlorine residual level
+required for the inactivation of Escherichia coli O157:H7 and trihalomethane generation during dynamic
+washing of fresh-cut spinach. Food Control 42, 132-138.
+Haute, S.V., Luo, Y., Bolten, S., Gu, G., Nuo, X., 2020. Survival of Salmonella enterica and shifts in the
+culturable mesophilic aerobic bacterial community as impacted by tomato wash water particulate size and
+chlorine treatment. Food Microbiology 90, 103070.
+https://www.ams.usda.gov/rules-regulations/organic/handbook/5026
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of errors or omissions within the SOPs for water monitoring and changing.
+· Single/isolated instance(s) of errors or omissions in the validation documentation for water monitoring
+
+     and changing.
+
+Major deficiency (3 points) if:
+· Numerous instances of errors or omissions within the SOP's for water monitoring and changing.
+· Numerous instances of errors or omissions in the validation documentation for water monitoring and
+
+     changing.
+
+Non-compliance (0 points) if:
+· SOPs for water monitoring and changing do not exist.
+· SOPs do not address the frequency of water monitoring and changing.
+· SOPs require changing less than daily and there is not a validated regeneration system used.
+· There is no validation documentation for water monitoring and changing frequency.
+
+4.05.14b: Are there records (with corrective actions) that show anti-microbial (e.g., free chlorine,
+peroxyacetic acid) strength testing of wash water prior to start up and throughout the run?
+Total compliance (10 points): Water systems using anti-microbial agents should have records showing
+that the strength of the solution is within stated parameters. For "single pass" systems, this should be
+every batch of anti-microbial solution that is mixed. Recirculated/batch water systems should be checked
+hourly by measuring the "free anti-microbial" as opposed to bound microbial (e.g., testing for free chlorine
+as opposed to total chlorine). Re-circulated/ batch water systems using sodium/calcium hypochlorite
+should have records showing the pH is controlled. Where out of specification results are recorded, there
+should be corrective action records, including root cause analysis and preventive actions (where
+relevant).
+
+Journal of Food Protection, Vol. 74, No. 3, 2011, Pages 352­358
+http://edocket.access.gpo.gov/cfr_2009/aprqtr/pdf/21cfr173.315.pdf
+http://archive.onfarmfoodsafety.org/wp-content/uploads/2011/05/Chlorination-of-Water-for-Fluming-and-
+Cleaning-Fresh-Fruits-and-Vegetables-and-Cleaning-Equipment.pdf
+UC Davis, https://ucfoodsafety.ucdavis.edu/sites/g/files/dgvnsk7366/files/inline-files/26414.pdf
+LGMA Metrics, https://lgmatech.com/resources/
+https://producesafetyalliance.cornell.edu/resources/general-resource-listing/
+
+Minor deficiency (7 points) if:
+
+PGFS-R-064                                    Page 41 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+· Single/isolated instance(s) of records showing solution strength out of parameters without adequate
+     documented corrective actions.
+
+· Single/isolated instance(s) of errors or omission in the records.
+· Single/isolated instance(s) of total chlorine being recorded when free chlorine should have been used
+
+     e.g. in chlorinated recycled water systems
+· Single/isolated instance(s) of checks not carried out at the required frequencies.
+
+Major deficiency (3 points) if:
+· Numerous instances of records showing solution strength out of parameters without adequate
+
+     documented corrective actions.
+· Numerous instances of errors or omission in the records.
+· Numerous instances of total chlorine being recorded when free chlorine should have been used e.g.
+
+     in chlorinated recycled water systems.
+· Numerous instances of checks not carried out at the required frequencies.
+
+Non-compliance (0 points) if:
+· Water testing is not being recorded.
+· Recorded solution strengths consistently out of parameters i.e. an unstable system (even if
+
+     documented corrective actions exist).
+· Widespread errors and omissions in the records.
+· Total chlorine has been recorded throughout the system, when free chlorine should have been
+
+     recorded e.g. in chlorinated recycled water systems.
+· Frequencies of checks consistently do not meet requirements of prior to start up and throughout the
+
+     production runs.
+· Single pass water system is in use without anti-microbial being used. The auditor should consider
+
+     whether to apply 4.05.09 and score an automatic failure in view of the risk of cross contamination.
+· Recycled/reused water system is in use without an anti-microbial being used. The auditor should
+
+     consider whether to apply 4.05.09 and score an automatic failure in view of the risk of cross
+     contamination.
+
+4.05.14c: Are there records of monitoring for build-up of organic material (turbidity) and changing
+of recirculated and batch water systems (e.g., dump tanks, flumes, hydrovacuums, hydrocoolers,
+etc.)?
+Total compliance (5 points). There should be records of visual monitoring or testing and changing of
+recirculated and batch water systems during use. Water should be changed at least daily and when it is
+dirty and when switching products. Water may be used for longer if a validated regeneration system (e.g.,
+a water pasteurization/filtration system) is being used.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of omissions or incorrect data in the records.
+· Single/isolated instance(s) of monitoring not taking place on a consistent basis.
+
+Major deficiency (1 point) if:
+· Numerous instances of omissions or incorrect data in the records.
+· Numerous instances of monitoring not taking place on a consistent basis.
+
+Non-compliance (0 points) if:
+· No records.
+· Failure to maintain records.
+
+4.05.14d: Does the operation use the appropriate test strips, test kits or test probes for verifying
+the concentrations of anti-microbial chemicals (e.g., postharvest product contact water, dip
+stations, etc.) being used, are they in operational condition and are they being used correctly?
+Total compliance (15 points): The strength (concentration, pH, etc.) of anti-microbial chemicals should be
+checked using an appropriate method for the anti-microbial in use (e.g., chemical reaction-based test, test
+
+PGFS-R-064                                    Page 42 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+probe, or as recommended by the disinfectant supplier). Water samples for testing should be taken from,
+and/or probes located in, areas farthest from the antimicrobial injection/addition site. Any water treatment
+at the source (e.g., well, canal) should be monitored. Solutions that are too weak will be ineffective, while
+those too strong may be harmful to workers or product. Where necessary, pH of solutions should also be
+checked. Methods include dip sticks, test strip papers, conductivity meters, titration, color comparison
+methods (e.g., tintometers, etc.). All test solutions/strips should be within date code, appropriate for the
+concentrations used and stored correctly (especially light and temperature sensitive materials). If an ORP
+meter controls the pumps that are injecting the anti-microbial and/or buffer, free chlorine levels should be
+verified by an independent method (e.g., titration, appropriate test strips). Probe sensors should be
+properly located, have periodic cleaning and calibration and may become temporarily saturated by over-
+injection of anti-microbial or buffer. The auditor should have the auditee check the strength of anti-
+microbial chemicals while touring the operation.
+
+Potentially useful websites:
+http://postharvest.ucdavis.edu/files/260798.pdf
+http://ucfoodsafety.ucdavis.edu/files/26414.pdf
+http://postharvest.tfrec.wsu.edu/pages/J4I1B
+https://www.fda.gov/media/129790/download
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of a method not being used correctly.
+· Single/isolated instance(s) of a testing procedure being used that is not appropriate for the
+
+     concentration and/or sanitizer in use.
+· Single/isolated instance(s) of out of date verifying chemicals being used.
+
+Major deficiency (5 points) if:
+· Numerous instances of a method not being used correctly.
+· Numerous instances of a testing procedure being used that is not appropriate for the concentration
+
+     and/or chemical in use.
+· Numerous instances of out of date verifying chemicals being used.
+· ORP meter used to control pumps injecting anti-microbial and or/buffer without an independent
+
+     method to verify readings.
+
+Non-compliance (0 points) if:
+· Chemical concentrations are not monitored.
+· Equipment to monitor anti-microbial chemical concentrations is not available or is not being used
+
+     correctly.
+
+4.05.15: Is the harvested product "in-field processed" or "in-field semi-processed" (e.g., core in
+field, top & tail, florets)?
+Total points 0: Information gathering question. "In-field processed" products are subject to all the
+questions in this audit and these extra requirements below. "In-field processed" usually refers to product
+having multiple cut surfaces created in the field (e.g., coring in field, topping & tailing, florets).
+
+4.05.15a: Where harvested product is "in-field processed" or "in-field semi-processed," does the
+process flow, machine layout, worker control, utensil control, etc. ensure that processed products
+are not contaminated by unprocessed products?
+Total compliance (5 points): The design, worker management, utensil management and general practice
+should avoid contact between processed and unprocessed product, contact surfaces and tools.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of worker/utensil/machine layout cross contamination.
+· Minor process issues where processed materials come into the same area as raw materials, but the
+
+     two products do not touch in any way, i.e. no potential risk of cross contamination.
+
+PGFS-R-064                                    Page 43 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+· Some potential space issues where the process flow is being forced to bring finished and raw
+     material into close proximity.
+
+Major deficiency (1 point) if:
+· Numerous instances of worker/utensil cross contamination.
+· Serious process flow issues where raw material can potentially cross contaminate finished goods.
+· Numerous space issues where the process flow is being forced to bring finished and raw material into
+
+     close proximity.
+
+Non-compliance (0 points) if:
+· Widespread issues with worker and/or utensil cross contamination.
+· Process flow issues are observed to result in product raw/finished goods cross contamination.
+
+4.05.15b: Are all plastic bin liners closed immediately after harvest to avoid contamination of the
+harvested product?
+Total compliance (3 points): All plastic bin liners should be closed immediately and appropriately secured
+after harvest to avoid product contamination.
+
+Minor deficiency (2 points) if:
+· Single/isolated instance(s) of a bin liner not being closed immediately after harvest.
+
+Major deficiency (1 point) if:
+· Numerous instances of bin liners not being closed immediately after harvest.
+
+Non-compliance (0 points) if:
+· Widespread failure to close bin liners immediately after harvest.
+
+Post-harvest Treatments
+
+4.06.01: Is there any post-harvest treatment performed to the product in the growing area? If No,
+go to 4.07.01.
+Total points 0: Information gathering question. This refers to any post-harvest treatments taking place in
+the growing area (e.g. blueberries packed in the field with sodium metabisulphite pads, tables grapes
+packed in the field treated/gassed with sulfur dioxide, etc.).
+
+4.06.01a: Are there up-to-date records of all pesticides applied in the growing area to the
+harvested product? A ZERO POINT (NON-COMPLIANCE) DOWNSCORE IN THIS QUESTION
+RESULTS IN AUTOMATIC FAILURE OF THIS AUDIT.
+Total compliance (15 points): The growing operation should follow a post-harvest pesticide application
+record keeping program that at least includes the following: date of application, product identity (e.g. Lot
+or batch number/code), brand/product name, EPA registration number (or country of production
+equivalent registration information), active ingredient, amount applied (rate/dosage), applicator
+identification, application equipment identification "and/or" type of treatment, and target pest/disease.
+Information may be recorded on separate documents providing all information is available and consistent.
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of missing required information (e.g. missing target pest, applicator
+
+     identification, equipment identification or type of treatment, etc.)
+
+Major deficiency (5 points) if:
+· Numerous instances of missing required information (e.g. missing target pest, applicator
+
+     identification, equipment identification or type of treatment, etc.)
+
+Automatic Failure (0 points) if:
+
+PGFS-R-064                                    Page 44 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+· Any failure to record critical required information. (e.g. brand/product name, date, amount
+     applied, product identity, etc.)
+
+· Fundamental failure to record required information.
+
+4.06.01b: Are all pesticides applied post-harvest authorized/registered by the
+authority/government of the country of production? ANY DOWN SCORE IN THIS QUESTION
+RESULTS IN AN AUTOMATIC FAILURE OF THE AUDIT.
+Total compliance (15 points): Application records show all pesticides applied post-harvest are officially
+registered by the country of production for the target crop (e.g. EPA in the US, COFEPRIS in Mexico,
+SAG in Chile, Pest Management Regulatory Agency (PMRA) in Canada). In countries where there is
+approval for its use, this is acceptable when operated by the government and considers as a minimum
+the target crop, pesticide trade name and active ingredient, formulation, dosage, pre-harvest intervals and
+target pest(s) or in cases where the government authorizes an active ingredient but not a trade name,
+there must be evidence of compliance with the MRLs of the destination countries for the applied
+"authorized" active ingredient (see 4.06.01d)
+When pesticide product registration/authorization information does not exist for the target crop in the
+country of production or there are not enough products registered/authorized to control a pest or disease
+(partial registration/authorization), extrapolation is possible if that practice is allowed by the country of
+production (e.g. in Mexico "Anexo Técnico 1. Requisitos Generales para la Certificación y
+Reconocimiento de Sistemas de Riesgos de Contaminación (SRRC) Buen Uso y Manejo de Plaguicidas
+(BUMP) o Buenas Prácticas Agrícolas en la Actividad de Cosecha (BPCo) durante la producción primaria
+de vegetales ­ Section 12.3 should be considered. ANY DOWN SCORE IN THIS QUESTION RESULTS
+IN AN AUTOMATIC FAILURE OF THE AUDIT.
+
+Minor deficiency (10 points) if:
+· There is no minor deficiency category for this question
+
+Major deficiency (5 points) if:
+· There is no major deficiency category for this question.
+
+Automatic Failure (0 points) if:
+· There is a single incidence of pesticides being used without being registered or authorized by
+
+     the country of production government.
+
+4.06.01c: Are all pesticides applied post-harvest used as recommended/directed in the label?
+ANY DOWN SCORE IN THIS QUESTION RESULTS IN AN AUTOMATIC FAILURE OF THE AUDIT.
+Total compliance (15 points): Application records should show all post-harvest pesticides are applied in
+accordance with label directions and any federal, state or local regulation.
+
+In operations applying post-harvest pesticides "authorized" by the government, where use directions are
+not in the label, application records should show "authorization program" use/applications directions are
+followed.
+
+Minor deficiency (10 points) if:
+· There is no minor deficiency category for this question
+
+Major deficiency (5 points) if:
+· There is no major deficiency category for this question.
+
+Automatic Failure (0 points) if:
+· There is a single incidence of pesticides being used without following label directions.
+
+4.06.01d: Where products are destined for export, is there information for post-harvest pesticide
+Maximum Residue Limits (MRLs) compliance considering, country of destination, target crop(s)
+and active ingredients applied?
+
+PGFS-R-064                                    Page 45 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                                                         Rev. 3
+
+Total compliance (15 points): Where products are destined for export, the operation should have
+documented evidence about the MRL requirements for each country of destination for each post-harvest
+pesticide (active ingredient) applied. If there is no MRL defined by the country of destination for any active
+ingredient applied, the operation shall have documented evidence of the applicable regulations in that
+country (e.g. default MRL, Codex Alimentarius, non-detectable, etc.). In the case where the MRLs have
+been standardized or harmonized for a group of countries (i.e. European Union) it is acceptable that the
+operation demonstrate compliance by referencing the "list" of MRLs issued from the formal body that
+represents those countries for this purpose.
+
+This question is Not Applicable if the product is only sold in the country of production (domestic
+market).
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of missing required information (e.g. missing MRL information for an active
+
+     ingredient)
+
+Major deficiency (5 points) if:
+· Numerous instances of missing required information (e.g. missing MRL information for 3 or more
+
+     active ingredient)
+
+Non-Compliance (0 points) if:
+· There is no MRL information for the destination countries (or widespread missing information)
+
+4.06.01e: Where products are destined for export, is there evidence that Maximum Residue Levels
+(MRL's), of the intended markets are met? ANY DOWN SCORE IN THIS QUESTION RESULTS IN
+AN AUTOMATIC FAILURE OF THE AUDIT.
+Total compliance (15 points): Maximum Residue Limits (MRLs) analysis should be performed when the
+
+MRL of the destination countries are lower (stricter) than the country of production. This assumes that
+
+grower is meeting country of origin MRL and label requirements. MRL test results and records should
+demonstrate that products/crops meet MRL regulations in those intended markets and any non-
+
+conforming product is diverted from those markets.
+
+The auditor should review MRL laboratory reports to ensure MRL entry requirements are met for the
+
+country of destination or the applicable regulation in the country of destination when there is no MRL set
+
+for any active ingredient, (e.g. the Codex Alimentarius Commission, default MRL, under the limit of
+
+detection [LOD], etc.) MRL laboratory reports shall be traceable to the operation and consider at least the
+
+active ingredients applied post-harvest.
+
+Other alternative or complementary methods to demonstrate MRL compliance for an active ingredient
+
+include:
+
+i)          Documented analysis of degradation curves and corresponding dosage and/or pre-harvest
+
+            interval modifications. Degradation curves used as reference should be issued/provided by
+
+            the manufacturer of the pesticide or country of production government and correspond to the
+
+            degradation of the pesticide active ingredient in the agroclimatic zone where the Plant
+
+            Protection Product was applied.
+
+ii)         Industry guidelines (e.g. "Agenda de Pesticidas" From ASOEX Chile).
+
+Following a procedure for when and where to pull samples for MRL testing based on risk considering
+factors such as active ingredients applied, timing of the application and harvest, pre-harvest intervals,
+dosage, etc., is an ideal practice.
+
+This question is Not Applicable if the product is only sold in the country of production (domestic
+market).
+
+Minor deficiency (10 points) if:
+     · There is no minor deficiency category for this question
+
+PGFS-R-064                                    Page 46 of 56                      April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Major deficiency (5 points) if:
+· There is no major deficiency category for this question.
+
+Non-compliance (0 points) if:
+· There is a single incidence of an active ingredient with an exceeded MRL.
+· There is no evidence of MRL compliance for any active ingredient applied.
+· Evidence provided is not sufficient to support MRL compliance.
+· Automatic failure if corrective actions are not provided and accepted by the certification body.
+
+4.06.01f: Is there a documented procedure for the post-harvest pesticide applications,
+considering mixing and loading, applying, and equipment cleaning?
+Total compliance (15 points): There should be a documented procedure describing how to mix and load
+post-harvest pesticides, how to apply post-harvest pesticides and how to rinse and clean post-harvest
+pesticide application equipment. The procedure should include adhering to the product label.
+Mixing and loading procedures should require activity to be in a well-ventilated, well-lit area away from
+unprotected people, food and other items that might be contaminated.
+Application procedures should include information about the necessary Personal Protective Equipment
+(PPE), re-entry intervals, excessive winds, posting of treated areas, etc.
+Equipment cleaning procedures should include measuring devices, mixing containers, application
+equipment (e.g. spray bar), rinseable containers, etc., and should address: rinsing empty equipment
+immediately to prevent residues from drying and becoming difficult to remove, and adding the rinsate
+(water from rinsing containers or equipment) to spray tanks as part of the pesticide mixing process.
+
+If any of these practices are observed during the inspection, it should be evident that the procedures are
+being followed.
+
+This procedure could be partially applicable or non-applicable depending the type of post-harvest
+treatment used (e.g. SO2 Generator pads do not require mixing/loading instructions)
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of an error or omission in the procedure or practice.
+
+Major deficiency (5 points) if:
+· Numerous instances of an error or omission in the procedure or practice.
+
+Non-Compliance (0 points) if:
+· Widespread errors or omissions in the procedure or practice.
+· There is no procedure.
+
+4.06.01g: Is there documentation that shows the individual(s) making decisions for post-harvest
+pesticide applications is competent?
+Total compliance (15 points): Current valid certificates, licenses, or another form of proof of training
+recognized by prevailing national/local standards and guidelines should be available for the individual(s)
+making decisions on post-harvest pesticide applications (e.g., choice of pesticides, application rates, etc.)
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of missing documentation.
+
+Major deficiency (5 points) if:
+· Single/isolated instance of a proof of training/certificate/license being out of date.
+· Numerous instances of missing documentation.
+
+Non-compliance (0 points) if:
+· There is no documentation for the individual(s) making the decision.
+
+PGFS-R-064                                    Page 47 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+4.06.01h: Is there documentation that shows that individuals who handle post-harvest pesticide
+materials are trained and are under the supervision of a trained person?
+Total compliance (15 points): All workers who handle pesticides must have current certificates, licenses,
+or other forms of proof of training (recognized by prevailing national/local standards and guidelines)
+qualifying them to do so independently or they must have proof of training and be under the supervision
+of a worker who can do so independently.
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of missing training documentation.
+
+Major deficiency (5 points) if:
+· Numerous instances of missing training documentation.
+· Worker who is not qualified to handle pesticide materials independently has training but no
+
+     supervision
+
+Non-compliance (0 points) if:
+· There is no documentation showing training for individuals handling pesticides materials.
+· There is no documentation for the supervising person
+
+Transportation and Tracking
+
+4.07.01: Are the vehicles loading and transporting fresh produce from growing area to facility
+limited to this function only, maintained in proper condition, and adequate for the purpose?
+Total compliance (5 points): Vehicles transporting product should be limited to this function only and
+should be adequate for transporting produce. Vehicles should be part of the sanitation program, in a good
+state of repair, clean, odor free, free from personal items, and free from chemical and microbiological
+contamination. If loads are tied down, tarps, belts, ropes, etc., should also be in good working order,
+without contamination risk to product.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of an issue with a transport vehicle.
+
+Major deficiency (1 point) if:
+· Numerous instances of issues with transport vehicle(s).
+
+Non-compliance (0 points) if:
+· Fundamental failure to maintain transport vehicles in good repair, in good working order and/or to
+
+     prevent contamination risk to the product.
+
+4.07.02: Is there a system in place to track product from the growing area?
+Total points (10 points): There should be a tracking system in place to ensure that product can be traced
+back to each exact growing location and harvest date (e.g., grower identification, farm identification,
+block, harvesting date, etc.).
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of missing required information for harvested commodities i.e. growing
+
+     location or harvest information.
+
+Major deficiency (3 point) if:
+· Numerous instances of missing required information for harvested commodities i.e. growing location
+
+     or harvest information.
+
+Non-compliance (0 points) if:
+· There is no tracking information for harvested commodities.
+
+PGFS-R-064                                    Page 48 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+4.07.02a: If product is being packed in the growing area, are the cartons, boxes, RPCs or any other
+packaging material used, identified with the harvesting date and growing location information?
+This question does not apply for raw material/bulk product destined for further handling in a
+packinghouse or processing facility.
+Total compliance (10 points): For finished goods packed in the growing area, there should be date coding
+on each external package, as cartons, boxes, reusable plastic containers or any other. The information
+should be enough to identify the date of harvest and the exact location of where the product was grown.
+This question is not applicable for raw material/bulk product destined for further handling in a
+packinghouse or processing facility.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of missing or incomplete tracking information on the packaging.
+
+Major deficiency (3 points) if:
+· Numerous instances of missing or incomplete tracking information on the packaging.
+
+Non-compliance (0 points) if:
+· Fundamental failure to label packaging with complete tracking information.
+· There is no labeling taking place on packaging.
+
+4.07.02b: If product is being packed in the growing area and individual packing units are used
+(e.g., clamshells, bags, baskets or others), are these individual units identified with the harvesting
+date and growing location information on them? This question does not apply for raw
+material/bulk product destined for further handling in a packinghouse or processing facility.
+Total Points 0: Information gathering question. For finished goods packed in the growing area, there
+should be date coding on each individual unit package, as clamshells, bags, baskets or others. The
+information should be enough to identify the date of harvest and the exact location of where the product
+was grown. This question is not applicable for raw material/bulk product destined for further handling in a
+packinghouse or processing facility.
+
+Reference:
+https://www.producetraceability.org/
+
+On-site Storage
+
+4.08.01: Is there an on-site storage for items and/or equipment used in the harvesting process
+(e.g., packing material, cartons, clamshells, re-usable containers, disinfectants, grading/packing
+tables, RPCs, harvesting equipment, etc.)?
+Total points 0: Information gathering question. This question refers to an on-site storage for items and/or
+equipment used in the harvesting process (e.g., packing material, cartons, clamshells, re-usable
+containers, disinfectants, grading/packing tables, RPCs, harvesting equipment, etc.).
+
+4.08.01a: Is on-site storage for items and/or equipment used in the harvesting process (e.g.,
+packing material, cartons, clamshells, re-usable containers, disinfectants, grading/packing tables,
+RPCs, harvesting equipment, etc.) clean and secure?
+Total compliance (10 points): On-site storage (including inside vehicle storage) for items and/or
+equipment used in the harvesting process should be secure, clean, and maintained properly to reduce
+pest and foreign material contamination.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance of unclean and/or unsecure storage areas.
+
+Major deficiency (3 points) if:
+· Numerous instances storage of unclean and/or unsecure storage areas.
+
+PGFS-R-064                                    Page 49 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Non-compliance (0 points) if:
+· Fundamental failure to maintain a clean and secure storage area.
+
+4.08.02: Are packaging, containers, and harvesting equipment stored to prevent cross
+contamination (this includes RPCs, cartons, clamshells, bins, and other harvesting type of
+containers that are single use or reusable, etc.)?
+Total compliance (5 points): Packaging, containers, etc., should be stored away from farm chemicals,
+sanitizers, fertilizers, etc. All packaging materials should be stored off the ground (i.e. on racks, pallets,
+shelves, etc.). Cartons and other packing materials should be properly protected during storage to
+prevent contamination.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance of improper storage.
+
+Major deficiency (1 point) if:
+· Numerous instances of improper storage.
+
+Non-compliance (0 points) if:
+· Fundamental failure to prevent cross contamination during storage.
+
+4.08.03: Are there cleaning logs for the storage area(s)?
+Total compliance (5 points): All storage areas should have a sanitation program in place and there should
+be records of the cleaning and sanitation activities performed, including areas cleaned, dates and person
+performing the activity.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance of missing or incomplete records.
+
+Major deficiency (1 point) if:
+· Numerous instances of missing or incomplete records.
+
+Non-compliance (0 points) if:
+· Fundamental failure to keep records.
+· There are no records.
+· There is no sanitation program in place.
+
+4.08.04: Is there a documented and effective pest control program in place for fixed location
+storage areas?
+Total compliance (15 points): There should be a documented and effective, proactive pest control
+program (in-house or contracted) to control rodents (also insects, reptiles and birds where necessary) and
+prevent infestation in all fixed (permanent/dropped in place) storage areas. There should be a written
+scope of the program, indicating target pests and frequency of checks.
+
+Potentially useful website:
+National Pest Management Standards, Pest Management Standards for Food Plants
+http://npmapestworld.org/default/assets/File/2016%20Pest%20Management%20Standards%20for%20Fo
+od%20Processing-Electronic.pdf
+
+Minor deficiency (10 points) if:
+· Single/isolated omission(s) in the written program.
+
+Major deficiency (5 points) if:
+· Numerous omissions in the written program,
+
+Non-compliance (0 points) if:
+
+PGFS-R-064                                    Page 50 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+· There is no documented pest control program in place for fixed location storage area(s).
+· Written program does not resemble what is happening in practice at all.
+
+4.08.04a: Are pest control devices located away from items and/or equipment used in the
+harvesting process (e.g., packing material, cartons, clamshells, re-usable containers,
+disinfectants, grading/packing tables, RPCs, harvesting equipment, etc.), and poisonous bait
+stations are not used inside the storage areas?
+Total compliance (5 points): Pest control devices should be located away from items or equipment with
+food contact surfaces to prevent any physical or microbial contamination. Poisonous bait stations should
+not be used inside any storage areas. Care should be taken to place pest control devices in such a
+manner that they do not pose a threat of contaminating product, packing or raw materials. This includes
+the following restrictions:
+· There should be no domestic fly sprays used within the storage areas.
+· Block bait or soft, pouch-style bait as opposed to grain and pellet bait should be used (except for the
+
+     external use of National Organic Program approved materials).
+· If used, insect light traps (ILTs), electrical fly killers (EFKs) or pheromone traps should be regularly
+
+     cleaned out (kept free from a build-up of insects and debris). Sticky type ILTs should be monitored at
+     least monthly and the sticky board replaced if ineffective. ILTs that use sticking as opposed to
+     zapping methods (EFKs) are preferred.
+· If used, insect light traps or electric fly killers should not be placed above or in close proximity (10
+     feet,
+     3 meters) to product, food contact surfaces, equipment, or packaging material.
+· If used, insect light trap bulbs should be replaced at least every 12 months (this should be recorded),
+     or as more frequently if directed by manufacturers.
+· No fly swatters should be evident in the storage areas.
+· No bait should be found outside of bait stations.
+· If used, snap traps should be placed inside a trap box and should not use allergen containing baits
+     (e.g., peanut butter). Any snap traps inside stations should be checked at least weekly and checks
+     recorded.
+· Any indoor use of chemicals e.g., knock down sprays should be done without contaminating food,
+     packaging, and equipment (see the next bullet point regarding poisonous baits). All applications
+     should be recorded properly (scored in 4.08.04h), detailing where and when the application occurred,
+     and any special methods used to avoid contamination. All applications should be made by
+     experienced, licensed operators following any and all legal requirements and best practices.
+· The use of poisonous bait within the storage area should not occur. If this use is required, then the
+     area that is being trapped should have all the product and packaging removed prior to the use of the
+     poisonous baits.
+
+Minor deficiency: (3 points) if:
+· Single/isolated instance(s) of improperly positioning or maintaining electrical fly traps or insect light
+
+     traps.
+· Single/isolated instance(s) of a fly swatter found in growing or storage area.
+· Single/isolated instance(s) of grain or pellet baits being used in an outside bait station (external trap).
+· Single can of fly spray (or other insecticide) found in the growing/storage areas (including
+
+     chemical/sanitation storage).
+· Snap traps being used outside the operation (not presenting risk to product or packaging) and are
+
+     lacking weekly inspection logs or being used for routine monitoring (as opposed to short term
+     eradication).
+· Single/isolated instance(s) of any other issues noted on the compliance criteria.
+
+Major deficiency (1 point) if:
+· Numerous instances of improperly positioning or maintaining electrical fly traps or insect light traps.
+· Numerous instances fly swatters found in growing or storage area.
+· Numerous instances of grain or pellet bait being used in an outside bait station (external device).
+
+PGFS-R-064                                    Page 51 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+· More than one can of fly spray (or other insecticide) found in the growing/storage areas (including
+     chemical/sanitation storage).
+
+· Single instance of bait/poison found outside of a device.
+· Snap traps being used for a short-term eradication process with weekly inspection logs but using an
+
+     allergenic bait.
+· Numerous instance(s) of any other issues noted on the compliance criteria.
+
+Non-compliance (0 points) if:
+· More than one instance of bait/poison found outside of a device.
+· More than one major deficiency.
+· Numerous (more than three snap traps) being used inside the operation and are lacking weekly
+
+     inspection logs or being used for routine monitoring (as opposed to short term eradication).
+· The use of poisonous rodent bait within storage areas (buildings) should not occur. If this use is
+
+     required, then the area that is being trapped should have all the product and packaging removed prior
+     to the use of the poisonous baits.
+
+4.08.04b: Are pest control devices maintained in a clean and intact condition and marked as
+monitored (or bar code scanned) on a regular basis?
+Total compliance (5 points): All pest control devices should be maintained clean, in working condition and
+replaced when damaged in order to accomplish their intended use. Date of inspections should be posted
+on the devices (unless barcode scanned), as well as kept on file. For digital monitoring systems, auditors
+should review time-stamped digital monitoring records and periodic physical inspection records to ensure
+program is working as intended.
+The following criteria should be met:
+· If non-toxic glue boards are used, they should be located inside a trap box or PVC piping, etc., and
+
+     changed frequently ensuring that the surface has a shiny glaze with no build-up of dust or debris.
+· If cardboard traps are used (interior and dry areas only) they should be in good repair and marked as
+
+     monitored (see below).
+· If mechanical wind-up traps are used, they should be wound. Winding is checked by triggering the
+
+     spring device to operate the trap. The trap should be rewound after testing.
+· Approximately 10% of the traps, glue boards and bait stations should be checked by the auditor.
+· Record of service verification such as stickers, cards or bar codes should be on the inside of the
+
+     station and on bottom of glue boards requiring the station to be opened to record data (date and initial
+     of inspector) or to scan. External labeling is allowed on traps with a clear window on top.
+· Bait and other poisons should be controlled and applied by a licensed applicator.
+· Bait in bait stations should be secured inside the bait station on a rod above the floor of the station, or
+     the bait station is designed so bait cannot be removed by a rodent or "float away" in a heavy rain. Bait
+     stations should be tamper resistant. A key should be made available at the time of the audit.
+· No bait stations should be missing entire bait.
+· No old or moldy bait observed.
+· Bait stations and traps should not be fouled with weeds, dirt, and other debris.
+· External pest control devices should be checked at least monthly­ these checks to be recorded.
+· Internal multiple-catch devices should be checked at least weekly ­ these checks to be recorded.
+· Any snap traps used should be inside stations and should be checked at least weekly ­ these checks
+     to be recorded.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of traps, bait stations and glue boards not working properly or adequately
+
+     maintained (check cards, cleanliness, etc.)
+· Single/isolated instance(s) of unsecured bait inside bait stations.
+· Single/isolated instance(s) of bait stations having moldy bait.
+· Single/isolated instance(s) of any other issues noted on the compliance criteria.
+
+Major deficiency (1 point) if:
+
+PGFS-R-064                                    Page 52 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+· Numerous instances of traps, bait stations or glue boards not working properly or adequately
+     maintained (check cards, cleanliness, etc.)
+
+· Numerous instances of unsecured bait inside bait station.
+· Numerous instances of bait stations having moldy bait.
+· Numerous instance(s) of any other issues noted on the compliance criteria.
+
+Non-compliance (0 points) if:
+· Widespread failure to maintain the pest control devices.
+· Widespread failure to monitor the pest control devices.
+
+4.08.04c: Are pest control devices adequate in number and location?
+Total compliance (5 points): The location of the devices should be based on a risk assessment of the
+storage area and surrounding area.
+· Multiple catch traps or glue boards in stations or PVC pipes should be positioned between 20 to 40
+
+     feet (6 to 12 meters) intervals around the inside perimeter of all rooms. Spacing might be affected by
+     the structure, storage and types activities occurring.
+· Snap traps in stations may be used if necessary in certain areas e.g., in areas with high dust levels
+     (e.g., potatoes, onions), covered breezeways or box mezzanines where large traps or glue boards
+     are not practical. Snap traps in stations should be positioned between 20 to 40 feet (6 to 12 meters)
+     intervals though spacing may be affected by the structure, storage and types activities occurring.
+· Inside the storage area, traps should be placed within 6 feet (about 2 meters) of both sides of all
+     outside exit/entry doors. This includes either side of the pedestrian doors. Effort should be made to
+     avoid placing traps on curbing.
+· Bait stations or multiple-catch traps should be positioned between 50-100 feet (15-30 meters)
+     intervals around the exterior of the building perimeter and within 6 feet (about 2 meters) of both sides
+     of all outside exit/entry doors, except where there is public access (public access is defined as access
+     easily gained by the general public such as parking lots or sidewalks, school areas or areas of
+     environmental concern). Device placement might be affected by the structure, external storage and
+     type of area (urban, rural etc.).
+· Bait stations (where used) should be positioned within 100 feet (30 meters) of structures. This may
+     impact fence line/property boundary baiting i.e. bait stations must be within 100 feet (30 meters) of
+     buildings and at 50-100 feet (15-30 m) intervals. If an exterior fence line/property perimeter program
+     is utilized at distances greater than 100 feet (30 m) from buildings, then non-bait traps (e.g. multiple-
+     catch traps) should be positioned at 50-100 feet (15-30 m) intervals along perimeter. Auditor should
+     check label for bait and ensure compliance to distance requirements on label.
+
+https://www.epa.gov/rodenticides/restrictions-rodenticide-products#types
+http://npmapestworld.org/default/assets/File/2016%20Pest%20Management%20Standards%20for%20Fo
+od%20Processing-Electronic.pdf
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of devices positioned at longer intervals than mentioned above.
+· Single/isolated instance(s) of devices missing or not within 6 feet (about 2 meters) of exit/entry doors.
+
+Major deficiency (1 point) if:
+· Numerous instances of devices positioned at longer intervals than mentioned above.
+· Numerous instances of devices missing or not within 6 feet (about 2 meters) of exit/entry doors.
+
+Non-compliance (0 points) if:
+· Device positioning is such that the number of devices is nowhere near adequate in terms of spacing
+
+     and coverage of entry points.
+· Device not located in numerous areas that should be trapped.
+
+4.08.04d: If storage areas are fully enclosed, are measures taken to prevent pest entry?
+
+PGFS-R-064                                    Page 53 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+Total compliance (5 points): Fully enclosed storage buildings should have measures in place to prevent
+pest entry (i.e. pest proof doors, screened openings, etc.). Main doors should be kept closed unless in
+use.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of doors left open.
+· Single/isolated instance(s) of a damaged pest proof door, screened opening or any other preventive
+
+     measure taken.
+
+Major deficiency (1 point) if:
+· Numerous instances of doors left open.
+· Numerous instances of damaged pest proof doors, screened openings or any other preventive
+
+     measures taken.
+
+Non-compliance (0 points) if:
+· Fundamental failure to prevent pest entry.
+
+4.08.04e: Are all pest control devices identified by a number or other code (e.g., barcode)?
+Total compliance (5 points): The devices are numbered and a coding system is in place to identify the
+type of device on a map. Auditor should check that the map numbering and device positions, match
+reality. All internal rodent devices, should be located with a wall sign (that states the device number and
+that it is a pest control device identifier), in case they are moved.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) pest control devices having no visible numbers on them or on the station
+
+     location.
+· Single/isolated instance(s) of missing wall signs.
+· Wall signs are not unique i.e. not clear that they are trap identifiers e.g. just a number.
+
+Major deficiency (1 point) if:
+· The devices are marked on the map but the devices themselves are not numbered or the numbering
+
+     sequence is incorrect.
+· Numerous instances of pest control devices having no visible numbers on them or the station location
+· Numerous instances of missing wall signs.
+
+Non-compliance (0 points) if:
+· None of the devices are numbered.
+
+4.08.04f: Are all pest control devices effective and bait stations secured?
+Total compliance (5 points): All devices should be correctly orientated with openings parallel with and
+closest to walls. Bait stations should be secured to minimize movement of the device and be tamper
+resistant. Bait stations should be secured with a ground rod, chain, cable or wire, or glued to the
+wall/ground, or secured with a patio stone to prevent the bait from being removed by shaking, washed
+away, etc. Bait stations should be tamper resistant through the use of screws, latches, locks, or by other
+effective means. Note ­ only devices containing bait are required to be secured. Live traps used indoors
+are not required to be secured to the ground; auditee may use metal "sleeves" or similar solutions to
+prevent displacement, crushing by forklifts, etc. Glue boards should be inside a device (e.g. trap box,
+PVC pipe, etc.) rather than loose on the floor. Auditor discretion applies to traps placed on curbing.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of bait stations not being secured.
+· Single/isolated instance(s) of devices "out of position" or incorrectly orientated.
+
+Major deficiency (1 point) if:
+· Numerous instances of bait stations not being secured.
+
+PGFS-R-064                                    Page 54 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+· Numerous instances of devices "out of position" or incorrectly orientated.
+
+Non-compliance (0 points) if:
+· Widespread failure to secure bait stations.
+· Widespread failure to properly position interior traps.
+
+4.08.04g: Is there a schematic drawing/plan of the storage area showing numbered locations of all
+pest monitoring devices, both inside and outside the storage area?
+Total compliance (5 points): A schematic drawing or map is on file, current and details internal and
+external traps. All devices should be numbered and clearly identified on the map. Map numbers should
+match physical placements. The document should be accurate, dated and should show the type of
+device.
+
+Minor deficiency (3 points) if:
+· The location map does not distinguish between the different types of devices.
+· Single/isolated instance(s) of trap(s) being missed off the plan.
+· Single/isolated instance(s) of trap(s) numbering being incorrect.
+
+Major deficiency (1 point) if:
+· Numerous instances of traps being missed off the plan.
+· Numerous instances of traps numbering being incorrect.
+
+Non-compliance (0 points) if:
+· No map available for review.
+· Majority of traps are not included on the map.
+· Map does not represent actual physical placement of traps at all.
+
+4.08.04h: Are service reports created for pest control checks detailing inspection records,
+application records, and corrective actions of issues noted (in-house and/or contracted)?
+Total compliance (5 points): Service reports from the contract pest control company should be available
+for review if pest control is contracted out. In-house inspection records should be available for review if
+pest control is conducted in-house. Records should include services performed, date of service,
+chemicals used (see below), signs of activity with corrective actions, and trend reports. Where chemicals
+are used, records should detail:
+
+     · Product name of materials applied
+     · The EPA or product registration number (as required by law)
+     · Target pest
+     · Rate of application (percent of concentration)
+     · Location or site of application
+     · Method of application (if applicable)
+     · Amount of pesticide used
+     · Date and time of application
+     · Signature of applicator
+     · Corrective actions
+     · Trend reports
+
+National Pest Management Standards, Pest Management Standards for Food Plants
+http://npmapestworld.org/default/assets/File/2016%20Pest%20Management%20Standards%20for%20Fo
+od%20Processing-Electronic.pdf
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of missing or incomplete information/records e.g. pest activity, trap
+
+     replacement, etc.
+
+PGFS-R-064                                    Page 55 of 56  April 8, 2022
+©2021 Primus Group, Inc. All rights reserved                 Rev. 3
+
+· Single/isolated instance(s) where contracted pest operators action points have not been
+     acknowledged and completed.
+
+· Single/isolated instance(s) of not noting chemical use details.
+
+Major deficiency (1 point) if:
+· Numerous instances of missing or incomplete information/records e.g. pest activity, trap replacement,
+
+     etc.
+· Numerous instances where contracted pest operators action points have not been acknowledged and
+
+     completed.
+· Numerous instances of not noting chemical use details.
+
+Non-compliance (0 points) if:
+· No service reports.
+· Fundamental failure to maintain service reports.
+· Fundamental failure to record chemical use details.
+
+Document Revision History
+
+Date        Rev.#             Description
+2/18/21        0
+12/9/21        1              Initial
+12/28/21       2
+                              Changes to question 4.06.01a
+04/08/22                   3
+                              Removed text "If no, go to 4.05.16" from question 4.05.15
+                              Question 4.03.01 added the text "Training provided and associated records
+                              should meet all local and national regulations". Question 4.07.02b changed
+                              category from Essential to Information gathering question, score changed
+                              from 10 points to 0; question 4.04.05 & 4.04.06 changed website link
+
+PGFS-R-064                                    Page 56 of 56  April 8, 2022
+

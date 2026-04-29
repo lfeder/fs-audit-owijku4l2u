@@ -1,0 +1,976 @@
+       PrimusGFS Audit
+              HACCP
+
+   (Module 6) Guidelines
+
+Used in conjunction with the PrimusGFS v3.2 audit
+
+                        PrimusGFS (owned by Azzule Systems, LLC)
+                                       3030 Industrial Parkway
+                                       Santa Maria, CA 93455
+©2021 Primus Group, Inc. All rights reserved                       Rev. 0
+
+                                                            Index    3
+                                                                     3
+Audit Execution                                                      4
+Scoring System                                                       5
+Automatic Failure                                                    8
+Documentation Requirements                                           8
+Module 6: HACCP                                                      10
+Preliminary Steps                                                    16
+Development of the HACCP Plan
+Execution of the HACCP Plan on the Plant Floor
+
+PGFS-R-066  Page 2 of 19                                           February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                Rev. 0
+
+This document is for guidance purposes only and in no way replaces any regulatory legislation or
+other legal guidance documentation or viewed as giving legal advice. PrimusGFS (the Scheme),
+owned by Azzule Systems LLC, accepts no liability for the contents of this document, nor how an
+individual chooses to apply this document. This document is owned by Azzule Systems, LLC and,
+as such, must not be copied in whole or in part for any other use. Under no circumstances can
+this document be copied by or to any person without Azzule Systems' expressed permission.
+
+These guidelines help interpret/support the principles, requirements and expectations of the
+PrimusGFS v3.2 Modules 1, 2, 3, 4, 5, 6 and 7 as noted in the Scheme normative documents. These
+guidelines are neither exhaustive nor exclusive and detail minimum requirements only by means of
+statements related to audit questions and expectations. There will be variations in applicability to an
+operation based on the process(es) and commodities involved. Auditors and auditees should interpret the
+questions and criteria in different situations, with the food safety and risk minimization being the key
+concerns.
+
+The operation's practices, policies and procedures should be pertinent to the situation at hand and be
+able to stand up to any challenge by an auditor or other relevant interested party (including law
+enforcement). Where laws, customer requirements and specifications, commodity specific guidelines
+and/or best practice recommendations exist and are derived from a reputable source, these practices and
+parameters should be followed if they present a higher level of compliance than those included in the
+audit scheme.
+
+Website links shown in this document are there to aid understanding and provide assistance by way of
+example (link listings are not exhaustive). These links are not a sign of endorsement by Azzule.
+Furthermore, Azzule Systems accepts no liability for the content of these links.
+
+Please be aware that there is additional information on the PrimusGFS website including the audit
+checklist templates. The PrimusGFS website also has access to the official PrimusGFS General
+Regulations, which explain the overall scheme scoring systems and other details of the scheme.
+
+The following text is a modified excerpt from the PrimusGFS General Regulations v3.2. It is provided
+here as an introduction to the audit notes. For full and current text please refer to the most recent version
+of the PrimusGFS General Regulations at http://www.primusgfs.com/documents.aspx.
+
+Audit Execution
+
+The audit should be performed using the most recent version of the PrimusGFS normative documents.
+The PrimusGFS Standard is divided into seven Modules:
+
+· Module 1 ­ Food Safety Management System
+· Module 2 ­ Farm
+· Module 3 ­ Indoor Agriculture
+· Module 4 ­ Harvest Crew
+· Module 5 ­ GMP
+· Module 6 ­ HACCP
+· Module 7 ­ Preventive Controls
+
+Each Module is divided into sections, related to the specific Module and each section includes questions
+that detail the requirements for the specific section.
+
+Scoring System
+
+For all Modules, the amount of deficiencies and the associated risks have to be considered to assign the
+severity of the finding, which can be Minor Deficiency, Major Deficiency and Non-Compliance. When no
+
+PGFS-R-066                                    Page 3 of 19  February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                                         Rev. 0
+
+deficiencies are found, a Total Compliance is given. The possible points for the questions in each Module
+are listed in the following table:
+
+                              Scoring System for Questions
+
+            Possible answer                   Possible Points for the Question
+
+            Total compliance                  15 points 10 points 5 points 3 points
+
+            Minor deficiency                  10 points 7 points 3 points 2 points
+            Major deficiency                  5 points 3 points 1 point 1 point
+
+            Non-compliance                    0 points 0 points 0 points 0 points
+
+            Not applicable                    0 points 0 points 0 points 0 points
+
+Detailed compliance requirements are noted for each question throughout this document, but some
+general statements are described below. These statements are superseded by the specific question
+compliance criteria and users should be aware that some questions do not follow the general statements
+below (e.g., automatic failure questions).
+
+        Answer                       Compliance for Questions
+Total compliance
+Minor deficiency                                                  Criteria Used
+                  To meet the question and/or compliance criteria in full.
+Major deficiency
+                  To have minor deficiencies against the question and/or compliance criteria.
+Non-compliance    To have single or isolated non-severe deficiencies (usually up to three) against the
+Not applicable    question and/or compliance criteria.
+                  To have covered most of the question compliance criteria, but not all.
+
+                  To have major deficiencies against the question and/or compliance criteria.
+                  To have numerous non-severe deficiencies (usually more than three) against the
+                  question and/or compliance criteria.
+                  To have single or isolated severe deficiencies against the question and/or compliance
+                  criteria.
+                  To have covered some of the question compliance criteria, but not most of it.
+
+                  To have not met the question and/or compliance criteria requirements at all.
+                  Having fundamental deficiencies against the question and/or compliance criteria
+                  (severe or non-severe issues).
+
+                  The requirement described in the question is not applicable for the operation being
+                  audited. Justification should be provided in the auditor's comments. Be aware that
+                  there are some questions that do not allow a non-applicable response.
+
+Automatic Failure
+
+There are some questions that if down scored will lead to an automatic failure and an overall score of 0%
+for the corresponding Module. On being immediately informed of the automatic failure by the auditor during
+the audit, the auditee has the option to have the auditor continue the audit or to have the audit halt at that
+point (all charges will apply). The auditor should explain the advantages of finishing the audit, including the
+
+PGFS-R-066                                    Page 4 of 19                           February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                Rev. 0
+
+ability for the auditee to learn of other potential non-conformances and to show their buyers the status of
+their food safety system despite the automatic failure issue.
+
+Special Circumstances for Not Certifying
+
+Please also note, that under special circumstances and upon finding serious food safety risks, a "not
+certified" decision can be given. The auditee should be immediately informed of the automatic failure by
+the auditor during the audit. The auditee has the option to have the auditor continue the audit or to have
+the audit halt at that point (all charges will apply).
+There are other Special Circumstance that are not technical in nature. Examples of these include
+detection of deliberate illegal activities, such as deliberate mislabeling, discovery of falsified records,
+attempting to bribe an auditor/CB personnel, threatening behavior towards an auditor/CB personnel, etc.
+Please refer to the General Regulations for further details.
+
+Audit Termination
+
+Once an audit has been started, should the auditee wish to stop the audit for any reason, the auditor will
+complete the report for as many questions as they were able to verify. PrimusGFS audits cannot be
+converted into a pre-assessment audit once the audit has been started. If an audit is terminated early,
+questions that the auditor was unable to verify will be marked as a non-compliance and will receive a
+score of zero. For questions unable to be verified, the auditor will indicate that the audit was terminated at
+the request of the auditee before the auditor could verify whether or not the audit conformed to the
+compliance criteria of the question. A report will be created on the database and issued, and all charges
+will apply.
+
+Documentation Requirements
+
+Organization's Food Safety Systems:
+
+When an Organization and its associated Operations are being audited, the auditor is checking the
+systems (SOP's, policies, etc.) and the implementation of these systems throughout the visual inspection.
+
+While auditees often create and implement their own systems, they can also use systems that have been
+created by other entities, for example, their customers' technical manager, their consultants, etc., or a
+combination of resources. The Organization can create their own SOPs, or in other instances, can utilize
+SOP templates provided by other entities. As long as the systems meet the requirements of the
+PrimusGFS questions and expectations and these systems are being implemented properly, the auditee
+should receive full points for their efforts. The auditee is responsible for ensuring that the systems they
+use are reviewed, maintained and up-to-date. If the auditor detects any inconsistency, it will result in a
+down score.
+
+New PrimusGFS Auditees/First-Time PrimusGFS Auditees
+
+· In operations that operate for more than three consecutive months throughout the year ­
+     auditee should have at least three months of documentation (i.e. records of monitoring, training,
+     meetings, etc.) available for review. If the auditee has less than three months of most of their
+     documentation available for review, a pre-assessment audit is strongly advised. If the auditee has
+     less than three months of most of their documentation available for review and decides to have a
+     regular scheduled audit, they should be aware that they cannot receive full compliance for
+     paperwork questions relating to monitoring and that the down score will be based on the
+     amount of paperwork available.
+
+· In short season operations that operate for less than three consecutive months throughout
+     the year - auditee should have at least three months of documentation (i.e. records of monitoring,
+     training, meetings, etc.) available for review (this may include last season's documentation). Where
+     an operation does not have three months of records available (e.g., they are in operation for one
+     month out of the year), the auditee should have at least the previous season's records available for
+
+PGFS-R-066                                    Page 5 of 19  February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 0
+
+review. If the auditee has less than three months of most of their documentation available for review
+and decides to have a regular scheduled audit, they should be aware that they may not receive full
+conformance for paperwork questions relating to monitoring and that the down score will be
+based on the amount of paperwork available.
+
+Existing PrimusGFS Auditees
+
+· In operations that operate for more than three consecutive months throughout the year ­
+     auditee should have documentation available from the date of the prior audit.
+
+· In short season operations that operate for less than three consecutive months throughout
+     the year ­ auditee should have at least three months of documentation and documentation at least
+     since the last audit (which includes the last season). Where an operation does not have three months
+     of records available (e.g. they are in operation for one month out of the year), the auditee should have
+     at least the previous season's records available for review.
+
+New PrimusGFS Auditee        Operates <three                 Operates >three months/year
+Existing PrimusGFS Auditee   months/year                     Three months of records (may include
+                             Three months of records         last season's records).
+                             (may include last season's
+                             records). Where an              Records since the last audit.
+                             operation does not have
+                             three months of records
+                             available (e.g., they are in
+                             operation for one month out
+                             of the year), the auditee
+                             should have at least the
+                             previous season's records
+                             available for review.
+                             Records at least since the
+                             last audit (or longer) to meet
+                             the minimum requirement of
+                             three consecutive months of
+                             records.
+
+Visual versus Verbal Confirmation
+
+Visual confirmation is the default method of auditing, whether on the visual inspection portion or the
+paperwork section. Scores and comments are assumed to have been visually confirmed, unless stated
+otherwise. Verbal confirmation should be the exception to the rule and, if auditing properly, these should
+be rarely used. If a verbal confirmation is accepted, the auditor should write this in the comments section
+of the report for that specific question.
+
+How to Use Point Assignment Guidelines
+
+The following sections of this guidance manual are designed to help auditors choose the right score for
+each question, thereby helping to ensure consistency. This document does not cover all situations and is
+intended to be a guideline, as opposed to a rule. Auditors are expected to follow the guidelines as much
+as possible, but it is understood that there will be situations where an auditor should use their discretion.
+If an auditor does have to make a judgment call and/or tackle a situation not covered by this manual, then
+the auditor should note the circumstances in the audit report with full justifications. (The auditor should
+also forward these details to their Certification Body and Azzule Systems, LLC in a separate note, so that
+this can be reviewed for future versions of the manual.)
+
+In order to be consistent with the voluntary nature of requesting a third-party audit, and in order not to
+seem to be a legal document, the requirements within the questions are written as "should" and can be
+
+PGFS-R-066                                    Page 6 of 19   February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                Rev. 0
+
+scored against. In other questions that use the term "ideally", these statements cannot be scored against,
+but give the auditee an opportunity for improvement.
+
+Notes in "red" are where the questions and/or compliance criteria have changed significantly since the
+previous version. Many of the changes are to improve clarification, but some are changes to the actual
+requirements. Please read carefully to see if these changes impact your particular situation.
+
+PGFS-R-066                                    Page 7 of 19  February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                Rev. 0
+
+Module 6: HACCP
+
+Preliminary Steps
+
+6.01.01: Is there a team responsible for the HACCP program at the operation, with an assigned
+leader for the development, implementation and on-going maintenance of the HACCP system?
+Total compliance (10 points): There should be a formally identified group of people in charge of
+development and maintenance of the Hazard Analysis Critical Control Point (HACCP) program along with
+their corresponding responsibilities. The group should be comprised of individuals from different areas of
+the company such as top management, quality management, production, maintenance, sanitation, QC,
+etc. Consider including resources from outside e.g. suppliers, buyers, consultants, trade association,
+universities, extension office, etc. One member of the team should be designated the HACCP
+Coordinator (leader). Where a consultant has been designated the HACCP coordinator, it should be
+evident that they are present at all meetings and actively involved in the program. The HACCP team
+should meet at least quarterly (ideally monthly). If the company is too small (less than 20 people) to have
+a HACCP team, there should still be one individual designated as the HACCP coordinator. That individual
+is responsible for the implementation of the HACCP program along with any changes and updates to the
+HACCP program.
+
+Minor deficiency (7 points) if:
+· Team has been put together but lacks key representation e.g. maintenance, sanitation.
+· Only three meetings have occurred in the last 12 months (for an all year-round operation)
+
+Major deficiency (3 points) if:
+· The team or individual is assigned but does not meet regularly to review the HACCP program.
+· A large company, but only a single individual has been designated to develop the operational HACCP
+
+     plan.
+· Two or less meetings have occurred in the last 12 months (for an all year-round operation).
+
+Non-compliance (0 points) if:
+· The HACCP team or the individual assigned to manage the HACCP program has not kept the
+
+     program updated.
+· There is no HACCP team or designated HACCP Coordinator.
+
+6.01.02: Is there documented evidence that the HACCP team members have been trained on
+HACCP principles?
+Total compliance (15 points): The HACCP Coordinator should have a certificate of formal HACCP training
+from a recognized organization, institution or trainer i.e. certification from a HACCP training course
+accredited by the International HACCP Alliance or equivalent (e.g. university provided courses) providing
+formal training, taken within the last 5 years. Preventive Control Qualified Individual (PCQI) training can
+also be accepted, as long as it is equivalent to the International HACCP Alliance training (covers the 7
+Codex Alimentarius HACCP principles and the 12 HACCP implementation steps). HACCP team members
+should have thorough HACCP training (in-house or external within the last 5 years) given by someone
+who has HACCP experience and has attended an accredited International HACCP Alliance course (or
+equivalent). Records of training should be kept and certificates, where relevant.
+http://www.haccpalliance.org/sub/index.html
+
+Minor deficiency (10 points) if:
+· Not all HACCP team members are trained in HACCP (but majority of HACCP team members have
+
+     been trained).
+· Management team members have not received HACCP training.
+· Single/isolated instance(s) of omissions or incorrect data in the records.
+
+Major deficiency (5 points) if:
+
+PGFS-R-066                                    Page 8 of 19  February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                Rev. 0
+
+· HACCP Coordinator has not completed a formal certified HACCP training course within the last 5
+     years.
+
+· Numerous instances of omissions or incorrect data in the records.
+
+Non-compliance (0 points) if:
+· No training records for HACCP team members.
+
+6.01.03: Does a product description exist for the products produced?
+Total compliance (10 points): Product description(s) should clearly describe the product and its
+distribution and be used to determine if specific controls are important throughout the distribution chain.
+The description should indicate the product(s) name, composition (ingredients), type(s) of packaging,
+shelf-life and method of storage and distribution. Information should include intended use i.e. does it need
+washing, peeling, cooking prior to consumption, is it RTE, etc., by the consumer, and reflect the label of
+the product (unit packed product). Intended use should include any potential for abuse or misuse of the
+produce (e.g. eating raw when product is intended to be cooked). Product description(s) should list all
+ingredients including allergens, define and indicate details regarding whether the item is perishable or
+long life, if there are any special storage and distribution requirements and any important food safety
+characteristics that can influence the growth of pathogens (e.g., pH, water activity), and labeling
+requirements including allergen information and any other legal requirements. Product description(s)
+should define the potential risk associated with the product, materials used and also who the intended
+customers are (general public, restricted to certain sectors, e.g. people not suffering from a certain
+allergy, diabetic issues, other at-risk groups, etc.). The product description can be generic if the products
+and processes are similar. Where the products and/or processes are not similar to each other, specific
+product descriptions are required.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of errors or omissions on the product descriptions(s).
+
+Major deficiency (3 points) if:
+· Numerous instances of errors or omissions on the product descriptions(s).
+· In an operation with multiple products/processes that are not similar, a single product description is
+
+     not available, but the majority are available
+
+Non-compliance (0 points) if:
+· No product descriptions exist.
+· Fundamental errors or omissions on the product description(s).
+· In an operation with multiple products/processes that are not similar, more than one product
+
+     description is not available.
+
+6.01.04: Has the process(es) been flow charted in sufficient detail to completely describe the
+process or product handling/processing steps?
+Total compliance (10 points). There should be process flow charts for each HACCP plan. The flow chart
+should show each step of the process(es) under control of the operation (from receiving through final
+storage and shipping), so that the hazard analysis can be completed properly. The flow chart is used to
+identify any and all steps throughout the process where there is a potential for a food safety hazard to be
+introduced or for a product safety control to be implemented. The flow chart should indicate all raw
+materials, ingredients and materials used in all preparation steps, all equipment used, blending steps,
+processing steps, rework, by-product, returned products and products destined for further processing,
+packaging materials (carton and unit packaging) and packaging equipment. All inputs should be included,
+such as packaging, water source (e.g. city or well), ice, anti-microbials, fungicides, etc. Each step should
+show any holding times, temperature regimes, etc., at appropriate process steps. For example, a step
+termed "packing" in an apple packinghouse is incorrect since it omits to detail many of the processes, e.g.
+dump tanks, selections, recirculated product wash/rinse steps, single-pass wash/rinse steps, waxers,
+fungicide, drying, packing the boxes and coding. In operations with multiple products but similar
+processes, a single process flow may be used. Where there are multiple products but with different
+
+PGFS-R-066                                    Page 9 of 19  February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 0
+
+processes then individual process flows are required. Diagram should show re-work processes and when
+product is diverted to be used for other purposes. Process flows can be augmented by written process
+descriptions (where helpful).
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of errors or omissions on the process flow chart(s).
+
+Major deficiency (3 points) if:
+· Numerous instances of errors or omissions on the process flow chart(s).
+· In an operation with multiple products/process that are not similar, a few of the flow charts are not
+
+     available, but the majority are available
+
+Non-compliance (0 points) if:
+· Fundamental errors on the flow chart(s).
+· No process flow chart(s).
+· In an operation with multiple products/processes that are not similar, many of the flow charts are not
+
+     available.
+
+6.01.05: Is there documented evidence that the flow chart(s) been verified on-site?
+Total compliance (10 points): The steps in the flow chart are used to organize the hazard analysis. Flow
+diagrams should be verified on-site by the food safety team and the team should make any changes
+required to the flow diagram. Any significant changes to the process must be accurately reflected in the
+flow diagram and evaluated to determine if the changes have an impact on the hazard analysis and CCPs
+in place. The flow chart(s) is signed and dated by the HACCP coordinator to confirm it reflects the
+process at different moments in time (auditor should confirm how and when flow chart(s) were verified)
+and there are no missing steps. Insufficient detail, missing steps, etc., will undermine the hazard analysis
+process (6.02.01). Any inaccuracies in the flow diagram should be scored in 6.01.04.
+
+Minor deficiency (7 points) if:
+· Single instance of a flow chart not being verified.
+
+Major deficiency (3 points) if:
+· More than one instance of a flow chart not verified.
+
+Non-compliance (0 points) if:
+· Flow charts have not been verified.
+
+Development of the HACCP Plan
+
+6.02.01: Has a documented hazard analysis for the processes been conducted, showing the
+various types of hazards, their likelihood of occurrence, their associated severity and their control
+measures? A ZERO POINT (NON-COMPLIANCE) DOWNSCORE IN THIS QUESTION RESULTS IN
+AUTOMATIC FAILURE OF THIS AUDIT.
+Total compliance (15 points): A hazard analysis identifies and evaluates potential food safety hazards and
+determines if control measures are in place to prevent, eliminate or reduce the food safety hazard to an
+acceptable level. There should be a detailed, documented hazard analysis for each process flow in order
+to prove that a proper hazard analysis was conducted. Note, if there are errors in the process flow, it is
+likely there will also be errors in the hazard analysis. At each step of the process, from raw material
+receipt and storage, through processing and packing, storage and distribution, the hazard analysis should
+look at the severity and likelihood of all potential (known or reasonably foreseeable) food safety hazards
+that may be reasonably expected to occur in terms of specific biological, chemical (including radiological),
+and physical hazards, as well as the control measures for each. Operations following US FDA FSMA
+requirements should also consider economically motivated hazards and preventive controls, such as
+process, allergens, sanitization, and supply chain controls for the identified hazards. Any potentially RTE
+products must include an evaluation of specific environmental pathogens related to ingredients/products.
+
+PGFS-R-066                                    Page 10 of 19  February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 0
+
+Research previous outbreaks and issues associated with the ingredients/products to help identify specific
+risks with ingredients/products used. Examples of specific biological hazards (bacteria, viruses, parasites
+and pathogens) include Listeria monocytogenes, Salmonella spp., Enterohaemorrhagic E. coli (EHEC),
+Shiga toxin-producing E. coli (STEC), Cryptosporidium parvum, Cyclospora cayetanensis; chemical
+hazards include mycotoxins, pesticide residues, sanitation chemicals, lubricants, allergens, natural toxins,
+unapproved additives; physical hazards include extraneous matter that may cause choking or other injury
+e.g. stones, metal, glass, and brittle plastic; radiological hazards include local environmental issues (e.g.
+refer to Water Management District reports); economically motivated hazards including product
+substitutions, fillers, etc. Evaluation should include all ingredients, equipment, processing steps (e.g.,
+receiving, dump tanks, brush bed systems, recycled wash systems including hydro-vacuum coolers, ice
+injectors, flume washers, etc., single line wash systems, ice manufacturing), inputs including packaging
+materials and post-harvest treatments, sanitation and employee hygiene, etc.
+
+Each step identified in the process flow diagram should be assessed in the hazard analysis. Justifications
+should be documented when identifying significant and non-significant hazards. Consideration should be
+given to what control measures, if any exist, can be applied to each hazard. More than one control
+measure may be required to control a specific hazard(s) and more than one hazard may be controlled by
+a specified control measure. Consider pre-requisite programs (PRPs) in place which provide basic
+environmental and operating conditions necessary for the production of safe, wholesome food and
+support decisions in the hazard analysis (e.g. pest control programs, allergen control programs, sanitation
+programs, maintenance programs, microbial testing programs, supplier control program, worker hygiene
+training, waste management, storage and transportation, etc.). The hazard analysis should indicate if an
+adequate control step for this potential risk exists further down the process. The hazard analysis should
+be reviewed when changes occur affecting the product description and/or the process flow. The hazard
+analysis for all products must be written, regardless of its outcome.
+http://www.fda.gov/Food/GuidanceRegulation/HACCP/ucm2006801.htm
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of errors or omissions on the hazard analysis chart(s).
+
+Major deficiency (5 points) if:
+· Numerous instance(s) of errors or omissions on the hazard analysis chart(s)
+
+Non-compliance (and an automatic failure of this module) (0 points) if:
+· Multiple fundamental errors on the hazard analysis chart(s).
+· In an operation with multiple products/processes that are not similar, one or more hazard analysis
+
+     charts are not available.
+
+6.02.02: Have CCP decisions been made with logical, documented justifications and where CCPs
+are implemented in a specific processing step, have they been developed to control the identified
+hazard(s)?
+Total compliance (15 points): CCP decisions should be properly justified with supporting documents,
+rationale and evidence. The CCPs identified in the hazard analysis should be developed to define, in
+detail, the parameters involved, and monitoring requirements to control the hazard(s).
+The CCPs should be created from the documented hazard analysis i.e. there should be a logical
+documented approach (such as utilizing a CCP decision tree that justifies whether or not there is a step(s)
+in the process determined to be a CCP(s). CCPs are steps that if not controlled will lead to a food safety
+issue and where there is no step further down the process that controls the risk. A CCP should be
+controllable and control is essential to prevent or eliminate a food safety hazard or reduce the risk to an
+acceptable "safe" level. It is possible to find that an auditee has carried out a proper hazard analysis and
+found no CCPs (see 6.02.04).
+
+Minor deficiency (10 points) if:
+· Single fault in the logic or justification of one CCP decision.
+· Single CCP developed that does not meet the criteria for a CCP.
+
+PGFS-R-066                                    Page 11 of 19  February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 0
+
+Major deficiency (5 points) if:
+· More than one fault in the logic or justification of the CCP decisions.
+· More than one CCP developed that does not meet the criteria for a CCP.
+· One (where there are multiple) CCP has been omitted.
+
+Non-compliance (0 points) if:
+· No CCPs have been developed in the hazard analysis step even though clearly CCPs did exist.
+· More than one CCP has been omitted in a plan where there should be multiple CCPs.
+· A single CCP has been omitted in a plan where there is a single CCP.
+
+6.02.03: Is the HACCP system reviewed when significant changes are made and at least once
+every 12 months?
+Total compliance (10 points). The HACCP system should be reviewed by the HACCP team when
+significant changes are made e.g. raw materials, new products, labeling requirements (including
+allergens), packaging, suppliers, product, process, construction, new equipment, recurring deviations,
+new scientific information, new legal requirements, new distribution or consumer practices, etc., including
+the hazard analyses, to ensure that the program is up to date and working properly. HACCP system
+review should occur at a frequency that ensures the HACCP Plan is being followed continuously and at
+least every 12 months. Where emerging issues, such as recalls, an outbreak, new research, etc., are
+relevant to the products and processes at hand, consideration of a HACCP review should occur.
+Documented re-training or educational sessions may be necessary. The review should include a written
+record which demonstrates each of the elements of the plan including the product descriptions, process
+flows, hazard analyses, CCP decisions, CCP recording, customer complaints, equipment calibration,
+record review, trend analysis data, etc., have been reviewed, verified as being accurate/appropriate and
+there should be a change record included in the plan to track changes over time. The HACCP team
+should inform workers involved of the review outcomes.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of omissions in the review.
+
+Major deficiency (3 points) if:
+· Numerous instances of omissions in the review.
+· No record of workers involved being informed of HACCP review outcomes.
+· Verification did not take place in the last 12 months but did take place in the last 18 months.
+
+Non-compliance (0 points) if:
+· There is no documented record of review.
+
+6.02.04: Have critical control point (CCP) processing steps been identified that eliminate or reduce
+food safety hazards to an acceptable level? Informational gathering. If answer is YES, continue
+with next question. If answer is NO, the rest of "Module 6 HACCP" is not applicable.
+Total points (0 points). The identification of a CCP in the process requires development of the criteria with
+adequate detail, defined parameters and the execution of the necessary activities in the production line. If
+CCPs have been identified, the rest of this module should be completed. The CCPs should be created
+from the documented hazard analysis, i.e. there should be a logical documented approach showing why
+the process was deemed a CCP or not. CCPs are often steps that if not controlled will lead to a food
+safety issue, and also, there is no step further down the process that controls the issue. A CCP should be
+controllable and the controls should be able to eliminate or reduce the risk to acceptable "safe" levels.
+Where the operation determined that there are no CCPs (and the auditor is in agreement), no further
+HACCP development is required, and the rest of the module is not applicable.
+
+For facility operations, the organization will determine the need for a HACCP program by performing a
+documented hazard analysis for all steps of each process. If an auditee decides to complete a HACCP
+program, even if no CCPs are identified, then the auditor will complete the HACCP module of this audit as
+a verification of the HACCP program.
+
+PGFS-R-066                                    Page 12 of 19  February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 0
+
+http://www.caleafygreens.ca.gov/food-safety-practices
+http://www.fda.gov/Food/GuidanceRegulation/RetailFoodProtection/FoodCode/default.htm
+http://www.fda.gov/Food/GuidanceRegulation/GuidanceDocumentsRegulatoryInformation/FoodDefense/u
+cm082751.htm
+
+6.02.05: Have CCP critical control limits been established and are they supported by relevant
+validation documentation?
+
+Total compliance (15 points): A critical control limit (CCL) represents the dividing line used to judge
+whether a CCP is under control or not. Each Critical Control Point should have one or more critical control
+limits for each identified hazard. Critical control limits (CCL's) i.e. the maximum and/or minimum
+parameters of what is being monitored e.g. with a metal detector, the sensitivity of the detector setting
+should be stated along with the size/type of test pieces used, or with an anti-microbial the minimum
+concentration required should be stated. Other CCLs may include temperature, time, pH, water activity,
+flow rates, line speed, dwell times, etc. More stringent "operating limits" may be useful during production
+to minimize failure to meet a critical limit.
+All CCPs should be supported by validation documentation showing that the critical control limits (CCL)
+are scientifically derived and meet any relevant legal requirements. Validation could take the form of
+publicly available legislative documents, industry best practice documents, peer reviewed research
+papers, on site validation studies, etc., or a mix of different validation sources. Where publicly available
+validation is not available, the auditee should have performed validation studies to support their stated
+critical control limits. For example, free chlorine limits for chlorinated recycled water systems could be
+stated in research papers and State documentation (e.g., Leafy Greens Marketing Agreement). Another
+example, metal detection limits could be supported by validation studies that show that smallest
+test probes possible were used and meet the FDA guidelines
+
+Minor deficiency (10 points) if:
+
+· Single/isolated instance(s) of omissions or incorrect CCL validation details.
+
+Major deficiency (5 points) if:
+
+· Numerous instances of omissions or incorrect CCL validation details.
+
+Non-compliance (0 points) if:
+
+· There is no documentation to support CCP critical control limits.
+· Validation documentation provided does not support the CCP control limits.
+· Widespread omissions or incorrect CCL validation details.
+
+6.02.06: Have monitoring requirements and frequencies been determined and documented for the
+CCPs?
+Total compliance (15 points): There should be determined and documented monitoring requirements and
+frequencies for the CCPs. Where monitoring is not continuous, the type and frequency of monitoring
+should be sufficient to ensure the CCP is under control. Frequency should be specified; "as needed" is
+not accepted as a stated frequency. Requirements should include the critical control limits (CCL's) i.e. the
+maximum and/or minimum parameters of what is being monitored e.g. with a metal detector, the
+sensitivity of the detector setting should be stated and size/type of test pieces used, or with an anti-
+microbial the minimum concentration required should be stated. Other CCLs may include temperature
+parameters, pH, flow rates, dwell time, etc. The requirements i.e. what is to be done should be specified
+on the HACCP plan.
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of omissions or errors in the monitoring requirements.
+· Single/isolated instance(s) of omissions or errors in the frequency details.
+
+Major deficiency (5 points) if:
+· Numerous instances of omissions or errors in the monitoring requirements.
+
+PGFS-R-066                                    Page 13 of 19  February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 0
+
+· Numerous instances of omissions or errors in the frequency details.
+· A single CCP (where there are multiple CCPs) is lacking monitoring requirements or frequency
+
+     details.
+
+Non-compliance (0 points) if:
+
+· More than one CCP is lacking monitoring requirements or frequency details where there are multiple
+
+     CCPs in a plan.
+
+· A single CCP is lacking monitoring requirements or frequency details in a plan where there is a single
+
+     CCP.
+
+6.02.07: Have specific responsibilities been assigned for the monitoring, recording and corrective
+action implementation of each CCP?
+Total compliance (10 points): Specific responsibilities should be assigned for the monitoring, recording
+and corrective action implementation of each CCP to ensure compliance. If CCP records are not being
+completed properly, this may be an indication that the CCPs have not been assigned correctly. The
+responsibility should be clearly indicated on the HACCP plan by at least naming the function e.g. QA
+Technician or trained designate, who is responsible for monitoring, recording and executing corrective
+action related to an individual CCP. All records and documents associated with monitoring CCPs should
+be signed by the person(s) doing the monitoring, either physically or electronically.
+
+Minor deficiency (7 points) if:
+· Single instance of a CCP not being assigned (to either a person or group), where there are multiple
+
+     CCPs.
+
+Major deficiency (3 points) if:
+· Numerous instances of a CCP not being assigned (to either a person or group), where there are
+
+     multiple CCPs.
+
+Non-compliance (0 points) if:
+· No CCPs have been assigned to either a person or group.
+
+6.02.08: Have standard operating procedures (SOPs) been created for the monitoring process(es)
+of the CCPs, which would include how to carry out the monitoring activities?
+Total compliance (10 points): Clear and simple standard operating instructions (SOPs) should be written
+for each CCP monitoring process(es). These SOPs should expand the CCP monitoring activities in detail
+in the form of work instructions, and match what is written in the HACCP plan. These SOPs can be used
+for training and as reference tools.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of errors and omissions within the CCP SOPs.
+
+Major deficiency (3 point) if:
+· Numerous instances of errors and omissions within the CCP SOPs.
+· Single instance of a CCP SOP not being created in a system where there are multiple CCPs.
+
+Non-compliance (0 points) if:
+· CCP SOP(s) has/have not been created.
+· CCP SOP(s) do not reflect at all the reality of what is being performed in the operation.
+
+6.02.09: Have corrective action procedures been established for the CCPs, including a detailed
+action plan for operators to follow if the critical control limits are not met (loss of
+control/deviation) and plans to adjust the process back into control?
+Total compliance (15 points): Corrective actions are procedures that must be taken if critical controls are
+not properly implemented (e.g. there is a deviation from a critical limit) and unsafe product may have
+been produced. There should be a documented, detailed plan with written procedures to follow when
+
+PGFS-R-066                                    Page 14 of 19  February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 0
+
+there is a loss of control (deviation) of a CCP appropriate to the nature of the hazard. The procedures
+should include details regarding how to handle affected products (if necessary). The corrective action
+details should note the critical control limit issue that occurred, what corrective actions were carried out,
+including what happened to potentially affected product and also how the process was "repaired" or
+"amended" in order to get the process back to the required control level. The HACCP plan corrective
+action sections should state where the corrective action details are to be recorded and details should
+match the written corrective action procedures. Where appropriate, preventative measures should also be
+required to reduce the likelihood the problem will recur. This may include root cause analysis.
+Corrective actions should ensure that the CCP has been brought under control and require that a review
+is conducted in order to prevent a recurrence of the situation. Corrective actions may require review of the
+HACCP system (6.02.03) to determine if modifications are required. Corrective action records are scored
+under 6.03.06.
+
+Minor deficiency (10 points) if:
+· Any one of the above criteria is missing in the corrective action plan details.
+· Single/isolated instance(s) of omission or errors in the corrective action details.
+
+Major deficiency (5 points) if:
+· Two of the above criteria are missing in the corrective action plan details.
+· Numerous instances of omission or errors in the corrective action details.
+
+Non-compliance (0 points) if:
+· More than two of the above criteria are missing in the corrective action plan details.
+· Fundamental errors in corrective action plan details.
+
+6.02.10: Have recording forms been developed for monitoring the CCPs?
+Total compliance (15 points): Monitoring record templates should be designed to record the monitoring of
+the CCPs that have been identified. The records should match the details as noted in the HACCP Plan
+and have CCPs identified by name and number, what is being measured, the frequency of the
+measurement, the critical control limit, the operating limit (if applicable), the responsible person(s) or team
+and the corrective action(s) required in the case of measurements not in compliance. Recording forms
+should have a specific document and/or version code as part of the document control program (1.02.01).
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of a record(s) having been developed but does/do not match the details in
+
+     the HACCP plan i.e. information or requirements on the recording template that does not match what
+     is noted in the plan.
+· Single instance of recording forms lacking required details.
+
+Major deficiency (5 points) if:
+· Numerous instances of a record(s) having been developed but do not match the details in the
+
+     HACCP plan i.e. information or requirements on the recording template that does not match what is
+     noted in the plan.
+· More than one instance of recording forms lacking required details.
+
+Non-compliance (0 points) if:
+· Fundamental failure of record(s) that have been developed to match the details in the HACCP plan
+
+     i.e. information or requirements on the recording template that does not match what is noted in the
+     plan.
+· Single instance where a CCP has been created but a record for the monitoring data has not been
+     developed.
+
+6.02.11: Have verification plans and schedules been developed for each CCP?
+Total compliance (15 points): Verification activities related to each CCP on the HACCP plan should be
+clearly detailed and documented. Verification activities verify that the HACCP plan is being implemented
+
+PGFS-R-066                                    Page 15 of 19  February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 0
+
+correctly, and might include microbial testing, customer complaints, equipment calibration, blade checks,
+visually observing a CCP operator, date checks of reagent expiration dates and any other information that
+CCPs might help generate. Verification activities also include a verification of the CCP monitoring records
+(6.03.05) by a HACCP trained supervisor or manager, checking that the CCP monitoring records have
+been completed in a proper and timely manner and including any corrective action work. Note, a CCP
+operator cannot verify their own work. Verification information might help improve and develop the
+HACCP program, but should show that the plan is being implemented correctly, is controlling the risk to
+an acceptable level (or eliminating the risk) and where this is not the case, this should be indicated on the
+verification paperwork along with corrective action details (e.g., reviewing a CCP, a process flow, a
+hazard analysis step, etc.). Where verification activities have found that CCPs were not performing as
+required, there should be records that show that this prompted a review of the relevant part of the HACCP
+Plan.
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of errors or omissions in the verification details on the plan.
+
+Major deficiency (5 points) if:
+· Numerous instances of errors or omissions in the verification details on the plan
+· Single instance in a plan with multiple CCPs where verification details have not been noted.
+
+Non-compliance (0 points) if:
+· No verification plans have been developed for any CCP.
+
+Execution of the HACCP Plan on the Plant Floor
+
+6.03.01: Is there documented evidence that all plant workers have attended a HACCP training,
+including specific training for CCP operators?
+Total compliance (10 points): All plant workers (excludes office personnel) should receive basic HACCP
+overview training i.e. what is HACCP, the 7 principles, and what are the CCPs on site. Basic training
+might form part of the new hire orientation package. CCP operators should be specially trained for their
+function(s) and include the operations they are responsible for and be included in the training
+management program (see 1.01.04). Records of training should be kept and also certificates where
+relevant. All workers should be trained to understand the principles of HACCP and the plan implemented
+in the facility. Training should be scheduled on a regular basis and documented. The training should be
+tailored to the people and their positions within the company. HACCP team member training is scored
+under 6.01.02.
+
+Minor deficiency (7 points) if:
+· Not all plant workers are trained in HACCP (but all key operators and majority of workers have been
+
+     trained).
+· Senior management has not received HACCP training.
+· Single/isolated instance(s) of omissions or incorrect data in the records.
+
+Major deficiency (3 points) if:
+· One or more CCP operators has not been trained in their specific functions (but has received basic
+
+     HACCP training).
+· Numerous instances of omissions or incorrect data in the records.
+
+Non-compliance (0 points) if:
+· No formal training session developed for workers.
+· No records of training being maintained.
+
+6.03.02: Do CCP operators understand basic HACCP principles and their role in monitoring CCPs?
+Total compliance (10 points): CCP operators should understand basic HACCP principles, specifically
+CCPs in their areas and their responsibilities for taking appropriate action should the limits be exceeded.
+
+PGFS-R-066                                    Page 16 of 19  February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 0
+
+This can be determined through casual worker interview, with the approval of the audit host. The visual
+part of this confirmation is matching what the CCP operator says versus what is written in the HACCP
+documentation and also what is written in the CCP monitoring logs.
+
+Minor deficiency (7 points) if:
+· One instance where the CCP operator(s) are lacking in basic knowledge about HACCP principles.
+· One instance where the CCP operator(s) are not able to explain correctly, details about the CCPs
+
+     they are monitoring e.g. what to do if the critical control limits are exceeded.
+
+Major deficiency (3 points) if:
+· More than one instance where the CCP operators are lacking in basic knowledge about HACCP
+
+     principles.
+· More than one instance where the CCP operators are not able explain correctly, details about the
+
+     CCPs they are monitoring e.g. what to do if the critical control limits are exceeded.
+
+Non-compliance (0 points) if:
+· Fundamental failure of the interviewed CCP operator to show basic knowledge about HACCP
+
+     principle.
+· Fundamental failure of the interviewed CCP operators to be able to explain correctly, details about
+
+     the CCPs they are monitoring e.g. what to do if the critical control limits are exceeded.
+
+6.03.03: Are the CCP monitoring activities and frequencies in compliance with the HACCP Plan
+and CCP SOPs?
+Total compliance (15 points): CCP monitoring activities and frequencies are in compliance with what is
+written in the HACCP Plan and CCP SOPs. Check current logs against the HACCP plan. Auditor should
+carefully check the monitoring frequencies ­ allow some slight variations (minutes either way of the target
+frequency). The critical control limits should exactly match those mentioned on the HACCP plan. Note
+that if a monitoring test is done more frequently than stated, it is not necessarily a fault (i.e. point loss) if it
+is "in the spirit" of the plan. The records should show actual values or observations, be accurate and
+legible, be real-time recording and have adequate detail.
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) where information or requirements on the records do not match what is
+
+     noted in the HACCP plan.
+· Single/isolated instance(s) of issues with how records are being filled out.
+
+Major deficiency (5 points) if:
+· Numerous instances where information or requirements on the records do not match what is noted in
+
+     the HACCP plan.
+· Numerous instances of issues with how records are being filled out.
+
+Non-compliance (0 points) if:
+· Fundamental failure to have information or requirements on the records matching what is noted in the
+
+     HACCP plan.
+· Records are consistently being filled out incorrectly.
+· Single instance where a CCP has been created but monitoring data has not been recorded.
+
+6.03.04: Are CCP monitoring records signed off (or initialed) by the operator(s) who are carrying
+out and recording the CCP check?
+Total compliance (15 points): All CCP monitoring records and documents should be legibly signed off by
+the person(s) doing the monitoring. Full signatures (with printed name if signature is not legible), initials
+and electronic signatures are acceptable. If initials are used, care should be taken to ensure that there is
+no confusion between two individuals who have the same initials e.g. by using middle initials as well.
+
+PGFS-R-066                                    Page 17 of 19  February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 0
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of CCP record(s) not signed off by operator(s).
+
+Major deficiency (5 points) if:
+· Numerous instances of CCP record(s) not signed off by operator(s).
+
+Non-compliance (0 points) if:
+· Fundamental failure to sign off records.
+
+6.03.05: Are the CCP records reviewed and signed off by the quality control supervisor and/or
+management (second signatory)?
+Total compliance (10 points): CCP records should be reviewed, dated and signed off by a trained,
+designated person within 36 hours of the original CCP monitoring activity occurring. Ideally records are
+reviewed prior to release of product to prevent potential recall and unintended consequences should a
+deviation be found during record review. Allowance may be made for operations that are not running daily
+(auditor discretion applies). The sign offs should be done by the quality control supervisor or manager
+(second signatory). This should be a separate signature to that of the CCP operator. The individual
+signing off should check the records (e.g. dates, production lines, monitoring results, frequencies,
+corrective actions, use of correct forms, etc.), since their signature is basically stating that everything is in
+order relative to the written HACCP plan and associated documents. If discrepancies are found during the
+record review corrective actions must be taken and documented (6.03.06).
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of CCP records not reviewed, dated and signed off within 36 hours by the
+
+     quality control supervisor or manager (second signatory).
+· Single/isolated instance(s) of the CCP records being signed off by the second signatory but there are
+
+     issues with the records that have not been highlighted.
+
+Major deficiency (3 points) if:
+· Numerous instances of CCP records not reviewed, dated and signed off within 36 hours by the quality
+
+     control supervisor or manager (second signatory).
+· Numerous instances of the CCP records being signed off by the second signatory but there are
+
+     issues with the records that have not been highlighted.
+
+Non-compliance (0 points) if:
+· Fundamental failure for CCP records to be reviewed, dated and signed off.
+· Widespread errors on the CCP records that are being signed off by the second signatory.
+
+6.03.06: Is there a deviation record detailing documented corrective actions when a deviation/loss
+of control of a CCP occurs (a critical control limit is exceeded)?
+Total compliance (15 points): Corrective actions should be detailed in writing when a deviation/loss of
+control of a CCP occurs as per procedure in 6.02.09. The CCP deviations should be noted on a deviation
+record (or similar form, as noted in the HACCP plan), should detail what has happened, what was done to
+correct the issue and any preventative actions taken to prevent reoccurrence. Records should indicate
+what happened to any affected product and also detail how the process was rectified. The corrective
+action details should match what is described in the HACCP plan.
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of corrective action(s) being recorded but are lacking some details.
+· Single/isolated instance(s) of corrective action(s) being recorded, but not meeting the requirements
+
+     as noted in the HACCP plan.
+
+Major deficiency (5 points) if:
+
+PGFS-R-066                                    Page 18 of 19  February 18, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 0
+
+· Single instance of CCP critical control limit breach not being recorded and/or corrective actions not
+     being recorded.
+
+· Numerous instances of corrective action(s) being recorded but are lacking some details.
+· Numerous instances of corrective action(s) being recorded, but not meeting the requirements as
+
+     noted in the HACCP plan.
+
+Non-compliance (0 points) if:
+· More than one instance of CCP critical control limit breach not being recorded and/or corrective
+
+     actions not being recorded.
+· Fundamental failure to properly record corrective action details or the details recorded in no way meet
+
+     what is required by the HACCP plan.
+
+Document Revision History
+
+Date        Rev.#             Description
+                              Initial
+2/18/21                    0
+
+PGFS-R-066                                    Page 19 of 19  February 18, 2021
+

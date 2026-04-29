@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Inspection Log Completeness — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<script src="audit-list.js"></script>
+<link rel="stylesheet" href="audit-list.css">
+</head>
+<body>
+<div id="root"></div>
+<script>
+function dateOnly(v){ if(!v) return null; const s=String(v);
+  let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
+}
+const TABS = [
+  'fsafe_log_C_gh_pre','fsafe_log_C_gh_post',
+  'fsafe_log_C_ph_pre','fsafe_log_C_ph_post',
+  'fsafe_log_L_gh_pre','fsafe_log_L_gh_post',
+  'fsafe_log_L_ph_pre','fsafe_log_L_ph_post',
+];
+const OPTIONAL = new Set([
+  'Warning','Action Required','Photo','Types of Foreign Material',
+  'Foreign Material Photo 01','Foreign Material Photo 02','Foreign Material Photo 03',
+  'Photo of Foreign Material',
+  'ATP Site 1','ATP Results 1','ATP Site 2','ATP Results 2','ATP Site 3','ATP Results 3',
+]);
+FSAudit.renderIssueList({
+  title: 'Inspection logs — missing data or unverified',
+  version: '04-29 08:40',
+  defaultSort: { key: 'checked', dir: -1 },
+  columns: [
+    { key: 'log',        label: 'Log' },
+    { key: 'checked',    label: 'Checked date' },
+    { key: 'reported_by',label: 'Reported by' },
+    { key: 'issues',     label: 'Issues' },
+    { key: 'missing',    label: 'Missing fields' },
+    { key: 'entry_id',   label: 'Entry ID' },
+  ],
+  fetchRows: async (win) => {
+    const out = [];
+    for (const tab of TABS) {
+      const rows = await FSAudit.fetchSheet('fsafe', tab);
+      rows.forEach(r => {
+        const checked = dateOnly(r['Checked Date']);
+        if (!checked || checked < win.from || checked > win.to) return;
+        const unverified = !(r['Verified Time'] && String(r['Verified Time']).trim() !== '');
+        const missingCols = [];
+        for (const k in r) {
+          if (OPTIONAL.has(k)) continue;
+          if (k === 'Verified Time' || k === 'Verified By') continue;
+          const v = r[k];
+          if (v == null || String(v).trim() === '') missingCols.push(k);
+        }
+        if (!unverified && missingCols.length === 0) return;
+        const issues = [];
+        if (unverified) issues.push('unverified');
+        if (missingCols.length) issues.push(`missing ${missingCols.length}`);
+        out.push({
+          log: tab.replace('fsafe_log_', ''),
+          checked,
+          reported_by: r['Reported By'] || '',
+          issues: issues.join(', '),
+          missing: missingCols.join(', '),
+          entry_id: r['Entry ID'] || '',
+        });
+      });
+    }
+    return out;
+  },
+});
+</script>
+</body>
+</html>

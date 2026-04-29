@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Water Testing Cadence — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<script src="audit-list.js"></script>
+<link rel="stylesheet" href="audit-list.css">
+</head>
+<body>
+<div id="root"></div>
+<script>
+function dateOnly(v){ if(!v) return null; const s=String(v);
+  let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
+}
+FSAudit.renderIssueList({
+  title: 'Water-testing cadence by site',
+  version: '04-29 08:05',
+  defaultSort: { key: 'days_since', dir: -1 },
+  columns: [
+    { key: 'farm',          label: 'Farm' },
+    { key: 'site',          label: 'Site' },
+    { key: 'last_tested',   label: 'Last tested' },
+    { key: 'days_since',    label: 'Days since', num: true },
+    { key: 'count_in_window',label: 'Tests in window', num: true },
+    { key: 'count_total',   label: 'Tests total', num: true },
+    { key: 'max_gap',       label: 'Max gap (days)', num: true },
+    { key: 'status',        label: 'Status' },
+  ],
+  fetchRows: async (win) => {
+    const rows = await FSAudit.fetchSheet('fsafe', 'fsafe_log_water');
+    const bySite = {};
+    rows.forEach(r => {
+      const d = dateOnly(r.SampleDateTime);
+      if (!d) return;
+      const k = `${r.Farm||''}|${r.SiteName||''}`;
+      (bySite[k] = bySite[k] || []).push(d);
+    });
+    const today = new Date().toISOString().slice(0,10);
+    const out = [];
+    Object.entries(bySite).forEach(([k, dates]) => {
+      const all = [...dates].sort();
+      const inWin = all.filter(d => d >= win.from && d <= win.to);
+      // Skip sites that haven't been tested at all in the audit window
+      if (inWin.length === 0) return;
+      let maxGap = 0;
+      for (let i = 1; i < inWin.length; i++) {
+        const g = (new Date(inWin[i]) - new Date(inWin[i-1])) / 86400000;
+        if (g > maxGap) maxGap = g;
+      }
+      const last = all[all.length - 1];
+      const daysSince = Math.floor((new Date(today) - new Date(last)) / 86400000);
+      const [farm, site] = k.split('|');
+      let status = 'ok';
+      if (daysSince > 180) status = 'overdue (>180d)';
+      else if (daysSince > 90) status = 'aging (>90d)';
+      else if (maxGap > 180) status = 'gap >180d in window';
+      else if (inWin.length === 1) status = 'only 1 test in window';
+      out.push({
+        farm, site,
+        last_tested: last,
+        days_since: daysSince,
+        count_in_window: inWin.length,
+        count_total: all.length,
+        max_gap: maxGap ? Math.round(maxGap) : '',
+        status,
+      });
+    });
+    return out;
+  },
+});
+</script>
+</body>
+</html>

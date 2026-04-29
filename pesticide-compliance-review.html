@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Pesticide Compliance Review — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<link rel="stylesheet" href="audit-list.css">
+<style>
+  #content { padding: 16px 24px; max-width: 1300px; }
+  .intro { color: #c8c8d8; line-height: 1.5; margin-bottom: 16px; font-size: 0.9rem; }
+  .section { margin-bottom: 28px; background: #16213e; border-radius: 8px; padding: 14px 16px; border-left: 4px solid #555; }
+  .section.critical { border-left-color: #ff8c5a; }
+  .section.warn     { border-left-color: #d4a44a; }
+  .section h2 { color: #e0e0e0; font-size: 1.05rem; margin-bottom: 4px; }
+  .section .lede { color: #aaa; font-size: 0.85rem; margin-bottom: 10px; }
+  .section table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 6px; }
+  .section th { padding: 6px 10px; text-align: left; color: #4ecca3; font-weight: 600; border-bottom: 1px solid #0f3460; white-space: nowrap; }
+  .section td { padding: 8px 10px; border-bottom: 1px solid #0f3460; vertical-align: top; }
+  .section td.product { font-weight: 600; color: #e0e0e0; }
+  .pill { display: inline-block; padding: 1px 6px; border-radius: 8px; font-size: 0.7rem; font-weight: 600; }
+  .pill.cuke    { background: rgba(78,204,163,0.18); color: #4ecca3; }
+  .pill.lettuce { background: rgba(212,164,74,0.18); color: #d4a44a; }
+  .pill.both    { background: rgba(255,255,255,0.10); color: #c8c8d8; }
+  .src { color: #8a8aa0; font-size: 0.78rem; margin-top: 6px; }
+</style>
+</head>
+<body>
+<div id="header">
+  <a href="index.html" class="back">← FS audit</a>
+  <h1>Pesticide Compliance Review</h1>
+  <div id="version">04-29 10:18</div>
+</div>
+
+<div id="content">
+  <div class="intro">
+    External review of pesticide use against EPA labels and Hawaii registration. <b>19 findings total</b>:
+    9 critical compliance items (label/crop violations) and 8 rate/unit data errors that warrant
+    review even if the actual field rate was correct. Source: Claude.com review (2026-04-29).
+  </div>
+
+  <div class="section critical">
+    <h2>🔴 Critical — Greenhouse-prohibited or non-food-crop products</h2>
+    <div class="lede">Stop applying immediately. These products are either prohibited in greenhouses or registered for ornamentals only.</div>
+    <table>
+      <thead><tr><th>Product</th><th>Crop</th><th>Issue</th><th>Recommendation</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="product">Success</td>
+          <td><span class="pill cuke">Cuke (Spray)</span></td>
+          <td>Label states: "Do not apply Success in greenhouses or other enclosed structures used for growing crops."</td>
+          <td>Discontinue greenhouse use. Substitute Radiant SC (also spinosad chemistry, properly greenhouse-labeled).</td>
+        </tr>
+        <tr>
+          <td class="product">Success</td>
+          <td><span class="pill lettuce">Lettuce (Fogger)</span></td>
+          <td>Same explicit greenhouse prohibition. Also exceeds 4–10 fl oz/A field max with 20 fl oz/A.</td>
+          <td>Discontinue.</td>
+        </tr>
+        <tr>
+          <td class="product">Avid 0.15 EC</td>
+          <td><span class="pill cuke">Cuke</span></td>
+          <td>EPA Reg. 100-896 is registered for ornamentals only (Shadehouse, Greenhouse, Field-Grown Ornamentals, Foliage Plants, Christmas Trees, Other Woody Ornamentals). Not labeled for food crops.</td>
+          <td>Stop applying to food crops. For abamectin on cucurbit/lettuce, use AgriMek SC (EPA Reg. 100-1351) which has food crop registration.</td>
+        </tr>
+        <tr>
+          <td class="product">Avid 0.15 EC</td>
+          <td><span class="pill lettuce">Lettuce</span></td>
+          <td>Same — ornamental-only registration.</td>
+          <td>Stop applying to food crops.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section critical">
+    <h2>🔴 Critical — Off-label crop use (crop not on the federal label)</h2>
+    <div class="lede">Product is registered, but the crop being treated is not on its label.</div>
+    <table>
+      <thead><tr><th>Product</th><th>Crop</th><th>Label crops</th><th>Recommendation</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="product">Torino</td>
+          <td><span class="pill lettuce">Lettuce</span></td>
+          <td>Cherries, cucurbits, fruiting veg, grapes, hops, pome, strawberries, sugar beet</td>
+          <td>Off-label use. Discontinue on lettuce.</td>
+        </tr>
+        <tr>
+          <td class="product">Luna Experience</td>
+          <td><span class="pill lettuce">Lettuce</span></td>
+          <td>Almond, Brassica leafy greens 5B, bulb veg, cucurbits, grapes, hops, beans, okra, pistachio, stone fruits, sunflower, tree nuts. Lettuce (4-16A) NOT included.</td>
+          <td>Discontinue on lettuce. Note: 5B (mustard, kale, collards) ≠ 4-16A (lettuce).</td>
+        </tr>
+        <tr>
+          <td class="product">Vivando</td>
+          <td><span class="pill lettuce">Lettuce</span></td>
+          <td>Apricot, cherry, cucurbits, fruiting veg, grapes, hops, peach. Lettuce NOT on label.</td>
+          <td>Discontinue on lettuce. Rate also exceeds cucurbit max (38.5 vs 15.4 fl oz/A).</td>
+        </tr>
+        <tr>
+          <td class="product">Gatten</td>
+          <td><span class="pill lettuce">Lettuce</span></td>
+          <td>Apples, cherries 12-12A, melon 9A, squash/cucumber 9B, small fruit vine climbing 13-07F, berry low-growing 13-07G, hops. Lettuce NOT on label.</td>
+          <td>Discontinue on lettuce. OK for cucumber.</td>
+        </tr>
+        <tr>
+          <td class="product">Torac</td>
+          <td><span class="pill both">Cuke, Lettuce</span></td>
+          <td>Base label originally for ornamental greenhouse; supplemental labels added cucurbits and leafy vegetables (incl. lettuce). Verify Hawaii state registration and that the supplemental labels are still in effect (the leafy vegetables supplemental was time-limited and expired 7/15/2025).</td>
+          <td>Confirm current registration status before next application.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section critical">
+    <h2>🔴 Critical — Data field errors</h2>
+    <div class="lede">Mis-classified data fields in the chemical master that affect downstream resistance management and reporting.</div>
+    <table>
+      <thead><tr><th>Product</th><th>Issue</th><th>Correction</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="product">Triathlon BA</td>
+          <td>Target = "Leafminer" — but Triathlon BA is a biofungicide/bactericide, not an insecticide. It does not control leafminers.</td>
+          <td>Change target to actual labeled diseases: powdery mildew, downy mildew, gray mold (Botrytis), bacterial blights, gummy stem blight, damping-off, etc.</td>
+        </tr>
+        <tr>
+          <td class="product">Dipel DF</td>
+          <td>FRAC code listed; should be IRAC 11A (Bt is an insecticide, not a fungicide).</td>
+          <td>Move "11A" from FRAC field to IRAC field; clear FRAC.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="section warn">
+    <h2>🟡 Rate or unit discrepancies — likely data errors</h2>
+    <div class="lede">These rates exceed label per-application maxes, often by 10–50×, suggesting unit-conversion errors in the source spreadsheet. They warrant data review even if the actual field application was within label.</div>
+    <table>
+      <thead><tr><th>Product</th><th>Crop</th><th>Data rate</th><th>Label per-app max</th><th>Likely issue</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="product">Previcur Flex</td>
+          <td><span class="pill cuke">Cuke</span></td>
+          <td>3 gal/A (=24 pints/A)</td>
+          <td>1.2 pints/A field; greenhouse uses per-cube/per-1000-sq-ft basis</td>
+          <td>Units error: gal vs pints, or total spray volume mistakenly entered as product rate</td>
+        </tr>
+        <tr>
+          <td class="product">Previcur Flex</td>
+          <td><span class="pill lettuce">Lettuce</span></td>
+          <td>7.5 gal/A (=60 pints/A)</td>
+          <td>2.0 pints/A field</td>
+          <td>Same unit error</td>
+        </tr>
+        <tr>
+          <td class="product">Pyganic 5.0</td>
+          <td><span class="pill cuke">Cuke (Fogger)</span></td>
+          <td>102 oz/A</td>
+          <td>15.61 fl oz/A</td>
+          <td>Probably total spray volume, not product rate</td>
+        </tr>
+        <tr>
+          <td class="product">Pyganic 5.0</td>
+          <td><span class="pill lettuce">Lettuce (Fogger)</span></td>
+          <td>255 oz/A</td>
+          <td>15.61 fl oz/A</td>
+          <td>Same</td>
+        </tr>
+        <tr>
+          <td class="product">Quadris</td>
+          <td><span class="pill lettuce">Lettuce (Fogger)</span></td>
+          <td>38.75 fl oz/A</td>
+          <td>15.5 fl oz/A</td>
+          <td>Annual max 90 fl oz/A may be confused with per-app max</td>
+        </tr>
+        <tr>
+          <td class="product">Luna Sensation</td>
+          <td><span class="pill lettuce">Lettuce (Fogger)</span></td>
+          <td>19 fl oz/A</td>
+          <td>7.6 fl oz/A</td>
+          <td>Annual max 15.2 fl oz/A may be confused with per-app max</td>
+        </tr>
+        <tr>
+          <td class="product">Beleaf 50 SG</td>
+          <td><span class="pill lettuce">Lettuce</span></td>
+          <td>7 oz/A</td>
+          <td>2.8 oz/A</td>
+          <td>Annual max 2.8 oz/A is also the per-app max (1 app/year greenhouse)</td>
+        </tr>
+        <tr>
+          <td class="product">Success</td>
+          <td><span class="pill lettuce">Lettuce</span></td>
+          <td>20 fl oz/A</td>
+          <td>4–10 fl oz/A</td>
+          <td>(Plus greenhouse-prohibited — see top section)</td>
+        </tr>
+        <tr>
+          <td class="product">Radiant SC</td>
+          <td><span class="pill lettuce">Lettuce (Fogger)</span></td>
+          <td>25 fl oz/A</td>
+          <td>5–10 fl oz/A</td>
+          <td>Same pattern</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="src">Source: Claude.com pesticide compliance review, 2026-04-29.</div>
+</div>
+</body>
+</html>

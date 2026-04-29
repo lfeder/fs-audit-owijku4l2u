@@ -1,0 +1,1743 @@
+            PrimusGFS Audit
+Food Safety Management Systems
+
+         (Module 1) Guidelines
+
+         Used in conjunction with the PrimusGFS v3.2 audit
+
+                                       PrimusGFS (owned by Azzule Systems, LLC)
+                                                      3030 Industrial Parkway
+                                                      Santa Maria, CA 93455
+©2021 Primus Group, Inc. All rights reserved                    Rev. 1
+
+                                              Index          3
+                                                             3
+Audit Execution                                              4
+Scoring System                                               5
+Automatic Failure                                           8
+Documentation Requirements                                  8
+Module 1: FSMS                                              11
+Management System                                           14
+Control of Documents and Records                            16
+Procedures and Corrective Actions                           19
+Internal and External Inspections                           22
+Release of Items/Product                                    26
+Supplier Monitoring/Control                                 28
+Traceability and Recall
+Food Defense
+
+PGFS-R-061                                    Page 2 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                Rev. 1
+
+This document is for guidance purposes only and in no way replaces any regulatory legislation or
+other legal guidance documentation nor should be viewed as giving legal advice. PrimusGFS (the
+Scheme), owned by Azzule Systems, LLC, accepts no liability for the contents of this document,
+nor how an individual chooses to apply this document. This document is owned by Azzule
+Systems, LLC and, as such, must not be copied in whole or in part for any other use. Under no
+circumstances can this document be copied by or to any person without Azzule Systems'
+expressed permission.
+
+These guidelines help interpret/support the principles, requirements and expectations of the
+PrimusGFS v3.2 Modules 1, 2, 3, 4, 5, 6 and 7 as noted in the Scheme normative documents. These
+guidelines are neither exhaustive nor exclusive and detail minimum requirements only by means of
+statements related to audit questions and expectations. There will be variations in applicability to an
+operation based on the process(es) and commodities involved. Auditors and auditees should interpret the
+questions and criteria in different situations, with the food safety and risk minimization being the key
+concerns.
+
+The operation's practices, policies and procedures should be pertinent to the situation at hand and be
+able to stand up to any challenge by an auditor or other relevant interested party (including law
+enforcement). Where laws, customer requirements and specifications, commodity specific guidelines
+and/or best practice recommendations exist and are derived from a reputable source, these practices and
+parameters should be followed if they present a higher level of compliance than those included in the
+audit scheme.
+
+Website links shown in this document are there to aid understanding and provide assistance by way of
+example (link listings are not exhaustive). These links are not a sign of endorsement by Azzule.
+Furthermore, Azzule Systems accepts no liability for the content of these links.
+
+Please be aware that there is additional information on the PrimusGFS website including the audit
+checklist templates. The PrimusGFS website also has access to the official PrimusGFS General
+Regulations, which explain the overall scheme scoring systems and other details of the scheme.
+
+The following text is a modified excerpt from the PrimusGFS General Regulations v3.2. It is provided here
+as an introduction to the audit notes. For full and current text please refer to the most recent version of
+the PrimusGFS General Regulations at http://www.primusgfs.com/documents.aspx.
+
+Audit Execution
+
+The audit should be performed using the most recent version of the PrimusGFS normative documents.
+The PrimusGFS Standard is divided into seven Modules:
+
+· Module 1 - Food Safety Management System
+· Module 2 - Farm
+· Module 3 ­ Indoor Agriculture
+· Module 4 ­ Harvest Crew
+· Module 5 ­ GMP
+· Module 6 ­ HACCP
+· Module 7 ­ Preventive Controls
+
+Each Module is divided into sections, related to the specific Module and each section includes questions
+that detail the requirements for the specific section.
+
+Scoring System
+
+For all Modules, the amount of deficiencies and the associated risks have to be considered to assign the
+severity of the finding, which can be Minor Deficiency, Major Deficiency and Non-Compliance. When no
+
+PGFS-R-061                                    Page 3 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                                         Rev. 1
+
+deficiencies are found, a Total Compliance is given. The possible points for the questions in each Module
+are listed in the following table:
+
+                              Scoring System for Questions
+
+            Possible answer                   Possible Points for the Question
+
+            Total compliance                  15 points 10 points 5 points 3 points
+
+            Minor deficiency                  10 points 7 points 3 points 2 points
+            Major deficiency                  5 points 3 points 1 point 1 point
+
+            Non-compliance                    0 points 0 points 0 points 0 points
+
+            Not applicable                    0 points 0 points 0 points 0 points
+
+Detailed compliance requirements are noted for each question throughout this document, but some
+general statements are described below. These statements are superseded by the specific question
+compliance criteria and users should be aware that some questions do not follow the general statements
+below (e.g., automatic failure questions).
+
+        Answer                       Compliance for Questions
+Total compliance
+Minor deficiency                                                  Criteria Used
+                  To meet the question and/or compliance criteria in full.
+Major deficiency
+                  To have minor deficiencies against the question and/or compliance criteria.
+Non-compliance    To have single or isolated non-severe deficiencies (usually up to three) against the
+Not applicable    question and/or compliance criteria.
+                  To have covered most of the question compliance criteria, but not all.
+
+                  To have major deficiencies against the question and/or compliance criteria.
+                  To have numerous non-severe deficiencies (usually more than three) against the
+                  question and/or compliance criteria.
+                  To have single or isolated severe deficiencies against the question and/or compliance
+                  criteria.
+                  To have covered some of the question compliance criteria, but not most of it.
+
+                  To have not met the question and/or compliance criteria requirements at all.
+                  Having fundamental deficiencies against the question and/or compliance criteria
+                  (severe or non-severe issues).
+
+                  The requirement described in the question is not applicable for the operation being
+                  audited. Justification should be provided in the auditor's comments. Be aware that
+                  there are some questions that do not allow a non-applicable response.
+
+Automatic Failure
+
+There are some questions that if down scored will lead to an automatic failure and an overall score of 0%
+for the corresponding Module. On being immediately informed of the automatic failure by the auditor during
+the audit, the auditee has the option to have the auditor continue the audit or to have the audit halt at that
+point (all charges will apply). The auditor should explain the advantages of finishing the audit, including the
+
+PGFS-R-061                                    Page 4 of 31                           October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                Rev. 1
+
+ability for the auditee to learn of other potential non-conformances and to show their buyers the status of
+their food safety system despite the automatic failure issue.
+
+Special Circumstances for Not Certifying
+
+Please also note, that under special circumstances and upon finding serious food safety risks, a "not
+certified" decision can be given. The auditee should be immediately informed of the automatic failure by
+the auditor during the audit. The auditee has the option to have the auditor continue the audit or to have
+the audit halt at that point (all charges will apply).
+
+There are other Special Circumstance that are not technical in nature. Examples of these include
+detection of deliberate illegal activities, such as deliberate mislabeling, discovery of falsified records,
+attempting to bribe an auditor/CB personnel, threatening behavior towards an auditor/CB personnel, etc.
+Please refer to the General Regulations for further details.
+
+Audit Termination
+
+Once an audit has been started, should the auditee wish to stop the audit for any reason, the auditor will
+complete the report for as many questions as they were able to verify. PrimusGFS audits cannot be
+converted into a pre-assessment audit once the audit has been started. If an audit is terminated early,
+questions that the auditor was unable to verify will be marked as a non-compliance and will receive a
+score of zero. For questions unable to be verified, the auditor will indicate that the audit was terminated at
+the request of the auditee before the auditor could verify whether or not the audit conformed to the
+compliance criteria of the question. A report will be created on the database and issued, and all charges
+will apply.
+
+Documentation Requirements
+
+Organization's Food Safety Systems:
+
+When an Organization and its associated Operations are being audited, the auditor is checking the
+systems (SOP's, policies, etc.) and the implementation of these systems throughout the visual inspection.
+
+While auditees often create and implement their own systems, they can also use systems that have been
+created by other entities, for example, their customers' technical manager, their consultants, etc., or a
+combination of resources. The Organization can create their own SOPs, or in other instances, can utilize
+SOP templates provided by other entities. As long as the systems meet the requirements of the
+PrimusGFS questions and expectations and these systems are being implemented properly, the auditee
+should receive full points for their efforts. The auditee is responsible for ensuring that the systems they
+use are reviewed, maintained and up-to-date. If the auditor detects any inconsistency, it will result in a
+down score.
+
+New PrimusGFS Auditees/First-Time PrimusGFS Auditees
+
+· In operations that operate for more than three consecutive months throughout the year ­
+     auditee should have at least three months of documentation (i.e. records of monitoring, training,
+     meetings, etc.) available for review. If the auditee has less than three months of most of their
+     documentation available for review, a pre-assessment audit is strongly advised. If the auditee has
+     less than three months of most of their documentation available for review and decides to have a
+     regular scheduled audit, they should be aware that they cannot receive full compliance for
+     paperwork questions relating to monitoring and that the down score will be based on the
+     amount of paperwork available.
+
+· In short season operations that operate for less than three consecutive months throughout
+     the year - auditee should have at least three months of documentation (i.e. records of monitoring,
+     training, meetings, etc.) available for review (this may include last season's documentation). Where
+     an operation does not have three months of records available (e.g., they are in operation for one
+
+PGFS-R-061                                    Page 5 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+month out of the year), the auditee should have at least the previous season's records available for
+review. If the auditee has less than three months of most of their documentation available for review
+and decides to have a regular scheduled audit, they should be aware that they may not receive full
+conformance for paperwork questions relating to monitoring and that the down score will be
+based on the amount of paperwork available.
+
+Existing PrimusGFS Auditees
+
+· In operations that operate for more than three consecutive months throughout the year ­
+     auditee should have documentation available from the date of the prior audit.
+
+· In short season operations that operate for less than three consecutive months throughout
+     the year ­ auditee should have at least three months of documentation and documentation at least
+     since the last audit (which includes the last season). Where an operation does not have three months
+     of records available (e.g. they are in operation for one month out of the year), the auditee should have
+     at least the previous season's records available for review.
+
+New PrimusGFS Auditee        Operates <three                 Operates >three months/year
+Existing PrimusGFS Auditee   months/year                     Three months of records (may include
+                             Three months of records         last season's records).
+                             (may include last season's
+                             records). Where an              Records since the last audit.
+                             operation does not have
+                             three months of records
+                             available (e.g., they are in
+                             operation for one month out
+                             of the year), the auditee
+                             should have at least the
+                             previous season's records
+                             available for review.
+                             Records at least since the
+                             last audit (or longer) to meet
+                             the minimum requirement of
+                             three consecutive months of
+                             records.
+
+Visual versus Verbal Confirmation
+
+Visual confirmation is the default method of auditing, whether on the visual inspection portion or the
+paperwork section. Scores and comments are assumed to have been visually confirmed, unless stated
+otherwise. Verbal confirmation should be the exception to the rule and, if auditing properly, these should
+be rarely used. If a verbal confirmation is accepted, the auditor should write this in the comments section
+of the report for that specific question.
+
+How to Use Point Assignment Guidelines
+
+The following sections of this guidance manual are designed to help auditors choose the right score for
+each question, thereby helping to ensure consistency. This document does not cover all situations and is
+intended to be a guideline, as opposed to a rule. Auditors are expected to follow the guidelines as much
+as possible, but it is understood that there will be situations where an auditor should use their discretion.
+If an auditor does have to make a judgment call and/or tackle a situation not covered by this manual, then
+the auditor should note the circumstances in the audit report with full justifications. (The auditor should
+also forward these details to their Certification Body and Azzule Systems, LLC in a separate note, so that
+this can be reviewed for future versions of the manual.)
+
+In order to be consistent with the voluntary nature of requesting a third-party audit, and in order not to
+seem to be a legal document, the requirements within the questions are written as "should" and can be
+
+PGFS-R-061                                    Page 6 of 31   October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                Rev. 1
+
+scored against. In other questions that use the term "ideally", these statements cannot be scored against,
+but give the auditee an opportunity for improvement.
+
+Notes in "red" are where the questions and/or compliance criteria have changed significantly since the
+previous version. Many of the changes are to improve clarification, but some are changes to the actual
+requirements. Please read carefully to see if these changes impact your particular situation.
+
+PGFS-R-061                                    Page 7 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                Rev. 1
+
+Module 1: FSMS
+Management System
+
+1.01.01: Is there a documented food safety policy detailing the company's commitment to food
+safety?
+Total compliance (5 points): There should be a clear documented food safety policy statement and
+detailed objectives reflecting the company's ongoing commitment to meet the food safety needs of its
+products that is dated and signed (by senior management). The policy should include statements and
+objectives of the company's commitment to food safety, promoting a proactive and committed food safety
+culture, following food safety laws, adhering to industry food safety best practices and a process of
+continual improvement. Everyone in the company should understand the food safety policy and be aware
+of their role in ensuring that it is met (e.g. by training, communicating organizational chart, feedback to
+management, performance measurements related to food safety, etc.). The policy should be posted in a
+public area and in the language understood by the workers. The policy may take the form of a "mission
+statement" provided it meets the requirements detailed above.
+
+Minor deficiency (3 points) if:
+· Policy lacks an element listed above.
+· Single/isolated instance(s) of errors or omissions in the policy.
+
+Major deficiency (1 point) if:
+· Policy lacks more than one element noted above.
+· Numerous instances of errors or omissions in the policy.
+· Failure to communicate the policy to workers.
+· Policy is not posted in a public place.
+
+Non-compliance (0 points) if:
+
+· No policy exists.
+
+1.01.02: Is there an organizational chart showing all management and workers who are involved in
+food safety related activities and documentation (job descriptions) detailing their food safety
+responsibilities?
+Total compliance (10 points): There should be an organizational chart showing positions and reporting
+structure of workers whose activities affect food safety within the company. Chart is dated and signed by
+management to indicate it is correct and current. Job functions and responsibilities related to food safety
+should also be documented. Suitable alternates should be indicated or reference the document indicating
+this information. For very small companies, an individual worker may cover many jobs.
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of errors or omissions on the organizational structure chart or
+
+     responsibilities.
+· A document is not dated and/or signed.
+
+Major deficiency (3 points) if:
+· Numerous instances of errors or omissions on the organizational structure chart or responsibilities.
+· More than one document is not dated and/or signed.
+
+Non-compliance (0 points) if:
+· Fundamental errors on the organizational structure chart or responsibilities.
+· No organizational structure chart or responsibilities.
+
+1.01.03: Is there a food safety committee and are there logs of food safety meetings with topics
+covered and attendees?
+Total compliance (5 points): There should be an active food safety committee, responsible for the
+strategic maintenance and development of the operation's food safety plan. If an operation has a
+
+PGFS-R-061                                    Page 8 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                Rev. 1
+
+HACCP/PC plan, the HACCP/PC team may also look after the food safety issues. The company should
+be keeping logs and minutes/notes of meetings addressing food safety topics. In-person meetings should
+have names and signatures to indicate attendance; auditor discretion applies to signature recording of
+remote meeting attendance. These meetings might be dedicated to food safety or may be part of another
+regular meeting, e.g. a production meeting, HACCP meeting, etc. These records should demonstrate
+Senior Management involvement in the Food Safety program - for example show management
+attendance, minutes copied to management, and missing members are indicated on records. Meetings
+should occur at least quarterly during the season of operation. Where the operation has less than three
+months of records available (new, short season operations) there should still be at least one meeting
+available for review ­ score minor deficiency; if no records score non-compliance. Refer to "New
+PrimusGFS Auditees/First-Time PrimusGFS Auditees" section.
+
+Minor deficiency (3 points) if:
+
+· Single/isolated instance(s) of errors and omissions in the meeting logs e.g. not noting who was
+
+     attending the meeting (including Senior Management).
+
+· Only three meetings have occurred in the last 12 months (for an all year-round operation).
+· Signed attendance is not kept (attendee names only) for in-person meeting events.
+
+Major deficiency (1 point) if:
+· Numerous instances of errors and omissions in the meeting logs e.g. not noting who was attending
+
+     the meeting (including Senior Management).
+· Two or less meetings have occurred in the last 12 months (for an all year-round operation)
+
+Non-compliance (0 points) if:
+
+· Food safety committee has not been created.
+· The company does not have logs of food safety meetings.
+
+1.01.04: Is there a training management system in place that shows what types of trainings are
+required for various job roles of specific workers, including who has been trained, when they were
+trained, which trainings they still need to take, and a training schedule?
+Total compliance (5 points). The company has a system in place (e.g. training matrix) that shows what
+types of trainings are required for various job roles that affect food safety, who has been trained, when
+they were trained, which trainings they still need to take, and a training schedule. This question is related
+to the organizational chart and job role descriptions. The training records required under specific
+questions will be reviewed in the applicable module(s).
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of trainings for a job role being omitted from the system.
+
+Major deficiency (1 point) if:
+· Numerous instances of trainings for job roles being omitted from the system.
+
+Non-compliance (0 points) if:
+· There is no training management system.
+· There is a training management system, but it does not reflect how workers are actually being
+
+     trained.
+
+1.01.05: Is there documented management verification review of the entire food safety
+management system at least every 12 months, including an evaluation of resources, and are there
+records of changes made?
+Total compliance (15 points): There is documented verification of the entire food safety management
+system including the HACCP system and FDA FSMA Preventive Controls Systems (if applicable to the
+operation) at planned intervals (minimum 12 month intervals) and reviewed by senior management (e.g.
+signatures, meeting minutes) to ensure its continuing suitability, adequacy and effectiveness, and that
+they are continuing to support and invest in adequate food safety resources (e.g., equipment, services,
+
+PGFS-R-061                                    Page 9 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+supplies, personnel training, worker staffing levels, customer requirements/specifications, etc.) and to
+building and maintaining a proactive and committed food safety culture. The documented review should
+meet any national or local legislative requirements. The review should include an analysis of the
+effectiveness of key food safety programs and that they are implemented correctly. Based on
+effectiveness, changes to the system are documented. The review should show if the system is being
+implemented correctly and determine the need for changes to the system. Where changes are required,
+this should be indicated on the verification paperwork along with corrective action details. If applicable,
+HACCP verification should be performed as well. Both activities can be performed together or separately.
+Changes made in programs should be reflected in the report. Records of all verification activities, reasons
+for amending documents, validations and changes should be available for review.
+
+     · Internal Audits
+     · External Audits (2nd Party and 3rd Party)
+     · Other food safety audits/visits (official)
+     · Analysis of feedback/complaints (from customers and workers) and recalls (where applicable)
+     · Review of incidents including unusual occurrences, foreign material issues, pest control issues,
+
+          microbial testing results, food defense, food fraud, etc.
+     · Review and updates to operation's objectives
+     · Review of organizational chart
+     · Document control activities including updates, changes or new SOPs, customer specification
+
+          issues
+     · HACCP/PC verification
+     · Sanitation
+     · Pest control
+     · Approved supplier/service provider program
+     · Worker training review
+     · Facility and equipment maintenance
+     · Recall program
+     · Other food safety managements system related activities
+
+Minor deficiency (10 points) if:
+· Single/isolated instance(s) of errors or omissions in the verification activities.
+· Single/isolated instances of key programs not evaluated for effectiveness
+· It has been more than 12 months since management verification but less than 18 months.
+
+Major deficiency (5 points) if:
+· Numerous instances of errors or omissions in the verification activities.
+· Numerous key programs such as pest control, supplier control or sanitation operating procedures not
+
+     evaluated for effectiveness
+· It has been more than 18 months since management verification (but less than 24 months).
+· No proof of senior management review.
+
+Non-compliance (0 points) if:
+· Widespread errors or omissions in the verification activities.
+· Most key food safety programs not evaluated for effectiveness
+· It has been more than 24 months since management verification.
+
+1.01.06: Where specific industry guidelines or best practices exist for the crop and/or product,
+does the operation have a current copy of the document?
+Total compliance (3 points). There is a current copy of any specific industry guidelines for the crop and/or
+product available for review (electronic copies are accepted). Some examples include the Produce Safety
+Rule, FSMA Seven Rules including Foreign Supplier Verification Programs, Sanitary Transportation of
+Human and Animal Food, the Leafy Green Marketing Agreement (LGMA), California Cantaloupe
+Program, Tomato Good Agricultural Practices (T-GAP), Commodity Specific Food Safety Guidelines for
+
+PGFS-R-061                                    Page 10 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+the Production, Harvest, Post-Harvest, and Processing Unit Operations of Herbs, etc. Not applicable if no
+specific industry guidelines or best practices exist for the crop and/or product or activity.
+
+Reference:
+FSMA: https://www.fda.gov/food/food-safety-modernization-act-fsma/fsma-final-rule-produce-safety
+https://www.fda.gov/Food/GuidanceRegulation/FSMA/ucm253380.htm#guidance
+FDA Produce & Plant Products Guidance Documents & Regulatory Information:
+https://www.fda.gov/Food/GuidanceRegulation/GuidanceDocumentsRegulatoryInformation/ProducePlant
+Products/default.htm
+Center of Produce Safety Resources: https://www.centerforproducesafety.org/resources.php
+Penn State Mushroom Resources: https://plantpath.psu.edu/facilities/mushroom/resources
+
+Minor deficiency (2 points) if:
+· Missing one copy of specific industry guidelines or best practices where more than one crop or
+
+     product is handled.
+
+Major deficiency (1 point) if:
+· There is a copy of the best practices, but it is not the current version.
+· Missing more than one copy of specific industry guidelines or best practices where more than one
+
+     crop or product is handled.
+
+Non-compliance (0 points) if:
+· Specific industry guidelines or best practices exist for the crop/crop group being audited, but the
+
+     operation does not have a copy.
+
+Control of Documents and Records
+
+1.02.01: Is there a written document control procedure (including document control
+register/record) describing how documents will be maintained, updated and replaced?
+Total compliance (3 points): There should be a record of all documents used, when they were issued and
+updated with the current revision status to help avoid using obsolete documents. Document examples
+include pre-requisite programs, SSOPs, SOPs, forms (record templates), other work instructions, raw
+material and finished product specifications, etc.
+The document control procedure should specify:
+
+     · Who is responsible for document control (i.e. making sure documents are updated and securely
+          stored).
+
+     · How documents are to be written, coded and approved.
+     · How documents are updated, and amendments are approved (e.g. how paper versions are
+
+          approved, computer records password protected, etc.).
+     · How changes are identified and recorded (e.g. date, issue number, different colored text or font,
+
+          change history document etc.).
+     · How the inadvertent use of obsolete documents is prevented.
+     · Register/record listing all documents used, when issued, when updated and current revision
+
+          status.
+
+If using an electronic record keeping system, the procedure should cover the above, plus how electronic
+records are managed to control access, how changes to records are controlled, including who has edit
+rights and how electronic records are secured; i.e. back-up system.
+
+Minor deficiency (2 points) if:
+· Single/isolated instance(s) of errors or omissions in the procedure.
+
+Major deficiency (1 point) if:
+· Numerous instances of errors or omissions in the procedure.
+
+PGFS-R-061                                    Page 11 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+Non-compliance (0 points) if:
+· There is no written procedure
+
+1.02.02: Is there a documented and implemented procedure that requires all records to be stored
+for a minimum period of 24 months (or greater if legally required) or for at least the shelf life of the
+product if it is greater than 24 months?
+Total compliance (5 points): There should be a written procedure in place requiring that all food safety
+related records (including any test results) be retained for a minimum of 24 months, regardless of the
+product(s) shelf-life. For Good Agricultural Practices (GAP) growing area records include all cultivation
+records; for GAP harvest crew records include harvesting related records. Food safety records for
+product(s) with a shelf-life beyond 24 months should be retained for at least the shelf-life of the product.
+Organizations are expected to follow any regulatory or legal requirements for food safety related record(s)
+retention beyond the 24 month minimum requirement stated here. Ideally (not part of the audit scoring),
+some records that might go to prove the long-term food safety performance of the operation should be
+retained for as long as possible, for example internal and third-party audit records and corrective actions.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of food safety related records not being required to be or retained for the
+
+     required length of time (two years unless legally longer storage is required, or the product has a
+     longer shelf life than 24 months).
+
+Major deficiency (1 point) if:
+· Numerous instances of food safety related control records not being required to be retained for the
+
+     required length of time (two years unless legally longer storage is required, or the product has a
+     longer shelf life than 24 months).
+
+Non-compliance (0 points) if:
+· Food safety related records are kept less than 24 months.
+· Food safety related records are kept less than the required time mandated by law for a particular
+
+     product.
+· Food safety related records are kept for less than the shelf life of the product.
+
+1.02.03: Are both paper and electronic food safety related documents and records created, edited,
+stored and handled in a secure manner?
+Total compliance (5 points): Both paper and electronic food safety documentation that are part of the food
+safety program (e.g. procedures, policies, training records, testing results, monitoring records, etc.)
+should be created, edited and handled in a secure manner that deters theft and prevents tampering,
+when not in use. For example, the system might be the locking up of all manuals and recording logs at
+night in the QA Lab., when the operation is not running. There might also be rules for storing records in a
+secure archive room. Where computer systems are used to store SOP's, records, etc., there should also
+be security measures including access control (password protection). The electronic records and
+documents should also be "backed-up" in some way e.g. stored in two locations, so that if one location
+breakdowns or is damaged, the data is not lost. Paper files should be written in ink, not pencil and if
+changes are made to records after initial entry, changes should be clearly legible and tracked, and no use
+of correction fluid. When electronic records are amended, they should show what was amended, by
+whom and when (editing history). Electronic records should be storable in the database, available for
+immediate retrieval when needed (see 1.02.04) and have secure digital signature (including date and time
+(where appropriate)) capabilities. All records should be legible and accurate.
+The system should include appropriate electronic security and comply with the relevant electronic
+regulatory record-keeping requirements, e.g. FDA (21CFR117.305, 21CFR11) and/or national
+equivalents.
+
+FDA Electronic Records Guidance:
+https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfcfr/CFRSearch.cfm?CFRPart=11
+https://www.accessdata.fda.gov/scripts/cdrh/cfdocs/cfCFR/CFRSearch.cfm?fr=117.305
+
+PGFS-R-061                                    Page 12 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+Minor deficiency (3 points) if:
+
+· Single/isolated instance(s) of hard copy documents and records not being created, edited, stored and
+
+     handled securely.
+
+· Single/isolated instance(s) of electronic documents and records not being created, edited, stored and
+
+     handled securely.
+
+· Single/isolated instance(s) of electronic documents lacking digital signature capabilities.
+
+Major deficiency (1 point) if:
+
+· Numerous instances of hard copy documents and records not being created, edited, stored and
+
+     handled securely.
+
+· Numerous instances of electronic documents and records not being created, edited, stored and
+
+     handled securely.
+
+· Numerous instances of electronic documents lacking digital signature capabilities.
+· Electronic documents and records are not being backed-up.
+
+Non-compliance (0 points) if:
+
+· Hard copy documents and records are not stored securely.
+· Computerized documents and records are not being stored securely.
+· No control over creating or editing of hard copy and/or computerized records.
+· Widespread failure to use electronic signatures and/or software lacks secure electronic signature
+
+     capability.
+
+1.02.04: Are records maintained in an organized and retrievable manner?
+Total compliance (3 points): All food safety records and documents should be maintained in a designated
+area where they can be retrieved readily. These records should be well organized, and should be
+accessible, even if the operation is seasonal. This will aid in the detection of issues, the isolation of
+problems, and the identification of trends and retrieval of information. Binders or file system is acceptable.
+System might be by date or together in a single file for a particular record. It may be that data is kept on
+computer. Data on computers must be easily retrievable.
+
+Minor deficiency (2 points) if:
+· Single/isolated instance(s) of records and/or documents not being organized and easy to retrieve.
+
+Major deficiency (1 point) if:
+
+· Numerous instances of records and/or documents not being organized and easy to retrieve.
+
+Non-compliance (0 points) if:
+· No organization of records and/or documents.
+· Many missing records and/or documents.
+
+1.02.05: Are all records and test results that can have an impact on the food safety program
+verified by a qualified person independent of the individual(s) completing the records?
+Total compliance (5 points): Records and test results should be reviewed, signed off and dated by a
+qualified person within 7 days. The verifier is independent of the individual completing the record(s),
+understands the purpose of the verification and understands what they need to review on the record(s)
+before they sign (i.e. PCQI qualification, evidence of training, etc.). Examples of records may include
+composting records, pre-harvest records, pre-operational inspections, anti-microbial, water turbidity,
+cleaning and sanitation, etc. If any issues are detected, corrective actions should be recorded. Ideally (not
+a scoring issue), there is a summary document of records reviewed, who reviewed (position) and who
+verified the summary document (position). Pesticide application records are ideally reviewed and signed
+off on as above, however, individual situations including small farming operations and contract spray
+services may impact how records are being reviewed and signed.
+
+Reference:
+
+PGFS-R-061                                    Page 13 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+https://www.fda.gov/food/food-safety-modernization-act-fsma/fsma-final-rule-produce-safety
+https://www.fda.gov/Food/GuidanceRegulation/FSMA/ucm253380.htm#guidance
+https://producesafetyalliance.cornell.edu/sites/producesafetyalliance.cornell.edu/files/shared/documents/
+Records-Required-by-the-FSMA-PSR.pdf
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of records and/or test results not being reviewed and signed off by a
+
+     qualified person within 7 days (second signatory).
+· Single/isolated instance(s) of records and/or test results being signed off by a qualified person but
+
+     there are issues with the records that have not been highlighted.
+
+Major deficiency (1 point) if:
+· Numerous instances of records and/or test results not being reviewed and signed off by a qualified
+
+     person within 7 days (second signatory).
+· Numerous instances of the records and/or test results being signed off by a qualified person but there
+
+     are issues with the records that have not been highlighted.
+
+Non-compliance (0 points) if:
+· Fundamental failure for records and/or test results to be reviewed and signed off by a qualified person
+
+     within 7 days (second signatory).
+· Fundamental errors on the records and/or test results that are being signed off by a qualified person.
+· The verifier is not independent of the individual(s) completing the records.
+
+Procedures and Corrective Actions
+
+1.03.01: Is there a written and standardized procedure for creating Standard Operating Procedures
+(SOPs) and their content?
+Total compliance (5 points): There should be a written document that describes how to write Standard
+Operating Procedures (SOPs) for food safety activities related to good agricultural practices and/or good
+manufacturing practices that when followed, help prevent food safety hazards from occurring. SOPs
+should include a date and document number or reference code and detail:
+
+     · what is to be done,
+     · how it is done,
+     · how often,
+     · by whom,
+     · what recordings are required and
+     · any immediate corrective action procedures to implement when there are any deficiencies.
+These SOPs can be used for training and as reference tools. There should be clear evidence that this
+system is being followed, based on SOPs reviewed. SOPs should follow the organizations document
+control systems, especially proper version management (see Control of Documents and Records).
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of errors and/or omissions within the document.
+· Single/isolated instance(s) of SOPs not having the required format.
+
+Major deficiency (1 point) if:
+· Numerous instances of errors and omissions within the document.
+· Numerous instances of SOPs not having the required format.
+
+Non-compliance (0 points) if:
+· A document describing how to write standard operating procedures has not been created.
+· Widespread evidence that SOPs are not written following the standardized procedure.
+
+1.03.02: Are the written procedures available to relevant users and is a master copy maintained in
+a central file?
+
+PGFS-R-061                                    Page 14 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+Total compliance (5 points): The written procedures (SOPs) should be available to the users and other
+interested parties involved in performing the activities described in the procedures. A master copy of all
+SOP's and associated recording forms should be assembled and stored as a reference. SOP's should be
+used by the relevant workers (e.g., QA workers, production, sanitation, etc.). SOPs can be used for
+training and for reference. The number of copies of SOPs depends on the size of the company and the
+types of processes involved. In the event of electronic SOP's, access should be allowed to all relevant
+workers, however, there should be controls in place to prevent unauthorized editing.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of SOP's not being made available to relevant workers.
+· Single/isolated instance(s) of SOP's and recording forms being omitted from the Master SOP file
+
+     (SOP Manual).
+
+Major deficiency (1 point) if:
+· Numerous instances of some SOP's not being made available to relevant workers.
+· Numerous instances of SOP's and recording forms being omitted from the Master SOP file (SOP
+
+     Manual).
+
+Non-compliance (0 points) if:
+· SOP's are not accessible to relevant workers.
+· A master file (SOP Manual) containing the SOP's and recording forms that are being used, has not
+
+     been created.
+
+1.03.03: Is there a documented corrective action procedure that describes the basic requirements
+for handling all non-conformances affecting food safety?
+Total compliance (5 points): There should be a documented corrective action procedure that outlines how
+the company manages corrective actions including preventative actions and follow-up validation to ensure
+corrective action taken has solved the problem. Specific corrective action procedures and records are
+assessed in each module. The procedure should require that records of the corrective action activities
+and their follow-up are completed using the same format with the required information (see below)
+detailed.
+Corrective action procedure should include:
+
+     · the review of the non-conformance
+     · the determination of the cause(s)
+     · the establishment of an action plan to address such non-conformances and prevent future
+
+          occurrences (preventive action plan)
+     · the implementation of corrective actions and preventive actions
+     · the follow-up validation to ensure actions taken have solved the problem (e.g. root cause
+
+          summary, evidence of the solution)
+
+Auditees may consider the option of using root cause analysis method when trying to determine the
+cause of a non-conformance or trend of non-conformances.
+
+Minor deficiency (3 points) if:
+· Single instance of an error or omission in the information within the corrective action procedure.
+· Single instance of corrective action procedure missing a key element from list above.
+
+Major deficiency (1 point) if:
+· More than one instance of errors or omissions in the information within the corrective action
+
+     procedure.
+· More than one instance of corrective action procedure missing a key element from list above.
+
+Non-compliance (0 points) if:
+· Numerous errors or omissions in the corrective action procedure.
+· Corrective action procedures have not been developed.
+
+PGFS-R-061                                    Page 15 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+1.03.04: Is there an incident reporting system, also known as a Notice(s) of Unusual Occurrence
+and Corrective Actions Log (NUOCA)?
+Total compliance (5 points): The company has a log or report for recording infrequent and/or unusual
+events that impact food safety such as deviations, incidents, process failures, unusual occurrences, etc.,
+For example, foreign objects, chemical spills, rejected packaging, downtime, etc., that are not recorded
+on other logs. These should have corrective action records where relevant. This log, often called a
+NUOCA log (Notice(s) of Unusual Occurrence and Corrective Action Log), helps avoid creating multiple
+logs for events that do not occur very often. If product testing is performed (microbiological, heavy metal,
+pesticides, dioxins, aflatoxins, etc.), and there are out of specification results, there should be a NUOCA.
+Useful to consider recording issues that might or might not temporarily affect production e.g. loss of
+power, blocked drains, weather damage, earthquakes, flooding by heavy rainfall, evidence of human
+intrusion during non-working hours in or around the growing area, etc., since at a later date, if there are
+product issues, these events might be of significance.
+
+Minor Deficiency (3 points) if:
+· Single/isolated instance(s) of omissions or incorrect data in the records.
+
+Major Deficiency (1 point)
+· Numerous instances of omissions or incorrect data in the records.
+
+Non-compliance (0 points)
+· No records.
+· Failure to maintain records.
+
+Internal and External Inspections
+
+1.04.01: Is there a documented procedure for how internal audits are to be performed at the
+operations, including frequency and covering all processes impacting food safety and the related
+documents and records?
+Total compliance (10 points): Self-auditing (self-diagnostics) is a key part of an operation's food safety
+program. A written procedure for internal audits should be created for each operation (farm, indoor
+agriculture, harvest crew, or facility) in order to proactively ensure safe food production. The internal
+audits procedure should include the checklist used for the internal audits, cover the inspection of sites,
+the practices in place, the related documents required, the records generated, the frequency of the
+internal audits, and identification of the person(s) or position(s) responsible for conducting the internal
+audits. If the current PrimusGFS checklist is not utilized in the internal audit program the self-audit should
+still include the requirements applicable to the operation type from the PrimusGFS normative documents.
+Procedure should include the verification of the practices and the related documents and any corrective
+actions taken. If issues are found, there should be detailed corrective action records. Audit records should
+include the date, personnel involved, areas that were checked, findings and corrective actions (where
+necessary). Recording systems (documentation) for food safety related topics should be audited at least
+quarterly (frequency could increase or decrease depending on production seasonality) to ensure that they
+are being completed properly (e.g., using the correct log, correct frequencies, recording results correctly,
+recording corrective actions, etc.). This does not include the food safety management system every 12
+months, see 1.01.05. The internal audit records are assessed in each module.
+· Inspection frequency depends on type and size of operation but as a minimum:
+
+     · Food safety management system: at least every 12 months.
+     · Food safety documentation: at least quarterly.
+     · Farm, Indoor Agriculture and Harvest Crew: at least a pre-season growing area assessment and
+
+          a full GAP self-assessment during harvest season covering growing and harvesting operations
+          should be on file. If growing and harvest activities are under the same organizational authority the
+          self-assessment should be on file covering both growing and harvesting and conducted during
+          the harvest season. A harvesting company not under the authority of a grower should have self-
+          assessments on file during harvest season covering each type of harvest process utilized for the
+
+PGFS-R-061                                    Page 16 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+          crew(s), i.e. crew can harvest product in-field semi-processing and bulk/final packing in the
+          growing area. A more frequent self-assessment frequency should be used depending on the crop
+          type, farm or indoor agriculture location, any associated risk pressures, and/or if required by any
+          national, local or importing country legal requirements, or customer requirements. These factors
+          will also affect the need for pre-harvest inspections. Farm(s), indoor agriculture growing area(s),
+          storage, harvesting, worker and visitor hygiene, agricultural water sources, training program, etc.,
+          and all associated paperwork should be included.
+     · Facility: Processing plants should have at least a monthly frequency. Packinghouses, coolers and
+          storage operation ideally have a monthly frequency, but at least a quarterly frequency. Entire
+          facility (inside and out) should be included.
+     · HACCP: self-audits of the HACCP program should have been done at least once within last 12
+          months to ensure that the process flow, hazard analysis and HACCP chart reflect reality and
+          ensure that the program has captured any changes to the process. Whenever changes are made
+          to the program i.e. new equipment added to the facility, new critical control points added to the
+          plan, new limits added, new packaging is required, etc., then the plan needs to be re-evaluated
+          by a self-audit to make sure it is working properly (6.02.03). HACCP program reviews should also
+          take into account the latest guidelines, legal changes, issues arising from other audits and any
+          other information gained about the production process. Self-audits help verify the effectiveness of
+          the HACCP program, identify deficiencies and help improve the program.
+     · Preventive Controls: self-audit of the program at least every three years to ensure product
+          descriptions, process flows, hazard analyses, preventative control decisions, preventative control
+          recording and worker training reflect reality and ensure the program has captured any changes to
+          the process. Whenever changes are made to the program and where emerging issues may be
+          relevant to the product and processes, then the plan needs to be re-evaluated by a self-audit to
+          make sure it is working properly.
+
+Minor Deficiency (7 points) if:
+· Single/isolated instance(s) of areas/issues missing on the inspection program.
+· Single instance of self-audit not being required at least at the minimum frequency.
+
+Major Deficiency (3 points) if:
+· Inspection frequency is not adequate relative to the type of business and the number of issues that
+
+     require monitoring.
+· Numerous instances of areas/issues missing on the inspection program.
+· More than one instance of a self-audit not being required at least at the minimum frequency.
+
+Non-compliance (0 points) if:
+· There is no procedure for how self-audits are to be performed.
+· Numerous instances of self-audits not being required at least at the minimum frequency.
+
+1.04.02: Are there written procedures for handling regulatory inspections?
+Total compliance (3 points): Written procedures for handling food safety related regulatory inspections are
+available for workers to follow when regulatory agencies inspect the operation. Regulatory agencies could
+be Health Departments, State enforcement organizations, etc. (e.g., US: USDA/FDA, Canada: CFIA,
+Chile: Ministerio de Agricultura/SAG, Mexico: SAGARPA). The procedures should include at a minimum,
+rules for always accompanying inspections, identified meeting space, rules on taking samples and taking
+photographs, how to follow-up after the inspection, corrective action requirements, etc. This policy should
+be communicated to key personnel including the receptionists, field/plant workers and crew/line
+supervisors. Inspection policies must not contravene bio-terrorism laws or restrict access to documents
+that have been covered by these laws.
+
+https://www.fda.gov/iceci/inspections/iom/default.htm
+
+Minor deficiency (2 points) if:
+· If one of the above elements of the policy is missing.
+
+PGFS-R-061                                    Page 17 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+· If the receptionist(s) has/have not been briefed properly.
+
+Major deficiency (1 point) if:
+· If two or more elements of the policy are missing.
+
+Non-compliance (0 points) if:
+· A written procedure for handling regulatory inspections is not available for review.
+
+1.04.03: Are there records of regulatory inspections and/or contracted inspections, company
+responses and corrective actions, if any?
+Total compliance (5 points): Reports of previous food safety inspections are on file and any deficiencies
+noted have been responded to (date of response, action taken, and signature of responsible person (if
+applicable)). Inspections include regulatory (e.g., Federal and State) and third-party audits. This question
+is not applicable if there have been no regulatory or third-party inspections in the past year. Evidence of
+corrective actions (and their follow-up) is important, since there are legal implications if a company was
+warned of an issue and cannot prove that it has taken corrective actions and later has a serious incident
+which could have been prevented.
+
+https://www.fda.gov/ICECI/Inspections/ucm256377.htm
+https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/inspection-
+references
+
+Minor Deficiency (3 points) if:
+· Single/isolated instance(s) of corrective actions not being recorded.
+· A single audit inspection report is missing in the last year.
+
+Major Deficiency (1 point) if:
+· Numerous instances of corrective actions not being recorded.
+· More than one audit inspection report is missing in the last year.
+
+Non-compliance (0 points) if:
+· There are no records of previous inspections and corrective actions taken although there have been
+
+     more than two inspections in the last year.
+· If a previous inspection indicated an observation of contaminated ingredient, product or food contact
+
+     packaging and there are no documented corrective actions.
+
+1.04.04: Are there documented calibration and/or accuracy verification procedures for measuring
+and monitoring devices used in the operations that are related to the safety of the product?
+Total compliance (10 points): The equipment used should be identified (i.e. catalog, roster, list) and there
+are documented procedures for the calibration for measuring and monitoring devices used in the
+operation. Regular calibration ensures correct and accurate operation. Scales/weight or volume
+measuring devices should have verification of accuracy and/or calibration regularly to ensure correct and
+accurate operation where relevant to food safety.
+
+For GAP, this covers items such as fertilizer and pesticide application equipment, pesticide measuring
+equipment (e.g. scales), ORP and pH meters, and other equipment related to the safety of the product.
+Pesticide application equipment (e.g. sprayers), and corresponding measuring equipment (e.g. scales,
+cups) should be verified and when required calibrated (or replaced) regularly to ensure correct and
+accurate operation. Calibration and/or verification procedures should describe frequency, method and the
+acceptable range of variation (when applicable). Legal requirements, manufacturer recommendations,
+best practice and experience of equipment drift help to determine the frequency.
+
+For GMP, this includes equipment used for measuring and monitoring processes (handheld and
+automated) related to food safety e.g. ATP testing systems, thermometers, scales for weighing
+
+PGFS-R-061                                    Page 18 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                         Rev. 1
+
+ingredients (e.g. in juice operations), metal detectors, ORP meters, flow meters and pH meters. Scales
+used to check final product weight are exempt (unless relevant to food safety).
+
+Equipment is calibrated regularly to ensure correct and accurate operation. Calibration procedures should
+be traceable to a national or international standard or method, should describe the frequency of testing,
+the testing method, and the acceptable range of variation. Procedures should require that all test
+solutions/strips are within date code, appropriate for the concentrations used and stored correctly
+(especially light and temperature sensitive materials). Corrective actions should be detailed when
+applicable. Legal requirements, manufacturer recommendations, best practice and experience of
+equipment drift help to determine the frequency. Both internal (where the company checks the equipment
+for themselves) and external (where equipment is sent away, or an outside specialist company comes on
+site and checks the equipment in situ) calibrations should be documented and on file. Proof of calibration
+includes records, invoices and on machines labels. Where an external service is used, procedures,
+licenses and/or certifications are acceptable.
+
+https://www.pubs.ext.vt.edu/content/dam/pubs_ext_vt_edu/424/424-100/PDF_part16.pdf
+
+http://www.ugaurbanag.com/content/calibrating-your-spreader
+
+Minor Deficiency (7 points) if:
+· Single/isolated instance(s) of omissions in the procedure(s).
+· Single/isolated instance(s) of piece/set of equipment omitted from the procedure(s).
+
+Major Deficiency (3 points) if:
+· Numerous instances of omissions in the procedure(s).
+· Numerous instances of pieces/sets of equipment omitted from the procedure(s).
+
+Non-compliance (0 points) if:
+· No procedure
+
+1.04.05: Are calibration and/or accuracy verification records maintained and are they consistent
+with the requirements outlined in the SOP(s) for instruments and measuring devices requiring
+calibration?
+Total compliance (5 points). Calibration and/or accuracy verification records should be available for all
+applicable equipment and should consider at least equipment identification, date, frequency of testing,
+testing method, result (variation), and corrective actions. Both internal (where the company checks the
+equipment for themselves) and external (where equipment is sent away, or an outside specialist company
+comes on site and checks the equipment in situ) calibrations should be documented and on file. Proof of
+calibration includes records, invoices and on machines labels. Where an external service is used,
+procedures, licenses and/or certifications are acceptable.
+
+Minor Deficiency (3 points) if:
+· Single/isolated instance(s) of omissions or incorrect data in the records.
+
+Major Deficiency (1 point)
+· Numerous instances of omissions or incorrect data in the records.
+
+Non-compliance (0 points)
+· No records.
+· Failure to maintain records.
+
+Release of Items/Product
+
+1.05.01: Is there a documented product release procedure available?
+
+PGFS-R-061                                    Page 19 of 31          October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+Total compliance (5 points): Product release procedures are needed when the product is approved for
+shipment or harvest (they do not indicate the release of a product that has been placed on hold). Product
+release procedures assure that a lot is only released for shipment (sale) when the lot meets agreed
+standards, such as order requirements (e.g. specification) and/or meets agreed testing requirements (e.g.
+results confirmed negative or within limits results from testing, etc.). This includes crops approved for
+harvest and crop harvest where harvested product is directly packed in the final packaging unit during
+harvest (e.g., mushrooms, berries, individually wrapped lettuce) or there is in-field processing/semi-
+processing. Products should not be released for harvest or shipment without assuring that all food safety
+evaluations have been completed. Designated personnel are responsible for signing off. Sign off may be
+part of harvest record, bill of lading, etc. Procedures should be properly documented, implemented and
+pertinent records retained. Procedures should take into account any specific customer requirements, for
+example, testing requirements. N/A for organizations that only have authority over the growing activities
+and operation(s), and not the harvesting activities.
+
+Minor deficiency (3 points) if:
+· Single part of the procedure is omitted.
+· Single/isolated instance(s) of the procedure not being applied in the field, production and/or storage
+
+     areas.
+
+Major deficiency (1 point) if:
+· Procedure missing more than one part, but SOP exists.
+· Numerous instances of the procedure not being applied in the field, production and/or storage areas.
+
+Non-compliance (0 points) if:
+· No procedure.
+· Procedure created bears no resemblance to what is being applied in the field, production and/or
+
+     storage areas.
+
+1.05.02: Are there records of product releases kept on file?
+Total compliance (5 points): Records showing product releases should be consistent with the Release
+Procedure (1.05.01) and available for review. Product release records are needed to document when the
+product is approved for shipment or harvest (they do not indicate the release of a product that has been
+placed on hold). Authorized personnel should sign a "release" for product. Sign off may be part of harvest
+record, bill of lading, etc. Records should be available demonstrating the sign off for the "release" of all
+product shipped. N/A for organizations that only have authority over the growing activities and
+operation(s), and not the harvesting activities.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of omissions or incorrect data in the records.
+
+Major deficiency (1 point) if:
+· Numerous instances of omissions or incorrect data in the records.
+
+Non-compliance (0 points) if:
+· No records.
+
+1.05.03: Is there a documented procedure for handling on hold and rejected items?
+Total compliance (5 points): A documented procedure exists that explains how products (including raw
+materials, packaging, work in progress, finished product, etc.) that have either been rejected or placed on
+hold should be handled, including the release of the on hold/rejected items. Procedure should explain
+how returned items and items for donation are handled (where relevant).
+
+For harvested product in the field and the facility, the procedure should identify who (position/title) is
+authorized to determine the disposition of materials that are placed on hold and include details on how
+the affected item(s) is/are separated from other lots in terms of tagging systems (e.g., date showing when
+
+PGFS-R-061                                    Page 20 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+the item was placed on hold/rejected, the reason for being on hold/rejected and the name of the person
+who put the item on hold (details may be recorded electronically as long as products are clearly tagged))
+and any other physical separation needed to ensure that affected items are not commingled with other
+goods in such a way that their disposition is not clear.
+
+For the pre-harvest materials, procedures should include how the affected product is indicated in the field
+(e.g., cordoned off, any buffer zones used, how these details are recorded, etc.).
+Procedure requires authorized personnel should sign (with date and time) a "release" for any item placed
+on hold or rejected, detailing actions taken (e.g., disposition, re-work, food bank, tilled back into the
+ground, etc.).
+
+Minor deficiency (3 points) if:
+· Single part of the procedure is omitted.
+· Single/isolated instance(s) of the procedure not being applied in the field, production and/or storage
+
+     areas.
+
+Major deficiency (1 point) if:
+· Procedure missing more than one part, but SOP exists.
+· Numerous instances of the procedure not being applied in the field, production and/or storage areas.
+
+Non-compliance (0 points) if:
+· No procedure.
+· Procedure created bears no resemblance to what is being applied in the field, production and/or
+
+     storage areas.
+
+1.05.04: Are there records of the handling of on hold and rejected items kept on file?
+Total compliance (5 points): Records of items placed on hold or rejected (e.g. an on hold/disposition log)
+should be available for review and should be kept to provide information about any item (raw materials,
+packaging, work in progress, finished product, etc.) that is rejected or put on hold. Records should show
+date when the item was placed on hold/rejected, amount of product affected, the reason for being on
+hold/rejected, the name of the person who put the product on hold and any other actions taken to ensure
+that affected product is not commingled with other goods in such a way that their disposition is not clear.
+Authorized personnel should sign (with date and time) a "release" for any item placed on hold or rejected,
+detailing actions taken e.g. disposition, re-work, food bank, tilled back into the ground, etc. Disposition
+records for products placed on hold or rejected should be maintained and available for review where
+applicable. Where required by law, certificates of destruction should be kept for review.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of omissions or incorrect data in the records.
+
+Major deficiency (1 point) if:
+· Numerous instances of omissions or incorrect data in the records.
+
+Non-compliance (0 points) if:
+· There is no record of on hold or rejected materials.
+
+1.05.05: Is there a documented procedure for dealing with customer and buyer food safety
+complaints/feedback, along with records and company responses, including corrective actions?
+Total compliance (10 points): There is a documented procedure detailing how to handle food safety and
+food quality complaints and feedback. Food quality issues are relevant if they have the potential to also
+be food safety issues. It is important to keep the complaints and feedback related records on file to
+support company procedure. The procedure and records should include (where applicable):
+
+          · Date/Time of complaint/rejection,
+          · Who made the complaint/gave feedback,
+          · Contact information,
+
+PGFS-R-061                                    Page 21 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+          · Product description,
+          · Where the product was purchased,
+          · Amount of product,
+          · Product code/date,
+          · Nature of complaint/feedback,
+          · Corrective actions,
+          · Corrective actions taken to prevent reoccurrence.
+
+Where appropriate (e.g. complaints of a repetitive nature), a trend analysis of food safety feedback should
+be performed to assist with the development of corrective actions.
+
+Complaints and feedback information, along with any corrective actions that are taken or associated with
+the operation should be available for review. For example, a blue colored Band Aid in a product could
+have come from either a facility or a harvest crew so details of the issue(s) should be sent to both facility
+and harvesting company. Ideally (not part of the audit scoring) foreign material issues should include
+photographs of the issue found (where possible). Other examples of issues that are viewed as potentially
+food safety related include tainting, sickness and sometimes decay issues. Where there are many (e.g.
+more than 5 in a month) complaints, a degree of analysis and review is expected to determine if trends
+are present.
+
+Where a corporate office/sales department or other parties handle the incoming food safety related
+complaints, the operation is still required to have a documented procedure including how
+complaints/feedback are communicated to the operation and how they are managed internally (e.g.
+investigation, root cause, corrective action, communication, etc.).
+Where the auditee claims to have received no complaints/rejections, the auditor should verify that a
+complaint recording system is in place and has the necessary elements listed above.
+
+Minor Deficiency (7 points) if:
+· Single/isolated instance(s) of omissions and incorrect data in the records including corrective actions.
+· More than 10 complaints/rejections received, but no trend analysis or review carried out.
+
+Major Deficiency (3 points) if:
+· Numerous instances of omissions and incorrect data in the records including corrective actions.
+
+Non-compliance (0 points) if:
+· There are no records of complaints/rejections and responses (complaints do occur).
+· The company does not have a system for handling complaints/rejections
+
+Supplier Monitoring/Control
+
+1.06.01: Is there a written procedure detailing how suppliers and service providers are evaluated,
+approved, and include the ongoing verification activities including monitoring? Note that supply
+chain preventive controls and supply-chain-applied controls are also mentioned in Preventive
+Controls Addendum.
+Total compliance (10 points): There is a written procedure detailing how suppliers and service providers
+(e.g. raw materials, propagation materials, fertilizers, crop protection products, ingredients, processing
+aids, primary packaging items) are evaluated, approved and monitored. The procedure for evaluation,
+approval and on-going verification, including monitoring of suppliers, on-site service providers and
+outsourced service providers should include the indicators to be considered for decision making
+(including food safety hazards), exceptions and the elements the providers should comply with to make
+sure they meet the defined specifications. This procedure should include monitoring requirements in order
+to remain approved, and methods for suspending and un-approving suppliers and service providers
+including product design and development (new products, changes to product or manufacturing
+processes). See also Modules 6 & 7 (where applicable). The procedure should also detail what is needed
+(minimum requirements) in the case of working with a supplier in an emergency situation (e.g. market
+
+PGFS-R-061                                    Page 22 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+conditions, weather event) that has not yet been approved including ensuring approval from named
+management is justified and documented. U.S. Importers under the FDA's Rule Foreign Supplier
+Verification Programs rule should ensure requirements of rule are included in this procedure.
+As a minimum, the procedure should detail the following where relevant:
+
+     · Agreed specifications
+     · Letters of guarantee
+     · Methods of evaluating approved suppliers and service providers (including second- and third-
+
+          party food safety audits where relevant, at least for raw materials and primary packaging)
+     · Methods of approving approved suppliers and service providers
+     · Methods of approving "emergency" (temporary) suppliers and service providers.
+     · Methods and frequency of monitoring approved suppliers and service providers
+     · Methods of reviewing approved supplier and service providers performance and status (including
+
+          removal of approved status)
+
+Minor deficiency (7 points) if:
+· If one of the above elements of the procedure is missing.
+
+Major deficiency (3 points) if:
+· If two or more elements of the procedure are missing.
+
+Non-compliance (0 points) if:
+· A written procedure detailing the selection, evaluation, approval and monitoring process of approved
+
+     suppliers and/or service providers is not available for review.
+
+1.06.02: Is there a list of approved suppliers and service providers including justification for use
+of any emergency (temporary) suppliers or providers?
+Total compliance (10 points): There is a list of approved suppliers of materials and services. All incoming
+agricultural inputs, ingredients, products, materials (including primary packaging) and services that relate
+to food safety (e.g., contract crop protection sprayers, pest control, chemical suppliers, water and waste
+utilities, RPC rental, transport, laboratory testing, maintenance and sanitation services) are purchased
+from &/or provided by approved suppliers. Where exceptions are made (e.g., market conditions,
+emergency situations), approval from management is justified and documented as per procedure
+(1.06.01).
+
+Minor deficiency (7 points) if:
+· Single/isolated instance(s) of errors or omissions in the records.
+· Single/isolated instance(s) of purchasing exceptions made (i.e. not from list of approved suppliers)
+
+     without management approval.
+
+Major deficiency (3 points) if:
+· Numerous instances of errors or omissions in the records.
+· Numerous instances of purchasing exceptions made (i.e. not from list of approved suppliers) without
+
+     management approval.
+
+Non-compliance (0 points) if:
+· There is no list of approved suppliers.
+· There is a list of approved suppliers but purchasing exceptions to it is the norm.
+
+1.06.03: Are there current written food safety related specifications for all incoming products,
+ingredients, materials (including primary packaging), services provided on-site, and outsourced
+services?
+Total compliance (10 points): A specification is an explicit set of food safety requirements or criteria to be
+met (e.g., indicating what an item is made of, contract details). Specifications are accurate, acceptable
+and ensure conformance with relevant customer and legislative requirements. There are written, detailed,
+up-to-date specifications for all incoming products, ingredients, materials (including primary packaging),
+
+PGFS-R-061                                    Page 23 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+services provided on-site, and outsourced services (including when exceptions will be allowed) that have
+an effect on food safety, addressing the required Good Agricultural and/or Good Manufacturing Practices.
+Documented specifications are easily accessible to users and there is a documented procedure for
+review, amendment and approval of all specifications. Government registration and/or label information
+(e.g. EPA) for crop protection and processing aid products is acceptable in lieu of an actual specification
+provided there is evidence products are used according to label instructions. Specifications should be
+reviewed on at least an annual basis and there should be at least the following specifications available to
+review (where applicable):
+· seeds (e.g. lettuce or leafy greens, sprouts, microgreens)
+· transplants,
+· fertilizer/crop protection materials/adjuvants,
+· ingredients (e.g. product raw materials, ice),
+· processing aids (e.g. anti-microbials, buffers, post-harvest fungicides),
+· primary packaging materials (material/components manufactured with),
+· other materials with potential for direct product contact based on risk assessment, for example labels
+
+     in direct contact with product,
+· on-site and outsourced services (e.g., contract crop protection sprayers, pest control, chemical
+
+     suppliers, water and waste utilities, RPC rental, transport, laboratory testing, maintenance and
+     sanitation services) provided.
+
+Note that contracted auditee operations such as co-packers, harvest crews, etc., that use materials or
+services that are supplied and/or selected by their customers, i.e. not purchased by the auditee should
+still have copies of specifications for the item provided. For example, a harvest crew that has some or all
+of their primary packaging provided by their contracting customer should obtain a copy of the up-to-date
+specification(s) from the customer.
+
+Minor Deficiency (7 points) if:
+
+· Single/isolated instance(s) of errors or omissions in the records.
+
+Major Deficiency (3 points) if:
+
+· Numerous instances of errors or omissions in the records.
+
+Non-compliance (0 points) if:
+· No records.
+· Failure to maintain records.
+
+1.06.04: Does the organization have documented evidence to ensure that all incoming products,
+ingredients, materials, services provided on-site, and outsourced service suppliers comply with
+the approval requirements and that all supplier verification activities (including monitoring) are
+being followed, as defined in the supplier approval procedure?
+Total compliance (15 points): The organization has relevant information from approved suppliers/service
+providers to ensure that they are complying with the established supplier/service provider approval
+procedures, contracts, specifications, customer and regulatory requirements and best practice guidelines.
+This applies to agricultural inputs, raw material, primary packaging, processing aids and other ingredient
+suppliers, products and services suppliers. Supplier verification documents should demonstrate that the
+ongoing approval requirements detailed in 1.06.01 are being met (e.g., third party food safety audits,
+certificates of analysis, reviews of supplier records, etc.).
+The evidence should include (as applicable):
+
+     · Current (within last 12 months) second and/or third-party food safety audit certificates that include
+          the scope of certification (ideally GFSI standard or equivalent) for suppliers of product and
+          ingredients including primary/food contact packaging. Ideally, a tests/analysis confirming no
+          chemical migration to food contents if there is history of past occurrences.
+
+     · Letters of guarantee are acceptable from the actual manufacturer for agricultural inputs,
+          processing aids, and other ingredients that are purchased, and service suppliers. Letters of
+          guarantee (also certificate of conformance) should indicate that the items supplied meet any and
+
+PGFS-R-061                                    Page 24 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+          all legal standards and regulations (e.g., FDA, FIFRA, etc.), best practice guidelines and agreed
+          specifications. Letters of guarantee should be current (within last 12 months) or indicate they are
+          "on-going".
+     · U.S. Importers under the FDA's Rule Foreign Supplier Verification Programs should have
+          documented evidence that foreign suppliers follow requirements to verify that imported food
+          meets U.S. safety standards.
+
+Note that contracted auditee operations such as co-packers, harvest crews, etc., that use materials or
+services that are supplied and/or selected by their customers, i.e. not purchased by the auditee should
+still have copies of the documents noted in this question, for example, third party audits. For example, in
+the case of a harvest crew company that has some or all of their packaging provided by their contracting
+customer, the harvest crew should obtain copies of the relevant packaging supplier documents such as
+third-party audits from their contracting customer
+
+Minor Deficiency (10 points) if:
+
+· Single/isolated instance(s) of errors or omissions in the records.
+
+Major Deficiency (5 points) if:
+
+· Numerous instances of errors or omissions in the records.
+
+Non-compliance (0 points) if:
+· No records.
+· Failure to maintain records.
+
+1.06.05: Where food safety related testing is being performed by laboratory service providers, are
+these licensed and/or accredited laboratories (e.g., ISO 17025 or equivalent, national and local
+regulations, etc.)?
+Total compliance (5 points): All food safety relevant tests and/or analyses that are performed by
+laboratories (e.g., water, pesticide residue and microbial) should be done by laboratories with current
+licenses and/or accreditations for the methods used). These can be ISO 17025 or equivalent, National
+Regulations or State Department approvals in the country of production. Documented evidence of these
+licenses and/or accreditations should be available indicating the scope of the license/accreditation/what
+analyses the laboratory is accredited to perform, what standard/code it is accredited to, who accredited
+the laboratory and date of expiration. Auditor should confirm that the laboratory has the appropriate
+licenses and/or accreditations for the analyses being done i.e. product testing, water testing, pesticide
+residue testing, etc. Letters of guarantee from the laboratory are not acceptable and proficiency testing
+(while useful supporting information) does not replace the requirement for laboratory licensing and/or
+accreditation.
+
+Minor Deficiency (3 points) if:
+
+· Single instance of an omission or incorrect data in the documentation indicating the scope of the
+
+     license/accreditation/what analyses the laboratory is accredited to perform, what standard/code it is
+     accredited to, who accredited the laboratory and date of expiration.
+
+Major Deficiency (1 point)
+
+· More than one instance of omissions or incorrect data in the documentation indicating the scope of
+
+     the license/accreditation/what analyses the laboratory is accredited to perform, what standard/code it
+     is accredited to, who accredited the laboratory and date of expiration.
+
+Non-compliance (0 points)
+· No documentation.
+· Using a non-licensed or unaccredited laboratory.
+· License/accreditation of testing laboratory has expired.
+
+PGFS-R-061                                    Page 25 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+Traceability and Recall
+
+1.07.01: Is there a document that indicates how the company product tracking system works,
+thereby enabling trace back and trace forward to occur in the event of a potential recall issue?
+Total compliance (10 points): The tracking system is shown in writing or in the form of a flow diagram and
+demonstrates the product tracking system that is used by the operation. The system should be able to
+show that it can trace back to the supplier(s) of materials, packaging, ingredients, processing aids, work-
+in-progress, etc., and show that the system can trace forward and indicate which customer(s) received
+products. This is usually accomplished by lot coding materials throughout a process and recording these
+lot codes at different points in the process. The traceability system should be in evidence when touring
+the operation and also when checking paperwork. The auditor should choose a finished product lot code
+to test the traceability system and have the auditee demonstrate how the code traces back to raw
+material supplier(s) and traces forward to the customer(s). The traceability system should include any
+product, ingredient, packaging and/or service related to the food safety that is outsourced.
+The written traceability system should match the system that is being used in the field or production
+facility (as applicable). Recording batches of packaging is required for some products where packaging
+recalls might occur e.g. modified atmosphere packaging, juice bottles, etc. Recording packaging batches
+is not required for packaging that is not usually the cause of recall e.g. cardboard boxes. Cooling/Cold
+Storage & Storage and Distribution auditees that operate in a third-party capacity for their clients might
+have their own traceability system or have adopted their client(s'). Growers may have access to customer
+traceback system or create their own tracking seed/transplant to field/block code, input dates (water,
+fertilizer, pesticides) to harvest dates and onto facility. While either route is acceptable, if the individual
+client(s') traceability systems are used then the auditor will check each individual traceability system on
+site. Cooling/Cold Storage & Storage and Distribution operations should have a system that can
+traceback from outgoing lots back through their process to the incoming lots.
+
+The tracking system must meet the requirements for "one step back, one step forward" as per the FDA
+requirements. Any national, local or importing country legal requirements should be considered.
+
+https://www.fda.gov/food/food-safety-modernization-act-fsma/food-traceability-list
+https://www.fda.gov/food/new-era-smarter-food-safety/tracking-and-tracing-food
+
+Minor deficiency (7 points) if:
+
+· Single/isolated instance(s) of the written traceback system not reflecting what is happening in the
+
+     production facility.
+
+· Single/isolated instance(s) of clarity issue(s) in the traceability explanation (text or flow chart).
+· Omitting packaging traceability (where packaging is sometimes the subject of a recall issue e.g. MAP
+
+     packaging, juice bottles).
+
+Major deficiency (3 points) if:
+· Numerous instances of the written traceback system not reflecting what is happening in the
+
+     production facility.
+· Numerous instances of clarity issues in the traceability explanation (text or flow chart).
+· Single/isolated instance(s) of either incorrect or missing elements of the traceability system that either
+
+     limits or stops efficient tracing back or tracing forward of the production process. For example, not
+     recording which lot codes are going to which customer thereby requiring that all customers are
+     contacted in the case of a recall.
+
+Non-compliance (0 points) if:
+· Fundamental failure of the written traceback system to reflect what is happening in the production
+
+     facility.
+· Numerous instances of either incorrect or missing elements of the traceability system that either limits
+
+     or stops efficient tracing back or tracing forward of the production process. For example, not
+     recording which lot codes are going to which customer thereby requiring that all customers are
+
+PGFS-R-061                                    Page 26 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+     contacted in the case of a recall. The production step not properly recording what raw material lots
+     are processed on a certain day.
+· No written down traceability system.
+
+1.07.02: Does the organization have a documented recall program including procedures, recall
+team roles and contact details, external contact listings, requirement for recall effectiveness
+checks, explanation of different recall classes and handling of recalled product?
+Total compliance (15 points): To facilitate an efficient recall there should be a written procedure
+describing how to perform a product recall, recall team details (contact details, alternates, roles and
+responsibilities), referral to customer and supplier contact details, explanations of relevant laws e.g.
+product withdrawal, class of recalls (if USA is production or destination country), etc.
+Documentation should include basic procedures and responsibilities, current facility contact listing with
+alternates and out of hour's numbers. Contact listings for customers and suppliers should also be part of
+the recall program, although these might be viewed as confidential (if so, then these listings must at least
+be referred to in the recall program). Listings should be reviewed regularly. An explanation of recall
+classes (Classes I, II, and III in the USA) should be in the recall program. Ideally contact details for the
+Certification Body, attorneys, media specialists (for getting the recall information to the various press
+outlets), local enforcement officials e.g. State and City Health Boards are a good idea (these are optional
+and should not cause a down score if missing).
+
+Auditees that operate in a third-party capacity e.g. contract copacker, storage operations, etc. might not
+have supplier and customer contact details, but they should have their client(s) details as part of their
+recall program. Auditees that operate in a third-party capacity have the option of creating their own recall
+program or using those provided by their clients. If latter option is used, then the auditor will check each
+individual recall program on site. Growers may create their own recall program or be using their
+customer's recall system. If the latter option is used, then the auditor will check each individual recall
+program on site.
+
+Potentially useful websites:
+FDA Industry Guidance for Recalls: https://www.fda.gov/safety/recalls-market-withdrawals-safety-
+alerts/industry-guidance-recalls
+
+Minor deficiency (10 points) if:
+· One element of the written recall program is missing or is outdated
+
+Major deficiency (5 points) if:
+· Two or more elements of the written recall program are missing or are outdated
+
+Non-compliance (0 points) if:
+· The facility does not have a recall program.
+
+1.07.03: Is testing of recall procedures (including trace back) performed and documented at least
+every six months and the company can demonstrate the ability to trace materials (one step
+forward, one step back) effectively?
+Total compliance (10 points): Testing of recall procedures should be performed at least every six months.
+(For short season crops where the operation runs 6 months or less throughout the year, only one mock
+recall is required and should include primary packaging (where applicable)). Where two mock recalls per
+year are required, one of the mock recalls should include the primary packaging as part of the exercise
+(not required for operations not using or handling primary packaging). The steps taken to conduct the
+mock recall, as well as the records utilized to demonstrate the program are effective and should be
+consistent with the scenario identified. Documentation should indicate the date and time the mock recall
+was initiated, the product or material chosen, the scenario, amount of product produced, affected lot ID's
+(date code(s), lot code(s), etc.), amount located, percent located, time product was located and time
+mock recall was completed. Scenario should be varied to provide experience in a range of conditions that
+are likely to occur; some examples include customer complaints for foreign materials, test results (buyer,
+government, in-house) detecting issues such as pathogens, pesticide residues, etc. Mock recall
+
+PGFS-R-061                                    Page 27 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+documentation should include copies of documentation that support the traceback scenario from the
+affected finished good lot through to the production run(s) affected and therefore showing if other lots are
+affected and which other customers might have received affected lot(s). Checks should be carried out to
+ensure that contact details exist for the affected customers. Documentation should also include any
+"lessons learned" from the mock recall process. GAP related organizations (for example (farm and crew))
+operations may create a mock scenario where they receive information from a client indicating there is a
+problem that warrants a recall. An alternate GAP mock scenario is that the grower is informed of a
+problem with an input that may warrant a recall e.g. some form of crop contamination. They should show
+how they know which lots were affected and the associated records of agricultural inputs, they should
+also be able to show who the field was harvested by and where the harvested crops were sent to. If an
+Organization (for example, a grower) opts to use a customer's recall program to meet the requirements of
+this question then the Organization can also use a valid mock recall from the customer that shows that
+the recall system has been properly tested. This mock recall would only cover the relationship between
+the Organization and the customer who has provided the mock recall example.
+
+Documentation should state "Mock Recall", especially the document that shows the scenario, so that at a
+later date, no one is confused as to whether this was a mock or a real recall. Auditors should remember
+that mock traceback and recall will vary considerably depending on the scenario chosen. Recalls should
+be completed within two hours with 100% of chosen product located. Mock recalls might note that product
+had been culled and rejected in some situations. Auditees are not expected to call or otherwise contact
+any suppliers or customers when carrying out mock recalls. If a live (real) recall has occurred in the last
+year, then this can be used to meet the requirements of this question, but the documentation details
+noted above should be in place.
+
+Minor deficiency (7 points) if:
+· Three or less elements of the mock recall are missing (e.g., supporting documentation, packaging
+
+     material)
+· Five percent or less of product or packaging was not located.
+· A few gaps noted in the logic of the traceback documentation
+· Not noting "lessons learned" from mock recall exercise (if there are any)
+· Total time to complete mock recall took longer than 2 hours but not more than 3 hours.
+
+Major deficiency (3 points) if:
+· Four or more elements of the mock recall are missing (e.g., supporting documentation, packaging
+
+     material)
+· Mock recall scenario is not varied to provide experience in a range of conditions
+· More than five percent of product or packaging was not located.
+· Lacking documentation that proves how the traceback and recall system identified all affected items
+
+     and customers.
+· Total time to complete mock recall took more than 3 hours.
+· Only one mock recall was performed in the prior 12 months.
+
+Non-compliance (0 points) if:
+· Mock recall has not been performed within the prior 12 months.
+· Mock recall was initiated, but could not be completed
+
+Food Defense
+
+1.08.01: Is there a written food fraud vulnerability assessment (FFVA) and protection plan for all
+types of fraud, including all incoming and outgoing products?
+Total compliance (5 points). There should be a vulnerability (risk) assessment and comprehensive
+protection plan for all types of food fraud. This includes economically motivated hazards, economically
+motivated food safety hazards, adulterant substances, mislabeling, theft, tampering, simulation, diversion
+or gray market, intellectual property rights and counterfeiting.
+
+PGFS-R-061                                    Page 28 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+An example of a food fraud scenario that may occur at an operation is when suppliers provide
+products/materials that do not match their required specifications (e.g. unapproved chemicals, non-food
+grade packaging material, product substitution).
+
+Additional resources:
+https://www.federalregister.gov/documents/2015/09/17/2015-21920/current-good-manufacturing-
+practicehazard-analysis-and-risk-based-preventive-controls-for-human
+https://mygfsi.com/press_releases/gfsi-position-paper-on-mitigating-the-public-health-risk-of-food-fraud/
+https://www.foodsafetymagazine.com/magazine-archive1/augustseptember-2018/is-that-a-beet-or-a-
+banana-unwrapping-food-fraud-in-the-produce-industry/
+https://www.foodsafetymagazine.com/magazine-archive1/februarymarch-2017/food-fraud-vulnerability-
+assessment-and-prefilter-for-fsma-gfsi-and-sox-requirements/
+
+Minor deficiency (3 points) if:
+
+· Single/isolated instance(s) of errors or omissions in the vulnerability assessment.
+
+Major deficiency (1 point) if:
+
+· Numerous instances of errors or omissions in the vulnerability assessment.
+
+Non-compliance (0 points) if:
+
+· There is no vulnerability assessment.
+· Fundamental failure to review food fraud types for the assessment.
+
+1.08.02: Is there a written food defense vulnerability assessment and food defense plan based on
+the risks associated with the operation?
+Total compliance (5 points): The operation should have a documented food defense plan that outlines the
+organization's security controls based on a written food defense vulnerability assessment of risks
+associated with the operations. This plan should include Good Agricultural Practices and/or Good
+Manufacturing Practices, as well as a written risk/vulnerability assessment, and controls for the identified
+risks.
+
+The document should include relevant food defense risks such as site/building access, personnel,
+visitors, contractors, computers, raw material receipt (raw materials, product and packaging), trucks
+(incoming and outbound), water sources, storage areas for product, materials, chemicals, production
+areas, shipping areas, etc. There may also be a requirement to ensure that suppliers have proper food
+defense programs. The food defense plan creation should also meet any national or local regulations
+(including management oversight and approval). Documented operational risk management (ORM)
+systems are acceptable if they show the controls that have been implemented for the food defense risks
+that have been identified. The plan should be reviewed at least once every 12 months e.g. as part of
+management verification review process.
+
+Additional resources:
+https://www.fsis.usda.gov/wps/wcm/connect/9fb1c725-4aae-4e06-b56e-
+217e0fc08f43/Self_Assessment_Checklist_Food_Security.pdf?MOD=AJPERES
+https://www.fda.gov/food/food-defense-tools-educational-materials/food-defense-plan-builder
+
+Minor deficiency (3 points) if:
+
+· Single/isolated instance(s) of errors or omissions in the risk assessment or food defense plan.
+
+Major deficiency (1 point) if:
+
+· Numerous instances of errors or omissions in the risk assessment or food defense plan.
+
+Non-compliance (0 points) if:
+
+· Food defense plan has not been documented.
+· There is no risk assessment.
+
+PGFS-R-061                                    Page 29 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                 Rev. 1
+
+1.08.03: Are records associated with the food defense plan and its procedures being maintained,
+including monitoring, corrective action and verification records (where appropriate)?
+Total compliance (5 points). The records required in the food defense plan should be maintained, in
+accordance with the details of the plan (see 1.08.02) and its associated procedures. These records are
+also subject to the document control and records requirements of this module.
+
+Minor deficiency (3 points) if:
+· Single/isolated instance(s) of errors or omissions in the records.
+· Single/isolated instance(s) of records not being maintained as per plan.
+
+Major deficiency (1 point) if:
+· Numerous instances of errors or omissions in the records.
+· Numerous instances of records not being maintained as per plan.
+
+Non-compliance (0 points) if:
+· There are no available records.
+· Fundamental failure to maintain records as per plan.
+
+1.08.04: Is there a current list of emergency contact phone numbers for management, law
+enforcement and appropriate regulatory agencies?
+Total compliance (3 points): The operation should have a current list of emergency contact phone
+numbers available for management, law enforcement and appropriate regulatory agencies. This
+information may be found as part of the recall plan.
+
+Minor deficiency (2 points) if:
+
+· Single/isolated instance(s) of errors or omissions in the list.
+· The list has not been updated in more than a year (less than two years).
+
+Major deficiency (1 point) if:
+
+· Numerous instances of errors or omissions in the list.
+· The list has not been updated in more than two years.
+
+Non-compliance (0 points) if:
+
+· A list of emergency contact phone numbers for management, law enforcement and appropriate
+
+     regulatory agencies has not been documented.
+
+1.08.05: Are visitors and contractors to the company operations required to adhere to food
+defense procedures?
+Total compliance (3 points): All visitors and contractors should be required to abide by the operation's
+food defense policies, including wearing appropriate identification. The rules and policies should be
+clearly stated in relevant languages. This requirement may be evidenced by signing a log on arrival at the
+operation, where the requirements are available for review, where they are agreeing to meet the company
+visitor and contractor food defense requirements.
+
+Minor deficiency (2 points) if:
+
+· Single/isolated instance(s) that visitor(s) and contractor(s) are not being required to comply with the
+
+     operations' food defense policies.
+
+Major deficiency (1 point) if:
+
+· Numerous instances of visitors and contractors not being required to comply with the operations' food
+
+     defense policies.
+
+· Policy is not in the relevant language(s) of the visitors/contractors.
+
+PGFS-R-061                                    Page 30 of 31  October 8, 2021
+©2021 Primus Group, Inc. All rights reserved                                 Rev. 1
+
+Non-compliance (0 points) if:
+
+· The company does not have evidence of a requirement for visitors and contractors to comply with the
+
+     operations' food defense policies.
+
+· Fundamental failure of visitors and contractors not being required to comply with the operations' food
+
+     defense policies.
+
+Document Revision History
+
+Date        Rev.#  Description
+2/18/21        0   Initial
+10/8/21        1   Changes to questions 1.01.05, 1.04.04, 1.06.01 & 1.06.05
+
+PGFS-R-061                                    Page 31 of 31                  October 8, 2021
+

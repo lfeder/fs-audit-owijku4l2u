@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Traceability Orphans — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<script src="audit-list.js"></script>
+<link rel="stylesheet" href="audit-list.css">
+</head>
+<body>
+<div id="root"></div>
+<script>
+function dateOnly(v){ if(!v) return null; const s=String(v);
+  let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
+}
+FSAudit.renderIssueList({
+  title: 'Sales orders missing pack date / lot link',
+  version: '04-29 07:05',
+  defaultSort: { key: 'invoice_date', dir: -1 },
+  columns: [
+    { key: 'invoice_date',    label: 'Invoice date' },
+    { key: 'farm',            label: 'Farm' },
+    { key: 'customer',        label: 'Customer' },
+    { key: 'po_number',       label: 'PO #' },
+    { key: 'product_code',    label: 'Product' },
+    { key: 'invoice_quantity',label: 'Qty', num: true },
+    { key: 'missing',         label: 'Missing' },
+  ],
+  fetchRows: async (win) => {
+    const rows = await FSAudit.fetchSheet('sales', 'sales_po');
+    const out = [];
+    rows.forEach(r => {
+      const inv = dateOnly(r.InvoiceDate); if (!inv || inv < win.from || inv > win.to) return;
+      const qty = Number(r.InvoiceQuantity); if (!qty || isNaN(qty)) return;
+      const farm = String(r.Farm || '').toLowerCase();
+      const hasPackDate = ['PackDate01','PackDate02','PackDate03','PackDate04','PackDate05','PackDate06']
+        .some(k => r[k]);
+      const hasPackLot  = ['PackLot01','PackLot02','PackLot03','PackLot04','PackLot05','PackLot06']
+        .some(k => r[k]);
+      let missing = '';
+      if (farm === 'lettuce' && !hasPackLot) missing = 'PackLot##';
+      else if (farm !== 'lettuce' && !hasPackDate) missing = 'PackDate##';
+      if (!missing) return;
+      out.push({
+        invoice_date: inv,
+        farm: r.Farm,
+        customer: r.CustomerName,
+        po_number: r.PurchaseOrderNumber,
+        product_code: r.ProductCode,
+        invoice_quantity: qty,
+        missing,
+      });
+    });
+    return out;
+  },
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spray REI / PHI vs Harvest — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0; min-height: 100vh; }
+  #header { background: #16213e; padding: 12px 24px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid #0f3460; flex-wrap: wrap; }
+  #header h1 { font-size: 1.2rem; color: #4ecca3; }
+  #header a.back { color: #aaa; font-size: 0.85rem; text-decoration: none; }
+  #header a.back:hover { color: #4ecca3; }
+  #version { margin-left: auto; font-size: 0.85rem; color: #e0e0e0; }
+  .controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+  .controls label { font-size: 0.85rem; color: #aaa; display: inline-flex; align-items: center; gap: 6px; }
+  .controls select, .controls input[type="date"] { background: #0f3460; color: #e0e0e0; border: 1px solid #4ecca3; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem; }
+  .controls input[type="checkbox"] { accent-color: #4ecca3; }
+  .fs-window-info { color: #aaa; font-size: 0.8rem; margin-left: 4px; }
+  #summary { padding: 12px 24px; background: #0f1a2e; display: flex; gap: 24px; flex-wrap: wrap; border-bottom: 1px solid #0f3460; }
+  .stat { display: flex; flex-direction: column; gap: 2px; cursor: pointer; padding: 4px 8px; border-radius: 4px; transition: background 0.15s; }
+  .stat:hover { background: rgba(255,255,255,0.04); }
+  .stat.active { background: rgba(78,204,163,0.1); outline: 1px solid #4ecca3; }
+  .stat .label { font-size: 0.72rem; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat .value { font-size: 1.4rem; font-weight: 700; color: #e0e0e0; }
+  .stat.violation .value { color: #ff8c5a; }
+  .stat.ok .value { color: #4ecca3; }
+  .stat.warn .value { color: #d4a44a; }
+  .stat.muted .value { color: #8a8aa0; }
+  #table-wrap { padding: 12px 24px; overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  thead { background: #16213e; position: sticky; top: 0; }
+  th { padding: 8px 10px; text-align: left; color: #4ecca3; font-weight: 600; border-bottom: 1px solid #0f3460; cursor: pointer; user-select: none; white-space: nowrap; }
+  th:hover { color: #6ee0bb; }
+  td { padding: 6px 10px; border-bottom: 1px solid #0f3460; white-space: nowrap; }
+  tr.violation  { background: rgba(255, 140, 90, 0.12); }
+  tr.data-error { background: rgba(212, 164, 74, 0.12); }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  #loading, #error { padding: 24px; color: #4ecca3; }
+  #error { color: #ff8c5a; }
+  .chip { display: inline-block; padding: 1px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 600; }
+  .chip.violation { background: rgba(255, 140, 90, 0.25); color: #ff8c5a; }
+  .chip.ok { background: rgba(78, 204, 163, 0.2); color: #4ecca3; }
+  .chip.warn { background: rgba(212, 164, 74, 0.25); color: #d4a44a; }
+  .chip.muted { background: rgba(138, 138, 160, 0.25); color: #8a8aa0; }
+</style>
+</head>
+<body>
+<div id="header">
+  <a href="index.html" class="back">← FS audit</a>
+  <h1>Spray REI / PHI vs Harvest</h1>
+  <div class="controls" id="window-bar"></div>
+  <div class="controls" style="margin-left:auto">
+    <label>Farm: <select id="farmSelect"><option value="">All</option></select></label>
+    <label>Site: <select id="siteSelect"><option value="">All</option></select></label>
+    <label><input type="checkbox" id="violationsOnly"> Violations only</label>
+  </div>
+  <div id="version">04-29 03:08</div>
+</div>
+
+<div id="summary">
+  <div class="stat violation" data-filter="violation"><div class="label">Violations</div><div class="value" id="cnt-v">—</div></div>
+  <div class="stat warn"      data-filter="data-error"><div class="label">Data errors</div><div class="value" id="cnt-de">—</div></div>
+  <div class="stat ok"        data-filter="ok"><div class="label">Compliant</div><div class="value" id="cnt-ok">—</div></div>
+  <div class="stat muted"     data-filter="no-harvest"><div class="label">No harvest after</div><div class="value" id="cnt-no">—</div></div>
+  <div class="stat warn"      data-filter="no-rei-phi"><div class="label">No REI/PHI on file</div><div class="value" id="cnt-m">—</div></div>
+  <div class="stat"           data-filter=""><div class="label">All sprays</div><div class="value" id="cnt-total">—</div></div>
+</div>
+
+<div id="loading">Loading…</div>
+<div id="error" style="display:none"></div>
+<div id="table-wrap" style="display:none">
+  <table>
+    <thead><tr>
+      <th data-sort="spray_date">Spray date</th>
+      <th data-sort="spray_time">Stop time</th>
+      <th data-sort="site_id">Site</th>
+      <th data-sort="chemical">Chemical</th>
+      <th data-sort="rei_hours" class="num">REI (h)</th>
+      <th data-sort="phi_days" class="num">PHI (d)</th>
+      <th data-sort="application_quantity" class="num">Applied</th>
+      <th data-sort="next_harvest_date">Next harvest</th>
+      <th data-sort="next_harvest_time">Harvest start</th>
+      <th data-sort="hours_since_spray" class="num">Hrs since</th>
+      <th data-sort="days_since_spray" class="num">Days since</th>
+      <th data-sort="status">Status</th>
+    </tr></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
+
+<script>
+const win = FSAudit.getWindow();
+const src = FSAudit.getSource();
+FSAudit.renderHeaderBar(document.getElementById('window-bar'));
+
+let allRows = [];
+let sortKey = 'spray_date';
+let sortDir = -1;
+let activeStatusFilter = '';
+
+function inWindow(d) {
+  const s = (typeof d === 'string') ? d.slice(0, 10) : null;
+  return s && s >= win.from && s <= win.to;
+}
+
+function buildRow({ farm, site, sprayedAtStr, chemical, products, qty, uom,
+                    rei, phi, phiStop, reiStop,
+                    phiStopExpected, reiStopExpected,
+                    nextHarvestDate, nextHarvestClockIn, applicator, entryId }) {
+  // sprayedAtStr is a TZ-less string like "2026-04-27T15:00:00" (already in HST for sheets,
+  // or already converted for supabase). slice() gives local date/time directly.
+  const sprayDate = sprayedAtStr ? sprayedAtStr.slice(0, 10) : null;
+  const sprayedAt = sprayedAtStr ? new Date(sprayedAtStr) : null;
+  let phiV = false, reiV = false, status, daysSince = null, hoursSince = null;
+
+  // Use the harvest's actual clock-in time when known; otherwise assume start of day.
+  let harvestStartStr = null;
+  if (nextHarvestDate) {
+    if (nextHarvestClockIn != null) {
+      const hh = String(Math.floor(nextHarvestClockIn / 60)).padStart(2, '0');
+      const mm = String(nextHarvestClockIn % 60).padStart(2, '0');
+      harvestStartStr = `${nextHarvestDate}T${hh}:${mm}:00`;
+    } else {
+      harvestStartStr = `${nextHarvestDate}T00:00:00`;
+    }
+    const nh = new Date(harvestStartStr);
+    daysSince = Math.floor((new Date(nextHarvestDate + 'T00:00:00') - new Date(sprayDate + 'T00:00:00')) / 86400000);
+    if (sprayedAt) hoursSince = (nh - sprayedAt) / 36e5;
+  }
+
+  if (rei == null && phi == null) {
+    status = 'no-rei-phi';
+  } else if (!nextHarvestDate) {
+    status = 'no-harvest';
+  } else {
+    const harvestStart = new Date(harvestStartStr);
+    // Stored: what the sheet's columns claim.
+    if (phiStop)      phiV = harvestStart < new Date(phiStop);
+    else if (phi != null) phiV = daysSince < phi;
+    if (reiStop)      reiV = harvestStart < new Date(reiStop);
+    else if (rei != null && hoursSince != null) reiV = hoursSince < rei;
+    // Expected: what the stops should be from PHIDays/REIlHours + spray stop time.
+    let phiV_exp = false, reiV_exp = false;
+    if (phiStopExpected) phiV_exp = harvestStart < new Date(phiStopExpected);
+    else if (phi != null) phiV_exp = daysSince < phi;
+    if (reiStopExpected) reiV_exp = harvestStart < new Date(reiStopExpected);
+    else if (rei != null && hoursSince != null) reiV_exp = hoursSince < rei;
+    const storedV   = phiV     || reiV;
+    const expectedV = phiV_exp || reiV_exp;
+    if (storedV && !expectedV) {
+      status = 'data-error';
+    } else {
+      status = storedV ? 'violation' : 'ok';
+    }
+  }
+
+  return {
+    id: entryId,
+    spray_date: sprayDate,
+    spray_time: sprayedAtStr ? sprayedAtStr.slice(11, 16) : '',
+    farm_id: farm,
+    site_id: site,
+    chemical: chemical || products || '—',
+    invnt_lot_id: '',
+    rei_hours: rei,
+    phi_days: phi,
+    application_quantity: qty,
+    application_uom: uom,
+    next_harvest_date: nextHarvestDate,
+    next_harvest_time: nextHarvestClockIn != null
+      ? `${String(Math.floor(nextHarvestClockIn/60)).padStart(2,'0')}:${String(nextHarvestClockIn%60).padStart(2,'0')}`
+      : '',
+    hours_since_spray: hoursSince,
+    days_since_spray: daysSince,
+    phi_violation: phiV,
+    rei_violation: reiV,
+    status,
+    applicator,
+  };
+}
+
+async function fetchFromSupabase() {
+  const sb = FSAudit.sb();
+  const fromIso = win.from + 'T00:00:00Z';
+  const toIso   = win.to   + 'T23:59:59Z';
+  const PAGE = 1000;
+  const sprays = [];
+  for (let off = 0; ; off += PAGE) {
+    const { data, error } = await sb.from('grow_spray_input')
+      .select(`
+        id, farm_id, invnt_item_id, invnt_lot_id, application_quantity, application_uom,
+        tracker:ops_task_tracker_id ( start_time, stop_time, site_id ),
+        compliance:grow_spray_compliance_id ( rei_hours, phi_days ),
+        item:invnt_item_id ( description ),
+        lot:invnt_lot_id ( lot_number )
+      `)
+      .eq('is_deleted', false)
+      .gte('created_at', fromIso).lte('created_at', toIso)
+      .order('created_at', { ascending: false })
+      .range(off, off + PAGE - 1);
+    if (error) throw error;
+    sprays.push(...data);
+    if (data.length < PAGE || off > 50000) break;
+  }
+
+  const sites = [...new Set(sprays.map(s => s.tracker?.site_id).filter(Boolean))];
+  const harvests = [];
+  for (let off = 0; ; off += PAGE) {
+    const { data, error } = await sb.from('grow_harvest_weight')
+      .select('site_id, farm_id, harvest_date')
+      .in('site_id', sites.length ? sites : ['__none__'])
+      .gte('harvest_date', win.from)
+      .eq('is_deleted', false)
+      .range(off, off + PAGE - 1);
+    if (error) throw error;
+    harvests.push(...data);
+    if (data.length < PAGE || off > 100000) break;
+  }
+  const harvestMap = {};
+  harvests.forEach(h => {
+    const k = `${h.farm_id}|${h.site_id}`;
+    (harvestMap[k] = harvestMap[k] || new Set()).add(h.harvest_date);
+  });
+  Object.keys(harvestMap).forEach(k => harvestMap[k] = [...harvestMap[k]].sort());
+
+  return sprays
+    .filter(s => s.tracker?.start_time)
+    .map(s => {
+      const k = `${s.farm_id}|${s.tracker.site_id}`;
+      const sprayDate = s.tracker.start_time.slice(0, 10);
+      const next = (harvestMap[k] || []).find(d => d >= sprayDate) || null;
+      const isLettuce = (s.farm_id || '').toLowerCase() === 'lettuce';
+      const row = buildRow({
+        farm: s.farm_id,
+        site: isLettuce ? 'Let' : s.tracker.site_id,
+        // Prefer stop_time over start_time (when the spray finished). UTC → HST.
+        sprayedAtStr: utcIsoToHstLocal(s.tracker.stop_time || s.tracker.start_time),
+        chemical: s.item?.description || s.invnt_item_id,
+        qty: s.application_quantity,
+        uom: s.application_uom,
+        rei: s.compliance?.rei_hours,
+        phi: s.compliance?.phi_days,
+        nextHarvestDate: next,
+        entryId: s.id,
+      });
+      row.invnt_lot_id = s.lot?.lot_number || s.invnt_lot_id || '';
+      return row;
+    });
+}
+
+async function fetchFromSheets() {
+  const [sprays, cukeHarvestSched, lettuceHarvests] = await Promise.all([
+    FSAudit.fetchSheet('grow', 'grow_spray_sched'),
+    FSAudit.fetchSheet('grow', 'grow_C_harvest_sched'),
+    FSAudit.fetchSheet('grow', 'grow_L_harvest'),
+  ]);
+
+  // Cuke: per (Greenhouse, HarvestDate) keep ClockOutTime (latest harvest moment that day).
+  // We'll skip same-day harvests that ended before the spray started.
+  const cukeBySite = {}; // GH -> [{date, clockIn, clockOut}]
+  cukeHarvestSched.forEach(h => {
+    if (!h.HarvestDate || !h.Greenhouse) return;
+    const d = String(h.HarvestDate).slice(0, 10);
+    const k = h.Greenhouse;
+    (cukeBySite[k] = cukeBySite[k] || []).push({
+      date: d,
+      clockIn:  parseTimeOfDay(h.ClockInTime),
+      clockOut: parseTimeOfDay(h.ClockOutTime),
+    });
+  });
+  Object.keys(cukeBySite).forEach(k => cukeBySite[k].sort((a, b) => a.date.localeCompare(b.date)));
+
+  // Lettuce: all sprays farm-wide unless noted, so collapse all harvests to a single sorted list
+  const lettuceAll = [...new Set(lettuceHarvests
+    .filter(h => h.harvest_date)
+    .map(h => String(h.harvest_date).slice(0, 10))
+  )].sort();
+
+  return sprays
+    .filter(s => s.SprayingDate)
+    .filter(s => inWindow(s.SprayingDate))
+    .map(s => {
+      const sprayDate = String(s.SprayingDate).slice(0, 10);
+      const farm = s.Farm || '';
+      const site = s.SiteName || '';
+      const sprayStopMin = parseTimeOfDay(s.SprayingStopTime);
+      let nextDate = null, nextClockIn = null;
+      if (farm.toLowerCase() === 'cuke') {
+        const harvests = cukeBySite[site] || [];
+        const future = harvests.find(h => {
+          if (h.date > sprayDate) return true;
+          if (h.date < sprayDate) return false;
+          return sprayStopMin != null && h.clockIn != null && h.clockIn >= sprayStopMin;
+        });
+        if (future) { nextDate = future.date; nextClockIn = future.clockIn; }
+      } else if (farm.toLowerCase() === 'lettuce') {
+        // Lettuce always harvests AM, sprays PM — same-day harvest is always before
+        // the spray, so the "next harvest" is strictly the next day or later.
+        nextDate = lettuceAll.find(d => d > sprayDate) || null;
+        // grow_L_harvest has no clock-in; assume harvest starts at 8:00 AM.
+        if (nextDate) nextClockIn = 8 * 60;
+      }
+      const displaySite = farm.toLowerCase() === 'lettuce' ? 'Let' : site;
+      const products = ['Product01', 'Product02', 'Product03']
+        .map(k => s[k]).filter(Boolean).join(' + ');
+      const qty   = ['Product01Quantity', 'Product02Quantity', 'Product03Quantity']
+        .map(k => s[k]).filter(v => v != null && v !== '').join(' + ');
+      const uom   = s.Product01Units || '';
+      const stopMin  = parseTimeOfDay(s.SprayingStopTime);
+      const startMin = parseTimeOfDay(s.SprayingStartTime);
+      const minToHHMMSS = m => m == null ? '00:00:00'
+        : `${String(Math.floor(m/60)).padStart(2,'0')}:${String(m%60).padStart(2,'0')}:00`;
+      const useMin = stopMin != null ? stopMin : (startMin != null ? startMin : 0);
+      const sprayedAtStr = `${sprayDate}T${minToHHMMSS(useMin)}`;
+      return buildRow({
+        farm, site: displaySite,
+        sprayedAtStr,
+        chemical: products,
+        products, qty, uom,
+        rei: numOrNull(s.REIlHours),
+        phi: numOrNull(s.PHIDays),
+        phiStop: s.PHIStopDateTime || null,
+        reiStop: s.REIStopDateTime || null,
+        // Expected = recomputed from PHIDays/REIlHours + spray stop. Used only to detect
+        // when the stored stops are wrong (status = data-error). Display logic still
+        // uses the stored values so the bad data is visible.
+        phiStopExpected: computeStop(sprayedAtStr, numOrNull(s.PHIDays), 'days'),
+        reiStopExpected: computeStop(sprayedAtStr, numOrNull(s.REIlHours), 'hours'),
+        nextHarvestDate: nextDate,
+        nextHarvestClockIn: nextClockIn,
+        applicator: s.Applicator,
+        entryId: s.EntryID,
+      });
+    });
+}
+
+function utcIsoToHstLocal(iso) {
+  // Convert "2026-04-22T15:30:00+00:00" → TZ-less local-HST "2026-04-22T05:30:00"
+  if (!iso) return null;
+  const d = new Date(iso);
+  const hst = new Date(d.getTime() - 10 * 3600 * 1000);
+  return hst.toISOString().slice(0, 19);
+}
+
+function parseTimeOfDay(v) {
+  // Returns minutes-since-midnight, or null. Accepts "7:30:00 AM", "16:30:00",
+  // ISO datetime, or gviz Date(...) string.
+  if (v == null || v === '') return null;
+  if (typeof v === 'string') {
+    let m;
+    // "7:30:00 AM" or "12:34 PM"
+    if ((m = v.match(/^(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)$/i))) {
+      let h = parseInt(m[1], 10) % 12;
+      if (m[3].toUpperCase() === 'PM') h += 12;
+      return h * 60 + parseInt(m[2], 10);
+    }
+    // "16:30:00" or "16:30"
+    if ((m = v.match(/^(\d{1,2}):(\d{2})(?::\d{2})?$/))) {
+      return parseInt(m[1], 10) * 60 + parseInt(m[2], 10);
+    }
+    // gviz time-only cells arrive as TZ-less ISO strings like "1899-12-30T16:30:00".
+    // Just lift the literal HH:MM rather than going through Date (which would shift).
+    let m2;
+    if ((m2 = v.match(/T(\d{2}):(\d{2})/))) {
+      return parseInt(m2[1], 10) * 60 + parseInt(m2[2], 10);
+    }
+  }
+  return null;
+}
+
+function combineDateAndTime(dateStr, timeVal) {
+  // gviz times come back as ISO string like "1899-12-30T16:30:00.000Z" or formatted like "4:30:00 PM"
+  if (typeof timeVal === 'string' && timeVal.includes('T')) {
+    const d = new Date(timeVal);
+    return new Date(`${dateStr}T${d.toISOString().slice(11, 19)}Z`);
+  }
+  return new Date(`${dateStr}T00:00:00`);
+}
+function computeStop(sprayedAtStr, n, unit) {
+  if (!sprayedAtStr || n == null) return null;
+  const d = new Date(sprayedAtStr);
+  if (unit === 'days')  d.setDate(d.getDate() + n);
+  if (unit === 'hours') d.setTime(d.getTime() + n * 36e5);
+  // emit TZ-less local string so downstream comparisons stay in the same frame
+  const pad = x => String(x).padStart(2, '0');
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T` +
+         `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+}
+
+function numOrNull(v) {
+  if (v == null || v === '') return null;
+  const n = Number(v);
+  return isNaN(n) ? null : n;
+}
+
+async function fetchData() {
+  if (src === 'sheets') return fetchFromSheets();
+  return fetchFromSupabase();
+}
+
+function statusChip(r) {
+  if (r.status === 'violation') {
+    const p = [];
+    if (r.phi_violation) p.push('PHI');
+    if (r.rei_violation) p.push('REI');
+    return `<span class="chip violation">${p.join('+')} violation</span>`;
+  }
+  if (r.status === 'data-error') return '<span class="chip warn" title="Stored PHIStop/REIStop disagrees with PHIDays/REIlHours — sheet data error, not a real violation">data error</span>';
+  if (r.status === 'ok')          return '<span class="chip ok">ok</span>';
+  if (r.status === 'no-harvest')  return '<span class="chip muted">no harvest after</span>';
+  if (r.status === 'no-rei-phi')  return '<span class="chip warn">no REI/PHI on file</span>';
+  return '';
+}
+
+function render() {
+  const farm = document.getElementById('farmSelect').value;
+  const site = document.getElementById('siteSelect').value;
+
+  // Counts (independent of status filter — driven by farm/site only)
+  const visibleByFarmSite = allRows.filter(r =>
+    (!farm || r.farm_id === farm) && (!site || r.site_id === site)
+  );
+  const cnt = { violation: 0, 'data-error': 0, ok: 0, 'no-harvest': 0, 'no-rei-phi': 0 };
+  visibleByFarmSite.forEach(r => cnt[r.status]++);
+  document.getElementById('cnt-v').textContent  = cnt.violation;
+  document.getElementById('cnt-de').textContent = cnt['data-error'];
+  document.getElementById('cnt-ok').textContent = cnt.ok;
+  document.getElementById('cnt-no').textContent = cnt['no-harvest'];
+  document.getElementById('cnt-m').textContent  = cnt['no-rei-phi'];
+  document.getElementById('cnt-total').textContent = visibleByFarmSite.length;
+
+  // Filter for table by status pill OR violations-only checkbox
+  const violationsOnly = document.getElementById('violationsOnly').checked;
+  const effective = violationsOnly ? 'violation' : activeStatusFilter;
+  let rows = visibleByFarmSite.filter(r => !effective || r.status === effective);
+  rows.sort((a, b) => {
+    const x = a[sortKey], y = b[sortKey];
+    if (x == null && y == null) return 0;
+    if (x == null) return 1;
+    if (y == null) return -1;
+    return (x < y ? -1 : x > y ? 1 : 0) * sortDir;
+  });
+
+  document.querySelectorAll('.stat').forEach(el => {
+    el.classList.toggle('active', (el.dataset.filter || '') === activeStatusFilter);
+  });
+
+  const esc = FSAudit.escapeHtml;
+  document.getElementById('tbody').innerHTML = rows.map(r => `
+    <tr class="${r.status}">
+      <td>${esc(r.spray_date)}</td>
+      <td>${esc(r.spray_time)}</td>
+      <td>${esc(r.site_id)}</td>
+      <td>${esc(r.chemical)}</td>
+      <td class="num">${r.rei_hours ?? ''}</td>
+      <td class="num">${r.phi_days ?? ''}</td>
+      <td class="num">${r.application_quantity != null ? esc(r.application_quantity + ' ' + (r.application_uom || '')) : ''}</td>
+      <td>${esc(r.next_harvest_date || '')}</td>
+      <td>${esc(r.next_harvest_time || '')}</td>
+      <td class="num">${r.hours_since_spray != null ? r.hours_since_spray.toFixed(1) : ''}</td>
+      <td class="num">${r.days_since_spray != null ? r.days_since_spray : ''}</td>
+      <td>${statusChip(r)}</td>
+    </tr>
+  `).join('');
+}
+
+document.querySelectorAll('th[data-sort]').forEach(th => {
+  th.addEventListener('click', () => {
+    const k = th.dataset.sort;
+    if (sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = 1; }
+    render();
+  });
+});
+document.querySelectorAll('.stat').forEach(el => {
+  el.addEventListener('click', () => {
+    activeStatusFilter = el.dataset.filter || '';
+    render();
+  });
+});
+['farmSelect', 'siteSelect', 'violationsOnly'].forEach(id => {
+  document.getElementById(id).addEventListener('change', render);
+});
+
+(async () => {
+  try {
+    allRows = await fetchData();
+    const farms = [...new Set(allRows.map(r => r.farm_id))].sort();
+    document.getElementById('farmSelect').innerHTML = '<option value="">All</option>' +
+      farms.map(f => `<option value="${FSAudit.escapeHtml(f)}">${FSAudit.escapeHtml(f)}</option>`).join('');
+    const sites = [...new Set(allRows.map(r => r.site_id))].sort();
+    document.getElementById('siteSelect').innerHTML = '<option value="">All</option>' +
+      sites.map(s => `<option value="${FSAudit.escapeHtml(s)}">${FSAudit.escapeHtml(s)}</option>`).join('');
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('table-wrap').style.display = 'block';
+    render();
+  } catch (e) {
+    document.getElementById('loading').style.display = 'none';
+    const err = document.getElementById('error');
+    err.style.display = 'block';
+    err.textContent = 'Error loading data: ' + (e.message || e);
+    console.error(e);
+  }
+})();
+</script>
+</body>
+</html>

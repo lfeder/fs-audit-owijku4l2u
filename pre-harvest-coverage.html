@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Pre-Harvest Coverage Gaps — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<script src="audit-list.js"></script>
+<link rel="stylesheet" href="audit-list.css">
+</head>
+<body>
+<div id="root"></div>
+<script>
+function dateOnly(v){ if(!v) return null; const s=String(v);
+  let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
+}
+FSAudit.renderIssueList({
+  title: 'Harvest days missing approved pre-harvest inspection',
+  version: '04-29 07:05',
+  defaultSort: { key: 'date', dir: -1 },
+  columns: [
+    { key: 'date', label: 'Harvest date' },
+    { key: 'farm', label: 'Farm' },
+    { key: 'site', label: 'Site' },
+  ],
+  fetchRows: async (win) => {
+    const [cukeHarv, lettHarv, cukePre, lettPre] = await Promise.all([
+      FSAudit.fetchSheet('grow',  'grow_C_harvest'),
+      FSAudit.fetchSheet('grow',  'grow_L_harvest'),
+      FSAudit.fetchSheet('fsafe', 'fsafe_log_C_gh_pre'),
+      FSAudit.fetchSheet('fsafe', 'fsafe_log_L_gh_pre'),
+    ]);
+    const cukeApproved = {};
+    cukePre.forEach(r => {
+      const d = dateOnly(r['Checked Date']); if (!d) return;
+      if (String(r['Approved to Harvest']||'').toLowerCase() !== 'true') return;
+      const ghs = String(r['Greenhouse(s)']||'').split('+').map(g=>g.trim()).filter(Boolean);
+      if (!cukeApproved[d]) cukeApproved[d] = new Set();
+      ghs.forEach(g => cukeApproved[d].add(g));
+    });
+    const cukeKeys = new Set();
+    cukeHarv.forEach(r => {
+      const d = dateOnly(r.HarvestDate); if (!d || d < win.from || d > win.to) return;
+      if (!r.Greenhouse) return;
+      cukeKeys.add(`${d}|${r.Greenhouse}`);
+    });
+    const out = [];
+    cukeKeys.forEach(k => {
+      const [d, gh] = k.split('|');
+      if (!cukeApproved[d] || !cukeApproved[d].has(gh)) {
+        out.push({ date: d, farm: 'Cuke', site: gh });
+      }
+    });
+    const lettApproved = new Set();
+    lettPre.forEach(r => {
+      const d = dateOnly(r['Checked Date']); if (!d) return;
+      if (String(r['Approved to Harvest']||'').toLowerCase() === 'true') lettApproved.add(d);
+    });
+    const lettDates = new Set();
+    lettHarv.forEach(r => {
+      const d = dateOnly(r.harvest_date); if (!d || d < win.from || d > win.to) return;
+      lettDates.add(d);
+    });
+    lettDates.forEach(d => {
+      if (!lettApproved.has(d)) out.push({ date: d, farm: 'Lettuce', site: 'GH' });
+    });
+    return out;
+  },
+});
+</script>
+</body>
+</html>

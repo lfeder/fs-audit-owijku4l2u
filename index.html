@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FS Audit — PrimusGFS Readiness</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<script src="audit-checks.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #1a1a2e; color: #e0e0e0; min-height: 100vh; }
+  #header { background: #16213e; padding: 12px 24px; display: flex; align-items: center; gap: 16px; border-bottom: 1px solid #0f3460; flex-wrap: wrap; }
+  #header h1 { font-size: 1.3rem; color: #4ecca3; }
+  #version { margin-left: auto; font-size: 0.85rem; color: #e0e0e0; }
+  #header label { font-size: 0.85rem; color: #aaa; display: inline-flex; align-items: center; gap: 6px; }
+  #header select, #header input[type="date"] {
+    background: #0f3460; color: #e0e0e0; border: 1px solid #4ecca3; border-radius: 4px; padding: 4px 8px; font-size: 0.85rem;
+  }
+  .fs-window-info { color: #aaa; font-size: 0.8rem; margin-left: 4px; }
+  #intro { padding: 12px 24px; color: #c8c8d8; font-size: 0.85rem; max-width: 1100px; line-height: 1.5; }
+  #intro a { color: #4ecca3; }
+  #summary-bar { padding: 12px 24px; background: #0f1a2e; display: flex; gap: 32px; flex-wrap: wrap; border-bottom: 1px solid #0f3460; }
+  .stat { display: flex; flex-direction: column; gap: 2px; }
+  .stat .label { font-size: 0.72rem; color: #aaa; text-transform: uppercase; letter-spacing: 0.5px; }
+  .stat .value { font-size: 1.4rem; font-weight: 700; }
+  .stat.fail .value { color: #ff8c5a; }
+  .stat.warn .value { color: #d4a44a; }
+  .stat.ok .value   { color: #4ecca3; }
+  .stat.muted .value{ color: #8a8aa0; }
+  #checks-wrap { padding: 12px 24px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+  thead { background: #16213e; }
+  th { padding: 10px 12px; text-align: left; color: #4ecca3; font-weight: 600; border-bottom: 1px solid #0f3460; white-space: nowrap; cursor: pointer; user-select: none; }
+  th:hover { color: #6ee0bb; }
+  th.num { text-align: right; }
+  td { padding: 10px 12px; border-bottom: 1px solid #0f3460; vertical-align: middle; }
+  td.num { text-align: right; font-variant-numeric: tabular-nums; }
+  tr.row { transition: background 0.1s; }
+  tr.row.clickable { cursor: pointer; }
+  tr.row.clickable:hover { background: rgba(78, 204, 163, 0.08); }
+  tr.row.failing td.count   { color: #ff8c5a; font-weight: 700; font-size: 1.1rem; }
+  tr.row.warning td.count   { color: #d4a44a; font-weight: 700; font-size: 1.1rem; }
+  tr.row.passing td.count   { color: #4ecca3; font-weight: 700; font-size: 1.1rem; }
+  tr.row.blocked td.count, tr.row.error td.count { color: #8a8aa0; font-weight: 500; font-size: 0.9rem; }
+  tr.row .severity-bar { display: inline-block; width: 4px; height: 28px; border-radius: 2px; vertical-align: middle; margin-right: 8px; }
+  tr.row.must-be-zero  .severity-bar { background: #ff8c5a; }
+  tr.row.aged-under-30d .severity-bar{ background: #d4a44a; }
+  tr.row.investigate .severity-bar   { background: #4ecca3; }
+  tr.row.blocked .severity-bar       { background: #555; }
+  .module-tag { font-size: 0.7rem; color: #8a8aa0; text-transform: uppercase; letter-spacing: 0.5px; }
+  .badge { display: inline-block; font-size: 0.65rem; padding: 1px 6px; border-radius: 8px; background: rgba(255,255,255,0.06); color: #aaa; text-transform: uppercase; letter-spacing: 0.5px; margin-left: 6px; }
+  .badge.ready    { background: rgba(78,204,163,0.18);  color: #4ecca3; }
+  .badge.workable { background: rgba(212,164,74,0.20);  color: #d4a44a; }
+  .badge.blocked  { background: rgba(138,138,160,0.25); color: #8a8aa0; }
+  td.target  { color: #8a8aa0; font-size: 0.8rem; }
+  td.title   { font-weight: 600; color: #e0e0e0; }
+  tr.row.clickable td.title { color: #e0e0e0; }
+  tr.row.clickable:hover td.title { color: #4ecca3; }
+  .arrow { color: #4ecca3; font-size: 0.85rem; }
+  tr.row:not(.clickable) .arrow { display: none; }
+  button { background: #0f3460; color: #4ecca3; border: 1px solid #4ecca3; border-radius: 4px; padding: 4px 12px; font-size: 0.85rem; cursor: pointer; }
+  button:hover { background: #4ecca3; color: #16213e; }
+</style>
+</head>
+<body>
+<div id="header">
+  <h1>FS Audit — PrimusGFS Readiness</h1>
+  <div id="header-bar" style="display:flex; gap:12px; flex-wrap:wrap; align-items:center;"></div>
+  <button id="rerun">Re-run all</button>
+  <div id="version">04-29 10:18</div>
+</div>
+
+<div id="intro">
+  Audit-readiness checks against PrimusGFS v3.2 risk areas. Click a row to drill into the detail
+  page (where built). Schema questions: <a href="schema_questions_for_dev.md">schema_questions_for_dev.md</a>.
+  Migration findings: <a href="migration_issues_for_michael.md">migration_issues_for_michael.md</a>.
+  Corrections log: <a href="data_corrections_log.md">data_corrections_log.md</a>.
+</div>
+
+<div id="summary-bar">
+  <div class="stat fail"><div class="label">Failing</div><div class="value" id="sum-fail">—</div></div>
+  <div class="stat warn"><div class="label">Aged / warn</div><div class="value" id="sum-warn">—</div></div>
+  <div class="stat ok"><div class="label">Passing</div><div class="value" id="sum-ok">—</div></div>
+  <div class="stat muted"><div class="label">Pending</div><div class="value" id="sum-blocked">—</div></div>
+</div>
+
+<div id="checks-wrap">
+  <table>
+    <thead><tr>
+      <th data-sort="module">Module</th>
+      <th data-sort="title">Check</th>
+      <th data-sort="count" class="num">Count</th>
+      <th data-sort="severity_rank" class="num">Severity</th>
+      <th data-sort="target">Target</th>
+      <th></th>
+    </tr></thead>
+    <tbody id="tbody"><tr><td colspan="5" style="padding:24px; color:#4ecca3">Loading checks…</td></tr></tbody>
+  </table>
+</div>
+
+<script>
+FSAudit.renderHeaderBar(document.getElementById('header-bar'));
+
+const win = FSAudit.getWindow();
+const src = FSAudit.getSource();
+const esc = FSAudit.escapeHtml;
+
+function rowClassForResult(c) {
+  const sev = c.severity || '';
+  if (c.error || c.blocked) return `row blocked ${sev}`;
+  if (c.count == null) return `row pending ${sev}`;
+  if (c.count === 0)  return `row passing ${sev}`;
+  if (sev === 'must-be-zero')   return `row failing ${sev}`;
+  if (sev === 'aged-under-30d') return `row warning ${sev}`;
+  return `row warning ${sev}`;
+}
+
+function detailLink(c) {
+  if (!c.detailPage) return null;
+  return `${c.detailPage}?src=${encodeURIComponent(src)}&mode=${encodeURIComponent(win.mode)}` +
+    (win.mode === 'custom' ? `&from=${win.from}&to=${win.to}` : '');
+}
+
+function renderRow(c) {
+  const link = detailLink(c);
+  const cls = rowClassForResult(c) + (link ? ' clickable' : '');
+  const countDisplay = c.error
+    ? `error`
+    : c.blocked
+      ? 'pending'
+      : (c.count == null ? '…' : c.count);
+  const titleHtml = `<span class="title">${esc(c.title)}</span>` +
+    (c.status ? ` <span class="badge ${esc(c.status)}">${esc(c.status)}</span>` : '');
+  const arrow = link ? '<span class="arrow">→</span>' : '';
+  const sevLabel = c.severity === 'must-be-zero' ? 'critical'
+                  : c.severity === 'aged-under-30d' ? 'aging'
+                  : c.severity === 'investigate' ? 'review' : '';
+  return `<tr class="${cls}" ${link ? `data-href="${link}"` : ''} title="${esc(c.error || '')}">
+    <td><span class="severity-bar"></span><span class="module-tag">${esc(c.module || '')}</span></td>
+    <td class="title">${titleHtml}</td>
+    <td class="num count">${countDisplay}</td>
+    <td class="num">${esc(sevLabel)}</td>
+    <td class="target">${esc(c.target || '')}</td>
+    <td>${arrow}</td>
+  </tr>`;
+}
+
+// Sort state. Default = "audit priority": criticals first, then by count descending,
+// then by severity rank. User clicks override with a single-column sort.
+let sortKey = '__default';
+let sortDir = 1;
+const SEVERITY_RANK = { 'must-be-zero': 0, 'aged-under-30d': 1, 'investigate': 2 };
+
+function sortValue(c, key) {
+  if (key === 'count') return c.count == null ? Number.POSITIVE_INFINITY : c.count;
+  if (key === 'severity_rank') return SEVERITY_RANK[c.severity] ?? 99;
+  return String(c[key] ?? '').toLowerCase();
+}
+
+function defaultCompare(a, b) {
+  // Bucket: 0 = has issues, 1 = pending/error, 2 = zero issues
+  const bucket = c => (c.count == null || c.error) ? 1
+                    : (c.count === 0 ? 2 : 0);
+  const ba = bucket(a), bb = bucket(b);
+  if (ba !== bb) return ba - bb;
+  // Within "has issues": severity rank ascending, then count descending
+  if (ba === 0) {
+    const sa = SEVERITY_RANK[a.severity] ?? 99;
+    const sb = SEVERITY_RANK[b.severity] ?? 99;
+    if (sa !== sb) return sa - sb;
+    if (a.count !== b.count) return b.count - a.count;
+  }
+  // Tiebreak: module then title
+  return String(a.module || '').localeCompare(String(b.module || ''))
+      || String(a.title  || '').localeCompare(String(b.title  || ''));
+}
+
+function sortedResults(results) {
+  if (sortKey === '__default') return results.slice().sort(defaultCompare);
+  return results.slice().sort((a, b) => {
+    const x = sortValue(a, sortKey), y = sortValue(b, sortKey);
+    if (x === y) return 0;
+    return (x < y ? -1 : 1) * sortDir;
+  });
+}
+
+function renderAll(results) {
+  document.getElementById('tbody').innerHTML = sortedResults(results).map(renderRow).join('');
+  // Highlight current sort col
+  document.querySelectorAll('th[data-sort]').forEach(th => {
+    let arrow = '';
+    if (sortKey === th.dataset.sort) arrow = sortDir > 0 ? ' ▲' : ' ▼';
+    else if (sortKey === '__default' && th.dataset.sort === 'severity_rank') arrow = ' ▲';
+    else if (sortKey === '__default' && th.dataset.sort === 'count') arrow = ' ▼';
+    th.dataset.label = th.dataset.label || th.textContent;
+    th.textContent = th.dataset.label + arrow;
+  });
+  let fail = 0, warn = 0, ok = 0, blocked = 0;
+  results.forEach(r => {
+    if (r.error || r.blocked || r.count == null) blocked++;
+    else if (r.count === 0) ok++;
+    else if (r.severity === 'must-be-zero') fail++;
+    else warn++;
+  });
+  document.getElementById('sum-fail').textContent    = fail;
+  document.getElementById('sum-warn').textContent    = warn;
+  document.getElementById('sum-ok').textContent      = ok;
+  document.getElementById('sum-blocked').textContent = blocked;
+
+  // Wire click-through
+  document.querySelectorAll('tr.row.clickable').forEach(tr => {
+    tr.addEventListener('click', () => { window.location.href = tr.dataset.href; });
+  });
+}
+
+// Cache last results so column-header clicks can re-sort without re-running checks
+let lastResults = null;
+document.querySelectorAll('th[data-sort]').forEach(th => {
+  th.addEventListener('click', () => {
+    const k = th.dataset.sort;
+    if (sortKey === k) sortDir = -sortDir;
+    else { sortKey = k; sortDir = 1; }
+    if (lastResults) renderAll(lastResults);
+  });
+});
+
+async function runAll() {
+  const checks = FSAuditChecks.CHECKS;
+  lastResults = checks.map(c => ({ ...c, count: null }));
+  renderAll(lastResults);
+  const results = await Promise.all(checks.map(async c => {
+    try {
+      const r = await c.run(win);
+      return { ...c, ...r, error: null };
+    } catch (e) {
+      console.error('check failed', c.id, e);
+      return { ...c, count: null, error: e.message || String(e) };
+    }
+  }));
+  lastResults = results;
+  renderAll(results);
+}
+
+document.getElementById('rerun').addEventListener('click', runAll);
+runAll();
+</script>
+</body>
+</html>

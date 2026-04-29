@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>EMP Failures Without Follow-up — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<script src="audit-list.js"></script>
+<link rel="stylesheet" href="audit-list.css">
+</head>
+<body>
+<div id="root"></div>
+<script>
+function dateOnly(v){ if(!v) return null; const s=String(v);
+  let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
+}
+FSAudit.renderIssueList({
+  title: 'EMP / lab failures with no follow-up test in 7 days',
+  version: '04-29 07:05',
+  defaultSort: { key: 'sampled', dir: -1 },
+  columns: [
+    { key: 'sampled',  label: 'Sampled' },
+    { key: 'farm',     label: 'Farm' },
+    { key: 'building', label: 'Bldg' },
+    { key: 'zone',     label: 'Zone' },
+    { key: 'site',     label: 'Site' },
+    { key: 'test',     label: 'Test' },
+    { key: 'type',     label: 'Type' },
+    { key: 'sampler',  label: 'Sampled by' },
+    { key: 'fail_code',label: 'Fail code' },
+  ],
+  fetchRows: async (win) => {
+    const rows = await FSAudit.fetchSheet('fsafe', 'fsafe_log_emp');
+    const refByFailCode = {};
+    const followupsByTest = {};
+    rows.forEach(r => {
+      const tt = String(r.TestType || '');
+      if (tt !== 'Retest' && tt !== 'Vector') return;
+      const fc = String(r.TestFromFailCode || '').trim();
+      if (fc) (refByFailCode[fc] = refByFailCode[fc] || []).push(r);
+      const sd = dateOnly(r.SampleDateTime);
+      if (sd) (followupsByTest[r.TestName||''] = followupsByTest[r.TestName||''] || [])
+        .push({ sampled: sd, type: tt });
+    });
+    const out = [];
+    rows.forEach(r => {
+      const sampled = dateOnly(r.SampleDateTime);
+      if (!sampled || sampled < win.from || sampled > win.to) return;
+      const passStr = String(r.Pass || '').toLowerCase();
+      if (passStr !== 'false' && passStr !== 'no' && passStr !== '0') return;
+      if (String(r.TestName || '').toUpperCase() === 'APC') return;
+      const fc = String(r.FailCode || '').trim();
+      if (fc && refByFailCode[fc] && refByFailCode[fc].length) return;
+      const cutoff = new Date(new Date(sampled+'T00:00:00').getTime() + 14*86400000).toISOString().slice(0,10);
+      const sibs = followupsByTest[r.TestName || ''] || [];
+      if (sibs.some(s => s.sampled > sampled && s.sampled <= cutoff)) return;
+      out.push({
+        sampled, farm: r.Farm, building: r.Building, zone: r.Zone,
+        site: r.SiteName, test: r.TestName, type: r.TestType,
+        sampler: r.SampledBy, fail_code: fc || '(missing)',
+      });
+    });
+    return out;
+  },
+});
+</script>
+</body>
+</html>
