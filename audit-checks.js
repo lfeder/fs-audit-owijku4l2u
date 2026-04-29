@@ -320,8 +320,44 @@
       status: 'ready',
       pesticide: true,
       async run(w) {
-        // Static count: 4 greenhouse-prohibited + 5 off-label + 2 data-field + 8 rate
-        return { count: 19, target: '0 unresolved findings' };
+        // Count = number of (Product, Farm) findings from the static review
+        // that have at least one actual application in the audit window.
+        const FINDINGS = [
+          ['Success','cuke'],['Success','lettuce'],
+          ['Avid 0.15 EC','cuke'],['Avid 0.15 EC','lettuce'],
+          ['Torino','lettuce'],['Luna Experience','lettuce'],
+          ['Vivando','lettuce'],['Gatten','lettuce'],
+          ['Torac','cuke'],['Torac','lettuce'],
+          ['Previcur Flex','cuke'],['Previcur Flex','lettuce'],
+          ['Pyganic 5.0','cuke'],['Pyganic 5.0','lettuce'],
+          ['Quadris','lettuce'],['Luna Sensation','lettuce'],
+          ['Beleaf 50 SG','lettuce'],['Radiant SC','lettuce'],
+        ];
+        const ALIASES = {
+          'success': ['success','succes'],
+          'oxidate 5.0': ['oxidate 5.0','oxidate5.0'],
+          'rally 40wsp (mycoinsecticide)': ['rally 40wsp (mycoinsecticide)','rally 40 wsp','rally 40wsp'],
+          'avid 0.15 ec': ['avid 0.15 ec','avid abamectin .15 ec'],
+        };
+        const norm = s => String(s||'').trim().toLowerCase();
+        const matches = (rowName, canonical) => {
+          const a = norm(rowName), c = norm(canonical);
+          if (a === c) return true;
+          return (ALIASES[c] || [c]).includes(a);
+        };
+        const sprays = await fetchSheet('grow', 'grow_spray_sched');
+        let count = 0;
+        FINDINGS.forEach(([prod, farm]) => {
+          for (const s of sprays) {
+            const d = dateOnly(s.SprayingDate);
+            if (!d || d < w.from || d > w.to) continue;
+            if (norm(s.Farm) !== farm) continue;
+            for (let i = 1; i <= 3; i++) {
+              if (matches(s[`Product0${i}`], prod)) { count++; return; }
+            }
+          }
+        });
+        return { count, target: '0 (with actual applications in window)' };
       },
     },
 

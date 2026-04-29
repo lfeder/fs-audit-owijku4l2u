@@ -38,7 +38,7 @@
 <div id="header">
   <a href="index.html" class="back">← FS audit</a>
   <h1>Pesticide Compliance Review</h1>
-  <div id="version">04-29 12:15</div>
+  <div id="version">04-29 12:32</div>
 </div>
 
 <div id="content">
@@ -278,6 +278,7 @@ function escapeHtml(s) {
   return String(s == null ? '' : s).replace(/[&<>"']/g, c =>
     ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
 }
+const findingRows = [];
 document.querySelectorAll('.section table tbody tr').forEach(tr => {
   const productCell = tr.querySelector('td.product');
   if (!productCell) return;
@@ -293,6 +294,7 @@ document.querySelectorAll('.section table tbody tr').forEach(tr => {
   tr.classList.add('finding');
   tr.dataset.product = product.toLowerCase();
   tr.dataset.farms = [...new Set(farms)].join(',');
+  findingRows.push({ tr, product, farms: [...new Set(farms)] });
   tr.addEventListener('click', async () => {
     const next = tr.nextElementSibling;
     if (next && next.classList.contains('detail')) {
@@ -333,6 +335,48 @@ document.querySelectorAll('.section table tbody tr').forEach(tr => {
     }
   });
 });
+
+// After wiring, fetch sprays once and hide rows with zero applications in window.
+(async () => {
+  try {
+    const sprays = await getSprays();
+    const win = FSAudit.getWindow();
+    let kept = 0, hidden = 0;
+    findingRows.forEach(({ tr, product, farms }) => {
+      const apps = applicationsFor(sprays, tr.dataset.product, farms)
+        .filter(a => a.date >= win.from && a.date <= win.to);
+      if (apps.length === 0) {
+        tr.style.display = 'none';
+        hidden++;
+      } else {
+        // Annotate the row with the count for quick scanning
+        const productCell = tr.querySelector('td.product');
+        if (productCell && !productCell.dataset.annotated) {
+          productCell.dataset.annotated = '1';
+          productCell.insertAdjacentHTML('beforeend',
+            ` <span style="color:#8a8aa0; font-weight:400; font-size:0.78rem">(${apps.length})</span>`);
+        }
+        kept++;
+      }
+    });
+    // Hide sections that have no remaining visible rows
+    document.querySelectorAll('.section').forEach(sec => {
+      const rows = sec.querySelectorAll('table tbody tr.finding');
+      if (rows.length === 0) return;
+      const visible = [...rows].some(r => r.style.display !== 'none');
+      if (!visible) sec.style.display = 'none';
+    });
+    // Update intro with the filtered count
+    const intro = document.querySelector('.intro');
+    if (intro) {
+      intro.insertAdjacentHTML('beforeend',
+        `<div style="margin-top:8px; color:#d4a44a"><b>${kept}</b> findings have applications in the audit window
+        (${hidden} review rows hidden because the product wasn't applied to that crop in the window).</div>`);
+    }
+  } catch (e) {
+    console.warn('Could not filter empty rows:', e);
+  }
+})();
 </script>
 </body>
 </html>
