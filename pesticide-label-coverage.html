@@ -21,9 +21,9 @@
 <body>
 <div id="header">
   <a href="index.html" class="back">← FS audit</a>
-  <h1>Pesticides used in audit window without a label URL</h1>
+  <h1>Pesticides used in audit window with bad / missing label URL</h1>
   <div class="controls" id="window-bar"></div>
-  <div id="version">04-29 11:25</div>
+  <div id="version">04-29 13:05</div>
 </div>
 <div id="summary"></div>
 <div id="loading">Loading…</div>
@@ -34,6 +34,7 @@
       <th data-key="product">Product</th>
       <th data-key="farm">Farm</th>
       <th data-key="status">Status</th>
+      <th data-key="label_link">Current link</th>
       <th data-key="first_used">First used</th>
       <th data-key="last_used">Last used</th>
       <th data-key="use_count" class="num">Uses</th>
@@ -93,15 +94,28 @@ let sortKey = 'product', sortDir = 1;
     });
     Object.values(usage).forEach(u =>
       u.applications.sort((a,b) => b.date.localeCompare(a.date)));
+    // Manually-flagged entries (links exist but are broken / point to SDS, per
+    // Lenny's review). We can't probe the URL from the browser, so list them.
+    const MANUAL_BAD = new Set(['torac|cuke', 'torac|lettuce']);
     issues = [];
     Object.entries(usage).forEach(([k, u]) => {
       const m = master[k];
       const link = m && String(m.LabelLink||'').trim();
       let status;
-      if (!m) status = 'not in master';
-      else if (!link) status = 'no LabelLink in master';
-      else return;
-      issues.push({ ...u, status });
+      if (!m) {
+        status = 'not in master';
+      } else if (!link) {
+        status = 'no LabelLink in master';
+      } else if (!/^https?:\/\//i.test(link)) {
+        status = 'invalid link (not a URL)';
+      } else if (/(?:^|[^a-z])sds(?:[^a-z]|$)/i.test(link) || /msds/i.test(link)) {
+        status = 'SDS link instead of label';
+      } else if (MANUAL_BAD.has(k)) {
+        status = 'broken link (manually flagged)';
+      } else {
+        return;
+      }
+      issues.push({ ...u, status, label_link: link || '' });
     });
     document.getElementById('loading').style.display = 'none';
     document.getElementById('table-wrap').style.display = 'block';
@@ -140,15 +154,19 @@ function paint() {
     const detail = `<table>
         <thead><tr><th>Date</th><th>Site</th><th>Qty</th><th>Stop time</th><th>Applicator</th></tr></thead>
         <tbody>${apps}</tbody></table>`;
+    const linkCell = it.label_link
+      ? `<a href="${esc(it.label_link)}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="color:#4ecca3; word-break:break-all">${esc(it.label_link.length > 60 ? it.label_link.slice(0, 60) + '…' : it.label_link)}</a>`
+      : '<span style="color:#8a8aa0">—</span>';
     return `<tr class="row-main" data-i="${i}">
       <td><span class="arrow">▸</span>${esc(it.product)}</td>
       <td>${esc(it.farm)}</td>
       <td>${esc(it.status)}</td>
+      <td>${linkCell}</td>
       <td>${esc(it.first_used)}</td>
       <td>${esc(it.last_used)}</td>
       <td class="num">${it.use_count}</td>
     </tr>
-    <tr class="row-detail" data-i="${i}" style="display:none"><td colspan="6">${detail}</td></tr>`;
+    <tr class="row-detail" data-i="${i}" style="display:none"><td colspan="7">${detail}</td></tr>`;
   }).join('');
   document.querySelectorAll('tr.row-main').forEach(tr => {
     tr.addEventListener('click', () => {

@@ -276,7 +276,7 @@
     // -------------------------------------------------------------------------
     {
       id: 'pesticide-label-coverage',
-      title: 'Pesticides used in audit window without a label URL',
+      title: 'Pesticides used in audit window with bad / missing label URL',
       module: 'M3',
       severity: 'must-be-zero',
       detailPage: 'pesticide-label-coverage.html',
@@ -301,10 +301,16 @@
             if (v) used.add(`${norm(v)}|${norm(s.Farm)}`);
           });
         });
+        const MANUAL_BAD = new Set(['torac|cuke', 'torac|lettuce']);
         let missing = 0;
         used.forEach(k => {
           const m = master[k];
-          if (!m || !String(m.LabelLink||'').trim()) missing++;
+          if (!m) { missing++; return; }
+          const link = String(m.LabelLink||'').trim();
+          if (!link) { missing++; return; }
+          if (!/^https?:\/\//i.test(link)) { missing++; return; }
+          if (/(?:^|[^a-z])sds(?:[^a-z]|$)/i.test(link) || /msds/i.test(link)) { missing++; return; }
+          if (MANUAL_BAD.has(k)) { missing++; return; }
         });
         return { count: missing, target: '0' };
       },
