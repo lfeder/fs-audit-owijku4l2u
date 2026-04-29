@@ -23,49 +23,9 @@
   <a href="index.html" class="back">← FS audit</a>
   <h1>Pesticides used in audit window with bad / missing label URL</h1>
   <div class="controls" id="window-bar"></div>
-  <div id="version">04-29 13:25</div>
+  <div id="version">04-29 13:45</div>
 </div>
 
-<div id="corrected-findings" style="padding:14px 24px; background:#0f1a2e; border-bottom:1px solid #0f3460;">
-  <h3 style="color:#4ecca3; font-size:1rem; margin-bottom:6px">New / corrected findings (after fetching real EPA labels)</h3>
-  <div style="color:#aaa; font-size:0.8rem; margin-bottom:10px">
-    Updated reading of each label following the URL fixes above. Replaces earlier review notes.
-  </div>
-  <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
-    <thead><tr>
-      <th style="text-align:left; padding:6px 10px; color:#4ecca3; border-bottom:1px solid #0f3460;">Product</th>
-      <th style="text-align:left; padding:6px 10px; color:#4ecca3; border-bottom:1px solid #0f3460;">Previously thought</th>
-      <th style="text-align:left; padding:6px 10px; color:#4ecca3; border-bottom:1px solid #0f3460;">After fetching real EPA label</th>
-    </tr></thead>
-    <tbody>
-      <tr>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460;"><b>Torac</b><br><span style="color:#8a8aa0; font-size:0.78rem">(Tolfenpyrad 15EC, 71711-31)</span></td>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460; color:#aaa;">Time-limited ornamental greenhouse + supplemental food-crop labels, possibly expired.</td>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460;">Current 2021 master label has <b>two sub-labels</b>. Sub-label A covers food crops (cucurbits + leafy greens 4-16A incl. lettuce) at <b>field rates ground-only</b>. Sub-label B has a <b>dedicated Greenhouse Cucumber section</b> (17–27 fl oz/A, max 108 fl oz/year, 4 apps) and Greenhouse Tomato — but <b>NO greenhouse lettuce use</b>. So greenhouse cuke is permissible; greenhouse lettuce is off-label.</td>
-      </tr>
-      <tr>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460;"><b>Gatten</b><br><span style="color:#8a8aa0; font-size:0.78rem">(11581-6)</span></td>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460; color:#aaa;">Cuke OK in cucurbit subgroup 9B.</td>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460;">The Feb 2022 EPA label has an explicit <b>"NOT for use in greenhouses"</b> restriction. This is a hard prohibition. Cucumber on the label is for outdoor/field only. <b>In a greenhouse: discontinue.</b> In a shade house: ambiguous — need structure classification.</td>
-      </tr>
-      <tr>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460;"><b>Beleaf 50 SG</b><br><span style="color:#8a8aa0; font-size:0.78rem">(71512-10-279)</span></td>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460; color:#aaa;">Greenhouse-labeled for cuke + lettuce.</td>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460;">The 2019 EPA label has a <b>dedicated Greenhouse Cucumbers section</b> with both foliar (2.8–4.28 oz/A or per-1000-sq-ft) AND drench (4.28 oz/A or 12.5g/1000 plants). However, <b>only Greenhouse Cucumbers, Tomatoes, and Peppers are listed — NOT greenhouse lettuce</b>. Lettuce remains field/shade-house only.</td>
-      </tr>
-      <tr>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460;"><b>Azatin O</b><br><span style="color:#8a8aa0; font-size:0.78rem">(70051-9-59807)</span></td>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460; color:#aaa;">Greenhouse + outdoor broad coverage.</td>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460;">Confirmed via OHP specimen label. 4–16 fl oz/100 gal, 0-day PHI, 4-hr REI. No change.</td>
-      </tr>
-      <tr>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460;"><b>LI 700</b></td>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460; color:#aaa;">Surfactant adjuvant.</td>
-        <td style="padding:8px 10px; vertical-align:top; border-bottom:1px solid #0f3460;">Confirmed it's a non-ionic adjuvant (<b>not EPA-registered as a pesticide</b>). Use rate: ½–2 pints per 100 gal for insecticide/fungicide spray mixtures. Follow partner pesticide label.</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
 <div id="summary"></div>
 <div id="loading">Loading…</div>
 <div id="error" style="display:none"></div>
@@ -146,6 +106,9 @@ let sortKey = 'product', sortDir = 1;
       'azatin o|cuke':     'https://www.ohp.com/Labels_MSDS/PDF/azatin_o_label.pdf',
       'beleaf 50 sg|cuke': 'https://www3.epa.gov/pesticides/chem_search/ppls/071512-00010-20190502.pdf',
       'li 700|cuke':       'https://labelsds.com/images/user_uploads/LI%20700%20Label%201-18.pdf',
+      // Nanocrop is FIFRA 25(b) exempt — no EPA registration. Use Agrian label PDF.
+      'nanocrop|cuke':     'https://7961852.fs1.hubspotusercontent-na1.net/hubfs/7961852/NanoCrop%20Files/NanoCrop%20Agrian%20Label.pdf',
+      'nanocrop|lettuce':  'https://7961852.fs1.hubspotusercontent-na1.net/hubfs/7961852/NanoCrop%20Files/NanoCrop%20Agrian%20Label.pdf',
     };
     issues = [];
     Object.entries(usage).forEach(([k, u]) => {

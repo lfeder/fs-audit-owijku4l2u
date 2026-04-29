@@ -58,12 +58,11 @@
     <label>Site: <select id="siteSelect"><option value="">All</option></select></label>
     <label><input type="checkbox" id="violationsOnly"> Violations only</label>
   </div>
-  <div id="version">04-29 11:45</div>
+  <div id="version">04-29 13:45</div>
 </div>
 
 <div id="summary">
   <div class="stat violation" data-filter="violation"><div class="label">Violations</div><div class="value" id="cnt-v">—</div></div>
-  <div class="stat warn"      data-filter="data-error"><div class="label">Data errors</div><div class="value" id="cnt-de">—</div></div>
   <div class="stat ok"        data-filter="ok"><div class="label">Compliant</div><div class="value" id="cnt-ok">—</div></div>
   <div class="stat muted"     data-filter="no-harvest"><div class="label">No harvest after</div><div class="value" id="cnt-no">—</div></div>
   <div class="stat warn"      data-filter="no-rei-phi"><div class="label">No REI/PHI on file</div><div class="value" id="cnt-m">—</div></div>
@@ -132,39 +131,21 @@ function buildRow({ farm, site, sprayedAtStr, chemical, products, qty, uom,
     if (sprayedAt) hoursSince = (nh - sprayedAt) / 36e5;
   }
 
-  // Detect mismatch between stored and expected stop datetimes (>1 minute).
-  // If they don't match, the stored sheet data is wrong, regardless of whether
-  // the actual application is a violation.
-  const TOL_MS = 60 * 1000;
-  const sNum = v => v ? new Date(v).getTime() : null;
-  const phiStoredMs = sNum(phiStop), phiExpMs = sNum(phiStopExpected);
-  const reiStoredMs = sNum(reiStop), reiExpMs = sNum(reiStopExpected);
-  const phiMismatch = (phiStoredMs != null && phiExpMs != null && Math.abs(phiStoredMs - phiExpMs) > TOL_MS);
-  const reiMismatch = (reiStoredMs != null && reiExpMs != null && Math.abs(reiStoredMs - reiExpMs) > TOL_MS);
-  const anyMismatch = phiMismatch || reiMismatch;
-
+  // Real violation = computed from EXPECTED stops (correct formula). Stored-vs-expected
+  // mismatches live on spray-stop-data-errors.html, not here.
   if (rei == null && phi == null) {
     status = 'no-rei-phi';
   } else if (!nextHarvestDate) {
-    // Even with no harvest after, we can still surface stored-vs-expected mismatches
-    status = anyMismatch ? 'data-error' : 'no-harvest';
+    status = 'no-harvest';
   } else {
     const harvestStart = new Date(harvestStartStr);
-    // Real violation = computed from EXPECTED stops (what the sheet should contain)
     let phiV_exp = false, reiV_exp = false;
     if (phiStopExpected) phiV_exp = harvestStart < new Date(phiStopExpected);
     else if (phi != null) phiV_exp = daysSince < phi;
     if (reiStopExpected) reiV_exp = harvestStart < new Date(reiStopExpected);
     else if (rei != null && hoursSince != null) reiV_exp = hoursSince < rei;
-    const realViolation = phiV_exp || reiV_exp;
     phiV = phiV_exp; reiV = reiV_exp;
-    if (realViolation) {
-      status = 'violation';
-    } else if (anyMismatch) {
-      status = 'data-error';
-    } else {
-      status = 'ok';
-    }
+    status = (phiV || reiV) ? 'violation' : 'ok';
   }
 
   return {
@@ -433,10 +414,9 @@ function render() {
   const visibleByFarmSite = allRows.filter(r =>
     (!farm || r.farm_id === farm) && (!site || r.site_id === site)
   );
-  const cnt = { violation: 0, 'data-error': 0, ok: 0, 'no-harvest': 0, 'no-rei-phi': 0 };
+  const cnt = { violation: 0, ok: 0, 'no-harvest': 0, 'no-rei-phi': 0 };
   visibleByFarmSite.forEach(r => cnt[r.status]++);
   document.getElementById('cnt-v').textContent  = cnt.violation;
-  document.getElementById('cnt-de').textContent = cnt['data-error'];
   document.getElementById('cnt-ok').textContent = cnt.ok;
   document.getElementById('cnt-no').textContent = cnt['no-harvest'];
   document.getElementById('cnt-m').textContent  = cnt['no-rei-phi'];

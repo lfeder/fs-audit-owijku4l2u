@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Spray PHI/REI Stop Data Errors — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<script src="audit-list.js"></script>
+<link rel="stylesheet" href="audit-list.css">
+<style>
+  .badge-cause { display: inline-block; padding: 1px 6px; border-radius: 8px; font-size: 0.7rem; font-weight: 600; }
+  .badge-cause.flip { background: rgba(255,140,90,0.25); color: #ff8c5a; }
+  .badge-cause.day-shift { background: rgba(212,164,74,0.25); color: #d4a44a; }
+  .badge-cause.hour-shift { background: rgba(78,204,163,0.20); color: #4ecca3; }
+  .badge-cause.other { background: rgba(138,138,160,0.25); color: #8a8aa0; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script>
+function dateOnly(v){ if(!v) return null; const s=String(v);
+  let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
+}
+function parseStopMin(v) {
+  if (!v) return null;
+  const s = String(v);
+  let m;
+  if ((m = s.match(/^(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)$/i))) {
+    let h = parseInt(m[1],10) % 12; if (m[3].toUpperCase()==='PM') h += 12;
+    return h*60 + parseInt(m[2],10);
+  }
+  if ((m = s.match(/T(\d{2}):(\d{2})/))) return parseInt(m[1],10)*60+parseInt(m[2],10);
+  if ((m = s.match(/^(\d{1,2}):(\d{2})/)))   return parseInt(m[1],10)*60+parseInt(m[2],10);
+  return null;
+}
+function fmtDT(d) {
+  if (!d) return '';
+  const pad = n => String(n).padStart(2,'0');
+  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())} ${pad(d.getHours())}:${pad(d.getMinutes())}`;
+}
+function classifyCause(spraySd, expected, stored) {
+  if (!stored || !expected) return 'other';
+  const sm = expected.getMonth()+1, sd = expected.getDate();
+  const tm = stored.getMonth()+1,   td = stored.getDate();
+  if (expected.getFullYear() === stored.getFullYear() && sm === td && sd === tm && sm !== sd) return 'flip';
+  const diffMs = Math.abs(stored - expected);
+  const diffH = diffMs / 3600000;
+  if (expected.getFullYear() === stored.getFullYear() && sm === tm && sd === td &&
+      Math.abs(diffH - Math.round(diffH)) < 0.05) return 'hour-shift';
+  if (Math.abs(diffMs - 86400000) < 60000) return 'day-shift';
+  if (Math.abs((diffMs % 86400000) - 0) < 60000) return 'day-shift';
+  return 'other';
+}
+function formatDiff(ms) {
+  const sign = ms < 0 ? '−' : '+';
+  ms = Math.abs(ms);
+  const days = Math.floor(ms / 86400000);
+  const hours = Math.floor((ms % 86400000) / 3600000);
+  const mins = Math.floor((ms % 3600000) / 60000);
+  const parts = [];
+  if (days) parts.push(`${days}d`);
+  if (hours) parts.push(`${hours}h`);
+  if (mins) parts.push(`${mins}m`);
+  return sign + (parts.join(' ') || '0m');
+}
+
+FSAudit.renderIssueList({
+  title: 'Spray PHI/REI stop columns disagree with formula',
+  version: '04-29 13:35',
+  defaultSort: { key: 'spray_date', dir: -1 },
+  columns: [
+    { key: 'spray_date',  label: 'Spray date' },
+    { key: 'site',        label: 'Site' },
+    { key: 'products',    label: 'Products' },
+    { key: 'phi_days',    label: 'PHI (d)', num: true },
+    { key: 'rei_hours',   label: 'REI (h)', num: true },
+    { key: 'stop_time',   label: 'Stop time' },
+    { key: 'expected_phi',label: 'Expected PHIStop' },
+    { key: 'stored_phi',  label: 'Stored PHIStop' },
+    { key: 'phi_diff',    label: 'PHI diff', render: r => r.phi_diff_html || '' },
+    { key: 'expected_rei',label: 'Expected REIStop' },
+    { key: 'stored_rei',  label: 'Stored REIStop' },
+    { key: 'rei_diff',    label: 'REI diff', render: r => r.rei_diff_html || '' },
+    { key: 'cause',       label: 'Likely cause',
+      render: r => `<span class="badge-cause ${r.cause}">${r.cause.replace('-',' ')}</span>` },
+  ],
+  fetchRows: async (win) => {
+    const sprays = await FSAudit.fetchSheet('grow', 'grow_spray_sched');
+    const TOL = 60 * 1000;
+    const out = [];
+    sprays.forEach(s => {
+      const sd = dateOnly(s.SprayingDate);
+      if (!sd || sd < win.from || sd > win.to) return;
+      const mins = parseStopMin(s.SprayingStopTime);
+      if (mins == null) return;
+      const sprayStop = new Date(sd + 'T00:00:00');
+      sprayStop.setMinutes(sprayStop.getMinutes() + mins);
+      const phiD = Number(s.PHIDays);
+      const reiH = Number(s.REIlHours);
+      const phiExp = !isNaN(phiD) ? new Date(sprayStop.getTime() + phiD*86400000) : null;
+      const reiExp = !isNaN(reiH) ? new Date(sprayStop.getTime() + reiH*3600000) : null;
+      const phiStored = s.PHIStopDateTime ? new Date(s.PHIStopDateTime) : null;
+      const reiStored = s.REIStopDateTime ? new Date(s.REIStopDateTime) : null;
+      const phiBad = phiStored && phiExp && Math.abs(phiStored - phiExp) > TOL;
+      const reiBad = reiStored && reiExp && Math.abs(reiStored - reiExp) > TOL;
+      if (!phiBad && !reiBad) return;
+      const products = ['Product01','Product02','Product03'].map(k => s[k]).filter(Boolean).join(' + ');
+      const phiDiff = phiBad ? formatDiff(phiStored - phiExp) : '';
+      const reiDiff = reiBad ? formatDiff(reiStored - reiExp) : '';
+      let cause = 'other';
+      if (phiBad) cause = classifyCause(sprayStop, phiExp, phiStored);
+      if (cause === 'other' && reiBad) cause = classifyCause(sprayStop, reiExp, reiStored);
+      out.push({
+        spray_date: sd,
+        site: String(s.Farm||'').toLowerCase()==='lettuce' ? 'Let' : (s.SiteName || ''),
+        products,
+        phi_days: !isNaN(phiD) ? phiD : '',
+        rei_hours: !isNaN(reiH) ? reiH : '',
+        stop_time: s.SprayingStopTime || '',
+        expected_phi: fmtDT(phiExp),
+        stored_phi: fmtDT(phiStored),
+        phi_diff_html: phiBad ? `<span style="color:#ff8c5a">${phiDiff}</span>` : '',
+        expected_rei: fmtDT(reiExp),
+        stored_rei: fmtDT(reiStored),
+        rei_diff_html: reiBad ? `<span style="color:#ff8c5a">${reiDiff}</span>` : '',
+        cause,
+      });
+    });
+    return out;
+  },
+});
+</script>
+</body>
+</html>

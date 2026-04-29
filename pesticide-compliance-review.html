@@ -39,14 +39,50 @@
 <div id="header">
   <a href="index.html" class="back">← FS audit</a>
   <h1>Pesticide Compliance Review</h1>
-  <div id="version">04-29 12:50</div>
+  <div id="version">04-29 13:45</div>
 </div>
 
 <div id="content">
   <div class="intro">
-    External review of pesticide use against EPA labels and Hawaii registration. <b>19 findings total</b>:
-    9 critical compliance items (label/crop violations) and 8 rate/unit data errors that warrant
-    review even if the actual field rate was correct. Source: Claude.com review (2026-04-29).
+    External review of pesticide use against EPA labels and Hawaii registration. The
+    <b>"New / corrected findings"</b> section reflects the latest reading of each label after
+    fetching the real EPA-stamped PDFs and supersedes any contradicting rows in the
+    sections below it. Sources: Claude.com review (2026-04-29).
+  </div>
+
+  <div class="section critical">
+    <h2>🔴 New / corrected findings (after fetching real EPA labels)</h2>
+    <div class="lede">Updated reading of each label. Replaces earlier review notes for these products.</div>
+    <table>
+      <thead><tr><th>Product</th><th>Previously thought</th><th>After fetching real EPA label</th></tr></thead>
+      <tbody>
+        <tr>
+          <td class="product">Torac<br><span style="color:#8a8aa0; font-weight:400; font-size:0.78rem">(Tolfenpyrad 15EC, 71711-31)</span></td>
+          <td>Time-limited ornamental greenhouse + supplemental food-crop labels, possibly expired.</td>
+          <td>Current 2021 master label has <b>two sub-labels</b>. Sub-label A covers food crops (cucurbits + leafy greens 4-16A incl. lettuce) at <b>field rates ground-only</b>. Sub-label B has a <b>dedicated Greenhouse Cucumber section</b> (17–27 fl oz/A, max 108 fl oz/year, 4 apps) and Greenhouse Tomato — but <b>NO greenhouse lettuce use</b>. So <b>greenhouse cuke is permissible; greenhouse lettuce is off-label</b>.</td>
+        </tr>
+        <tr>
+          <td class="product">Gatten<br><span style="color:#8a8aa0; font-weight:400; font-size:0.78rem">(11581-6)</span></td>
+          <td>Cuke OK in cucurbit subgroup 9B.</td>
+          <td>The Feb 2022 EPA label has an explicit <b>"NOT for use in greenhouses"</b> restriction. <b>Hard prohibition</b>. Cucumber on the label is for outdoor/field only. <b>In a greenhouse: discontinue.</b> In a shade house: ambiguous — need structure classification.</td>
+        </tr>
+        <tr>
+          <td class="product">Beleaf 50 SG<br><span style="color:#8a8aa0; font-weight:400; font-size:0.78rem">(71512-10-279)</span></td>
+          <td>Greenhouse-labeled for cuke + lettuce.</td>
+          <td>The 2019 EPA label has a <b>dedicated Greenhouse Cucumbers section</b> with both foliar (2.8–4.28 oz/A or per-1000-sq-ft) AND drench (4.28 oz/A or 12.5g/1000 plants). However, <b>only Greenhouse Cucumbers, Tomatoes, and Peppers are listed — NOT greenhouse lettuce</b>. Lettuce remains field/shade-house only.</td>
+        </tr>
+        <tr>
+          <td class="product">Azatin O<br><span style="color:#8a8aa0; font-weight:400; font-size:0.78rem">(70051-9-59807)</span></td>
+          <td>Greenhouse + outdoor broad coverage.</td>
+          <td>Confirmed via OHP specimen label. 4–16 fl oz/100 gal, 0-day PHI, 4-hr REI. <b>No change — compliant.</b></td>
+        </tr>
+        <tr>
+          <td class="product">LI 700</td>
+          <td>Surfactant adjuvant.</td>
+          <td>Confirmed it's a non-ionic adjuvant (<b>not EPA-registered as a pesticide</b>). Use rate: ½–2 pints per 100 gal for insecticide/fungicide spray mixtures. Follow partner pesticide label.</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <div class="section critical">
