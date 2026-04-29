@@ -133,21 +133,19 @@
       detailPage: 'untraceable-orders.html',
       status: 'ready',
       async run(w) {
-        const [sales, cukeHarv, lettSeed] = await Promise.all([
+        const [sales, cukeHarv, packLot] = await Promise.all([
           fetchSheet('sales', 'sales_po'),
           fetchSheet('grow',  'grow_C_harvest'),
-          fetchSheet('grow',  'grow_L_seeding'),
+          fetchSheet('pack',  'pack_L_packlot'),
         ]);
         // Index cuke harvest dates
         const cukeDates = new Set();
         cukeHarv.forEach(r => { const d = dateOnly(r.HarvestDate); if (d) cukeDates.add(d); });
-        // Index lettuce packlots
+        // Index lettuce pack lots from pack_L_packlot (canonical source)
         const lettLots = new Set();
-        lettSeed.forEach(r => {
-          String(r.packlot||'').split(',').forEach(s => {
-            const v = s.trim().replace(/\$$/, '');
-            if (v) lettLots.add(v);
-          });
+        packLot.forEach(r => {
+          const v = String(r.PackLot||'').trim().replace(/\$$/, '');
+          if (v) lettLots.add(v);
         });
         let count = 0;
         sales.forEach(r => {

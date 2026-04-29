@@ -18,7 +18,7 @@ function dateOnly(v){ if(!v) return null; const s=String(v);
 }
 FSAudit.renderIssueList({
   title: 'Sales orders that cannot be traced back to a harvest / seeding',
-  version: '04-29 09:50',
+  version: '04-29 15:10',
   defaultSort: { key: 'invoice_date', dir: -1 },
   columns: [
     { key: 'invoice_date',     label: 'Invoice date' },
@@ -31,19 +31,17 @@ FSAudit.renderIssueList({
     { key: 'reason',           label: 'Reason' },
   ],
   fetchRows: async (win) => {
-    const [sales, cukeHarv, lettSeed] = await Promise.all([
+    const [sales, cukeHarv, packLot] = await Promise.all([
       FSAudit.fetchSheet('sales', 'sales_po'),
       FSAudit.fetchSheet('grow',  'grow_C_harvest'),
-      FSAudit.fetchSheet('grow',  'grow_L_seeding'),
+      FSAudit.fetchSheet('pack',  'pack_L_packlot'),
     ]);
     const cukeDates = new Set();
     cukeHarv.forEach(r => { const d = dateOnly(r.HarvestDate); if (d) cukeDates.add(d); });
     const lettLots = new Set();
-    lettSeed.forEach(r => {
-      String(r.packlot||'').split(',').forEach(s => {
-        const v = s.trim().replace(/\$$/, '');
-        if (v) lettLots.add(v);
-      });
+    packLot.forEach(r => {
+      const v = String(r.PackLot||'').trim().replace(/\$$/, '');
+      if (v) lettLots.add(v);
     });
     const out = [];
     sales.forEach(r => {
@@ -81,7 +79,7 @@ FSAudit.renderIssueList({
         pack_keys: packKeys || '(none)',
         reason: farm === 'cuke'
           ? 'No grow_C_harvest row on any of the PackDate##'
-          : 'No grow_L_seeding row matching any PackLot##',
+          : 'No pack_L_packlot row matching any PackLot##',
       });
     });
     return out;
