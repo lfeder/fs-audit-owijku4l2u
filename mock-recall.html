@@ -30,7 +30,7 @@
   <a href="index.html" class="back">← FS audit</a>
   <h1>Mock Recall — Trace Customer Order</h1>
   <div class="controls" id="window-bar"></div>
-  <div id="version">04-29 09:38</div>
+  <div id="version">04-29 14:55</div>
 </div>
 <div id="controls">
   <label>Search: <input type="text" id="filter" placeholder="customer / PO # / product"></label>
@@ -65,7 +65,8 @@ function dateOnly(v){ if(!v) return null; const s=String(v);
 let pos = [];
 let cukeHarvByDateGh = {};   // date|GH -> [harvest rows]
 let cukeSeedByCycle = {};    // SeedingCycle -> seeding row
-let lettSeedByLot   = {};    // normalized PackLot (no trailing $) -> [seeding rows]
+let lettPackLot     = {};    // normalized PackLot -> { harvest_date, pack_date, seeding_cycle, raw }
+let lettSeedByDate  = {};    // harvest_date (YYYY-MM-DD) -> [seeding rows]
 let sortKey = 'invoice_date';
 let sortDir = -1;
 
@@ -98,18 +99,26 @@ async function loadCukeTrace() {
 }
 async function loadLettuceTrace() {
   if (traceLoaded.lettuce) return;
-  const lettSeed = await FSAudit.fetchSheet('grow', 'grow_L_seeding');
-  // The PackLot link lives in grow_L_seeding.packlot. A single seeding row can
-  // belong to multiple pack lots (comma-separated, each ending with "$").
-  // Each pack lot can also span multiple seeding rows (different ponds packed
-  // together). Build a Map<normalizedLot, Array<seedingRow>>.
+  const [packLotRows, lettSeed] = await Promise.all([
+    FSAudit.fetchSheet('pack', 'pack_L_packlot'),
+    FSAudit.fetchSheet('grow', 'grow_L_seeding'),
+  ]);
+  // Index pack-lot → harvest date (and other useful fields)
+  packLotRows.forEach(r => {
+    const lot = String(r.PackLot || '').trim().replace(/\$$/, '');
+    if (!lot) return;
+    lettPackLot[lot] = {
+      harvest_date: dateOnly(r.HarvestDate),
+      pack_date: dateOnly(r.PackDate),
+      seeding_cycle: r.SeedingCycle || '',
+      raw: r,
+    };
+  });
+  // Index seeding rows by harvest date
   lettSeed.forEach(r => {
-    const lots = String(r.packlot || '').split(',')
-      .map(s => s.trim().replace(/\$$/, ''))
-      .filter(Boolean);
-    lots.forEach(lot => {
-      (lettSeedByLot[lot] = lettSeedByLot[lot] || []).push(r);
-    });
+    const d = dateOnly(r.harvestdate);
+    if (!d) return;
+    (lettSeedByDate[d] = lettSeedByDate[d] || []).push(r);
   });
   traceLoaded.lettuce = true;
 }
@@ -168,20 +177,34 @@ function tracePO(p) {
     });
     html += '</div>';
   } else if (farm === 'lettuce') {
-    html += '<div class="trace-block"><h4>Linked Lettuce harvests</h4>';
+    // Lettuce trace path:
+    //   1. PackLot from sales_po
+    //   2. Look up the lot in pack_L_packlot to get the HarvestDate
+    //   3. Show all grow_L_seeding rows harvested on that date
+    html += '<div class="trace-block"><h4>Linked Lettuce trace</h4>';
     splits.forEach(s => {
       if (!s.pack_lot) {
         html += `<div class="empty">Split ${s.idx}: no PackLot recorded.</div>`;
         return;
       }
-      // Strip trailing "$" if present, normalize for lookup.
       const lot = String(s.pack_lot).replace(/\$$/, '').trim();
-      const seedRows = lettSeedByLot[lot] || [];
-      html += `<div style="margin-top:6px"><b>PackLot ${esc(s.pack_lot)}</b> — ${seedRows.length} seeding row(s):</div>`;
-      if (seedRows.length === 0) {
-        html += `<div class="empty">No matching seeding row in grow_L_seeding for PackLot "${esc(lot)}". Lot code may be missing or mismatched.</div>`;
+      const packEntry = lettPackLot[lot];
+      html += `<div style="margin-top:8px"><b>PackLot ${esc(s.pack_lot)}</b></div>`;
+      if (!packEntry) {
+        html += `<div class="empty">No matching row in pack_L_packlot for PackLot "${esc(lot)}".</div>`;
         return;
       }
+      const hd = packEntry.harvest_date;
+      html += `<div style="margin-top:4px; font-size:0.82rem; color:#aaa">
+        Pack date: <b style="color:#e0e0e0">${esc(packEntry.pack_date||'')}</b> &nbsp;
+        Harvest date: <b style="color:#e0e0e0">${esc(hd||'')}</b>
+      </div>`;
+      const seedRows = hd ? (lettSeedByDate[hd] || []) : [];
+      if (seedRows.length === 0) {
+        html += `<div class="empty">No grow_L_seeding rows with harvestdate ${esc(hd||'?')}.</div>`;
+        return;
+      }
+      html += `<div style="margin-top:6px; color:#aaa; font-size:0.82rem">${seedRows.length} seeding row(s) harvested on ${esc(hd)}:</div>`;
       html += '<div class="pack-list"><table><thead><tr>'
         + '<th>Pond</th><th>Side</th><th>Variety</th><th>Seed name</th><th>Seed lot</th><th>Sow date</th><th>Harvest date</th><th>Net wt</th>'
         + '</tr></thead><tbody>';
