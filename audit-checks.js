@@ -302,8 +302,13 @@
           });
         });
         const MANUAL_BAD = new Set(['torac|cuke', 'torac|lettuce']);
+        const URL_OVERRIDES = new Set([
+          'torac|cuke','torac|lettuce','gatten|cuke','azatin o|cuke',
+          'beleaf 50 sg|cuke','li 700|cuke',
+        ]);
         let missing = 0;
         used.forEach(k => {
+          if (URL_OVERRIDES.has(k)) return; // dashboard-side override applied
           const m = master[k];
           if (!m) { missing++; return; }
           const link = String(m.LabelLink||'').trim();
