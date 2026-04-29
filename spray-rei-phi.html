@@ -58,7 +58,7 @@
     <label>Site: <select id="siteSelect"><option value="">All</option></select></label>
     <label><input type="checkbox" id="violationsOnly"> Violations only</label>
   </div>
-  <div id="version">04-29 13:45</div>
+  <div id="version">04-29 14:18</div>
 </div>
 
 <div id="summary">
@@ -415,7 +415,11 @@ function render() {
     (!farm || r.farm_id === farm) && (!site || r.site_id === site)
   );
   const cnt = { violation: 0, ok: 0, 'no-harvest': 0, 'no-rei-phi': 0 };
-  visibleByFarmSite.forEach(r => cnt[r.status]++);
+  visibleByFarmSite.forEach(r => { if (cnt[r.status] != null) cnt[r.status]++; });
+  // Diagnostic: log the violations to console for debugging
+  const violations = visibleByFarmSite.filter(r => r.status === 'violation');
+  console.log('[spray-rei-phi] violations in window:', violations.length, violations.map(v =>
+    `${v.spray_date} ${v.site_id} ${v.chemical} → ${v.next_harvest_date} ${v.next_harvest_time} (PHI ${v.phi_days}d, REI ${v.rei_hours}h)`));
   document.getElementById('cnt-v').textContent  = cnt.violation;
   document.getElementById('cnt-ok').textContent = cnt.ok;
   document.getElementById('cnt-no').textContent = cnt['no-harvest'];
