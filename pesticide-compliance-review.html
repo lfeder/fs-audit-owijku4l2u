@@ -38,7 +38,7 @@
 <div id="header">
   <a href="index.html" class="back">← FS audit</a>
   <h1>Pesticide Compliance Review</h1>
-  <div id="version">04-29 11:45</div>
+  <div id="version">04-29 12:15</div>
 </div>
 
 <div id="content">
@@ -231,21 +231,37 @@ async function getSprays() {
   _sprays = await FSAudit.fetchSheet('grow', 'grow_spray_sched');
   return _sprays;
 }
-function applicationsFor(sprays, productLower, farms) {
+// Known sheet-side typos / aliases for product names. The compliance review uses
+// canonical (label) spelling; the spray sheet has typos / case variants.
+const PRODUCT_ALIASES = {
+  'success':            ['success', 'succes'],
+  'oxidate 5.0':        ['oxidate 5.0', 'oxidate5.0'],
+  'luna sensation':     ['luna sensation'],
+  'luna experience':    ['luna experience'],
+  'rally 40wsp (mycoinsecticide)': ['rally 40wsp (mycoinsecticide)', 'rally 40 wsp', 'rally 40wsp'],
+  'avid 0.15 ec':       ['avid 0.15 ec', 'avid abamectin .15 ec'],
+};
+function matchesProduct(rowName, canonical) {
+  const a = norm(rowName), c = norm(canonical);
+  if (a === c) return true;
+  const aliases = PRODUCT_ALIASES[c] || [c];
+  return aliases.includes(a);
+}
+function applicationsFor(sprays, canonicalProduct, farms) {
   const out = [];
   sprays.forEach(s => {
     const farm = norm(s.Farm);
     if (!farms.includes(farm)) return;
     let matched = false;
     for (let i = 1; i <= 3; i++) {
-      if (norm(s[`Product0${i}`]) === productLower) { matched = true; break; }
+      if (matchesProduct(s[`Product0${i}`], canonicalProduct)) { matched = true; break; }
     }
     if (!matched) return;
     const d = dateOnly(s.SprayingDate);
     if (!d) return;
     let qty = '', unit = '';
     for (let i = 1; i <= 3; i++) {
-      if (norm(s[`Product0${i}`]) === productLower) {
+      if (matchesProduct(s[`Product0${i}`], canonicalProduct)) {
         qty = s[`Product0${i}Quantity`] ?? '';
         unit = s[`Product0${i}Units`] || '';
         break;
