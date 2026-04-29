@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Pesticide Label Coverage — FS Audit</title>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="audit-core.js"></script>
+<script src="audit-list.js"></script>
+<link rel="stylesheet" href="audit-list.css">
+</head>
+<body>
+<div id="root"></div>
+<script>
+function dateOnly(v){ if(!v) return null; const s=String(v);
+  let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
+}
+const norm = s => String(s||'').trim().toLowerCase();
+FSAudit.renderIssueList({
+  title: 'Pesticides used in audit window without a label URL',
+  version: '04-29 11:05',
+  defaultSort: { key: 'product', dir: 1 },
+  columns: [
+    { key: 'product',     label: 'Product' },
+    { key: 'farm',        label: 'Farm' },
+    { key: 'status',      label: 'Status' },
+    { key: 'first_used',  label: 'First used in window' },
+    { key: 'last_used',   label: 'Last used in window' },
+    { key: 'use_count',   label: 'Uses', num: true },
+  ],
+  fetchRows: async (win) => {
+    const [sprays, masterRows] = await Promise.all([
+      FSAudit.fetchSheet('grow', 'grow_spray_sched'),
+      FSAudit.fetchSheet('invnt', 'invnt_item_details'),
+    ]);
+    const master = {};
+    masterRows.forEach(r => {
+      const k = `${norm(r.ItemName)}|${norm(r.Farm)}`;
+      if (k !== '|') master[k] = r;
+    });
+    const usage = {};
+    sprays.forEach(s => {
+      const d = dateOnly(s.SprayingDate); if (!d || d < win.from || d > win.to) return;
+      ['Product01','Product02','Product03'].forEach(c => {
+        const name = String(s[c]||'').trim(); if (!name) return;
+        const farm = String(s.Farm||'').trim();
+        const k = `${norm(name)}|${norm(farm)}`;
+        const u = usage[k] = usage[k] || { product: name, farm, first_used: d, last_used: d, use_count: 0 };
+        if (d < u.first_used) u.first_used = d;
+        if (d > u.last_used)  u.last_used  = d;
+        u.use_count++;
+      });
+    });
+    const out = [];
+    Object.entries(usage).forEach(([k, u]) => {
+      const m = master[k];
+      const link = m && String(m.LabelLink||'').trim();
+      let status;
+      if (!m) status = 'not in master';
+      else if (!link) status = 'no LabelLink in master';
+      else return;  // has a link — skip
+      out.push({ ...u, status });
+    });
+    return out;
+  },
+});
+</script>
+</body>
+</html>

@@ -42,7 +42,7 @@
   };
 
   const MODES = {
-    audit:     { label: 'Audit period (Apr 2025–today)', days: null, fromFixed: '2025-04-01' },
+    audit:     { label: 'Audit period (May 2025–today)', days: null, fromFixed: '2025-05-01' },
     realtime:  { label: 'Real-time (last 7 days)',       days:   7 },
     monthly:   { label: 'Monthly check (last 30 days)',  days:  30 },
     quarterly: { label: 'Quarterly mock (last 90 days)', days:  90 },

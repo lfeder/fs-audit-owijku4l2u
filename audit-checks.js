@@ -275,6 +275,42 @@
 
     // -------------------------------------------------------------------------
     {
+      id: 'pesticide-label-coverage',
+      title: 'Pesticides used in audit window without a label URL',
+      module: 'M3',
+      severity: 'must-be-zero',
+      detailPage: 'pesticide-label-coverage.html',
+      status: 'ready',
+      async run(w) {
+        const [sprays, masterRows] = await Promise.all([
+          fetchSheet('grow', 'grow_spray_sched'),
+          fetchSheet('invnt', 'invnt_item_details'),
+        ]);
+        const norm = s => String(s||'').trim().toLowerCase();
+        const master = {};
+        masterRows.forEach(r => {
+          const k = `${norm(r.ItemName)}|${norm(r.Farm)}`;
+          if (k !== '|') master[k] = r;
+        });
+        const used = new Set();
+        sprays.forEach(s => {
+          const d = dateOnly(s.SprayingDate); if (!d || d < w.from || d > w.to) return;
+          ['Product01','Product02','Product03'].forEach(k => {
+            const v = String(s[k]||'').trim();
+            if (v) used.add(`${norm(v)}|${norm(s.Farm)}`);
+          });
+        });
+        let missing = 0;
+        used.forEach(k => {
+          const m = master[k];
+          if (!m || !String(m.LabelLink||'').trim()) missing++;
+        });
+        return { count: missing, target: '0' };
+      },
+    },
+
+    // -------------------------------------------------------------------------
+    {
       id: 'pesticide-compliance-review',
       title: 'Pesticide compliance review (label / crop / rate findings)',
       module: 'M3',
