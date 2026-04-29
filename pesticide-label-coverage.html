@@ -6,30 +6,57 @@
 <title>Pesticide Label Coverage — FS Audit</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="audit-core.js"></script>
-<script src="audit-list.js"></script>
 <link rel="stylesheet" href="audit-list.css">
+<style>
+  tr.row-main { cursor: pointer; }
+  tr.row-main:hover { background: rgba(78, 204, 163, 0.08); }
+  tr.row-main.expanded { background: rgba(78, 204, 163, 0.10); }
+  tr.row-detail td { background: #0f1a2e; padding: 12px 24px; }
+  tr.row-detail table { font-size: 0.8rem; margin-top: 4px; }
+  tr.row-detail th { padding: 4px 8px; }
+  tr.row-detail td { padding: 4px 8px; }
+  .arrow { color: #4ecca3; font-size: 0.8rem; margin-right: 4px; }
+</style>
 </head>
 <body>
-<div id="root"></div>
+<div id="header">
+  <a href="index.html" class="back">← FS audit</a>
+  <h1>Pesticides used in audit window without a label URL</h1>
+  <div class="controls" id="window-bar"></div>
+  <div id="version">04-29 11:25</div>
+</div>
+<div id="summary"></div>
+<div id="loading">Loading…</div>
+<div id="error" style="display:none"></div>
+<div id="table-wrap" style="display:none">
+  <table>
+    <thead><tr>
+      <th data-key="product">Product</th>
+      <th data-key="farm">Farm</th>
+      <th data-key="status">Status</th>
+      <th data-key="first_used">First used</th>
+      <th data-key="last_used">Last used</th>
+      <th data-key="use_count" class="num">Uses</th>
+    </tr></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
 <script>
+FSAudit.renderHeaderBar(document.getElementById('window-bar'));
+const win = FSAudit.getWindow();
+const esc = FSAudit.escapeHtml;
+const norm = s => String(s||'').trim().toLowerCase();
+
 function dateOnly(v){ if(!v) return null; const s=String(v);
   let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
   m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
 }
-const norm = s => String(s||'').trim().toLowerCase();
-FSAudit.renderIssueList({
-  title: 'Pesticides used in audit window without a label URL',
-  version: '04-29 11:05',
-  defaultSort: { key: 'product', dir: 1 },
-  columns: [
-    { key: 'product',     label: 'Product' },
-    { key: 'farm',        label: 'Farm' },
-    { key: 'status',      label: 'Status' },
-    { key: 'first_used',  label: 'First used in window' },
-    { key: 'last_used',   label: 'Last used in window' },
-    { key: 'use_count',   label: 'Uses', num: true },
-  ],
-  fetchRows: async (win) => {
+
+let issues = [];
+let sortKey = 'product', sortDir = 1;
+
+(async () => {
+  try {
     const [sprays, masterRows] = await Promise.all([
       FSAudit.fetchSheet('grow', 'grow_spray_sched'),
       FSAudit.fetchSheet('invnt', 'invnt_item_details'),
@@ -42,28 +69,105 @@ FSAudit.renderIssueList({
     const usage = {};
     sprays.forEach(s => {
       const d = dateOnly(s.SprayingDate); if (!d || d < win.from || d > win.to) return;
-      ['Product01','Product02','Product03'].forEach(c => {
-        const name = String(s[c]||'').trim(); if (!name) return;
+      ['Product01','Product02','Product03'].forEach((col, idx) => {
+        const name = String(s[col]||'').trim(); if (!name) return;
         const farm = String(s.Farm||'').trim();
+        const qty = s[`Product0${idx+1}Quantity`];
+        const unit = s[`Product0${idx+1}Units`];
         const k = `${norm(name)}|${norm(farm)}`;
-        const u = usage[k] = usage[k] || { product: name, farm, first_used: d, last_used: d, use_count: 0 };
+        const u = usage[k] = usage[k] || {
+          product: name, farm, applications: [],
+          first_used: d, last_used: d, use_count: 0,
+        };
         if (d < u.first_used) u.first_used = d;
         if (d > u.last_used)  u.last_used  = d;
         u.use_count++;
+        u.applications.push({
+          date: d,
+          site: norm(farm) === 'lettuce' ? 'Let' : (s.SiteName || ''),
+          qty, unit,
+          applicator: s.Applicator || '',
+          stop_time: s.SprayingStopTime || '',
+        });
       });
     });
-    const out = [];
+    Object.values(usage).forEach(u =>
+      u.applications.sort((a,b) => b.date.localeCompare(a.date)));
+    issues = [];
     Object.entries(usage).forEach(([k, u]) => {
       const m = master[k];
       const link = m && String(m.LabelLink||'').trim();
       let status;
       if (!m) status = 'not in master';
       else if (!link) status = 'no LabelLink in master';
-      else return;  // has a link — skip
-      out.push({ ...u, status });
+      else return;
+      issues.push({ ...u, status });
     });
-    return out;
-  },
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('table-wrap').style.display = 'block';
+    paint();
+  } catch (e) {
+    document.getElementById('loading').style.display = 'none';
+    const err = document.getElementById('error');
+    err.style.display = 'block';
+    const msg = String(e.message || e);
+    if (/gviz/i.test(msg)) {
+      err.innerHTML = `<div style="font-weight:600">Can't read the underlying Google Sheet</div>
+        <div style="margin-top:8px; color:#d4a44a">${esc(msg)}</div>
+        <div style="margin-top:12px; color:#aaa">Inventory sheet may not be link-shareable. Set it to "Anyone with link → Viewer" in Sheets.</div>`;
+    } else {
+      err.textContent = 'Error: ' + msg;
+    }
+    console.error(e);
+  }
+})();
+
+function paint() {
+  const sorted = issues.slice().sort((a, b) => {
+    const x = a[sortKey], y = b[sortKey];
+    if (x === y) return 0;
+    if (x == null) return 1; if (y == null) return -1;
+    return (x < y ? -1 : 1) * sortDir;
+  });
+  document.getElementById('summary').innerHTML =
+    `<div class="stat"><div class="label">Issues</div><div class="value">${sorted.length}</div></div>`;
+  document.getElementById('tbody').innerHTML = sorted.map((it, i) => {
+    const apps = it.applications.map(a =>
+      `<tr><td>${esc(a.date)}</td><td>${esc(a.site)}</td>` +
+      `<td>${esc(a.qty != null ? a.qty + (a.unit ? ' ' + a.unit : '') : '')}</td>` +
+      `<td>${esc(a.stop_time)}</td><td>${esc(a.applicator)}</td></tr>`
+    ).join('');
+    const detail = `<table>
+        <thead><tr><th>Date</th><th>Site</th><th>Qty</th><th>Stop time</th><th>Applicator</th></tr></thead>
+        <tbody>${apps}</tbody></table>`;
+    return `<tr class="row-main" data-i="${i}">
+      <td><span class="arrow">▸</span>${esc(it.product)}</td>
+      <td>${esc(it.farm)}</td>
+      <td>${esc(it.status)}</td>
+      <td>${esc(it.first_used)}</td>
+      <td>${esc(it.last_used)}</td>
+      <td class="num">${it.use_count}</td>
+    </tr>
+    <tr class="row-detail" data-i="${i}" style="display:none"><td colspan="6">${detail}</td></tr>`;
+  }).join('');
+  document.querySelectorAll('tr.row-main').forEach(tr => {
+    tr.addEventListener('click', () => {
+      const i = tr.dataset.i;
+      const det = document.querySelector(`tr.row-detail[data-i="${i}"]`);
+      const open = det.style.display !== 'none';
+      det.style.display = open ? 'none' : 'table-row';
+      tr.classList.toggle('expanded', !open);
+      tr.querySelector('.arrow').textContent = open ? '▸' : '▾';
+    });
+  });
+}
+
+document.querySelectorAll('th[data-key]').forEach(th => {
+  th.addEventListener('click', () => {
+    const k = th.dataset.key;
+    if (sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = 1; }
+    paint();
+  });
 });
 </script>
 </body>
