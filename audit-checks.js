@@ -666,25 +666,35 @@
     // -------------------------------------------------------------------------
     {
       id: 'training-currency',
-      title: 'Employees with no training signed in last 12 months',
+      title: 'Active employees with no food-safety training in last 12 months',
       module: 'M4/M6',
       severity: 'investigate',
       detailPage: 'training-currency.html',
       status: 'ready',
       async run(w) {
-        const rows = await fetchSheet('fsafe', 'fsafe_log_training_employees');
+        const [register, trainings] = await Promise.all([
+          fetchSheet('hr', 'hr_ee_register'),
+          fetchSheet('fsafe', 'fsafe_log_training_employees'),
+        ]);
         const byEmp = {};
-        rows.forEach(r => {
+        trainings.forEach(r => {
           const sig = dateOnly(r.DigitalSignatureDateTime || r.TrainingDateTime);
           if (!sig) return;
-          const name = (r.FullName || '').trim();
+          const name = String(r.FullName || '').trim().toUpperCase();
           if (!name) return;
           if (!byEmp[name] || byEmp[name] < sig) byEmp[name] = sig;
         });
         const cutoff = (() => { const d = new Date(); d.setMonth(d.getMonth()-12); return d.toISOString().slice(0,10); })();
         let count = 0;
-        Object.values(byEmp).forEach(latest => { if (latest < cutoff) count++; });
-        return { count, target: 'investigate' };
+        register.forEach(e => {
+          const isActive = String(e.IsActive || '').toLowerCase() === 'true';
+          if (!isActive) return;
+          const name = String(e.FullName || '').trim().toUpperCase();
+          if (!name) return;
+          const last = byEmp[name];
+          if (!last || last < cutoff) count++;
+        });
+        return { count, target: '0 active employees overdue' };
       },
     },
 

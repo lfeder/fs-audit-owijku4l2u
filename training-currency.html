@@ -17,38 +17,56 @@ function dateOnly(v){ if(!v) return null; const s=String(v);
   m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
 }
 FSAudit.renderIssueList({
-  title: 'Employees with no training signed in last 12 months',
-  version: '04-29 07:05',
+  title: 'Active employees — days since last food-safety training',
+  version: '04-29 15:35',
   defaultSort: { key: 'days_since', dir: -1 },
   columns: [
     { key: 'name',         label: 'Employee' },
-    { key: 'last_signed',  label: 'Last signed' },
+    { key: 'department',   label: 'Dept' },
+    { key: 'status',       label: 'Status' },
+    { key: 'start_date',   label: 'Start date' },
+    { key: 'last_signed',  label: 'Last training' },
     { key: 'days_since',   label: 'Days since', num: true },
-    { key: 'last_training',label: 'Last training' },
+    { key: 'last_training',label: 'Topic' },
   ],
   fetchRows: async (win) => {
-    const rows = await FSAudit.fetchSheet('fsafe', 'fsafe_log_training_employees');
+    const [register, trainings] = await Promise.all([
+      FSAudit.fetchSheet('hr',    'hr_ee_register'),
+      FSAudit.fetchSheet('fsafe', 'fsafe_log_training_employees'),
+    ]);
+    // Build last-training-per-employee from training records
     const byEmp = {};
-    rows.forEach(r => {
+    trainings.forEach(r => {
       const sig = dateOnly(r.DigitalSignatureDateTime || r.TrainingDateTime);
       if (!sig) return;
-      const name = (r.FullName || '').trim();
+      const name = String(r.FullName || '').trim().toUpperCase();
       if (!name) return;
       if (!byEmp[name] || byEmp[name].sig < sig) {
         byEmp[name] = { sig, training: r.TrainingType };
       }
     });
-    const cutoff = (() => { const d = new Date(); d.setMonth(d.getMonth()-12); return d.toISOString().slice(0,10); })();
     const today = new Date().toISOString().slice(0, 10);
+    // Active employees only — IsActive=TRUE
     const out = [];
-    Object.entries(byEmp).forEach(([name, info]) => {
-      if (info.sig >= cutoff) return;
-      const days = Math.floor((new Date(today) - new Date(info.sig)) / 86400000);
+    register.forEach(e => {
+      const isActive = String(e.IsActive || '').toLowerCase() === 'true';
+      if (!isActive) return;
+      const name = String(e.FullName || '').trim();
+      if (!name) return;
+      const info = byEmp[name.toUpperCase()];
+      const startDate = dateOnly(e.StartDate);
       out.push({
         name,
-        last_signed: info.sig,
-        days_since: days,
-        last_training: info.training,
+        department: e.Department || '',
+        status: e.Status || '',
+        start_date: startDate || '',
+        last_signed: info ? info.sig : '(none on record)',
+        days_since: info
+          ? Math.floor((new Date(today) - new Date(info.sig)) / 86400000)
+          : (startDate
+              ? Math.floor((new Date(today) - new Date(startDate)) / 86400000)
+              : null),
+        last_training: info ? info.training : '',
       });
     });
     return out;
