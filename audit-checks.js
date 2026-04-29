@@ -281,6 +281,7 @@
       severity: 'must-be-zero',
       detailPage: 'pesticide-label-coverage.html',
       status: 'ready',
+      pesticide: true,
       async run(w) {
         const [sprays, masterRows] = await Promise.all([
           fetchSheet('grow', 'grow_spray_sched'),
@@ -317,6 +318,7 @@
       severity: 'must-be-zero',
       detailPage: 'pesticide-compliance-review.html',
       status: 'ready',
+      pesticide: true,
       async run(w) {
         // Static count: 4 greenhouse-prohibited + 5 off-label + 2 data-field + 8 rate
         return { count: 19, target: '0 unresolved findings' };
@@ -331,6 +333,7 @@
       severity: 'investigate',
       detailPage: 'spray-warnings.html',
       status: 'ready',
+      pesticide: true,
       async run(w) {
         const rows = await fetchSheet('grow', 'grow_spray_sched');
         let count = 0;
@@ -351,6 +354,7 @@
       severity: 'must-be-zero',
       detailPage: 'spray-rei-phi.html',
       status: 'ready',
+      pesticide: true,
       async run(w) {
         // Count sprays where stored PHIStop/REIStop is past the next harvest day.
         // Uses pre-computed sheet columns; matches the detail page's "violation" status
@@ -516,6 +520,7 @@
       severity: 'investigate',
       detailPage: 'spray-data-quality.html',
       status: 'ready',
+      pesticide: true,
       async run(w) {
         // Count sprays in window with at least one issue (any of the categories
         // surfaced on spray-data-quality.html).

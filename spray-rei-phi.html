@@ -58,7 +58,7 @@
     <label>Site: <select id="siteSelect"><option value="">All</option></select></label>
     <label><input type="checkbox" id="violationsOnly"> Violations only</label>
   </div>
-  <div id="version">04-29 03:08</div>
+  <div id="version">04-29 11:45</div>
 </div>
 
 <div id="summary">
@@ -132,29 +132,38 @@ function buildRow({ farm, site, sprayedAtStr, chemical, products, qty, uom,
     if (sprayedAt) hoursSince = (nh - sprayedAt) / 36e5;
   }
 
+  // Detect mismatch between stored and expected stop datetimes (>1 minute).
+  // If they don't match, the stored sheet data is wrong, regardless of whether
+  // the actual application is a violation.
+  const TOL_MS = 60 * 1000;
+  const sNum = v => v ? new Date(v).getTime() : null;
+  const phiStoredMs = sNum(phiStop), phiExpMs = sNum(phiStopExpected);
+  const reiStoredMs = sNum(reiStop), reiExpMs = sNum(reiStopExpected);
+  const phiMismatch = (phiStoredMs != null && phiExpMs != null && Math.abs(phiStoredMs - phiExpMs) > TOL_MS);
+  const reiMismatch = (reiStoredMs != null && reiExpMs != null && Math.abs(reiStoredMs - reiExpMs) > TOL_MS);
+  const anyMismatch = phiMismatch || reiMismatch;
+
   if (rei == null && phi == null) {
     status = 'no-rei-phi';
   } else if (!nextHarvestDate) {
-    status = 'no-harvest';
+    // Even with no harvest after, we can still surface stored-vs-expected mismatches
+    status = anyMismatch ? 'data-error' : 'no-harvest';
   } else {
     const harvestStart = new Date(harvestStartStr);
-    // Stored: what the sheet's columns claim.
-    if (phiStop)      phiV = harvestStart < new Date(phiStop);
-    else if (phi != null) phiV = daysSince < phi;
-    if (reiStop)      reiV = harvestStart < new Date(reiStop);
-    else if (rei != null && hoursSince != null) reiV = hoursSince < rei;
-    // Expected: what the stops should be from PHIDays/REIlHours + spray stop time.
+    // Real violation = computed from EXPECTED stops (what the sheet should contain)
     let phiV_exp = false, reiV_exp = false;
     if (phiStopExpected) phiV_exp = harvestStart < new Date(phiStopExpected);
     else if (phi != null) phiV_exp = daysSince < phi;
     if (reiStopExpected) reiV_exp = harvestStart < new Date(reiStopExpected);
     else if (rei != null && hoursSince != null) reiV_exp = hoursSince < rei;
-    const storedV   = phiV     || reiV;
-    const expectedV = phiV_exp || reiV_exp;
-    if (storedV && !expectedV) {
+    const realViolation = phiV_exp || reiV_exp;
+    phiV = phiV_exp; reiV = reiV_exp;
+    if (realViolation) {
+      status = 'violation';
+    } else if (anyMismatch) {
       status = 'data-error';
     } else {
-      status = storedV ? 'violation' : 'ok';
+      status = 'ok';
     }
   }
 

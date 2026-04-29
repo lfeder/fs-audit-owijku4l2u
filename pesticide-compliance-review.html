@@ -24,13 +24,21 @@
   .pill.lettuce { background: rgba(212,164,74,0.18); color: #d4a44a; }
   .pill.both    { background: rgba(255,255,255,0.10); color: #c8c8d8; }
   .src { color: #8a8aa0; font-size: 0.78rem; margin-top: 6px; }
+  .section tbody tr.finding { cursor: pointer; }
+  .section tbody tr.finding:hover { background: rgba(78, 204, 163, 0.06); }
+  .section tbody tr.finding td.product::before { content: "▸ "; color: #4ecca3; font-size: 0.85rem; }
+  .section tbody tr.finding.expanded td.product::before { content: "▾ "; }
+  .section tbody tr.detail td { background: #0f1a2e; padding: 10px 16px; }
+  .section tbody tr.detail table { font-size: 0.78rem; margin-top: 4px; }
+  .section tbody tr.detail th, .section tbody tr.detail td { padding: 4px 8px; }
+  .section tbody tr.detail .meta { color: #8a8aa0; margin-bottom: 6px; }
 </style>
 </head>
 <body>
 <div id="header">
   <a href="index.html" class="back">← FS audit</a>
   <h1>Pesticide Compliance Review</h1>
-  <div id="version">04-29 10:18</div>
+  <div id="version">04-29 11:45</div>
 </div>
 
 <div id="content">
@@ -209,5 +217,106 @@
 
   <div class="src">Source: Claude.com pesticide compliance review, 2026-04-29.</div>
 </div>
+<script>
+// Wire each finding row to expand/collapse a list of actual applications.
+// Reads the product from the .product cell and the farm(s) from .pill classes.
+const norm = s => String(s||'').trim().toLowerCase();
+function dateOnly(v){ if(!v) return null; const s=String(v);
+  let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
+}
+let _sprays = null;
+async function getSprays() {
+  if (_sprays) return _sprays;
+  _sprays = await FSAudit.fetchSheet('grow', 'grow_spray_sched');
+  return _sprays;
+}
+function applicationsFor(sprays, productLower, farms) {
+  const out = [];
+  sprays.forEach(s => {
+    const farm = norm(s.Farm);
+    if (!farms.includes(farm)) return;
+    let matched = false;
+    for (let i = 1; i <= 3; i++) {
+      if (norm(s[`Product0${i}`]) === productLower) { matched = true; break; }
+    }
+    if (!matched) return;
+    const d = dateOnly(s.SprayingDate);
+    if (!d) return;
+    let qty = '', unit = '';
+    for (let i = 1; i <= 3; i++) {
+      if (norm(s[`Product0${i}`]) === productLower) {
+        qty = s[`Product0${i}Quantity`] ?? '';
+        unit = s[`Product0${i}Units`] || '';
+        break;
+      }
+    }
+    out.push({
+      date: d, farm: s.Farm, site: s.SiteName, qty, unit,
+      stop_time: s.SprayingStopTime || '', applicator: s.Applicator || '',
+    });
+  });
+  return out.sort((a,b) => b.date.localeCompare(a.date));
+}
+function escapeHtml(s) {
+  return String(s == null ? '' : s).replace(/[&<>"']/g, c =>
+    ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'})[c]);
+}
+document.querySelectorAll('.section table tbody tr').forEach(tr => {
+  const productCell = tr.querySelector('td.product');
+  if (!productCell) return;
+  const product = productCell.textContent.trim();
+  // Detect farms from pill classes within this row
+  const farms = [];
+  tr.querySelectorAll('.pill').forEach(p => {
+    if (p.classList.contains('cuke')) farms.push('cuke');
+    if (p.classList.contains('lettuce')) farms.push('lettuce');
+    if (p.classList.contains('both')) { farms.push('cuke'); farms.push('lettuce'); }
+  });
+  if (farms.length === 0) return; // data-field-error rows have no pill — skip
+  tr.classList.add('finding');
+  tr.dataset.product = product.toLowerCase();
+  tr.dataset.farms = [...new Set(farms)].join(',');
+  tr.addEventListener('click', async () => {
+    const next = tr.nextElementSibling;
+    if (next && next.classList.contains('detail')) {
+      // toggle off
+      next.remove();
+      tr.classList.remove('expanded');
+      return;
+    }
+    tr.classList.add('expanded');
+    const colspan = tr.children.length;
+    const detail = document.createElement('tr');
+    detail.className = 'detail';
+    detail.innerHTML = `<td colspan="${colspan}"><div class="meta">Loading applications…</div></td>`;
+    tr.parentNode.insertBefore(detail, tr.nextSibling);
+    try {
+      const sprays = await getSprays();
+      const win = FSAudit.getWindow();
+      const farmsArr = tr.dataset.farms.split(',');
+      const apps = applicationsFor(sprays, tr.dataset.product, farmsArr)
+        .filter(a => a.date >= win.from && a.date <= win.to);
+      if (!apps.length) {
+        detail.innerHTML = `<td colspan="${colspan}"><div class="meta">No applications of <b>${escapeHtml(product)}</b> on ${farmsArr.join('/')} in the audit window (${win.from} → ${win.to}).</div></td>`;
+        return;
+      }
+      const rows = apps.map(a =>
+        `<tr><td>${escapeHtml(a.date)}</td><td>${escapeHtml(a.farm)}</td><td>${escapeHtml(a.site)}</td>` +
+        `<td>${escapeHtml(a.qty != null ? a.qty + (a.unit ? ' ' + a.unit : '') : '')}</td>` +
+        `<td>${escapeHtml(a.stop_time)}</td><td>${escapeHtml(a.applicator)}</td></tr>`
+      ).join('');
+      detail.innerHTML = `<td colspan="${colspan}">
+        <div class="meta"><b>${apps.length}</b> application${apps.length===1?'':'s'} of <b>${escapeHtml(product)}</b> on ${farmsArr.join('/')} in audit window:</div>
+        <table>
+          <thead><tr><th>Date</th><th>Farm</th><th>Site</th><th>Qty</th><th>Stop time</th><th>Applicator</th></tr></thead>
+          <tbody>${rows}</tbody>
+        </table></td>`;
+    } catch (e) {
+      detail.innerHTML = `<td colspan="${colspan}"><div class="meta" style="color:#ff8c5a">Error: ${escapeHtml(e.message||e)}</div></td>`;
+    }
+  });
+});
+</script>
 </body>
 </html>
