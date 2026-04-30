@@ -6,40 +6,57 @@
 <title>Traceability Orphans — FS Audit</title>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <script src="audit-core.js"></script>
-<script src="audit-list.js"></script>
 <link rel="stylesheet" href="audit-list.css">
 </head>
 <body>
-<div id="root"></div>
+<div id="header">
+  <a href="index.html" class="back">← FS audit</a>
+  <h1>Sales orders missing pack date / lot link</h1>
+  <div class="controls" id="window-bar"></div>
+  <div class="controls" style="margin-left:auto">
+    <label><input type="checkbox" id="hideDonationTrash" checked> Hide Donation / Trash orders</label>
+  </div>
+  <div id="version">04-29 16:35</div>
+</div>
+<div id="summary"></div>
+<div id="loading">Loading…</div>
+<div id="error" style="display:none"></div>
+<div id="table-wrap" style="display:none">
+  <table>
+    <thead><tr>
+      <th data-key="invoice_date">Invoice date</th>
+      <th data-key="farm">Farm</th>
+      <th data-key="customer">Customer</th>
+      <th data-key="po_number">PO #</th>
+      <th data-key="product_code">Product</th>
+      <th data-key="invoice_quantity" class="num">Qty</th>
+      <th data-key="missing">Missing</th>
+    </tr></thead>
+    <tbody id="tbody"></tbody>
+  </table>
+</div>
 <script>
+FSAudit.renderHeaderBar(document.getElementById('window-bar'));
+const win = FSAudit.getWindow();
+const esc = FSAudit.escapeHtml;
+
 function dateOnly(v){ if(!v) return null; const s=String(v);
   let m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/); if(m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
   m=s.match(/^(\d{4}-\d{2}-\d{2})/); return m?m[1]:null;
 }
-FSAudit.renderIssueList({
-  title: 'Sales orders missing pack date / lot link',
-  version: '04-29 07:05',
-  defaultSort: { key: 'invoice_date', dir: -1 },
-  columns: [
-    { key: 'invoice_date',    label: 'Invoice date' },
-    { key: 'farm',            label: 'Farm' },
-    { key: 'customer',        label: 'Customer' },
-    { key: 'po_number',       label: 'PO #' },
-    { key: 'product_code',    label: 'Product' },
-    { key: 'invoice_quantity',label: 'Qty', num: true },
-    { key: 'missing',         label: 'Missing' },
-  ],
-  fetchRows: async (win) => {
+
+let allRows = [];
+let sortKey = 'invoice_date';
+let sortDir = -1;
+
+(async () => {
+  try {
     const rows = await FSAudit.fetchSheet('sales', 'sales_po');
-    const out = [];
     rows.forEach(r => {
-      const inv = dateOnly(r.InvoiceDate); if (!inv || inv < win.from || inv > win.to) return;
+      const inv = dateOnly(r.InvoiceDate);
+      if (!inv || inv < win.from || inv > win.to) return;
       const qty = Number(r.InvoiceQuantity); if (!qty || isNaN(qty)) return;
       const farm = String(r.Farm || '').toLowerCase();
-      // A pack split is "real" only if PackDate## has a non-zero Quantity##.
-      // Cuke invoices auto-populate all 6 PackDates as candidate dates; only
-      // the one with quantity is the actual pack day. Lettuce additionally
-      // needs a PackLot## for lot-code traceability.
       let hasReal = false;
       for (let i = 1; i <= 6 && !hasReal; i++) {
         const n = String(i).padStart(2, '0');
@@ -50,20 +67,63 @@ FSAudit.renderIssueList({
         hasReal = (farm === 'lettuce') ? !!pl : true;
       }
       if (hasReal) return;
-      out.push({
+      allRows.push({
         invoice_date: inv,
         farm: r.Farm,
-        customer: r.CustomerName,
+        customer: r.CustomerName || '',
         po_number: r.PurchaseOrderNumber,
         product_code: r.ProductCode,
         invoice_quantity: qty,
-        missing: farm === 'lettuce'
-          ? 'no PackDate+Qty+Lot triple'
-          : 'no PackDate+Qty pair',
+        missing: farm === 'lettuce' ? 'no PackDate+Qty+Lot triple' : 'no PackDate+Qty pair',
       });
     });
-    return out;
-  },
+    document.getElementById('loading').style.display = 'none';
+    document.getElementById('table-wrap').style.display = 'block';
+    paint();
+  } catch (e) {
+    document.getElementById('loading').style.display = 'none';
+    const err = document.getElementById('error');
+    err.style.display = 'block';
+    err.textContent = 'Error: ' + (e.message || e);
+    console.error(e);
+  }
+})();
+
+function paint() {
+  const hideDonTrash = document.getElementById('hideDonationTrash').checked;
+  let rows = allRows.slice();
+  if (hideDonTrash) {
+    rows = rows.filter(r => {
+      const c = r.customer.toLowerCase();
+      return c !== 'donation' && c !== 'trash';
+    });
+  }
+  rows.sort((a, b) => {
+    const x = a[sortKey], y = b[sortKey];
+    if (x === y) return 0;
+    if (x == null) return 1; if (y == null) return -1;
+    return (x < y ? -1 : 1) * sortDir;
+  });
+  const donTrashCount = allRows.length - allRows.filter(r => {
+    const c = r.customer.toLowerCase();
+    return c === 'donation' || c === 'trash';
+  }).length === 0 ? 0 : (allRows.length - rows.length);
+  document.getElementById('summary').innerHTML =
+    `<div class="stat"><div class="label">Issues shown</div><div class="value">${rows.length}</div></div>` +
+    (hideDonTrash ? `<div class="stat"><div class="label">Hidden (Donation/Trash)</div><div class="value" style="color:#8a8aa0">${donTrashCount}</div></div>` : '');
+  document.getElementById('tbody').innerHTML = rows.map(r =>
+    `<tr><td>${esc(r.invoice_date)}</td><td>${esc(r.farm)}</td><td>${esc(r.customer)}</td>` +
+    `<td>${esc(r.po_number)}</td><td>${esc(r.product_code)}</td>` +
+    `<td class="num">${esc(r.invoice_quantity)}</td><td>${esc(r.missing)}</td></tr>`
+  ).join('');
+}
+document.getElementById('hideDonationTrash').addEventListener('change', paint);
+document.querySelectorAll('th[data-key]').forEach(th => {
+  th.addEventListener('click', () => {
+    const k = th.dataset.key;
+    if (sortKey === k) sortDir = -sortDir; else { sortKey = k; sortDir = 1; }
+    paint();
+  });
 });
 </script>
 </body>
