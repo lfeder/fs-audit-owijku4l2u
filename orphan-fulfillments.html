@@ -36,14 +36,20 @@ FSAudit.renderIssueList({
       const inv = dateOnly(r.InvoiceDate); if (!inv || inv < win.from || inv > win.to) return;
       const qty = Number(r.InvoiceQuantity); if (!qty || isNaN(qty)) return;
       const farm = String(r.Farm || '').toLowerCase();
-      const hasPackDate = ['PackDate01','PackDate02','PackDate03','PackDate04','PackDate05','PackDate06']
-        .some(k => r[k]);
-      const hasPackLot  = ['PackLot01','PackLot02','PackLot03','PackLot04','PackLot05','PackLot06']
-        .some(k => r[k]);
-      let missing = '';
-      if (farm === 'lettuce' && !hasPackLot) missing = 'PackLot##';
-      else if (farm !== 'lettuce' && !hasPackDate) missing = 'PackDate##';
-      if (!missing) return;
+      // A pack split is "real" only if PackDate## has a non-zero Quantity##.
+      // Cuke invoices auto-populate all 6 PackDates as candidate dates; only
+      // the one with quantity is the actual pack day. Lettuce additionally
+      // needs a PackLot## for lot-code traceability.
+      let hasReal = false;
+      for (let i = 1; i <= 6 && !hasReal; i++) {
+        const n = String(i).padStart(2, '0');
+        const pd = r['PackDate' + n];
+        const pq = Number(r['Quantity' + n]) || 0;
+        const pl = r['PackLot' + n];
+        if (!pd || !pq) continue;
+        hasReal = (farm === 'lettuce') ? !!pl : true;
+      }
+      if (hasReal) return;
       out.push({
         invoice_date: inv,
         farm: r.Farm,
@@ -51,7 +57,9 @@ FSAudit.renderIssueList({
         po_number: r.PurchaseOrderNumber,
         product_code: r.ProductCode,
         invoice_quantity: qty,
-        missing,
+        missing: farm === 'lettuce'
+          ? 'no PackDate+Qty+Lot triple'
+          : 'no PackDate+Qty pair',
       });
     });
     return out;

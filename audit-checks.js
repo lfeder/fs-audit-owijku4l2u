@@ -719,17 +719,20 @@
           const inv = dateOnly(r.InvoiceDate); if (!inv || inv < w.from || inv > w.to) return;
           const qty = Number(r.InvoiceQuantity); if (!qty || isNaN(qty)) return;
           const farm = String(r.Farm || '').toLowerCase();
-          const hasPackDate = ['PackDate01','PackDate02','PackDate03','PackDate04','PackDate05','PackDate06']
-            .some(k => r[k]);
-          const hasPackLot  = ['PackLot01','PackLot02','PackLot03','PackLot04','PackLot05','PackLot06']
-            .some(k => r[k]);
-          if (farm === 'lettuce') {
-            // Lettuce uses lot-code traceability
-            if (!hasPackLot) count++;
-          } else {
-            // Cuke uses pack-date traceability
-            if (!hasPackDate) count++;
+          // A pack split is "real" only if it has both a PackDate AND a non-zero
+          // Quantity (cuke invoices auto-populate 6 candidate PackDates, only
+          // one of which is the actual pack day). Lettuce additionally needs a
+          // PackLot for lot-code traceability.
+          let hasReal = false;
+          for (let i = 1; i <= 6 && !hasReal; i++) {
+            const n = String(i).padStart(2, '0');
+            const pd = r['PackDate' + n];
+            const pq = Number(r['Quantity' + n]) || 0;
+            const pl = r['PackLot' + n];
+            if (!pd || !pq) continue;
+            hasReal = (farm === 'lettuce') ? !!pl : true;
           }
+          if (!hasReal) count++;
         });
         return { count, target: '0' };
       },
