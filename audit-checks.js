@@ -394,14 +394,20 @@
             mins = h*60 + parseInt(m[2],10);
           } else if ((m = stop.match(/T(\d{2}):(\d{2})/))) mins = parseInt(m[1],10)*60+parseInt(m[2],10);
           if (mins == null) return;
-          const sprayStop = new Date(sd + 'T00:00:00');
-          sprayStop.setMinutes(sprayStop.getMinutes() + mins);
+          const [Y, M, D] = sd.split('-').map(Number);
           const phiD = Number(s.PHIDays);
           const reiH = Number(s.REIlHours);
-          const phiExp = !isNaN(phiD) ? new Date(sprayStop.getTime() + phiD*86400000) : null;
-          const reiExp = !isNaN(reiH) ? new Date(sprayStop.getTime() + reiH*3600000) : null;
-          const phiStored = s.PHIStopDateTime ? new Date(s.PHIStopDateTime) : null;
-          const reiStored = s.REIStopDateTime ? new Date(s.REIStopDateTime) : null;
+          // UTC math to dodge DST.
+          const phiExp = !isNaN(phiD) ? new Date(Date.UTC(Y, M-1, D + phiD, Math.floor(mins/60), mins%60, 0)) : null;
+          const reiExp = !isNaN(reiH) ? new Date(Date.UTC(Y, M-1, D, Math.floor(mins/60) + reiH, mins%60, 0)) : null;
+          const parseStored = v => {
+            if (!v) return null;
+            const mm = String(v).match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2})/);
+            if (!mm) return new Date(v);
+            return new Date(Date.UTC(+mm[1], +mm[2]-1, +mm[3], +mm[4], +mm[5], 0));
+          };
+          const phiStored = parseStored(s.PHIStopDateTime);
+          const reiStored = parseStored(s.REIStopDateTime);
           const phiBad = phiStored && phiExp && Math.abs(phiStored - phiExp) > TOL;
           const reiBad = reiStored && reiExp && Math.abs(reiStored - reiExp) > TOL;
           if (phiBad || reiBad) count++;

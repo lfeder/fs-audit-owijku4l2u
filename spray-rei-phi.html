@@ -372,13 +372,19 @@ function combineDateAndTime(dateStr, timeVal) {
 }
 function computeStop(sprayedAtStr, n, unit) {
   if (!sprayedAtStr || n == null) return null;
-  const d = new Date(sprayedAtStr);
-  if (unit === 'days')  d.setDate(d.getDate() + n);
-  if (unit === 'hours') d.setTime(d.getTime() + n * 36e5);
-  // emit TZ-less local string so downstream comparisons stay in the same frame
+  // Parse components and do UTC math to avoid DST shifts. Hawaii is HST year-round
+  // so wall-clock arithmetic shouldn't bend at DST transitions; using local Date
+  // math in a DST-observing browser would drift the result by an hour.
+  const m = sprayedAtStr.match(/^(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})/);
+  if (!m) return null;
+  const [Y, Mo, D, H, Mi, S] = [+m[1], +m[2], +m[3], +m[4], +m[5], +m[6]];
+  let utc;
+  if (unit === 'days')  utc = new Date(Date.UTC(Y, Mo-1, D + n, H, Mi, S));
+  else if (unit === 'hours') utc = new Date(Date.UTC(Y, Mo-1, D, H + n, Mi, S));
+  else return null;
   const pad = x => String(x).padStart(2, '0');
-  return `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}T` +
-         `${pad(d.getHours())}:${pad(d.getMinutes())}:${pad(d.getSeconds())}`;
+  return `${utc.getUTCFullYear()}-${pad(utc.getUTCMonth()+1)}-${pad(utc.getUTCDate())}T` +
+         `${pad(utc.getUTCHours())}:${pad(utc.getUTCMinutes())}:${pad(utc.getUTCSeconds())}`;
 }
 
 function numOrNull(v) {
