@@ -15,8 +15,30 @@
   header .gh { font-size: 1.5rem; font-weight: 800; margin-top: 2px; }
   header .crop { font-size: 0.95rem; opacity: 0.9; }
   #version { position: absolute; top: 10px; right: 14px; font-size: 0.78rem; color: #fff; }
+  .back { display: inline-block; margin-top: 8px; color: #cdeede; font-size: 0.85rem; text-decoration: none; cursor: pointer; }
+  .back:hover { color: #fff; }
   #window-note { padding: 10px 18px; font-size: 0.85rem; color: #5a6472; background: #e9ebef; border-bottom: 1px solid #d7dbe1; }
-  main { max-width: 720px; margin: 0 auto; padding: 14px; }
+  main { max-width: 760px; margin: 0 auto; padding: 14px; }
+
+  /* selector */
+  .pick-intro { font-size: 0.95rem; color: #3a4252; margin: 6px 4px 14px; }
+  .gh-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 12px; }
+  .gh-btn { display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: #fff; border: 1px solid #cfd5dd; border-radius: 12px; padding: 18px 10px;
+            cursor: pointer; text-decoration: none; color: #1c2330; transition: all 0.1s; min-height: 86px; }
+  .gh-btn:hover { border-color: #16613e; box-shadow: 0 2px 8px rgba(22,97,62,0.15); }
+  .gh-btn:active { transform: scale(0.97); }
+  .gh-btn .code { font-size: 1.5rem; font-weight: 800; }
+  .gh-btn .sub { font-size: 0.78rem; color: #6a7280; margin-top: 3px; }
+  .gh-btn .status { font-size: 0.8rem; font-weight: 700; margin-top: 6px; }
+  .gh-btn.safe   { background: #e7f6ee; border-color: #2e9e63; }
+  .gh-btn.safe .status   { color: #156c3c; }
+  .gh-btn.unsafe { background: #fdeceb; border-color: #d9594d; }
+  .gh-btn.unsafe .code   { color: #b03a2e; }
+  .gh-btn.unsafe .status { color: #b03a2e; }
+  .gh-btn.none .status { color: #8a929e; font-weight: 600; }
+
+  /* postings */
   .app { background: #fff; border: 1px solid #dde1e7; border-radius: 10px; margin-bottom: 16px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
   .app-head { padding: 12px 16px; border-bottom: 1px solid #eceef2; }
   .app-date { font-size: 1.05rem; font-weight: 700; }
@@ -27,6 +49,7 @@
   .reentry.expired { background: #e7f6ee; border-color: #b7e3c8; }
   .reentry.expired .label { color: #1c7c47; }
   .reentry.expired .val { color: #156c3c; }
+  .reentry .note { font-size: 0.78rem; color: #a85b00; margin-top: 4px; font-weight: 600; }
   .products { padding: 4px 16px 14px; }
   .prod { border-top: 1px solid #f0f1f4; padding: 12px 0; }
   .prod:first-child { border-top: none; }
@@ -38,21 +61,23 @@
   #loading, #error, #empty { padding: 40px 18px; text-align: center; color: #5a6472; }
   #error { color: #b03a2e; }
   #empty { font-size: 1rem; }
-  footer { max-width: 720px; margin: 0 auto; padding: 8px 16px; font-size: 0.75rem; color: #8a929e; }
+  footer { max-width: 760px; margin: 0 auto; padding: 8px 16px; font-size: 0.75rem; color: #8a929e; }
 </style>
 </head>
 <body>
 <header>
   <h1>Pesticide Application Notice</h1>
-  <div class="gh" id="gh-label">—</div>
+  <div class="gh" id="gh-label"></div>
   <div class="crop" id="crop-label"></div>
-  <div id="version">05-20 08:01</div>
+  <a class="back" id="back" style="display:none">← All greenhouses</a>
+  <div id="version">05-19 22:10</div>
 </header>
-<div id="window-note"></div>
+<div id="window-note" style="display:none"></div>
 
 <main>
-  <div id="loading">Loading applications…</div>
+  <div id="loading">Loading…</div>
   <div id="error" style="display:none"></div>
+  <div id="selector" style="display:none"></div>
   <div id="empty" style="display:none"></div>
   <div id="list"></div>
 </main>
@@ -64,16 +89,11 @@
 const esc = FSAudit.escapeHtml;
 const norm = s => String(s || '').trim().toLowerCase();
 
-// ---- which greenhouse / posting ----
-const params = new URLSearchParams(location.search);
-const ghParam = (params.get('gh') || '').trim();
-const isLettuce = norm(ghParam) === 'lettuce';
-
 // ---- date window: today and the prior 30 days ----
-function isoToday() { return FSAudit.todayISO(); }
-function isoDaysAgo(n) { return FSAudit.daysAgoISO(n); }
-const winTo = isoToday();
-const winFrom = isoDaysAgo(30);
+const winTo = FSAudit.todayISO();
+const winFrom = FSAudit.daysAgoISO(30);
+
+let SPRAYS = [], MASTER = {}, GHLIST = [];
 
 // ---- helpers ----
 function dateOnly(v) {
@@ -93,8 +113,8 @@ function parseTimeOfDay(v) {
     if (m[3].toUpperCase() === 'PM') h += 12;
     return h * 60 + parseInt(m[2], 10);
   }
-  if ((m = s.match(/^(\d{1,2}):(\d{2})(?::\d{2})?$/))) return parseInt(m[1],10)*60 + parseInt(m[2],10);
   if ((m = s.match(/T(\d{2}):(\d{2})/)))             return parseInt(m[1],10)*60 + parseInt(m[2],10);
+  if ((m = s.match(/^(\d{1,2}):(\d{2})(?::\d{2})?$/))) return parseInt(m[1],10)*60 + parseInt(m[2],10);
   return null;
 }
 function fmtTime(min) {
@@ -111,132 +131,205 @@ function fmtDateLong(iso) {
   return d.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric', timeZone:'UTC' });
 }
 function numOrNull(v) { if (v == null || v === '') return null; const n = Number(v); return isNaN(n) ? null : n; }
-// stop-time + hours, done in UTC to stay DST-proof (Hawaii is HST year-round).
-function addHours(dateIso, stopMin, hours) {
-  if (hours == null) return null;
+
+// Spray times in the sheet are HST wall-clock. We represent every moment as a Date whose
+// UTC fields equal the HST wall clock, and compare those consistently (DST-proof; HI has no DST).
+function reentryDate(dateIso, baseMin, hours) {
+  if (hours == null || baseMin == null) return null;
   const m = dateIso.match(/^(\d{4})-(\d{2})-(\d{2})$/);
   if (!m) return null;
-  const H = stopMin != null ? Math.floor(stopMin/60) : 0;
-  const Mi = stopMin != null ? stopMin % 60 : 0;
-  const d = new Date(Date.UTC(+m[1], +m[2]-1, +m[3], H + hours, Mi, 0));
-  return d; // a Date whose UTC fields are the HST wall-clock re-entry moment
+  return new Date(Date.UTC(+m[1], +m[2]-1, +m[3], Math.floor(baseMin/60) + hours, baseMin % 60, 0));
 }
 function fmtReentry(d) {
-  if (!d) return null;
   const day = d.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric', timeZone:'UTC' });
   let h = d.getUTCHours(), mm = d.getUTCMinutes();
   const ap = h < 12 ? 'AM' : 'PM'; h = h % 12; if (h === 0) h = 12;
   return `${day}, ${h}:${String(mm).padStart(2,'0')} ${ap}`;
 }
-// "now" as an HST wall-clock instant expressed in UTC fields, to compare against re-entry.
-function nowHstAsUtcFields() {
-  const now = new Date();
-  return new Date(now.getTime() - 10 * 3600 * 1000);
+function nowHst() { return new Date(Date.now() - 10 * 3600 * 1000); } // UTC fields = HST wall clock
+
+// rows for one greenhouse within the 30-day window
+function rowsForGh(ghKey) {
+  const isLettuce = norm(ghKey) === 'lettuce';
+  return SPRAYS.filter(s => {
+    const d = dateOnly(s.SprayingDate);
+    if (!d || d < winFrom || d > winTo) return false;
+    return isLettuce ? norm(s.Farm) === 'lettuce' : String(s.SiteName || '').trim() === ghKey;
+  });
 }
+// one application object per spray row, with computed re-entry
+function buildApps(rows) {
+  return rows.map(s => {
+    const date = dateOnly(s.SprayingDate);
+    const startMin = parseTimeOfDay(s.SprayingStartTime);
+    const stopMin  = parseTimeOfDay(s.SprayingStopTime);
+    const farm = String(s.Farm || '').trim();
+    const products = [1,2,3].map(i => {
+      const name = String(s['Product0'+i] || '').trim();
+      if (!name) return null;
+      const rec = MASTER[`${norm(name)}|${norm(farm)}`] || {};
+      const labelRei = numOrNull(rec.REIHours);
+      const rei = labelRei != null ? labelRei : numOrNull(s.REIlHours);
+      return {
+        name,
+        // sheet column header is misspelled "ActiveIngedient"; accept both
+        ai:  String(rec.ActiveIngedient || rec.ActiveIngredient || '').trim(),
+        epa: String(rec.RegistrationNumber || '').trim(),
+        qty: s['Product0'+i+'Quantity'],
+        unit: s['Product0'+i+'Units'],
+        rei,
+      };
+    }).filter(Boolean);
+    const maxRei = products.reduce((mx, p) => p.rei != null ? Math.max(mx, p.rei) : mx, -Infinity);
+    // re-entry counts from end of application; if stop wasn't recorded, fall back to start and flag it
+    const noStop = stopMin == null;
+    const baseMin = noStop ? startMin : stopMin;
+    const reentry = isFinite(maxRei) ? reentryDate(date, baseMin, maxRei) : null;
+    return { date, startMin, stopMin, noStop, products, reentry, maxReiHours: isFinite(maxRei) ? maxRei : null };
+  }).sort((a,b) => b.date.localeCompare(a.date) || (b.stopMin||b.startMin||0) - (a.stopMin||a.startMin||0));
+}
+// is this greenhouse safe to enter right now? returns { state:'safe'|'unsafe'|'none', until:Date|null }
+function ghSafety(ghKey) {
+  const apps = buildApps(rowsForGh(ghKey));
+  if (!apps.length) return { state: 'none', until: null };
+  const now = nowHst();
+  let until = null;
+  apps.forEach(a => { if (a.reentry && a.reentry > now && (!until || a.reentry > until)) until = a.reentry; });
+  return { state: until ? 'unsafe' : 'safe', until };
+}
+
+// ---- data load ----
+async function load() {
+  const [sprays, master] = await Promise.all([
+    FSAudit.fetchSheet('grow',  'grow_spray_sched'),
+    FSAudit.fetchSheet('invnt', 'invnt_item_details'),
+  ]);
+  SPRAYS = sprays;
+  master.forEach(r => {
+    const k = `${norm(r.ItemName)}|${norm(r.Farm)}`;
+    if (k !== '|') MASTER[k] = r;
+  });
+  // greenhouse list: distinct cuke SiteName + a single Lettuce posting
+  const cuke = [...new Set(sprays.filter(s => norm(s.Farm) === 'cuke')
+    .map(s => String(s.SiteName || '').trim()).filter(Boolean))]
+    .sort((a,b) => a.localeCompare(b, undefined, { numeric: true }));
+  GHLIST = [];
+  if (sprays.some(s => norm(s.Farm) === 'lettuce'))
+    GHLIST.push({ key: 'Lettuce', label: 'Lettuce', crop: 'Lettuce', lettuce: true });
+  cuke.forEach(c => GHLIST.push({ key: c, label: c, crop: 'Cucumber' }));
+}
+
+// ---- views ----
+function showSelector() {
+  document.getElementById('back').style.display = 'none';
+  document.getElementById('window-note').style.display = 'none';
+  document.getElementById('gh-label').textContent = '';
+  document.getElementById('crop-label').textContent = 'Select a greenhouse';
+  document.getElementById('list').innerHTML = '';
+  document.getElementById('empty').style.display = 'none';
+  const sel = document.getElementById('selector');
+  sel.style.display = 'block';
+  sel.innerHTML = `<div class="pick-intro">Tap your greenhouse to see pesticide applications from the last 30 days. <b style="color:#156c3c">Green</b> = safe to enter, <b style="color:#b03a2e">red</b> = do not enter.</div>
+    <div class="gh-grid">` +
+    GHLIST.map(g => {
+      const s = ghSafety(g.key);
+      const statusTxt = s.state === 'safe' ? '✓ Safe to enter'
+        : s.state === 'unsafe' ? '✕ Until ' + esc(fmtReentry(s.until))
+        : 'No recent sprays';
+      return `<a class="gh-btn ${s.state}" data-gh="${esc(g.key)}">
+        <span class="code">${esc(g.label)}</span>
+        <span class="sub">${esc(g.crop)}</span>
+        <span class="status">${statusTxt}</span>
+      </a>`;
+    }).join('') + `</div>`;
+  sel.querySelectorAll('.gh-btn').forEach(b =>
+    b.addEventListener('click', () => go(b.dataset.gh)));
+}
+
+function showPosting(ghKey) {
+  const isLettuce = norm(ghKey) === 'lettuce';
+  document.getElementById('selector').style.display = 'none';
+  const back = document.getElementById('back');
+  back.style.display = 'inline-block';
+
+  const rows = rowsForGh(ghKey);
+  const farms = [...new Set(rows.map(r => String(r.Farm||'').trim()).filter(Boolean))];
+  document.getElementById('gh-label').textContent = isLettuce ? 'Lettuce' : ghKey;
+  document.getElementById('crop-label').textContent = farms.join(' / ') || (isLettuce ? 'Lettuce' : 'Cucumber');
+  const wn = document.getElementById('window-note');
+  wn.style.display = 'block';
+  wn.textContent = `Applications from ${fmtDateLong(winFrom)} through ${fmtDateLong(winTo)}`;
+
+  const apps = buildApps(rows);
+
+  const empty = document.getElementById('empty');
+  const list = document.getElementById('list');
+  if (!apps.length) {
+    empty.style.display = 'block';
+    empty.textContent = 'No pesticide applications recorded here in the last 30 days.';
+    list.innerHTML = '';
+    return;
+  }
+  empty.style.display = 'none';
+
+  const now = nowHst();
+  list.innerHTML = apps.map(a => {
+    const timeStr = (a.startMin != null || a.stopMin != null)
+      ? `${fmtTime(a.startMin) || '—'} – ${a.noStop ? 'not recorded' : (fmtTime(a.stopMin) || '—')}`
+      : 'Time not recorded';
+    let reentryHtml = '';
+    if (a.reentry) {
+      const expired = a.reentry <= now;
+      reentryHtml = `<div class="reentry ${expired ? 'expired' : ''}">
+        <div class="label">${expired ? 'Restricted-entry interval has passed' : 'Do not enter until'}</div>
+        <div class="val">${expired ? 'Safe to enter' : esc(fmtReentry(a.reentry))}</div>
+        <div class="label" style="margin-top:4px">REI ${a.maxReiHours} hours from end of application</div>
+        ${a.noStop ? `<div class="note">⚠ End time not recorded — estimated from start; confirm before entry.</div>` : ''}
+      </div>`;
+    }
+    const prods = a.products.map(p => `
+      <div class="prod">
+        <div class="name">${esc(p.name)}</div>
+        <dl>
+          <dt>Active ingredient</dt><dd class="${p.ai ? '' : 'missing'}">${esc(p.ai || 'not on file')}</dd>
+          <dt>EPA Reg. No.</dt><dd class="${p.epa ? '' : 'missing'}">${esc(p.epa || 'not on file')}</dd>
+          <dt>Amount applied</dt><dd>${p.qty != null && p.qty !== '' ? esc(p.qty + (p.unit ? ' ' + p.unit : '')) : '—'}</dd>
+          <dt>REI (label)</dt><dd class="${p.rei != null ? '' : 'missing'}">${p.rei != null ? esc(p.rei + ' hours') : 'not on file'}</dd>
+        </dl>
+      </div>`).join('');
+    return `<div class="app">
+      <div class="app-head">
+        <div class="app-date">${esc(fmtDateLong(a.date))}</div>
+        <div class="app-time">Applied ${esc(timeStr)}</div>
+      </div>
+      ${reentryHtml}
+      <div class="products">${prods}</div>
+    </div>`;
+  }).join('');
+}
+
+// ---- routing ----
+function currentGh() { return (new URLSearchParams(location.search).get('gh') || '').trim(); }
+function route() {
+  const gh = currentGh();
+  if (gh) showPosting(gh); else showSelector();
+}
+function go(gh) {
+  history.pushState({}, '', '?gh=' + encodeURIComponent(gh));
+  route();
+  scrollTo(0, 0);
+}
+document.getElementById('back').addEventListener('click', () => {
+  history.pushState({}, '', location.pathname);
+  route();
+});
+window.addEventListener('popstate', route);
 
 (async () => {
   try {
-    if (!ghParam) throw new Error('No greenhouse specified. This page must be opened from a greenhouse QR code.');
-
-    const [sprays, master] = await Promise.all([
-      FSAudit.fetchSheet('grow',  'grow_spray_sched'),
-      FSAudit.fetchSheet('invnt', 'invnt_item_details'),
-    ]);
-
-    // master lookup: ItemName|Farm -> { RegistrationNumber, ActiveIngredient, REIHours }
-    const m = {};
-    master.forEach(r => {
-      const k = `${norm(r.ItemName)}|${norm(r.Farm)}`;
-      if (k !== '|') m[k] = r;
-    });
-
-    // filter sprays to this posting + window
-    const rows = sprays.filter(s => {
-      const d = dateOnly(s.SprayingDate);
-      if (!d || d < winFrom || d > winTo) return false;
-      if (isLettuce) return norm(s.Farm) === 'lettuce';
-      return String(s.SiteName || '').trim() === ghParam;
-    });
-
-    // crop/farm label
-    const farms = [...new Set(rows.map(r => String(r.Farm||'').trim()).filter(Boolean))];
-    document.getElementById('gh-label').textContent = isLettuce ? 'Lettuce (whole farm)' : ghParam;
-    document.getElementById('crop-label').textContent = farms.join(' / ');
-    document.getElementById('window-note').textContent =
-      `Applications from ${fmtDateLong(winFrom)} through ${fmtDateLong(winTo)}`;
-
-    // build application cards
-    const apps = rows.map(s => {
-      const date = dateOnly(s.SprayingDate);
-      const startMin = parseTimeOfDay(s.SprayingStartTime);
-      const stopMin  = parseTimeOfDay(s.SprayingStopTime);
-      const farm = String(s.Farm || '').trim();
-
-      const products = [1,2,3].map(i => {
-        const name = String(s['Product0'+i] || '').trim();
-        if (!name) return null;
-        const rec = m[`${norm(name)}|${norm(farm)}`] || {};
-        const labelRei = numOrNull(rec.REIHours);
-        const rei = labelRei != null ? labelRei : numOrNull(s.REIlHours);
-        return {
-          name,
-          // sheet column is misspelled "ActiveIngedient"; accept the correct spelling too in case it's fixed later
-          ai:  String(rec.ActiveIngedient || rec.ActiveIngredient || '').trim(),
-          epa: String(rec.RegistrationNumber || '').trim(),
-          qty: s['Product0'+i+'Quantity'],
-          unit: s['Product0'+i+'Units'],
-          rei,
-        };
-      }).filter(Boolean);
-
-      const maxRei = products.reduce((mx, p) => p.rei != null ? Math.max(mx, p.rei) : mx, -Infinity);
-      // re-entry counts from end of application; if stop time wasn't recorded, fall back to start
-      const baseMin = stopMin != null ? stopMin : startMin;
-      const reentry = isFinite(maxRei) ? addHours(date, baseMin, maxRei) : null;
-      return { date, startMin, stopMin, products, reentry, maxReiHours: isFinite(maxRei) ? maxRei : null };
-    }).sort((a,b) => b.date.localeCompare(a.date) || (b.stopMin||0) - (a.stopMin||0));
-
+    await load();
     document.getElementById('loading').style.display = 'none';
-    if (!apps.length) {
-      const e = document.getElementById('empty');
-      e.style.display = 'block';
-      e.textContent = 'No pesticide applications recorded here in the last 30 days.';
-      return;
-    }
-
-    const nowU = nowHstAsUtcFields();
-    document.getElementById('list').innerHTML = apps.map(a => {
-      const timeStr = a.startMin != null || a.stopMin != null
-        ? `${fmtTime(a.startMin) || '—'} – ${fmtTime(a.stopMin) || '—'}`
-        : 'Time not recorded';
-      let reentryHtml = '';
-      if (a.reentry) {
-        const expired = a.reentry <= nowU;
-        reentryHtml = `<div class="reentry ${expired ? 'expired' : ''}">
-          <div class="label">${expired ? 'Restricted-entry interval has passed' : 'Do not enter until'}</div>
-          <div class="val">${expired ? 'Safe to enter' : esc(fmtReentry(a.reentry))}</div>
-          <div class="label" style="margin-top:4px">REI ${a.maxReiHours} hours from end of application</div>
-        </div>`;
-      }
-      const prods = a.products.map(p => `
-        <div class="prod">
-          <div class="name">${esc(p.name)}</div>
-          <dl>
-            <dt>Active ingredient</dt><dd class="${p.ai ? '' : 'missing'}">${esc(p.ai || 'not on file')}</dd>
-            <dt>EPA Reg. No.</dt><dd class="${p.epa ? '' : 'missing'}">${esc(p.epa || 'not on file')}</dd>
-            <dt>Amount applied</dt><dd>${p.qty != null && p.qty !== '' ? esc(p.qty + (p.unit ? ' ' + p.unit : '')) : '—'}</dd>
-            <dt>REI (label)</dt><dd class="${p.rei != null ? '' : 'missing'}">${p.rei != null ? esc(p.rei + ' hours') : 'not on file'}</dd>
-          </dl>
-        </div>`).join('');
-      return `<div class="app">
-        <div class="app-head">
-          <div class="app-date">${esc(fmtDateLong(a.date))}</div>
-          <div class="app-time">Applied ${esc(timeStr)}</div>
-        </div>
-        ${reentryHtml}
-        <div class="products">${prods}</div>
-      </div>`;
-    }).join('');
+    route();
   } catch (e) {
     document.getElementById('loading').style.display = 'none';
     const err = document.getElementById('error');
