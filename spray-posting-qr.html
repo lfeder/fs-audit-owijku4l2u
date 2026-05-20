@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Greenhouse Posting QR Codes</title>
+<script src="audit-core.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@master/qrcode.min.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; color: #1c2330; padding: 20px; }
+  h1 { font-size: 1.2rem; margin-bottom: 4px; }
+  .sub { color: #5a6472; font-size: 0.85rem; margin-bottom: 8px; }
+  #version { position: fixed; top: 12px; right: 16px; font-size: 0.8rem; color: #1c2330; }
+  .toolbar { margin: 12px 0 20px; }
+  .toolbar button { font-size: 0.9rem; padding: 6px 14px; border: 1px solid #16613e; background: #16613e; color: #fff; border-radius: 6px; cursor: pointer; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+  .card { border: 1px solid #d7dbe1; border-radius: 10px; padding: 16px; text-align: center; break-inside: avoid; }
+  .card .gh { font-size: 1.4rem; font-weight: 800; }
+  .card .crop { font-size: 0.9rem; color: #5a6472; margin-bottom: 10px; }
+  .card .qr { display: flex; justify-content: center; margin: 8px 0; }
+  .card .cap { font-size: 0.8rem; color: #5a6472; margin-top: 8px; }
+  .card .url { font-size: 0.7rem; color: #8a929e; word-break: break-all; margin-top: 4px; }
+  #loading, #error { padding: 30px 0; color: #5a6472; }
+  #error { color: #b03a2e; }
+  @media print {
+    .toolbar, .sub, #version { display: none; }
+    .card { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<h1>Greenhouse Pesticide-Posting QR Codes</h1>
+<div class="sub">One QR per greenhouse. Scan opens the last-30-day application notice for that house. Print &amp; post at each entrance.</div>
+<div id="version">05-20 07:30</div>
+<div class="toolbar"><button onclick="window.print()">Print</button></div>
+
+<div id="loading">Building QR codes…</div>
+<div id="error" style="display:none"></div>
+<div class="grid" id="grid"></div>
+
+<script>
+const esc = FSAudit.escapeHtml;
+const norm = s => String(s || '').trim().toLowerCase();
+// base = this file's URL with the QR target swapped in
+const base = location.href.replace(/spray-posting-qr\.html.*$/, 'spray-posting.html');
+
+function dateOnly(v) {
+  if (!v) return null;
+  const s = String(v);
+  let m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+  if (m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m = s.match(/^(\d{4}-\d{2}-\d{2})/); return m ? m[1] : null;
+}
+
+(async () => {
+  try {
+    const sprays = await FSAudit.fetchSheet('grow', 'grow_spray_sched');
+
+    // distinct cuke greenhouses (by SiteName) that have ever been sprayed, + one Lettuce posting
+    const cukeGHs = [...new Set(sprays
+      .filter(s => norm(s.Farm) === 'cuke')
+      .map(s => String(s.SiteName || '').trim())
+      .filter(Boolean))].sort((a,b) => a.localeCompare(b, undefined, { numeric: true }));
+
+    const hasLettuce = sprays.some(s => norm(s.Farm) === 'lettuce');
+
+    const tiles = [];
+    if (hasLettuce) tiles.push({ gh: 'Lettuce', crop: 'Lettuce (whole farm)', param: 'Lettuce' });
+    cukeGHs.forEach(gh => tiles.push({ gh, crop: 'Cucumber', param: gh }));
+
+    document.getElementById('loading').style.display = 'none';
+    const grid = document.getElementById('grid');
+    tiles.forEach(t => {
+      const url = `${base}?gh=${encodeURIComponent(t.param)}`;
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = `<div class="gh">${esc(t.gh)}</div>
+        <div class="crop">${esc(t.crop)}</div>
+        <div class="qr"></div>
+        <div class="cap">Scan for pesticide application notice</div>
+        <div class="url">${esc(url)}</div>`;
+      grid.appendChild(card);
+      new QRCode(card.querySelector('.qr'), { text: url, width: 180, height: 180, correctLevel: QRCode.CorrectLevel.M });
+    });
+
+    if (!tiles.length) {
+      const e = document.getElementById('error');
+      e.style.display = 'block';
+      e.textContent = 'No sprayed greenhouses found in the records.';
+    }
+  } catch (e) {
+    document.getElementById('loading').style.display = 'none';
+    const err = document.getElementById('error');
+    err.style.display = 'block';
+    err.textContent = 'Could not build QR codes: ' + (e.message || e);
+    console.error(e);
+  }
+})();
+</script>
+</body>
+</html>

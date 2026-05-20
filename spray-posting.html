@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex,nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pesticide Application Notice</title>
+<script src="audit-core.js"></script>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+         background: #f4f5f7; color: #1c2330; line-height: 1.45; padding-bottom: 40px; }
+  header { background: #16613e; color: #fff; padding: 16px 18px; position: relative; }
+  header h1 { font-size: 1.15rem; font-weight: 700; }
+  header .gh { font-size: 1.5rem; font-weight: 800; margin-top: 2px; }
+  header .crop { font-size: 0.95rem; opacity: 0.9; }
+  #version { position: absolute; top: 10px; right: 14px; font-size: 0.78rem; color: #fff; }
+  #window-note { padding: 10px 18px; font-size: 0.85rem; color: #5a6472; background: #e9ebef; border-bottom: 1px solid #d7dbe1; }
+  main { max-width: 720px; margin: 0 auto; padding: 14px; }
+  .app { background: #fff; border: 1px solid #dde1e7; border-radius: 10px; margin-bottom: 16px; overflow: hidden; box-shadow: 0 1px 2px rgba(0,0,0,0.04); }
+  .app-head { padding: 12px 16px; border-bottom: 1px solid #eceef2; }
+  .app-date { font-size: 1.05rem; font-weight: 700; }
+  .app-time { font-size: 0.9rem; color: #5a6472; margin-top: 2px; }
+  .reentry { margin: 10px 16px; padding: 10px 12px; border-radius: 8px; background: #fff4e6; border: 1px solid #ffd9a8; }
+  .reentry .label { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.5px; color: #a85b00; font-weight: 700; }
+  .reentry .val { font-size: 1.05rem; font-weight: 700; color: #8a4500; }
+  .reentry.expired { background: #e7f6ee; border-color: #b7e3c8; }
+  .reentry.expired .label { color: #1c7c47; }
+  .reentry.expired .val { color: #156c3c; }
+  .products { padding: 4px 16px 14px; }
+  .prod { border-top: 1px solid #f0f1f4; padding: 12px 0; }
+  .prod:first-child { border-top: none; }
+  .prod .name { font-size: 1rem; font-weight: 700; }
+  .prod dl { display: grid; grid-template-columns: max-content 1fr; column-gap: 12px; row-gap: 3px; margin-top: 6px; font-size: 0.9rem; }
+  .prod dt { color: #6a7280; }
+  .prod dd { color: #1c2330; }
+  .prod dd.missing { color: #b03a2e; }
+  #loading, #error, #empty { padding: 40px 18px; text-align: center; color: #5a6472; }
+  #error { color: #b03a2e; }
+  #empty { font-size: 1rem; }
+  footer { max-width: 720px; margin: 0 auto; padding: 8px 16px; font-size: 0.75rem; color: #8a929e; }
+</style>
+</head>
+<body>
+<header>
+  <h1>Pesticide Application Notice</h1>
+  <div class="gh" id="gh-label">—</div>
+  <div class="crop" id="crop-label"></div>
+  <div id="version">05-20 07:30</div>
+</header>
+<div id="window-note"></div>
+
+<main>
+  <div id="loading">Loading applications…</div>
+  <div id="error" style="display:none"></div>
+  <div id="empty" style="display:none"></div>
+  <div id="list"></div>
+</main>
+<footer>
+  Worker Protection Standard application information (40 CFR 170.311). Live from farm records; last 30 days.
+</footer>
+
+<script>
+const esc = FSAudit.escapeHtml;
+const norm = s => String(s || '').trim().toLowerCase();
+
+// ---- which greenhouse / posting ----
+const params = new URLSearchParams(location.search);
+const ghParam = (params.get('gh') || '').trim();
+const isLettuce = norm(ghParam) === 'lettuce';
+
+// ---- date window: today and the prior 30 days ----
+function isoToday() { return FSAudit.todayISO(); }
+function isoDaysAgo(n) { return FSAudit.daysAgoISO(n); }
+const winTo = isoToday();
+const winFrom = isoDaysAgo(30);
+
+// ---- helpers ----
+function dateOnly(v) {
+  if (!v) return null;
+  const s = String(v);
+  let m = s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+  if (m) return `${m[3]}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`;
+  m = s.match(/^(\d{4}-\d{2}-\d{2})/);
+  return m ? m[1] : null;
+}
+function parseTimeOfDay(v) {
+  if (v == null || v === '') return null;
+  const s = String(v);
+  let m;
+  if ((m = s.match(/^(\d{1,2}):(\d{2})(?::\d{2})?\s*(AM|PM)$/i))) {
+    let h = parseInt(m[1], 10) % 12;
+    if (m[3].toUpperCase() === 'PM') h += 12;
+    return h * 60 + parseInt(m[2], 10);
+  }
+  if ((m = s.match(/^(\d{1,2}):(\d{2})(?::\d{2})?$/))) return parseInt(m[1],10)*60 + parseInt(m[2],10);
+  if ((m = s.match(/T(\d{2}):(\d{2})/)))             return parseInt(m[1],10)*60 + parseInt(m[2],10);
+  return null;
+}
+function fmtTime(min) {
+  if (min == null) return null;
+  let h = Math.floor(min / 60), mm = min % 60;
+  const ap = h < 12 ? 'AM' : 'PM';
+  h = h % 12; if (h === 0) h = 12;
+  return `${h}:${String(mm).padStart(2,'0')} ${ap}`;
+}
+function fmtDateLong(iso) {
+  const m = iso.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return iso;
+  const d = new Date(Date.UTC(+m[1], +m[2]-1, +m[3]));
+  return d.toLocaleDateString('en-US', { weekday:'long', month:'long', day:'numeric', year:'numeric', timeZone:'UTC' });
+}
+function numOrNull(v) { if (v == null || v === '') return null; const n = Number(v); return isNaN(n) ? null : n; }
+// stop-time + hours, done in UTC to stay DST-proof (Hawaii is HST year-round).
+function addHours(dateIso, stopMin, hours) {
+  if (hours == null) return null;
+  const m = dateIso.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+  if (!m) return null;
+  const H = stopMin != null ? Math.floor(stopMin/60) : 0;
+  const Mi = stopMin != null ? stopMin % 60 : 0;
+  const d = new Date(Date.UTC(+m[1], +m[2]-1, +m[3], H + hours, Mi, 0));
+  return d; // a Date whose UTC fields are the HST wall-clock re-entry moment
+}
+function fmtReentry(d) {
+  if (!d) return null;
+  const day = d.toLocaleDateString('en-US', { weekday:'short', month:'short', day:'numeric', timeZone:'UTC' });
+  let h = d.getUTCHours(), mm = d.getUTCMinutes();
+  const ap = h < 12 ? 'AM' : 'PM'; h = h % 12; if (h === 0) h = 12;
+  return `${day}, ${h}:${String(mm).padStart(2,'0')} ${ap}`;
+}
+// "now" as an HST wall-clock instant expressed in UTC fields, to compare against re-entry.
+function nowHstAsUtcFields() {
+  const now = new Date();
+  return new Date(now.getTime() - 10 * 3600 * 1000);
+}
+
+(async () => {
+  try {
+    if (!ghParam) throw new Error('No greenhouse specified. This page must be opened from a greenhouse QR code.');
+
+    const [sprays, master] = await Promise.all([
+      FSAudit.fetchSheet('grow',  'grow_spray_sched'),
+      FSAudit.fetchSheet('invnt', 'invnt_item_details'),
+    ]);
+
+    // master lookup: ItemName|Farm -> { RegistrationNumber, ActiveIngredient, REIHours }
+    const m = {};
+    master.forEach(r => {
+      const k = `${norm(r.ItemName)}|${norm(r.Farm)}`;
+      if (k !== '|') m[k] = r;
+    });
+
+    // filter sprays to this posting + window
+    const rows = sprays.filter(s => {
+      const d = dateOnly(s.SprayingDate);
+      if (!d || d < winFrom || d > winTo) return false;
+      if (isLettuce) return norm(s.Farm) === 'lettuce';
+      return String(s.SiteName || '').trim() === ghParam;
+    });
+
+    // crop/farm label
+    const farms = [...new Set(rows.map(r => String(r.Farm||'').trim()).filter(Boolean))];
+    document.getElementById('gh-label').textContent = isLettuce ? 'Lettuce (whole farm)' : ghParam;
+    document.getElementById('crop-label').textContent = farms.join(' / ');
+    document.getElementById('window-note').textContent =
+      `Applications from ${fmtDateLong(winFrom)} through ${fmtDateLong(winTo)}`;
+
+    // build application cards
+    const apps = rows.map(s => {
+      const date = dateOnly(s.SprayingDate);
+      const startMin = parseTimeOfDay(s.SprayingStartTime);
+      const stopMin  = parseTimeOfDay(s.SprayingStopTime);
+      const farm = String(s.Farm || '').trim();
+
+      const products = [1,2,3].map(i => {
+        const name = String(s['Product0'+i] || '').trim();
+        if (!name) return null;
+        const rec = m[`${norm(name)}|${norm(farm)}`] || {};
+        const labelRei = numOrNull(rec.REIHours);
+        const rei = labelRei != null ? labelRei : numOrNull(s.REIlHours);
+        return {
+          name,
+          ai:  String(rec.ActiveIngredient || '').trim(),
+          epa: String(rec.RegistrationNumber || '').trim(),
+          qty: s['Product0'+i+'Quantity'],
+          unit: s['Product0'+i+'Units'],
+          rei,
+        };
+      }).filter(Boolean);
+
+      const maxRei = products.reduce((mx, p) => p.rei != null ? Math.max(mx, p.rei) : mx, -Infinity);
+      const reentry = isFinite(maxRei) ? addHours(date, stopMin, maxRei) : null;
+      return { date, startMin, stopMin, products, reentry, maxReiHours: isFinite(maxRei) ? maxRei : null };
+    }).sort((a,b) => b.date.localeCompare(a.date) || (b.stopMin||0) - (a.stopMin||0));
+
+    document.getElementById('loading').style.display = 'none';
+    if (!apps.length) {
+      const e = document.getElementById('empty');
+      e.style.display = 'block';
+      e.textContent = 'No pesticide applications recorded here in the last 30 days.';
+      return;
+    }
+
+    const nowU = nowHstAsUtcFields();
+    document.getElementById('list').innerHTML = apps.map(a => {
+      const timeStr = a.startMin != null || a.stopMin != null
+        ? `${fmtTime(a.startMin) || '—'} – ${fmtTime(a.stopMin) || '—'}`
+        : 'Time not recorded';
+      let reentryHtml = '';
+      if (a.reentry) {
+        const expired = a.reentry <= nowU;
+        reentryHtml = `<div class="reentry ${expired ? 'expired' : ''}">
+          <div class="label">${expired ? 'Restricted-entry interval has passed' : 'Do not enter until'}</div>
+          <div class="val">${expired ? 'Safe to enter' : esc(fmtReentry(a.reentry))}</div>
+          <div class="label" style="margin-top:4px">REI ${a.maxReiHours} hours from end of application</div>
+        </div>`;
+      }
+      const prods = a.products.map(p => `
+        <div class="prod">
+          <div class="name">${esc(p.name)}</div>
+          <dl>
+            <dt>Active ingredient</dt><dd class="${p.ai ? '' : 'missing'}">${esc(p.ai || 'not on file')}</dd>
+            <dt>EPA Reg. No.</dt><dd class="${p.epa ? '' : 'missing'}">${esc(p.epa || 'not on file')}</dd>
+            <dt>Amount applied</dt><dd>${p.qty != null && p.qty !== '' ? esc(p.qty + (p.unit ? ' ' + p.unit : '')) : '—'}</dd>
+            <dt>REI (label)</dt><dd class="${p.rei != null ? '' : 'missing'}">${p.rei != null ? esc(p.rei + ' hours') : 'not on file'}</dd>
+          </dl>
+        </div>`).join('');
+      return `<div class="app">
+        <div class="app-head">
+          <div class="app-date">${esc(fmtDateLong(a.date))}</div>
+          <div class="app-time">Applied ${esc(timeStr)}</div>
+        </div>
+        ${reentryHtml}
+        <div class="products">${prods}</div>
+      </div>`;
+    }).join('');
+  } catch (e) {
+    document.getElementById('loading').style.display = 'none';
+    const err = document.getElementById('error');
+    err.style.display = 'block';
+    err.textContent = 'Could not load applications: ' + (e.message || e);
+    console.error(e);
+  }
+})();
+</script>
+</body>
+</html>
