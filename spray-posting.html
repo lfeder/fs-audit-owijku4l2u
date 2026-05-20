@@ -46,7 +46,7 @@
   <h1>Pesticide Application Notice</h1>
   <div class="gh" id="gh-label">—</div>
   <div class="crop" id="crop-label"></div>
-  <div id="version">05-20 07:30</div>
+  <div id="version">05-20 08:01</div>
 </header>
 <div id="window-note"></div>
 
@@ -180,7 +180,8 @@ function nowHstAsUtcFields() {
         const rei = labelRei != null ? labelRei : numOrNull(s.REIlHours);
         return {
           name,
-          ai:  String(rec.ActiveIngredient || '').trim(),
+          // sheet column is misspelled "ActiveIngedient"; accept the correct spelling too in case it's fixed later
+          ai:  String(rec.ActiveIngedient || rec.ActiveIngredient || '').trim(),
           epa: String(rec.RegistrationNumber || '').trim(),
           qty: s['Product0'+i+'Quantity'],
           unit: s['Product0'+i+'Units'],
@@ -189,7 +190,9 @@ function nowHstAsUtcFields() {
       }).filter(Boolean);
 
       const maxRei = products.reduce((mx, p) => p.rei != null ? Math.max(mx, p.rei) : mx, -Infinity);
-      const reentry = isFinite(maxRei) ? addHours(date, stopMin, maxRei) : null;
+      // re-entry counts from end of application; if stop time wasn't recorded, fall back to start
+      const baseMin = stopMin != null ? stopMin : startMin;
+      const reentry = isFinite(maxRei) ? addHours(date, baseMin, maxRei) : null;
       return { date, startMin, stopMin, products, reentry, maxReiHours: isFinite(maxRei) ? maxRei : null };
     }).sort((a,b) => b.date.localeCompare(a.date) || (b.stopMin||0) - (a.stopMin||0));
 
