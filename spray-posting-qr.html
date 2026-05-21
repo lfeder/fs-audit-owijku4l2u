@@ -39,7 +39,7 @@
 </style>
 </head>
 <body>
-<div id="version">05-20 21:52</div>
+<div id="version">05-20 22:03</div>
 <h1>Pesticide Application Postings</h1>
 <div class="sub">Post the <b>central</b> code at the farm entrance (it opens a greenhouse picker). Post each greenhouse code at that greenhouse's entrance — scanning it jumps straight to that house's last-30-day applications, with a link back to the full picker. Printing puts one code per page.</div>
 <div class="toolbar"><button onclick="window.print()">Print all</button></div>
@@ -53,18 +53,17 @@ const esc = FSAudit.escapeHtml;
 const norm = s => String(s || '').trim().toLowerCase();
 const base = location.href.replace(/spray-posting-qr\.html.*$/, 'spray-posting.html');
 
-function card({ central, label, crop, url }) {
+function card({ central, label, url }) {
   const el = document.createElement('div');
   el.className = 'card' + (central ? ' central' : '');
   el.innerHTML = central
-    ? `<div class="kind">Farm entrance — all greenhouses</div>
+    ? `<div class="kind">Pesticide Application Posting</div>
        <div class="gh">All greenhouses</div>
        <div class="crop">Opens the greenhouse picker</div>
        <div class="qr"></div>
        <div class="cap">Scan for pesticide application notices</div>`
-    : `<div class="kind">Greenhouse posting</div>
+    : `<div class="kind">Pesticide Application Posting</div>
        <div class="gh">${esc(label)}</div>
-       <div class="crop">${esc(crop)}</div>
        <div class="qr"></div>
        <div class="cap">Scan for this greenhouse's applications</div>`;
   document.getElementById('grid').appendChild(el);
@@ -77,15 +76,15 @@ function card({ central, label, crop, url }) {
     // greenhouse list mirrors the selector: a single Lettuce posting + distinct cuke SiteNames
     const ghlist = [];
     if (sprays.some(s => norm(s.Farm) === 'lettuce'))
-      ghlist.push({ key: 'Lettuce', label: 'Lettuce', crop: 'Lettuce' });
+      ghlist.push({ key: 'Lettuce', label: 'Lettuce' });
     [...new Set(sprays.filter(s => norm(s.Farm) === 'cuke')
       .map(s => String(s.SiteName || '').trim()).filter(Boolean))]
       .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
-      .forEach(c => ghlist.push({ key: c, label: c, crop: 'Cucumber' }));
+      .forEach(c => ghlist.push({ key: c, label: c }));
 
     document.getElementById('loading').style.display = 'none';
     card({ central: true, url: base });
-    ghlist.forEach(g => card({ label: g.label, crop: g.crop, url: base + '?gh=' + encodeURIComponent(g.key) }));
+    ghlist.forEach(g => card({ label: g.label, url: base + '?gh=' + encodeURIComponent(g.key) }));
   } catch (e) {
     document.getElementById('loading').style.display = 'none';
     const err = document.getElementById('error');
