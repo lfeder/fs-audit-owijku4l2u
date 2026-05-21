@@ -19,8 +19,8 @@
   .grid { display: flex; flex-wrap: wrap; gap: 22px; justify-content: center; max-width: 1100px; }
   .card { border: 2px solid #16613e; border-radius: 16px; padding: 24px; text-align: center; width: 340px; }
   .card.central { border-width: 3px; background: #f1f8f3; }
-  .card .kind { font-size: 1.7rem; line-height: 1.1; text-transform: uppercase; letter-spacing: 0.5px; color: #16613e; font-weight: 800; margin-bottom: 10px; }
-  .card .gh { font-size: 1.8rem; font-weight: 800; color: #16613e; margin: 2px 0 14px; }
+  .card .kind { font-size: 1.3rem; line-height: 1.1; text-transform: uppercase; letter-spacing: 0.5px; color: #16613e; font-weight: 800; margin-bottom: 14px; }
+  .card .gh { font-size: 1.8rem; font-weight: 800; color: #16613e; margin: 14px 0 2px; }
   .card .qr { display: flex; justify-content: center; }
   #loading, #error { padding: 40px 18px; text-align: center; color: #5a6472; }
   #error { color: #b03a2e; }
@@ -32,13 +32,13 @@
             page-break-after: always; display: flex; flex-direction: column;
             align-items: center; justify-content: center; min-height: 95vh; }
     .card:last-child { page-break-after: auto; }
-    .card .kind { font-size: 3rem; margin-bottom: 18px; }
+    .card .kind { font-size: 2.2rem; margin-bottom: 24px; }
     .card .gh { font-size: 2.6rem; }
   }
 </style>
 </head>
 <body>
-<div id="version">05-20 22:24</div>
+<div id="version">05-20 22:31</div>
 <h1>Pesticide Application Postings</h1>
 <div class="sub">Post the <b>central</b> code at the farm entrance (it opens a greenhouse picker). Post each greenhouse code at that greenhouse's entrance — scanning it jumps straight to that house's last-30-day applications, with a link back to the full picker. Printing puts one code per page.</div>
 <div class="toolbar"><button onclick="window.print()">Print all</button></div>
@@ -57,11 +57,11 @@ function card({ central, label, url }) {
   el.className = 'card' + (central ? ' central' : '');
   el.innerHTML = central
     ? `<div class="kind">Pesticide Application Posting</div>
-       <div class="gh">All greenhouses</div>
-       <div class="qr"></div>`
+       <div class="qr"></div>
+       <div class="gh">All greenhouses</div>`
     : `<div class="kind">Pesticide Application Posting</div>
-       <div class="gh">${esc(label)}</div>
-       <div class="qr"></div>`;
+       <div class="qr"></div>
+       <div class="gh">${esc(label)}</div>`;
   document.getElementById('grid').appendChild(el);
   new QRCode(el.querySelector('.qr'), { text: url, width: 300, height: 300, correctLevel: QRCode.CorrectLevel.M });
 }
