@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pesticide Posting QR Code</title>
+<title>Pesticide Posting QR Codes</title>
+<script src="audit-core.js"></script>
 <script src="https://cdn.jsdelivr.net/gh/davidshimjs/qrcodejs@master/qrcode.min.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -12,32 +13,90 @@
          display: flex; flex-direction: column; align-items: center; padding: 32px 20px; }
   #version { position: fixed; top: 12px; right: 16px; font-size: 0.8rem; color: #1c2330; }
   h1 { font-size: 1.4rem; text-align: center; }
-  .sub { color: #5a6472; font-size: 0.95rem; margin: 8px 0 20px; text-align: center; max-width: 460px; }
-  .card { border: 2px solid #16613e; border-radius: 16px; padding: 28px; text-align: center; }
-  .card .qr { display: flex; justify-content: center; }
-  .card .cap { font-size: 1rem; font-weight: 700; margin-top: 14px; color: #16613e; }
-  .url { font-size: 0.78rem; color: #8a929e; word-break: break-all; margin-top: 10px; max-width: 320px; }
-  .toolbar { margin: 22px 0; }
+  .sub { color: #5a6472; font-size: 0.95rem; margin: 8px 0 20px; text-align: center; max-width: 540px; }
+  .toolbar { margin: 4px 0 22px; }
   .toolbar button { font-size: 0.95rem; padding: 8px 18px; border: 1px solid #16613e; background: #16613e; color: #fff; border-radius: 6px; cursor: pointer; }
-  @media print { .toolbar, .sub, #version { display: none; } }
+  .grid { display: flex; flex-wrap: wrap; gap: 22px; justify-content: center; max-width: 1100px; }
+  .card { border: 2px solid #16613e; border-radius: 16px; padding: 24px; text-align: center; width: 340px; }
+  .card.central { border-width: 3px; background: #f1f8f3; }
+  .card .kind { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.6px; color: #5a6472; font-weight: 700; }
+  .card .gh { font-size: 1.8rem; font-weight: 800; color: #16613e; margin: 2px 0 2px; }
+  .card .crop { font-size: 0.9rem; color: #6a7280; margin-bottom: 14px; }
+  .card .qr { display: flex; justify-content: center; }
+  .card .cap { font-size: 0.95rem; font-weight: 700; margin-top: 14px; color: #16613e; }
+  .url { font-size: 0.72rem; color: #8a929e; word-break: break-all; margin-top: 10px; }
+  #loading, #error { padding: 40px 18px; text-align: center; color: #5a6472; }
+  #error { color: #b03a2e; }
+  @media print {
+    body { padding: 0; }
+    .toolbar, .sub, #version, #loading { display: none; }
+    .grid { gap: 0; max-width: none; display: block; }
+    .card { width: auto; border-width: 3px; margin: 0 auto; padding: 48px 24px;
+            page-break-after: always; display: flex; flex-direction: column;
+            align-items: center; justify-content: center; min-height: 95vh; }
+    .card:last-child { page-break-after: auto; }
+    .card .gh { font-size: 2.6rem; }
+  }
 </style>
 </head>
 <body>
-<div id="version">05-19 22:10</div>
+<div id="version">05-20 21:26</div>
 <h1>Pesticide Application Postings</h1>
-<div class="sub">Post this one code at the farm entrance. Scanning it opens a greenhouse picker — workers tap their house to see the last 30 days of applications and whether it's safe to enter.</div>
-<div class="toolbar"><button onclick="window.print()">Print</button></div>
+<div class="sub">Post the <b>central</b> code at the farm entrance (it opens a greenhouse picker). Post each greenhouse code at that greenhouse's entrance — scanning it jumps straight to that house's last-30-day applications, with a link back to the full picker. Printing puts one code per page.</div>
+<div class="toolbar"><button onclick="window.print()">Print all</button></div>
 
-<div class="card">
-  <div class="qr" id="qr"></div>
-  <div class="cap">Scan for pesticide application notices</div>
-  <div class="url" id="url"></div>
-</div>
+<div id="loading">Loading greenhouses…</div>
+<div id="error" style="display:none"></div>
+<div class="grid" id="grid"></div>
 
 <script>
-const url = location.href.replace(/spray-posting-qr\.html.*$/, 'spray-posting.html');
-document.getElementById('url').textContent = url;
-new QRCode(document.getElementById('qr'), { text: url, width: 300, height: 300, correctLevel: QRCode.CorrectLevel.M });
+const esc = FSAudit.escapeHtml;
+const norm = s => String(s || '').trim().toLowerCase();
+const base = location.href.replace(/spray-posting-qr\.html.*$/, 'spray-posting.html');
+
+function card({ central, label, crop, url }) {
+  const el = document.createElement('div');
+  el.className = 'card' + (central ? ' central' : '');
+  el.innerHTML = central
+    ? `<div class="kind">Farm entrance — all greenhouses</div>
+       <div class="gh">All greenhouses</div>
+       <div class="crop">Opens the greenhouse picker</div>
+       <div class="qr"></div>
+       <div class="cap">Scan for pesticide application notices</div>
+       <div class="url">${esc(url)}</div>`
+    : `<div class="kind">Greenhouse posting</div>
+       <div class="gh">${esc(label)}</div>
+       <div class="crop">${esc(crop)}</div>
+       <div class="qr"></div>
+       <div class="cap">Scan for this greenhouse's applications</div>
+       <div class="url">${esc(url)}</div>`;
+  document.getElementById('grid').appendChild(el);
+  new QRCode(el.querySelector('.qr'), { text: url, width: 300, height: 300, correctLevel: QRCode.CorrectLevel.M });
+}
+
+(async () => {
+  try {
+    const sprays = await FSAudit.fetchSheet('grow', 'grow_spray_sched');
+    // greenhouse list mirrors the selector: a single Lettuce posting + distinct cuke SiteNames
+    const ghlist = [];
+    if (sprays.some(s => norm(s.Farm) === 'lettuce'))
+      ghlist.push({ key: 'Lettuce', label: 'Lettuce', crop: 'Lettuce' });
+    [...new Set(sprays.filter(s => norm(s.Farm) === 'cuke')
+      .map(s => String(s.SiteName || '').trim()).filter(Boolean))]
+      .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+      .forEach(c => ghlist.push({ key: c, label: c, crop: 'Cucumber' }));
+
+    document.getElementById('loading').style.display = 'none';
+    card({ central: true, url: base });
+    ghlist.forEach(g => card({ label: g.label, crop: g.crop, url: base + '?gh=' + encodeURIComponent(g.key) }));
+  } catch (e) {
+    document.getElementById('loading').style.display = 'none';
+    const err = document.getElementById('error');
+    err.style.display = 'block';
+    err.textContent = 'Could not load greenhouses: ' + (e.message || e);
+    console.error(e);
+  }
+})();
 </script>
 </body>
 </html>
