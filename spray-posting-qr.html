@@ -20,10 +20,8 @@
   .card { border: 2px solid #16613e; border-radius: 16px; padding: 24px; text-align: center; width: 340px; }
   .card.central { border-width: 3px; background: #f1f8f3; }
   .card .kind { font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.6px; color: #5a6472; font-weight: 700; }
-  .card .gh { font-size: 1.8rem; font-weight: 800; color: #16613e; margin: 2px 0 2px; }
-  .card .crop { font-size: 0.9rem; color: #6a7280; margin-bottom: 14px; }
+  .card .gh { font-size: 1.8rem; font-weight: 800; color: #16613e; margin: 2px 0 14px; }
   .card .qr { display: flex; justify-content: center; }
-  .card .cap { font-size: 0.95rem; font-weight: 700; margin-top: 14px; color: #16613e; }
   #loading, #error { padding: 40px 18px; text-align: center; color: #5a6472; }
   #error { color: #b03a2e; }
   @media print {
@@ -39,7 +37,7 @@
 </style>
 </head>
 <body>
-<div id="version">05-20 22:03</div>
+<div id="version">05-20 22:10</div>
 <h1>Pesticide Application Postings</h1>
 <div class="sub">Post the <b>central</b> code at the farm entrance (it opens a greenhouse picker). Post each greenhouse code at that greenhouse's entrance — scanning it jumps straight to that house's last-30-day applications, with a link back to the full picker. Printing puts one code per page.</div>
 <div class="toolbar"><button onclick="window.print()">Print all</button></div>
@@ -59,13 +57,10 @@ function card({ central, label, url }) {
   el.innerHTML = central
     ? `<div class="kind">Pesticide Application Posting</div>
        <div class="gh">All greenhouses</div>
-       <div class="crop">Opens the greenhouse picker</div>
-       <div class="qr"></div>
-       <div class="cap">Scan for pesticide application notices</div>`
+       <div class="qr"></div>`
     : `<div class="kind">Pesticide Application Posting</div>
        <div class="gh">${esc(label)}</div>
-       <div class="qr"></div>
-       <div class="cap">Scan for this greenhouse's applications</div>`;
+       <div class="qr"></div>`;
   document.getElementById('grid').appendChild(el);
   new QRCode(el.querySelector('.qr'), { text: url, width: 300, height: 300, correctLevel: QRCode.CorrectLevel.M });
 }
