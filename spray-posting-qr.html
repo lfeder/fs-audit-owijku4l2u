@@ -24,7 +24,6 @@
   .card .crop { font-size: 0.9rem; color: #6a7280; margin-bottom: 14px; }
   .card .qr { display: flex; justify-content: center; }
   .card .cap { font-size: 0.95rem; font-weight: 700; margin-top: 14px; color: #16613e; }
-  .url { font-size: 0.72rem; color: #8a929e; word-break: break-all; margin-top: 10px; }
   #loading, #error { padding: 40px 18px; text-align: center; color: #5a6472; }
   #error { color: #b03a2e; }
   @media print {
@@ -40,7 +39,7 @@
 </style>
 </head>
 <body>
-<div id="version">05-20 21:26</div>
+<div id="version">05-20 21:52</div>
 <h1>Pesticide Application Postings</h1>
 <div class="sub">Post the <b>central</b> code at the farm entrance (it opens a greenhouse picker). Post each greenhouse code at that greenhouse's entrance — scanning it jumps straight to that house's last-30-day applications, with a link back to the full picker. Printing puts one code per page.</div>
 <div class="toolbar"><button onclick="window.print()">Print all</button></div>
@@ -62,14 +61,12 @@ function card({ central, label, crop, url }) {
        <div class="gh">All greenhouses</div>
        <div class="crop">Opens the greenhouse picker</div>
        <div class="qr"></div>
-       <div class="cap">Scan for pesticide application notices</div>
-       <div class="url">${esc(url)}</div>`
+       <div class="cap">Scan for pesticide application notices</div>`
     : `<div class="kind">Greenhouse posting</div>
        <div class="gh">${esc(label)}</div>
        <div class="crop">${esc(crop)}</div>
        <div class="qr"></div>
-       <div class="cap">Scan for this greenhouse's applications</div>
-       <div class="url">${esc(url)}</div>`;
+       <div class="cap">Scan for this greenhouse's applications</div>`;
   document.getElementById('grid').appendChild(el);
   new QRCode(el.querySelector('.qr'), { text: url, width: 300, height: 300, correctLevel: QRCode.CorrectLevel.M });
 }
